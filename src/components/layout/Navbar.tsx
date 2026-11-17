@@ -6,9 +6,11 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
-  { id: 'services', label: 'Services' },
+  { id: 'about', label: 'About' },
+  { id: 'approach', label: 'Approach' },
+  { id: 'candidate', label: 'Careers' },
   { id: 'process', label: 'Process' },
-  { id: 'mission', label: 'Mission' },
+  { id: 'mission', label: 'Values' },
   { id: 'insights', label: 'Insights' }
 ];
 
@@ -92,7 +94,7 @@ export function Navbar() {
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#000000]/85 backdrop-blur-md border-b border-[#202A30] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3.5'
+          ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3.5'
           : 'bg-transparent border-b border-transparent py-5'
       }`}
     >

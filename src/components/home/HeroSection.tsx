@@ -113,38 +113,41 @@ export function HeroSection() {
               className="text-[1.62rem] xs:text-[1.95rem] sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.14]"
             >
               <span className="block">
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Find</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">the</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2 text-[#00E5F0] drop-shadow-[0_0_20px_rgba(0,229,240,0.4)]">Right</span>
-                <span className="hero-word inline-block">Opportunity.</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">Every</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">Career</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">Has</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">a</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2 text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">Next</span>
+                <span className="hero-word inline-block">Chapter.</span>
               </span>
               <span className="block mt-1 sm:mt-2 text-white">
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Build</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Your</span>
-                <span className="hero-word inline-block cyan-text-gradient drop-shadow-[0_0_25px_rgba(0,229,240,0.3)]">Future.</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">Let&apos;s</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2">Make</span>
+                <span className="hero-word inline-block mr-1.5 xs:mr-2 cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">Yours</span>
+                <span className="hero-word inline-block">Count.</span>
               </span>
             </h1>
 
             {/* Description */}
-            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#AEB8C2] max-w-xl leading-relaxed font-normal">
+            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
               {t('description')}
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
               <a
-                href="#process"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#00E5F0] hover:bg-[#00BFD0] transition-all duration-300 shadow-[0_0_25px_rgba(0,229,240,0.4)] hover:shadow-[0_0_35px_rgba(0,229,240,0.6)] transform hover:-translate-y-0.5 cursor-pointer text-center"
+                href="#candidate"
+                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
               >
                 <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="w-4 h-4 text-black" />
               </a>
 
               <a
-                href="#services"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-white bg-[#0A0D10]/90 hover:bg-[#141A20] border border-[#202A30] hover:border-[#00E5F0]/50 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
+                href="#employer"
+                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-[#F5F8F8] bg-[#0C1517]/90 hover:bg-[#102426] border border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
               >
-                <Building2 className="w-4 h-4 text-[#00E5F0]" />
+                <Building2 className="w-4 h-4 text-[#17BEBB]" />
                 <span>{t('ctaSecondary')}</span>
               </a>
             </div>
@@ -155,46 +158,46 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Sleek Horizontal Feature Strip with Vertical Dividers (as requested in reference screenshot) */}
-      <div className="hero-feature-strip relative z-10 w-full border-t border-[#202A30]/80 pt-6 mt-12 sm:mt-16">
+      {/* Sleek Horizontal Feature Strip with Vertical Dividers */}
+      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 mt-12 sm:mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-white">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-[#F5F8F8]">
             {/* Item 1 */}
             <div className="flex items-center gap-2.5 group">
-              <Code2 className="w-4 h-4 text-[#00E5F0] flex-shrink-0" />
+              <Code2 className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
               <span className="text-xs sm:text-sm font-medium tracking-wide">
                 {t('pillProduct')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#202A30]" />
+            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
 
             {/* Item 2 */}
             <div className="flex items-center gap-2.5 group">
-              <Layers className="w-4 h-4 text-[#00E5F0] flex-shrink-0" />
+              <Layers className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
               <span className="text-xs sm:text-sm font-medium tracking-wide">
                 {t('pillSecure')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#202A30]" />
+            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
 
             {/* Item 3 */}
             <div className="flex items-center gap-2.5 group">
-              <Zap className="w-4 h-4 text-[#00E5F0] flex-shrink-0" />
+              <Zap className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
               <span className="text-xs sm:text-sm font-medium tracking-wide">
                 {t('pillAutomation')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#202A30]" />
+            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
 
             {/* Item 4 */}
             <div className="flex items-center gap-2.5 group">
-              <ShieldCheck className="w-4 h-4 text-[#00E5F0] flex-shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
               <span className="text-xs sm:text-sm font-medium tracking-wide">
                 {t('pillPartnership')}
               </span>

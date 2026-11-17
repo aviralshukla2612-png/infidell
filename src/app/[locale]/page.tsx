@@ -2,12 +2,10 @@ import React from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { CandidatesPlacedInSection } from '@/components/home/CandidatesPlacedInSection';
-import { WhatIsInfidellSection } from '@/components/home/WhatIsInfidellSection';
-import { WhyChooseInfidellSection } from '@/components/home/WhyChooseInfidellSection';
+import { AboutSection } from '@/components/home/AboutSection';
+import { OurApproachSection } from '@/components/home/OurApproachSection';
 import { OurPartnersSection } from '@/components/home/OurPartnersSection';
-import { WorkforceSolutionSection } from '@/components/home/WorkforceSolutionSection';
-import { LivePlacementUpdatesSection } from '@/components/home/LivePlacementUpdatesSection';
-import { SuccessSinceEstablishmentSection } from '@/components/home/SuccessSinceEstablishmentSection';
+import { CandidateAndEmployerExperienceSection } from '@/components/home/CandidateAndEmployerExperienceSection';
 import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
 import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSection';
 import { InsightsSection } from '@/components/home/InsightsSection';
@@ -24,16 +22,17 @@ export default async function HomePage({
     <>
       <HeroSection />
       <CandidatesPlacedInSection />
-      <WhatIsInfidellSection />
-      <WhyChooseInfidellSection />
+      <AboutSection />
+      <OurApproachSection />
       <OurPartnersSection />
-      <WorkforceSolutionSection />
-      <LivePlacementUpdatesSection />
-      <SuccessSinceEstablishmentSection />
+      <CandidateAndEmployerExperienceSection />
+      {/* 
+        CRITICAL NON-NEGOTIABLE BOUNDARY:
+        SimpleTransparentProcessSection and all its GSAP animation timelines are 100% protected and untouched.
+      */}
       <SimpleTransparentProcessSection />
       <OurMissionValuesSection />
       <InsightsSection />
     </>
   );
 }
-

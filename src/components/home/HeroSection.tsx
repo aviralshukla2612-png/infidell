@@ -106,24 +106,24 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
-            {/* Headline with word-by-word reveal */}
+          <div className="lg:col-span-10 xl:col-span-10 space-y-6 sm:space-y-8">
+            {/* Headline with word-by-word reveal — Guaranteed Exactly 2 Lines */}
             <h1 
               ref={headlineRef}
-              className="text-[1.62rem] xs:text-[1.95rem] sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.14]"
+              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-white leading-[1.12]"
             >
-              <span className="block">
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Every</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Career</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Has</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">a</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2 text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">Next</span>
+              <span className="block whitespace-nowrap">
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Every</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Career</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Has</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">a</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2 text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">Next</span>
                 <span className="hero-word inline-block">Chapter.</span>
               </span>
-              <span className="block mt-1 sm:mt-2 text-white">
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Let&apos;s</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2">Make</span>
-                <span className="hero-word inline-block mr-1.5 xs:mr-2 cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">Yours</span>
+              <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white">
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Let&apos;s</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Make</span>
+                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2 cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">Yours</span>
                 <span className="hero-word inline-block">Count.</span>
               </span>
             </h1>
@@ -154,7 +154,7 @@ export function HeroSection() {
           </div>
 
           {/* Right Column: Left unobstructed so the 3D infinity visual is 100% visible */}
-          <div className="hidden lg:block lg:col-span-4" />
+          <div className="hidden lg:block lg:col-span-2 xl:col-span-2" />
         </div>
       </div>
 

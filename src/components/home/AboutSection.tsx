@@ -52,8 +52,8 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     entrance: 'left'
   },
   {
-    id: 3,
     index: '03 / ENTERPRISE',
+    id: 3,
     title: 'Collaborate with Us',
     tagline: 'Curated talent acquisition for teams',
     description: 'Partner with Infidell to close critical engineering, fintech, and management requisitions without resume clutter.',
@@ -149,15 +149,15 @@ export function AboutSection() {
       if (typeof window === 'undefined') return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // 1. Entrance of title & header row
+      // 1. Entrance of title, narrative pillars & philosophy
       gsap.fromTo(
         '.luna-header-fade',
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 28 },
         {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          stagger: 0.12,
+          stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -423,47 +423,168 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================
-            GIANT "About" TITLE & ASYMMETRIC 3-PART HEADER
+            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY (Section 6.B)
         ======================================================== */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-14 sm:mb-20">
           {/* Giant Clean Title */}
           <h2 
             ref={headlineRef}
-            className="luna-header-fade text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-normal tracking-tight text-white mb-8 sm:mb-12"
+            className="luna-header-fade text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-normal tracking-tight text-white mb-6 sm:mb-8"
           >
             About
           </h2>
 
-          {/* 3-Part Row: Pill + Main Statement + Sub Statement */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
-            {/* Left Column: Pill */}
-            <div className="md:col-span-2">
-              <div className="luna-header-fade inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-normal text-white tracking-wide">
-                <span>Infidell</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] animate-pulse" />
+          {/* Master Headline matching Master Prompt Section 6.B */}
+          <div className="luna-header-fade max-w-4xl mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-[#00D5DF] tracking-wide mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] animate-pulse" />
+              <span>INFIDELL TECHNOLOGY LLP</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-tight mb-5">
+              People First. Possibilities Without Limits.
+            </h3>
+            <p className="text-base sm:text-lg lg:text-xl text-neutral-300 font-normal leading-relaxed">
+              One dedicated placement firm, no automated agency in between. Infidell is{' '}
+              <strong className="font-semibold text-white">career advocacy</strong>. We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
+            </p>
+          </div>
+
+          {/* ========================================================
+              PART 2: 3-PILLAR STORYTELLING NARRATIVE (What We Do / Candidate / Employer)
+          ======================================================== */}
+          <div className="luna-header-fade grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-[#203536]/80">
+            {/* Pillar 1: Who We Are & What We Do */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] px-2.5 py-0.5 rounded bg-[#102426] border border-[#203536] mb-4 inline-block">
+                  01 / THE FIRM
+                </span>
+                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                  What INFIDELL Does
+                </h4>
+                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
+                  INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy. We bridge the gap between skilled professionals and verified enterprises across India, stripping away the noise of impersonal portals to deliver high-touch recruitment.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
+                  <span>Ethical &amp; compliant recruitment standard</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
+                  <span>Nationwide corporate employer network</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
+                  <span>100% verified job vacancies only</span>
+                </div>
               </div>
             </div>
 
-            {/* Center Column: High-Impact Statement */}
-            <div className="md:col-span-7">
-              <p className="luna-header-fade text-xl sm:text-2xl lg:text-[1.75rem] font-normal text-white leading-relaxed tracking-tight">
-                One dedicated placement firm, no automated agency in between. Infidell is{' '}
-                <strong className="font-semibold text-white">career advocacy</strong>. Recruitment and talent delivery, the way we actually think they should be done.
-              </p>
+            {/* Pillar 2: Candidate Career Advocacy */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#A78BFA] px-2.5 py-0.5 rounded bg-[#181126] border border-[#3B2554] mb-4 inline-block">
+                  02 / CANDIDATE ADVOCACY
+                </span>
+                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                  How Candidates Receive Support
+                </h4>
+                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
+                  Every career has a next chapter that deserves dedicated advocacy. Job seekers work 1-on-1 with specialized domain advisors who restructure resumes to beat ATS filters, coordinate technical mock interviews, and negotiate market-rate compensation packages.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
+                  <span>₹0 candidate fees · Zero hidden charges</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
+                  <span>ATS resume &amp; LinkedIn portfolio overhaul</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
+                  <span>Direct hiring manager introductions</span>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column: Country / Reach Descriptor */}
-            <div className="md:col-span-3 md:text-right">
-              <p className="luna-header-fade text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                Connecting ambitious talent with verified corporate hiring partners across India.
-              </p>
+            {/* Pillar 3: Employer Solutions */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#34D399] px-2.5 py-0.5 rounded bg-[#0E1E16] border border-[#1A422D] mb-4 inline-block">
+                  03 / EMPLOYER MANDATES
+                </span>
+                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                  How Employers Build Teams
+                </h4>
+                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
+                  Fast-scaling startups and established enterprises turn to Infidell to close critical requisitions without resume clutter. We pre-screen candidates across technical depth, culture alignment, and credential verification within strict 48–72 hour SLAs.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+                  <span>Pre-screened shortlists in 48–72 hours</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+                  <span>Replacement guarantee &amp; transparent SLA</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-neutral-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+                  <span>Full-time, contract &amp; leadership search</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================
+              PART 3: RECRUITMENT PHILOSOPHY CALLOUT BANNER
+          ======================================================== */}
+          <div className="luna-header-fade mt-8 sm:mt-12 p-6 sm:p-8 rounded-2xl lg:rounded-3xl bg-[#081014] border border-[#203536] relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-72 h-72 bg-[#00D5DF]/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="max-w-3xl">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] mb-2 block">
+                  OUR RECRUITMENT PHILOSOPHY
+                </span>
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-white leading-snug">
+                  &ldquo;Algorithms can scan keywords, but they cannot evaluate ambition, integrity, or culture-fit. At Infidell, we put people first because lasting careers are built on human trust, not automated transactions.&rdquo;
+                </h4>
+              </div>
+              <div className="shrink-0 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#102426] border border-[#203536] flex items-center justify-center text-[#00D5DF] font-bold text-sm">
+                  ∞
+                </div>
+                <div className="text-left">
+                  <div className="text-xs font-semibold text-white">The Infidell Creed</div>
+                  <div className="text-[11px] text-neutral-400">Long-term Career Advocacy</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* ========================================================
-            8 COLORFUL TOPIC CARDS WITH FULL-BLEED IMAGERY & GSAP ORCHESTRATION
+            PART 4: 8 COLORFUL TOPIC CARDS WITH GSAP PINNED ORCHESTRATION
         ======================================================== */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] block mb-1">
+              SPECIALIZED PRACTICE AREAS
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Explore Our 8 Practice Verticals
+            </h3>
+          </div>
+          <p className="text-xs sm:text-sm text-neutral-400 max-w-md">
+            Each vertical delivers dedicated placement advisory, verified employer mandates, and domain-specific talent architecture.
+          </p>
+        </div>
+
         <div 
           ref={stageRef} 
           className="relative w-full mb-20 sm:mb-28 overflow-visible"
@@ -571,7 +692,7 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
+            PART 5: FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
         ======================================================== */}
         <div className="luna-founder-section relative pt-6 sm:pt-10 pb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mb-14 sm:mb-18">

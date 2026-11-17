@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 
 interface LogoProps {
@@ -16,59 +17,51 @@ export function Logo({
   showText = true,
   showTagline = true
 }: LogoProps) {
-  const iconSizes = {
-    sm: 'w-7 h-7',
-    md: 'w-9 h-9',
-    lg: 'w-12 h-12'
+  const imageDimensions = {
+    sm: { width: 56, height: 28, className: 'h-6 sm:h-7 w-auto' },
+    md: { width: 74, height: 38, className: 'h-8 sm:h-9 md:h-10 w-auto' },
+    lg: { width: 96, height: 49, className: 'h-11 sm:h-12 w-auto' }
   };
 
   const titleSizes = {
-    sm: 'text-base',
-    md: 'text-xl',
-    lg: 'text-2xl'
+    sm: 'text-sm sm:text-base',
+    md: 'text-base sm:text-lg lg:text-xl',
+    lg: 'text-xl sm:text-2xl'
   };
 
   const subSizes = {
-    sm: 'text-[9px]',
-    md: 'text-[10px]',
-    lg: 'text-[11px]'
+    sm: 'text-[8px] sm:text-[9px]',
+    md: 'text-[9px] sm:text-[10px]',
+    lg: 'text-[10px] sm:text-[11px]'
   };
 
+  const currentSize = imageDimensions[size];
+
   return (
-    <Link href="/" className={`inline-flex items-center gap-3 group transition-opacity hover:opacity-95 ${className}`}>
-      {/* Official Infinity Vector Emblem */}
-      <div className={`relative ${iconSizes[size]} rounded-full bg-gradient-to-br from-[#08151e] to-[#0d222e] border border-[#00E5F0]/40 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(0,229,240,0.25)] group-hover:border-[#00E5F0] transition-colors overflow-hidden`}>
-        <svg 
-          viewBox="0 0 100 60" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full text-[#00E5F0] transform group-hover:scale-105 transition-transform"
-        >
-          <path
-            d="M 30,15 C 42,15 50,30 50,30 C 50,30 58,45 70,45 C 82,45 88,38 88,30 C 88,22 82,15 70,15 C 58,15 50,30 50,30 C 50,30 42,45 30,45 C 18,45 12,38 12,30 C 12,22 18,15 30,15 Z"
-            stroke="url(#infGlow)"
-            strokeWidth="8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <defs>
-            <linearGradient id="infGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00E5F0" />
-              <stop offset="50%" stopColor="#00BFD0" />
-              <stop offset="100%" stopColor="#00C7B1" />
-            </linearGradient>
-          </defs>
-        </svg>
+    <Link
+      href="/"
+      className={`inline-flex items-center gap-2.5 sm:gap-3 group transition-opacity hover:opacity-95 cursor-pointer select-none ${className}`}
+    >
+      {/* Official 3D Chrome Infinity Logo from /logo.png */}
+      <div className="relative flex items-center justify-center shrink-0">
+        <Image
+          src="/logo.png"
+          alt="INFIDELL TECHNOLOGY LLP Logo"
+          width={currentSize.width}
+          height={currentSize.height}
+          className={`${currentSize.className} object-contain mix-blend-screen transform group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(0,213,223,0.4)]`}
+          priority
+        />
       </div>
 
-      {/* Typography */}
+      {/* Company Name Typography */}
       {showText && (
-        <div className="flex flex-col leading-none">
-          <span className={`font-extrabold tracking-[0.14em] text-white ${titleSizes[size]} uppercase`}>
+        <div className="flex flex-col leading-tight select-none">
+          <span className={`font-extrabold tracking-[0.14em] text-white ${titleSizes[size]} uppercase group-hover:text-[#00D5DF] transition-colors`}>
             INFIDELL
           </span>
           {showTagline && (
-            <span className={`font-semibold tracking-[0.25em] text-[#AEB8C2] group-hover:text-[#00E5F0] transition-colors uppercase ${subSizes[size]} mt-0.5`}>
+            <span className={`font-semibold tracking-[0.22em] text-[#A5B2B3] group-hover:text-white transition-colors uppercase ${subSizes[size]} mt-0.5`}>
               TECHNOLOGY LLP
             </span>
           )}

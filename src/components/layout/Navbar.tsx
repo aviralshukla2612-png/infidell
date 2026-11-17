@@ -100,12 +100,12 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo - Emblem only in Navbar as requested */}
+          {/* Logo & Company Name */}
           <div
             onClick={(e) => scrollTo(e, 'home')}
             className="flex-shrink-0 cursor-pointer"
           >
-            <Logo size="md" showText={false} />
+            <Logo size="md" showText={true} showTagline={true} />
           </div>
 
           {/* Desktop Navigation: Only Home Page Sections (No extra page clutter) */}

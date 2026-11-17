@@ -27,12 +27,11 @@ export function Navbar() {
   });
 
   const updateIndicatorToEl = (el: HTMLElement | null) => {
-    if (!el || !navRef.current) return;
-    const navRect = navRef.current.getBoundingClientRect();
-    const rect = el.getBoundingClientRect();
+    if (!el) return;
+    // Native offsetLeft & offsetWidth relative to <nav> parent ensures 100% exact alignment
     setIndicator({
-      left: rect.left - navRect.left,
-      width: rect.width,
+      left: el.offsetLeft,
+      width: el.offsetWidth,
       opacity: 1
     });
   };
@@ -71,10 +70,15 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sync indicator when activeSection changes
+  // Sync indicator when activeSection changes or window resizes
   useEffect(() => {
-    const t = setTimeout(resetToActive, 80);
-    return () => clearTimeout(t);
+    const t = setTimeout(resetToActive, 60);
+    const handleResize = () => resetToActive();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [activeSection]);
 
   const scrollTo = (e: React.MouseEvent, id: string) => {
@@ -111,11 +115,11 @@ export function Navbar() {
             <Logo size="md" showText={true} showTagline={true} />
           </div>
 
-          {/* Desktop Navigation: Only Home Page Sections (No extra page clutter) */}
+          {/* Desktop Navigation: Uses CSS flex gap to ensure zero offset shifts on indicator */}
           <nav
             ref={navRef}
             onMouseLeave={resetToActive}
-            className="relative hidden md:flex items-center space-x-7 lg:space-x-9 py-2"
+            className="relative hidden md:flex items-center gap-6 lg:gap-8 py-2"
           >
             {SECTIONS.map((sec) => (
               <a
@@ -136,9 +140,9 @@ export function Navbar() {
               </a>
             ))}
 
-            {/* Emperor Nexus Signature Sliding Glowing Indicator */}
+            {/* Emperor Nexus Signature Sliding Glowing Indicator (with m-0 to prevent Tailwind margin inheritance) */}
             <span
-              className="absolute bottom-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#00E5F0] via-[#55A9FF] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
+              className="absolute bottom-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#00E5F0] via-[#55A9FF] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none m-0"
               style={{
                 left: `${indicator.left}px`,
                 width: `${indicator.width}px`,
@@ -146,7 +150,7 @@ export function Navbar() {
               }}
             />
             <span
-              className="absolute bottom-[-1px] h-[6px] rounded-full bg-[#00E5F0]/35 blur-[3px] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
+              className="absolute bottom-[-1px] h-[6px] rounded-full bg-[#00E5F0]/35 blur-[3px] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none m-0"
               style={{
                 left: `${indicator.left}px`,
                 width: `${indicator.width}px`,

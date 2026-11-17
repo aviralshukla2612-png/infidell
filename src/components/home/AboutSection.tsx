@@ -52,8 +52,8 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     entrance: 'left'
   },
   {
-    index: '03 / ENTERPRISE',
     id: 3,
+    index: '03 / ENTERPRISE',
     title: 'Collaborate with Us',
     tagline: 'Curated talent acquisition for teams',
     description: 'Partner with Infidell to close critical engineering, fintech, and management requisitions without resume clutter.',
@@ -141,7 +141,6 @@ export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<HTMLAnchorElement>(null);
 
   useGSAP(
@@ -149,7 +148,7 @@ export function AboutSection() {
       if (typeof window === 'undefined') return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // 1. Entrance of title, narrative pillars & philosophy
+      // 1. Entrance of title & editorial paragraphs
       gsap.fromTo(
         '.luna-header-fade',
         { opacity: 0, y: 28 },
@@ -171,53 +170,34 @@ export function AboutSection() {
       const mm = gsap.matchMedia(sectionRef);
 
       // ==========================================
-      // DESKTOP (1024px+): Pinned Scrub Animation
-      // Card 1 starts large & centered, then shrinks
+      // DESKTOP (1024px+): Smooth Scrubbed GSAP Scroll Animation
+      // Card 1 starts BIG, then scales down to normal
       // Other 7 cards slide in from Left & Right
       // ==========================================
       mm.add('(min-width: 1024px)', () => {
-        const gridEl = gridRef.current;
-        const card1El = card1Ref.current;
-
-        if (!gridEl || !card1El) return;
-
-        // Calculate dynamic delta from Card 1's position to Stage center
-        const gridRect = gridEl.getBoundingClientRect();
-        const card1Rect = card1El.getBoundingClientRect();
-
-        const deltaX =
-          gridRect.left + gridRect.width / 2 - (card1Rect.left + card1Rect.width / 2);
-        const deltaY =
-          gridRect.top + gridRect.height / 2 - (card1Rect.top + card1Rect.height / 2);
-
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: stageRef.current,
-            start: 'center center',
-            end: '+=160%',
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1
+            start: 'top 85%',
+            end: 'center 45%',
+            scrub: 1.2
           }
         });
 
-        // Card 1: Starts prominently in the center, enlarged with radiant cyan glow
+        // Card 1: Starts enlarged with radiant cyan glow, smoothly scales down to normal size
         tl.fromTo(
-          card1El,
+          card1Ref.current,
           {
-            x: deltaX,
-            y: deltaY,
-            scale: 1.34,
-            zIndex: 40,
-            boxShadow: '0 30px 80px -10px rgba(0, 213, 223, 0.55), 0 0 35px rgba(0, 213, 223, 0.25)'
+            scale: 1.24,
+            transformOrigin: 'top left',
+            zIndex: 30,
+            boxShadow: '0 25px 60px -10px rgba(0, 213, 223, 0.55), 0 0 35px rgba(0, 213, 223, 0.25)'
           },
           {
-            x: 0,
-            y: 0,
             scale: 1,
             zIndex: 10,
             boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
-            ease: 'power2.inOut',
+            ease: 'power2.out',
             duration: 1
           },
           0
@@ -227,42 +207,42 @@ export function AboutSection() {
         tl.fromTo(
           '.card-from-left',
           {
-            x: -280,
+            x: -220,
             opacity: 0,
-            scale: 0.88,
-            pointerEvents: 'none'
+            scale: 0.9,
+            rotate: -2
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            pointerEvents: 'auto',
-            stagger: 0.08,
+            rotate: 0,
+            stagger: 0.1,
             ease: 'power2.out',
-            duration: 0.95
+            duration: 1
           },
-          0.06
+          0.05
         );
 
         // Right incoming cards (Card 3, Card 4, Card 7, Card 8): slide in from the right
         tl.fromTo(
           '.card-from-right',
           {
-            x: 280,
+            x: 220,
             opacity: 0,
-            scale: 0.88,
-            pointerEvents: 'none'
+            scale: 0.9,
+            rotate: 2
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            pointerEvents: 'auto',
-            stagger: 0.08,
+            rotate: 0,
+            stagger: 0.1,
             ease: 'power2.out',
-            duration: 0.95
+            duration: 1
           },
-          0.06
+          0.05
         );
       });
 
@@ -270,54 +250,34 @@ export function AboutSection() {
       // TABLET (768px - 1023px): Smooth Scroll Flow
       // ==========================================
       mm.add('(min-width: 768px) and (max-width: 1023px)', () => {
-        gsap.fromTo(
-          '.card-hero-1',
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: stageRef.current,
+            start: 'top 80%',
+            end: 'center 50%',
+            scrub: 1
+          }
+        });
+
+        tl.fromTo(
+          card1Ref.current,
           { scale: 1.15, opacity: 0.9 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.85,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 75%',
-              toggleActions: 'play none none none'
-            }
-          }
+          { scale: 1, opacity: 1, ease: 'power2.out', duration: 1 },
+          0
         );
 
-        gsap.fromTo(
+        tl.fromTo(
           '.card-from-left',
-          { x: -140, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            stagger: 0.1,
-            duration: 0.75,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 70%',
-              toggleActions: 'play none none none'
-            }
-          }
+          { x: -120, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
+          0.08
         );
 
-        gsap.fromTo(
+        tl.fromTo(
           '.card-from-right',
-          { x: 140, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            stagger: 0.1,
-            duration: 0.75,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 70%',
-              toggleActions: 'play none none none'
-            }
-          }
+          { x: 120, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
+          0.08
         );
       });
 
@@ -326,7 +286,7 @@ export function AboutSection() {
       // ==========================================
       mm.add('(max-width: 767px)', () => {
         gsap.fromTo(
-          '.card-hero-1',
+          card1Ref.current,
           { scale: 1.08, opacity: 0.9 },
           {
             scale: 1,
@@ -334,7 +294,7 @@ export function AboutSection() {
             duration: 0.7,
             ease: 'power2.out',
             scrollTrigger: {
-              trigger: '.card-hero-1',
+              trigger: stageRef.current,
               start: 'top 80%',
               toggleActions: 'play none none none'
             }
@@ -423,7 +383,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================
-            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY (Section 6.B)
+            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY
         ======================================================== */}
         <div className="mb-14 sm:mb-20">
           {/* Giant Clean Title */}
@@ -450,101 +410,75 @@ export function AboutSection() {
           </div>
 
           {/* ========================================================
-              PART 2: 3-PILLAR STORYTELLING NARRATIVE (What We Do / Candidate / Employer)
+              PART 2: 3-PILLAR STORYTELLING NARRATIVE IN EDITORIAL PARAGRAPHS
+              (PURE PROSE FORMAT — NO BOXED CARDS)
           ======================================================== */}
-          <div className="luna-header-fade grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-[#203536]/80">
-            {/* Pillar 1: Who We Are & What We Do */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] px-2.5 py-0.5 rounded bg-[#102426] border border-[#203536] mb-4 inline-block">
+          <div className="luna-header-fade space-y-10 sm:space-y-14 py-8 border-t border-[#203536]/80 max-w-5xl">
+            
+            {/* Pillar 1: What INFIDELL Does */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
+              <div className="md:col-span-4">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] font-semibold block mb-1">
                   01 / THE FIRM
                 </span>
-                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
                   What INFIDELL Does
                 </h4>
-                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
-                  INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy. We bridge the gap between skilled professionals and verified enterprises across India, stripping away the noise of impersonal portals to deliver high-touch recruitment.
-                </p>
               </div>
-              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-                  <span>Ethical &amp; compliant recruitment standard</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-                  <span>Nationwide corporate employer network</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-                  <span>100% verified job vacancies only</span>
-                </div>
+              <div className="md:col-span-8 space-y-3">
+                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
+                  INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy. We bridge the gap between skilled professionals and verified enterprises across India, stripping away the noise of impersonal portals and automated keyword algorithms to deliver high-touch recruitment grounded in deep domain knowledge and verified career alignment.
+                </p>
+                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
+                  Operating with strict adherence to ethical, compliant recruitment standards, our nationwide network connects candidates only with 100% verified employer vacancies.
+                </p>
               </div>
             </div>
 
-            {/* Pillar 2: Candidate Career Advocacy */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#A78BFA] px-2.5 py-0.5 rounded bg-[#181126] border border-[#3B2554] mb-4 inline-block">
+            {/* Pillar 2: How Candidates Receive Support */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pt-8 border-t border-white/5">
+              <div className="md:col-span-4">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#A78BFA] font-semibold block mb-1">
                   02 / CANDIDATE ADVOCACY
                 </span>
-                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
                   How Candidates Receive Support
                 </h4>
-                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
-                  Every career has a next chapter that deserves dedicated advocacy. Job seekers work 1-on-1 with specialized domain advisors who restructure resumes to beat ATS filters, coordinate technical mock interviews, and negotiate market-rate compensation packages.
-                </p>
               </div>
-              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
-                  <span>₹0 candidate fees · Zero hidden charges</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
-                  <span>ATS resume &amp; LinkedIn portfolio overhaul</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
-                  <span>Direct hiring manager introductions</span>
-                </div>
+              <div className="md:col-span-8 space-y-3">
+                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
+                  Every career has a next chapter that deserves dedicated advocacy. Job seekers work one-on-one with specialized domain advisors who restructure resumes to beat strict ATS parsers, coordinate technical and behavioral mock interviews with industry peers, and negotiate competitive, market-rate compensation packages.
+                </p>
+                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
+                  Our candidate representation is 100% free with ₹0 placement fees and zero hidden charges — ensuring candidate interests remain our exclusive priority.
+                </p>
               </div>
             </div>
 
-            {/* Pillar 3: Employer Solutions */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-[#090E12] border border-[#203536] flex flex-col justify-between">
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#34D399] px-2.5 py-0.5 rounded bg-[#0E1E16] border border-[#1A422D] mb-4 inline-block">
+            {/* Pillar 3: How Employers Build Teams */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pt-8 border-t border-white/5">
+              <div className="md:col-span-4">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#34D399] font-semibold block mb-1">
                   03 / EMPLOYER MANDATES
                 </span>
-                <h4 className="text-xl font-bold text-white mb-2 leading-snug">
+                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
                   How Employers Build Teams
                 </h4>
-                <p className="text-xs sm:text-sm text-[#A5B2B3] font-normal leading-relaxed mb-5">
-                  Fast-scaling startups and established enterprises turn to Infidell to close critical requisitions without resume clutter. We pre-screen candidates across technical depth, culture alignment, and credential verification within strict 48–72 hour SLAs.
+              </div>
+              <div className="md:col-span-8 space-y-3">
+                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
+                  Fast-scaling startups and established corporate enterprises turn to Infidell to close critical engineering, fintech, and management requisitions without resume clutter. We pre-screen candidates across technical depth, cultural alignment, and statutory credential verification within strict 48–72 hour SLAs.
+                </p>
+                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
+                  Supported by transparent hiring replacement assurances, our dedicated account managers handle permanent direct hires, strategic contract staffing, and confidential executive search.
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#203536]/60 space-y-2">
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
-                  <span>Pre-screened shortlists in 48–72 hours</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
-                  <span>Replacement guarantee &amp; transparent SLA</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-neutral-300">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
-                  <span>Full-time, contract &amp; leadership search</span>
-                </div>
-              </div>
             </div>
+
           </div>
 
-          {/* ========================================================
-              PART 3: RECRUITMENT PHILOSOPHY CALLOUT BANNER
-          ======================================================== */}
-          <div className="luna-header-fade mt-8 sm:mt-12 p-6 sm:p-8 rounded-2xl lg:rounded-3xl bg-[#081014] border border-[#203536] relative overflow-hidden">
+          {/* Philosophy Callout Banner */}
+          <div className="luna-header-fade mt-10 p-6 sm:p-8 rounded-2xl bg-[#081014] border border-[#203536] relative overflow-hidden">
             <div className="absolute top-0 right-0 w-72 h-72 bg-[#00D5DF]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-3xl">
@@ -569,19 +503,19 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 4: 8 COLORFUL TOPIC CARDS WITH GSAP PINNED ORCHESTRATION
+            PART 3: 8 PRACTICE VERTICALS WITH SMOOTH GSAP SCROLL ANIMATION
         ======================================================== */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="mt-20 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] block mb-1">
-              SPECIALIZED PRACTICE AREAS
+              SPECIALIZED PRACTICE VERTICALS
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Explore Our 8 Practice Verticals
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
+              Explore Our 8 Practice Areas
             </h3>
           </div>
           <p className="text-xs sm:text-sm text-neutral-400 max-w-md">
-            Each vertical delivers dedicated placement advisory, verified employer mandates, and domain-specific talent architecture.
+            Scroll to see our practice verticals expand into place, connecting verified talent and enterprise employers across key domains.
           </p>
         </div>
 
@@ -589,10 +523,7 @@ export function AboutSection() {
           ref={stageRef} 
           className="relative w-full mb-20 sm:mb-28 overflow-visible"
         >
-          <div 
-            ref={gridRef}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative">
             {COLORFUL_CARDS.map((card) => {
               const isHero = card.entrance === 'hero';
               const isLeft = card.entrance === 'left';
@@ -692,7 +623,7 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 5: FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
+            PART 4: FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
         ======================================================== */}
         <div className="luna-founder-section relative pt-6 sm:pt-10 pb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mb-14 sm:mb-18">

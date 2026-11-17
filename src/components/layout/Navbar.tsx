@@ -7,10 +7,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 const SECTIONS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'approach', label: 'Approach' },
-  { id: 'candidate', label: 'Careers' },
-  { id: 'process', label: 'Process' },
-  { id: 'mission', label: 'Values' },
+  { id: 'process', label: 'How It Works' },
+  { id: 'approach', label: 'What We Are Doing' },
   { id: 'insights', label: 'Insights' }
 ];
 
@@ -54,8 +52,13 @@ export function Navbar() {
 
       // Detect active section on scroll
       const scrollPos = window.scrollY + 200;
-      for (let i = SECTIONS.length - 1; i >= 0; i--) {
-        const sec = SECTIONS[i];
+      const sortedSections = [...SECTIONS].sort((a, b) => {
+        const elA = document.getElementById(a.id);
+        const elB = document.getElementById(b.id);
+        return (elA?.offsetTop || 0) - (elB?.offsetTop || 0);
+      });
+      for (let i = sortedSections.length - 1; i >= 0; i--) {
+        const sec = sortedSections[i];
         const el = document.getElementById(sec.id);
         if (el && el.offsetTop <= scrollPos) {
           setActiveSection(sec.id);

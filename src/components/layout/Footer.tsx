@@ -16,10 +16,8 @@ const FOOTER_LETTERS = ['I', 'N', 'F', 'I', 'D', 'E', 'L', 'L'];
 const FOOTER_NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Approach', href: '#approach' },
-  { label: 'Careers', href: '#candidate' },
-  { label: 'Process', href: '#process' },
-  { label: 'Values', href: '#mission' },
+  { label: 'How It Works', href: '#process' },
+  { label: 'What We Are Doing', href: '#approach' },
   { label: 'Insights', href: '#insights' }
 ];
 

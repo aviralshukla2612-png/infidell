@@ -40,16 +40,16 @@ export function Logo({
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 sm:gap-3 group transition-opacity hover:opacity-95 cursor-pointer select-none ${className}`}
+      className={`inline-flex items-center gap-2.5 sm:gap-3 group transition-opacity hover:opacity-95 cursor-pointer select-none bg-transparent ${className}`}
     >
-      {/* Official 3D Chrome Infinity Logo from /logo.png */}
-      <div className="relative flex items-center justify-center shrink-0">
+      {/* Official Transparent Infinity Logo (NO black background) */}
+      <div className="relative flex items-center justify-center shrink-0 bg-transparent">
         <Image
-          src="/logo.png"
-          alt="INFIDELL TECHNOLOGY LLP Logo"
+          src="/logo-transparent.png"
+          alt="INFIDELL Logo"
           width={currentSize.width}
           height={currentSize.height}
-          className={`${currentSize.className} object-contain mix-blend-screen transform group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(0,213,223,0.4)]`}
+          className={`${currentSize.className} object-contain bg-transparent transform group-hover:scale-105 transition-transform duration-300`}
           priority
         />
       </div>

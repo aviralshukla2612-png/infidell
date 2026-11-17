@@ -170,34 +170,39 @@ export function AboutSection() {
       const mm = gsap.matchMedia(sectionRef);
 
       // ==========================================
-      // DESKTOP (1024px+): Smooth Scrubbed GSAP Scroll Animation
-      // Card 1 starts BIG, then scales down to normal
-      // Other 7 cards slide in from Left & Right
+      // DESKTOP (1024px+): True Pinned GSAP Scroll Animation
+      // Card 1 starts BIG & centered, then shrinks to slot 1
+      // Other 7 cards slide in from Left & Right into the 4x2 grid
       // ==========================================
       mm.add('(min-width: 1024px)', () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: stageRef.current,
-            start: 'top 85%',
-            end: 'center 45%',
-            scrub: 1.2
+            start: 'top 8%',
+            end: '+=160%',
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1
           }
         });
 
-        // Card 1: Starts enlarged with radiant cyan glow, smoothly scales down to normal size
+        // Card 1: Starts in center of stage, large (1.32x) with glowing cyan aura
         tl.fromTo(
           card1Ref.current,
           {
-            scale: 1.24,
-            transformOrigin: 'top left',
-            zIndex: 30,
-            boxShadow: '0 25px 60px -10px rgba(0, 213, 223, 0.55), 0 0 35px rgba(0, 213, 223, 0.25)'
+            xPercent: 150,
+            yPercent: 50,
+            scale: 1.32,
+            zIndex: 40,
+            boxShadow: '0 30px 80px -10px rgba(0, 213, 223, 0.55), 0 0 40px rgba(0, 213, 223, 0.25)'
           },
           {
+            xPercent: 0,
+            yPercent: 0,
             scale: 1,
             zIndex: 10,
             boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
-            ease: 'power2.out',
+            ease: 'power2.inOut',
             duration: 1
           },
           0
@@ -207,42 +212,42 @@ export function AboutSection() {
         tl.fromTo(
           '.card-from-left',
           {
-            x: -220,
+            x: -360,
             opacity: 0,
-            scale: 0.9,
-            rotate: -2
+            scale: 0.86,
+            pointerEvents: 'none'
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            rotate: 0,
-            stagger: 0.1,
+            pointerEvents: 'auto',
+            stagger: 0.08,
             ease: 'power2.out',
-            duration: 1
+            duration: 0.95
           },
-          0.05
+          0.06
         );
 
         // Right incoming cards (Card 3, Card 4, Card 7, Card 8): slide in from the right
         tl.fromTo(
           '.card-from-right',
           {
-            x: 220,
+            x: 360,
             opacity: 0,
-            scale: 0.9,
-            rotate: 2
+            scale: 0.86,
+            pointerEvents: 'none'
           },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            rotate: 0,
-            stagger: 0.1,
+            pointerEvents: 'auto',
+            stagger: 0.08,
             ease: 'power2.out',
-            duration: 1
+            duration: 0.95
           },
-          0.05
+          0.06
         );
       });
 
@@ -253,8 +258,8 @@ export function AboutSection() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: stageRef.current,
-            start: 'top 80%',
-            end: 'center 50%',
+            start: 'top 75%',
+            end: 'center 45%',
             scrub: 1
           }
         });
@@ -268,14 +273,14 @@ export function AboutSection() {
 
         tl.fromTo(
           '.card-from-left',
-          { x: -120, opacity: 0 },
+          { x: -140, opacity: 0 },
           { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
           0.08
         );
 
         tl.fromTo(
           '.card-from-right',
-          { x: 120, opacity: 0 },
+          { x: 140, opacity: 0 },
           { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
           0.08
         );
@@ -383,7 +388,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================
-            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY
+            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY (PURE PROSE)
         ======================================================== */}
         <div className="mb-14 sm:mb-20">
           {/* Giant Clean Title */}
@@ -394,87 +399,31 @@ export function AboutSection() {
             About
           </h2>
 
-          {/* Master Headline matching Master Prompt Section 6.B */}
-          <div className="luna-header-fade max-w-4xl mb-12 sm:mb-16">
+          {/* Master Headline */}
+          <div className="luna-header-fade max-w-4xl mb-8 sm:mb-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-[#00D5DF] tracking-wide mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] animate-pulse" />
               <span>INFIDELL TECHNOLOGY LLP</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-tight mb-5">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-tight">
               People First. Possibilities Without Limits.
             </h3>
-            <p className="text-base sm:text-lg lg:text-xl text-neutral-300 font-normal leading-relaxed">
+          </div>
+
+          {/* Editorial Paragraph Narrative — Clean prose without card boxes or "02 / CANDIDATE ADVOCACY" tags */}
+          <div className="luna-header-fade max-w-4xl space-y-6 pt-6 border-t border-[#203536]/80">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white font-normal leading-relaxed">
               One dedicated placement firm, no automated agency in between. Infidell is{' '}
               <strong className="font-semibold text-white">career advocacy</strong>. We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
             </p>
-          </div>
 
-          {/* ========================================================
-              PART 2: 3-PILLAR STORYTELLING NARRATIVE IN EDITORIAL PARAGRAPHS
-              (PURE PROSE FORMAT — NO BOXED CARDS)
-          ======================================================== */}
-          <div className="luna-header-fade space-y-10 sm:space-y-14 py-8 border-t border-[#203536]/80 max-w-5xl">
-            
-            {/* Pillar 1: What INFIDELL Does */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-              <div className="md:col-span-4">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] font-semibold block mb-1">
-                  01 / THE FIRM
-                </span>
-                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                  What INFIDELL Does
-                </h4>
-              </div>
-              <div className="md:col-span-8 space-y-3">
-                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
-                  INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy. We bridge the gap between skilled professionals and verified enterprises across India, stripping away the noise of impersonal portals and automated keyword algorithms to deliver high-touch recruitment grounded in deep domain knowledge and verified career alignment.
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
-                  Operating with strict adherence to ethical, compliant recruitment standards, our nationwide network connects candidates only with 100% verified employer vacancies.
-                </p>
-              </div>
-            </div>
+            <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
+              INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal portals and automated keyword algorithms to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
+            </p>
 
-            {/* Pillar 2: How Candidates Receive Support */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pt-8 border-t border-white/5">
-              <div className="md:col-span-4">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#A78BFA] font-semibold block mb-1">
-                  02 / CANDIDATE ADVOCACY
-                </span>
-                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                  How Candidates Receive Support
-                </h4>
-              </div>
-              <div className="md:col-span-8 space-y-3">
-                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
-                  Every career has a next chapter that deserves dedicated advocacy. Job seekers work one-on-one with specialized domain advisors who restructure resumes to beat strict ATS parsers, coordinate technical and behavioral mock interviews with industry peers, and negotiate competitive, market-rate compensation packages.
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
-                  Our candidate representation is 100% free with ₹0 placement fees and zero hidden charges — ensuring candidate interests remain our exclusive priority.
-                </p>
-              </div>
-            </div>
-
-            {/* Pillar 3: How Employers Build Teams */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start pt-8 border-t border-white/5">
-              <div className="md:col-span-4">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#34D399] font-semibold block mb-1">
-                  03 / EMPLOYER MANDATES
-                </span>
-                <h4 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                  How Employers Build Teams
-                </h4>
-              </div>
-              <div className="md:col-span-8 space-y-3">
-                <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
-                  Fast-scaling startups and established corporate enterprises turn to Infidell to close critical engineering, fintech, and management requisitions without resume clutter. We pre-screen candidates across technical depth, cultural alignment, and statutory credential verification within strict 48–72 hour SLAs.
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
-                  Supported by transparent hiring replacement assurances, our dedicated account managers handle permanent direct hires, strategic contract staffing, and confidential executive search.
-                </p>
-              </div>
-            </div>
-
+            <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
+              Every career has a next chapter that deserves dedicated advocacy. Job seekers work one-on-one with specialized domain advisors who restructure resumes to beat strict ATS filters, coordinate technical mock interviews with industry peers, and negotiate competitive compensation packages — completely free of candidate fees. Simultaneously, fast-scaling startups and established corporate enterprises turn to Infidell to close critical engineering, fintech, and management requisitions without resume clutter, receiving rigorously pre-screened shortlists within strict 48–72 hour SLAs backed by replacement guarantees.
+            </p>
           </div>
 
           {/* Philosophy Callout Banner */}
@@ -503,26 +452,27 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 3: 8 PRACTICE VERTICALS WITH SMOOTH GSAP SCROLL ANIMATION
+            PART 2: 8 PRACTICE VERTICALS WITH PINNED GSAP SCROLL ANIMATION
         ======================================================== */}
-        <div className="mt-20 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] block mb-1">
-              SPECIALIZED PRACTICE VERTICALS
-            </span>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
-              Explore Our 8 Practice Areas
-            </h3>
-          </div>
-          <p className="text-xs sm:text-sm text-neutral-400 max-w-md">
-            Scroll to see our practice verticals expand into place, connecting verified talent and enterprise employers across key domains.
-          </p>
-        </div>
-
         <div 
           ref={stageRef} 
-          className="relative w-full mb-20 sm:mb-28 overflow-visible"
+          className="relative w-full min-h-[85vh] flex flex-col justify-center py-6 overflow-visible"
         >
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] block mb-1">
+                SPECIALIZED PRACTICE VERTICALS
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Explore Our 8 Practice Areas
+              </h3>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#00D5DF]">
+              <span className="w-2 h-2 rounded-full bg-[#00D5DF] animate-ping" />
+              <span>Scroll to expand all verticals</span>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative">
             {COLORFUL_CARDS.map((card) => {
               const isHero = card.entrance === 'hero';
@@ -533,7 +483,7 @@ export function AboutSection() {
                   key={card.id}
                   ref={isHero ? card1Ref : undefined}
                   href={card.href}
-                  className={`group relative h-[310px] sm:h-[330px] lg:h-[350px] rounded-2xl lg:rounded-3xl overflow-hidden border transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between shadow-xl shadow-black/70 ${
+                  className={`group relative h-[300px] sm:h-[320px] lg:h-[335px] rounded-2xl lg:rounded-3xl overflow-hidden border transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between shadow-xl shadow-black/70 ${
                     isHero
                       ? 'card-hero-1'
                       : isLeft
@@ -623,7 +573,7 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            PART 4: FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
+            PART 3: FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
         ======================================================== */}
         <div className="luna-founder-section relative pt-6 sm:pt-10 pb-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mb-14 sm:mb-18">

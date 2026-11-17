@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, Check, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -14,18 +14,9 @@ interface ColorfulCard {
   tagline: string;
   description: string;
   image: string;
-  colorName: string;
-  theme: {
-    accent: string;
-    border: string;
-    bg: string;
-    badgeBg: string;
-    glowGradient: string;
-    checkColor: string;
-    btnBgHover: string;
-    shadowGlow: string;
-  };
-  highlights: string[];
+  accent: string;
+  borderColor: string;
+  glowColor: string;
   footerTag: string;
   href: string;
   entrance: 'hero' | 'left' | 'right';
@@ -36,25 +27,12 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     id: 1,
     index: '01 / ADVISORY',
     title: 'Work with the Firm',
-    tagline: 'Dedicated 1-on-1 career navigation',
-    description: 'Personalized career advocacy from senior advisors guiding you from initial assessment to confirmed enterprise offers.',
+    tagline: 'Dedicated 1-on-1 placement advisory',
+    description: 'Direct executive representation guiding ambitious professionals from initial credential review to verified offers.',
     image: '/images/solutions/job-placement.avif',
-    colorName: 'Cyan Electric',
-    theme: {
-      accent: '#00D5DF',
-      border: 'border-[#00D5DF]/40 hover:border-[#00D5DF]',
-      bg: 'bg-[#061517]',
-      badgeBg: 'bg-[#00D5DF]/15 text-[#00D5DF] border-[#00D5DF]/30',
-      glowGradient: 'from-[#00D5DF]/25 via-[#00D5DF]/5 to-transparent',
-      checkColor: 'text-[#00D5DF]',
-      btnBgHover: 'group-hover:bg-[#00D5DF] group-hover:text-black group-hover:border-[#00D5DF]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(0,213,223,0.22)]'
-    },
-    highlights: [
-      'Dedicated placement advisor & coach',
-      'Curated interviews with verified employers',
-      '100% free candidate representation'
-    ],
+    accent: '#00D5DF',
+    borderColor: '#00D5DF',
+    glowColor: 'rgba(0, 213, 223, 0.5)',
     footerTag: 'Direct Advisory · ₹0 Fees',
     href: '#candidate',
     entrance: 'hero'
@@ -63,25 +41,12 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     id: 2,
     index: '02 / ARCHITECTURE',
     title: 'Candidate Career Path',
-    tagline: 'ATS optimization & interview readiness',
-    description: 'We reconstruct your resume and digital profile to pass automated ATS filters and captivate engineering leadership.',
+    tagline: 'Profile architecture & ATS readiness',
+    description: 'Rebuilding your resume and digital presence to clear automated ATS filters and captivate engineering leadership.',
     image: '/images/solutions/talent-acquisition.avif',
-    colorName: 'Electric Violet',
-    theme: {
-      accent: '#A78BFA',
-      border: 'border-[#8B5CF6]/40 hover:border-[#A78BFA]',
-      bg: 'bg-[#120B1D]',
-      badgeBg: 'bg-[#8B5CF6]/15 text-[#A78BFA] border-[#8B5CF6]/30',
-      glowGradient: 'from-[#8B5CF6]/25 via-[#8B5CF6]/5 to-transparent',
-      checkColor: 'text-[#A78BFA]',
-      btnBgHover: 'group-hover:bg-[#A78BFA] group-hover:text-black group-hover:border-[#A78BFA]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(139,92,246,0.22)]'
-    },
-    highlights: [
-      'ATS-optimized resume & LinkedIn polish',
-      'Technical mock interview simulations',
-      'Continuous milestone feedback'
-    ],
+    accent: '#A78BFA',
+    borderColor: '#8B5CF6',
+    glowColor: 'rgba(139, 92, 246, 0.5)',
     footerTag: 'ATS & Tech Ready',
     href: '#approach',
     entrance: 'left'
@@ -90,25 +55,12 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     id: 3,
     index: '03 / ENTERPRISE',
     title: 'Collaborate with Us',
-    tagline: 'Precision talent acquisition for teams',
-    description: 'Partner with Infidell to close critical engineering, fintech, and management positions with pre-screened talent.',
+    tagline: 'Curated talent acquisition for teams',
+    description: 'Partner with Infidell to close critical engineering, fintech, and management requisitions without resume clutter.',
     image: '/images/solutions/recruitment-staffing.avif',
-    colorName: 'Emerald Mint',
-    theme: {
-      accent: '#34D399',
-      border: 'border-[#10B981]/40 hover:border-[#34D399]',
-      bg: 'bg-[#071710]',
-      badgeBg: 'bg-[#10B981]/15 text-[#34D399] border-[#10B981]/30',
-      glowGradient: 'from-[#10B981]/25 via-[#10B981]/5 to-transparent',
-      checkColor: 'text-[#34D399]',
-      btnBgHover: 'group-hover:bg-[#34D399] group-hover:text-black group-hover:border-[#34D399]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(16,185,129,0.22)]'
-    },
-    highlights: [
-      'Pre-vetted profiles delivered in 48–72h',
-      'Rigorous multi-stage vetting',
-      'Transparent replacement SLA'
-    ],
+    accent: '#34D399',
+    borderColor: '#10B981',
+    glowColor: 'rgba(16, 185, 129, 0.5)',
     footerTag: '48–72h SLA · Verified',
     href: '#employer',
     entrance: 'right'
@@ -118,24 +70,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     index: '04 / SKILLS',
     title: 'Tech & Domain Upskilling',
     tagline: 'Modern engineering frameworks',
-    description: 'Targeted skill architecture aligned with emerging cloud, AI, and fullstack requirements demanded by top tech employers.',
+    description: 'Targeted skill architecture aligned with emerging cloud, AI, and fullstack requirements demanded by employers.',
     image: '/images/solutions/it-training.avif',
-    colorName: 'Amber Sunset',
-    theme: {
-      accent: '#FBBF24',
-      border: 'border-[#F59E0B]/40 hover:border-[#FBBF24]',
-      bg: 'bg-[#171107]',
-      badgeBg: 'bg-[#F59E0B]/15 text-[#FBBF24] border-[#F59E0B]/30',
-      glowGradient: 'from-[#F59E0B]/25 via-[#F59E0B]/5 to-transparent',
-      checkColor: 'text-[#FBBF24]',
-      btnBgHover: 'group-hover:bg-[#FBBF24] group-hover:text-black group-hover:border-[#FBBF24]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(245,158,11,0.22)]'
-    },
-    highlights: [
-      'System design & live architecture prep',
-      'Peer mock coding assessments',
-      'Enterprise-grade tech stacks'
-    ],
+    accent: '#FBBF24',
+    borderColor: '#F59E0B',
+    glowColor: 'rgba(245, 158, 11, 0.5)',
     footerTag: 'Industry Aligned',
     href: '#approach',
     entrance: 'right'
@@ -147,22 +86,9 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     tagline: 'Compliant & authentic vetting',
     description: 'Comprehensive background checks, employment history authentication, and degree verification for enterprise compliance.',
     image: '/images/solutions/background-verification.avif',
-    colorName: 'Rose Crimson',
-    theme: {
-      accent: '#FB7185',
-      border: 'border-[#F43F5E]/40 hover:border-[#FB7185]',
-      bg: 'bg-[#17080B]',
-      badgeBg: 'bg-[#F43F5E]/15 text-[#FB7185] border-[#F43F5E]/30',
-      glowGradient: 'from-[#F43F5E]/25 via-[#F43F5E]/5 to-transparent',
-      checkColor: 'text-[#FB7185]',
-      btnBgHover: 'group-hover:bg-[#FB7185] group-hover:text-black group-hover:border-[#FB7185]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(244,63,94,0.22)]'
-    },
-    highlights: [
-      'Verified employment track record',
-      'Authentic academic credential audit',
-      '100% legal & statutory compliance'
-    ],
+    accent: '#FB7185',
+    borderColor: '#F43F5E',
+    glowColor: 'rgba(244, 63, 94, 0.5)',
     footerTag: 'Verified Credentials',
     href: '#solutions',
     entrance: 'left'
@@ -174,22 +100,9 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     tagline: 'Accounting, tax & corporate roles',
     description: 'Specialized recruitment for certified accountants, tax specialists, finance controllers, and corporate leadership.',
     image: '/images/solutions/accounting-taxes.avif',
-    colorName: 'Sky Blue',
-    theme: {
-      accent: '#38BDF8',
-      border: 'border-[#0284C7]/40 hover:border-[#38BDF8]',
-      bg: 'bg-[#08121B]',
-      badgeBg: 'bg-[#0284C7]/15 text-[#38BDF8] border-[#0284C7]/30',
-      glowGradient: 'from-[#0284C7]/25 via-[#0284C7]/5 to-transparent',
-      checkColor: 'text-[#38BDF8]',
-      btnBgHover: 'group-hover:bg-[#38BDF8] group-hover:text-black group-hover:border-[#38BDF8]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(2,132,199,0.22)]'
-    },
-    highlights: [
-      'CA, CPA & financial analyst mandates',
-      'Senior VP & leadership placements',
-      'Confidential executive search'
-    ],
+    accent: '#38BDF8',
+    borderColor: '#0284C7',
+    glowColor: 'rgba(2, 132, 199, 0.5)',
     footerTag: 'Executive Search',
     href: '#solutions',
     entrance: 'left'
@@ -199,24 +112,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     index: '07 / GLOBAL',
     title: 'Global Career Mobility',
     tagline: 'Cross-border & overseas hiring',
-    description: 'Connecting top-tier talent with multinational enterprises, overseas work authorization guidance, and international relocations.',
+    description: 'Connecting top-tier talent with multinational enterprises, overseas work authorization guidance, and relocation.',
     image: '/images/insights/insight-h1b-visa.jpg',
-    colorName: 'Fuchsia Violet',
-    theme: {
-      accent: '#E879F9',
-      border: 'border-[#D946EF]/40 hover:border-[#E879F9]',
-      bg: 'bg-[#150718]',
-      badgeBg: 'bg-[#D946EF]/15 text-[#E879F9] border-[#D946EF]/30',
-      glowGradient: 'from-[#D946EF]/25 via-[#D946EF]/5 to-transparent',
-      checkColor: 'text-[#E879F9]',
-      btnBgHover: 'group-hover:bg-[#E879F9] group-hover:text-black group-hover:border-[#E879F9]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(217,70,239,0.22)]'
-    },
-    highlights: [
-      'Multinational enterprise partners',
-      'Visa & work authorization advisory',
-      'Cross-border compensation parity'
-    ],
+    accent: '#E879F9',
+    borderColor: '#D946EF',
+    glowColor: 'rgba(217, 70, 239, 0.5)',
     footerTag: 'Cross-Border Reach',
     href: '#insights',
     entrance: 'right'
@@ -226,24 +126,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     index: '08 / RESEARCH',
     title: 'Read the Journal',
     tagline: 'Hiring benchmarks & salary data',
-    description: 'Data-driven salary reports, emerging industry hiring trends, and strategic recruitment playbooks published by our advisory desk.',
+    description: 'Data-driven salary reports, emerging industry hiring trends, and strategic recruitment playbooks published regularly.',
     image: '/images/insights/insight-talent-acquisition.jpg',
-    colorName: 'Neon Jade',
-    theme: {
-      accent: '#2DD4BF',
-      border: 'border-[#14B8A6]/40 hover:border-[#2DD4BF]',
-      bg: 'bg-[#061514]',
-      badgeBg: 'bg-[#14B8A6]/15 text-[#2DD4BF] border-[#14B8A6]/30',
-      glowGradient: 'from-[#14B8A6]/25 via-[#14B8A6]/5 to-transparent',
-      checkColor: 'text-[#2DD4BF]',
-      btnBgHover: 'group-hover:bg-[#2DD4BF] group-hover:text-black group-hover:border-[#2DD4BF]',
-      shadowGlow: 'hover:shadow-[0_12px_35px_rgba(20,184,166,0.22)]'
-    },
-    highlights: [
-      'Quarterly tech salary surveys',
-      'Emerging tech demand analytics',
-      'Career transition playbooks'
-    ],
+    accent: '#2DD4BF',
+    borderColor: '#14B8A6',
+    glowColor: 'rgba(20, 184, 166, 0.5)',
     footerTag: 'Quarterly Research',
     href: '#insights',
     entrance: 'right'
@@ -254,6 +141,8 @@ export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLAnchorElement>(null);
 
   useGSAP(
     () => {
@@ -287,31 +176,45 @@ export function AboutSection() {
       // Other 7 cards slide in from Left & Right
       // ==========================================
       mm.add('(min-width: 1024px)', () => {
+        const gridEl = gridRef.current;
+        const card1El = card1Ref.current;
+
+        if (!gridEl || !card1El) return;
+
+        // Calculate dynamic delta from Card 1's position to Stage center
+        const gridRect = gridEl.getBoundingClientRect();
+        const card1Rect = card1El.getBoundingClientRect();
+
+        const deltaX =
+          gridRect.left + gridRect.width / 2 - (card1Rect.left + card1Rect.width / 2);
+        const deltaY =
+          gridRect.top + gridRect.height / 2 - (card1Rect.top + card1Rect.height / 2);
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: stageRef.current,
-            start: 'top 10%',
-            end: '+=180%',
+            start: 'center center',
+            end: '+=160%',
             pin: true,
             scrub: 1,
             anticipatePin: 1
           }
         });
 
-        // Card 1: Starts BIG, centered over stage, with prominent cyan glow
+        // Card 1: Starts prominently in the center, enlarged with radiant cyan glow
         tl.fromTo(
-          '.card-hero-1',
+          card1El,
           {
-            scale: 1.36,
-            xPercent: 150,
-            yPercent: 50,
+            x: deltaX,
+            y: deltaY,
+            scale: 1.34,
             zIndex: 40,
-            boxShadow: '0 30px 80px -10px rgba(0, 213, 223, 0.45)'
+            boxShadow: '0 30px 80px -10px rgba(0, 213, 223, 0.55), 0 0 35px rgba(0, 213, 223, 0.25)'
           },
           {
+            x: 0,
+            y: 0,
             scale: 1,
-            xPercent: 0,
-            yPercent: 0,
             zIndex: 10,
             boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
             ease: 'power2.inOut',
@@ -324,9 +227,9 @@ export function AboutSection() {
         tl.fromTo(
           '.card-from-left',
           {
-            x: -360,
+            x: -280,
             opacity: 0,
-            scale: 0.86,
+            scale: 0.88,
             pointerEvents: 'none'
           },
           {
@@ -338,16 +241,16 @@ export function AboutSection() {
             ease: 'power2.out',
             duration: 0.95
           },
-          0.05
+          0.06
         );
 
         // Right incoming cards (Card 3, Card 4, Card 7, Card 8): slide in from the right
         tl.fromTo(
           '.card-from-right',
           {
-            x: 360,
+            x: 280,
             opacity: 0,
-            scale: 0.86,
+            scale: 0.88,
             pointerEvents: 'none'
           },
           {
@@ -359,21 +262,21 @@ export function AboutSection() {
             ease: 'power2.out',
             duration: 0.95
           },
-          0.05
+          0.06
         );
       });
 
       // ==========================================
-      // TABLET (768px - 1023px): Fluid Scroll Flow
+      // TABLET (768px - 1023px): Smooth Scroll Flow
       // ==========================================
       mm.add('(min-width: 768px) and (max-width: 1023px)', () => {
         gsap.fromTo(
           '.card-hero-1',
-          { scale: 1.18, opacity: 0.9 },
+          { scale: 1.15, opacity: 0.9 },
           {
             scale: 1,
             opacity: 1,
-            duration: 0.9,
+            duration: 0.85,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: stageRef.current,
@@ -385,12 +288,12 @@ export function AboutSection() {
 
         gsap.fromTo(
           '.card-from-left',
-          { x: -160, opacity: 0 },
+          { x: -140, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            stagger: 0.12,
-            duration: 0.8,
+            stagger: 0.1,
+            duration: 0.75,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: stageRef.current,
@@ -402,12 +305,12 @@ export function AboutSection() {
 
         gsap.fromTo(
           '.card-from-right',
-          { x: 160, opacity: 0 },
+          { x: 140, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            stagger: 0.12,
-            duration: 0.8,
+            stagger: 0.1,
+            duration: 0.75,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: stageRef.current,
@@ -424,11 +327,11 @@ export function AboutSection() {
       mm.add('(max-width: 767px)', () => {
         gsap.fromTo(
           '.card-hero-1',
-          { scale: 1.12, opacity: 0.85 },
+          { scale: 1.08, opacity: 0.9 },
           {
             scale: 1,
             opacity: 1,
-            duration: 0.75,
+            duration: 0.7,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: '.card-hero-1',
@@ -440,12 +343,12 @@ export function AboutSection() {
 
         gsap.fromTo(
           '.card-from-left',
-          { x: -50, opacity: 0 },
+          { x: -40, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            stagger: 0.1,
-            duration: 0.65,
+            stagger: 0.08,
+            duration: 0.6,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: stageRef.current,
@@ -457,12 +360,12 @@ export function AboutSection() {
 
         gsap.fromTo(
           '.card-from-right',
-          { x: 50, opacity: 0 },
+          { x: 40, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            stagger: 0.1,
-            duration: 0.65,
+            stagger: 0.08,
+            duration: 0.6,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: stageRef.current,
@@ -515,18 +418,18 @@ export function AboutSection() {
     <section 
       ref={sectionRef} 
       id="about"
-      className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden border-t border-[#203536]/80 select-none"
+      className="relative w-full bg-[#050708] text-white py-20 sm:py-28 overflow-hidden border-t border-[#203536]/80 select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================
             GIANT "About" TITLE & ASYMMETRIC 3-PART HEADER
         ======================================================== */}
-        <div className="mb-14 sm:mb-20">
+        <div className="mb-12 sm:mb-16">
           {/* Giant Clean Title */}
           <h2 
             ref={headlineRef}
-            className="luna-header-fade text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-normal tracking-tight text-white mb-10 sm:mb-14"
+            className="luna-header-fade text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-normal tracking-tight text-white mb-8 sm:mb-12"
           >
             About
           </h2>
@@ -559,109 +462,119 @@ export function AboutSection() {
         </div>
 
         {/* ========================================================
-            8 COLORFUL TOPIC CARDS WITH GSAP PINNED SHRINK & SLIDE
+            8 COLORFUL TOPIC CARDS WITH FULL-BLEED IMAGERY & GSAP ORCHESTRATION
         ======================================================== */}
         <div 
           ref={stageRef} 
-          className="relative w-full mb-24 sm:mb-36 overflow-visible"
+          className="relative w-full mb-20 sm:mb-28 overflow-visible"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative">
-            {COLORFUL_CARDS.map((card) => (
-              <a
-                key={card.id}
-                href={card.href}
-                className={`group relative rounded-2xl lg:rounded-3xl ${card.theme.bg} border ${card.theme.border} transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between overflow-hidden shadow-lg shadow-black/60 ${card.theme.shadowGlow} ${
-                  card.entrance === 'hero'
-                    ? 'card-hero-1'
-                    : card.entrance === 'left'
-                    ? 'card-from-left'
-                    : 'card-from-right'
-                }`}
-              >
-                {/* Ambient colorful top radial glow */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b ${card.theme.glowGradient} opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl lg:rounded-3xl`}
-                />
+          <div 
+            ref={gridRef}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative"
+          >
+            {COLORFUL_CARDS.map((card) => {
+              const isHero = card.entrance === 'hero';
+              const isLeft = card.entrance === 'left';
 
-                {/* Top Row: Pill Tag + Round Arrow Action */}
-                <div className="relative z-10 flex items-center justify-between gap-2 mb-3.5">
-                  <span
-                    className={`text-[10px] sm:text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border ${card.theme.badgeBg}`}
-                  >
-                    {card.index}
-                  </span>
-                  <div
-                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center text-white/80 ${card.theme.btnBgHover} transition-all duration-300 shadow-sm shrink-0`}
-                  >
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              return (
+                <a
+                  key={card.id}
+                  ref={isHero ? card1Ref : undefined}
+                  href={card.href}
+                  className={`group relative h-[310px] sm:h-[330px] lg:h-[350px] rounded-2xl lg:rounded-3xl overflow-hidden border transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between shadow-xl shadow-black/70 ${
+                    isHero
+                      ? 'card-hero-1'
+                      : isLeft
+                      ? 'card-from-left'
+                      : 'card-from-right'
+                  }`}
+                  style={{
+                    borderColor: `${card.borderColor}40`,
+                    backgroundColor: '#090E12'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = card.borderColor;
+                    e.currentTarget.style.boxShadow = `0 12px 35px -8px ${card.glowColor}`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = `${card.borderColor}40`;
+                    e.currentTarget.style.boxShadow = '';
+                  }}
+                >
+                  {/* Full-Bleed Editorial Photographic Background with Gradient Overlay */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105 opacity-80"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#060A0D] via-[#060A0D]/75 to-black/35 pointer-events-none" />
+                    <div 
+                      className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        background: `radial-gradient(circle at 50% 0%, ${card.accent}, transparent 70%)`
+                      }}
+                    />
                   </div>
-                </div>
 
-                {/* Respective Topic Image */}
-                <div className="relative z-10 w-full h-32 sm:h-36 rounded-xl overflow-hidden mb-3.5 border border-white/10 shrink-0">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
-                </div>
-
-                {/* Content: Title, Tagline, Description */}
-                <div className="relative z-10 flex-1 flex flex-col">
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-0.5 leading-snug group-hover:text-white transition-colors">
-                    {card.title}
-                  </h3>
-                  <p
-                    className="text-[11px] sm:text-xs font-semibold mb-2"
-                    style={{ color: card.theme.accent }}
-                  >
-                    {card.tagline}
-                  </p>
-                  <p className="text-[11px] sm:text-xs text-[#A5B2B3] line-clamp-2 font-normal leading-relaxed mb-3">
-                    {card.description}
-                  </p>
-
-                  {/* Key Bullet Highlights */}
-                  <div className="space-y-1.5 pt-2.5 border-t border-white/10 mt-auto">
-                    {card.highlights.map((item, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-2">
-                        <Check
-                          className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${card.theme.checkColor}`}
-                        />
-                        <span className="text-[11px] sm:text-xs text-[#F5F8F8]/90 font-normal leading-tight">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
+                  {/* Top Row: Category Pill Tag + Round Arrow Action */}
+                  <div className="relative z-10 flex items-center justify-between gap-2">
+                    <span 
+                      className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border bg-black/60 backdrop-blur-md"
+                      style={{
+                        color: card.accent,
+                        borderColor: `${card.accent}55`
+                      }}
+                    >
+                      {card.index}
+                    </span>
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 border border-white/20 backdrop-blur-md flex items-center justify-center text-white/90 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300 shadow-sm shrink-0">
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Bottom Row */}
-                <div className="relative z-10 pt-3.5 mt-3.5 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-mono text-[#A5B2B3] tracking-wide">
-                    {card.footerTag}
-                  </span>
-                  <span
-                    className="text-xs font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
-                    style={{ color: card.theme.accent }}
-                  >
-                    <span>Explore</span>
-                    <span>→</span>
-                  </span>
-                </div>
-              </a>
-            ))}
+                  {/* Bottom Content: Title, Tagline, Description & Meta */}
+                  <div className="relative z-10 mt-auto pt-4">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-0.5 leading-snug group-hover:text-white transition-colors">
+                      {card.title}
+                    </h3>
+                    <p 
+                      className="text-[11px] sm:text-xs font-semibold mb-1.5"
+                      style={{ color: card.accent }}
+                    >
+                      {card.tagline}
+                    </p>
+                    <p className="text-xs text-[#A5B2B3] line-clamp-2 font-normal leading-relaxed mb-3">
+                      {card.description}
+                    </p>
+
+                    {/* Bottom Footer Row */}
+                    <div className="pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+                      <span className="text-[#A5B2B3] tracking-wide">
+                        {card.footerTag}
+                      </span>
+                      <span 
+                        className="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                        style={{ color: card.accent }}
+                      >
+                        <span>Explore</span>
+                        <span>→</span>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
 
         {/* ========================================================
             FOUNDER'S NOTE & MINIMALIST STAT COUNTERS
         ======================================================== */}
-        <div className="luna-founder-section relative pt-8 sm:pt-12 pb-6">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mb-16 sm:mb-20">
+        <div className="luna-founder-section relative pt-6 sm:pt-10 pb-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mb-14 sm:mb-18">
             {/* Left Column: "+ Founder's note" */}
             <div className="md:col-span-3">
               <span className="luna-founder-content inline-flex items-center gap-1.5 text-xs sm:text-sm font-normal text-neutral-400 tracking-wide">
@@ -686,7 +599,7 @@ export function AboutSection() {
           </div>
 
           {/* Minimalist Divider Line (Clean & Elegant, No Stars) */}
-          <div className="w-full h-px bg-[#203536]/70 my-12 sm:my-16" />
+          <div className="w-full h-px bg-[#203536]/70 my-10 sm:my-14" />
 
           {/* Minimalist Big Numbers (matching Luna UI 58 / 12 / 17 style) */}
           <div className="luna-stats-row grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-2">

@@ -368,7 +368,7 @@ export function CandidateRegistrationForm({
 
       <div className="flex items-center justify-center gap-2 text-xs text-[#AEB8C2] pt-2">
         <ShieldCheck className="w-4 h-4 text-[#00C7B1]" />
-        <span>100% Free Service: We never solicit payments from candidates.</span>
+        <span>Confidential Advisory: Your credentials and data are protected under strict enterprise privacy standards.</span>
       </div>
     </form>
   );

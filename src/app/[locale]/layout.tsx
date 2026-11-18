@@ -27,8 +27,8 @@ export async function generateMetadata({
   };
 
   const descriptions: Record<string, string> = {
-    en: 'Connecting qualified candidates with verified employer partners across IT, Engineering, Finance, and Corporate sectors throughout India. Zero placement fees for candidates.',
-    hi: 'भारत भर में आईटी, इंजीनियरिंग, वित्त और कॉर्पोरेट क्षेत्रों में योग्य उम्मीदवारों को सत्यापित कंपनियों से जोड़ना। उम्मीदवारों के लिए शून्य शुल्क।',
+    en: 'Connecting qualified candidates with verified employer partners across IT, Engineering, Finance, and Corporate sectors throughout India. Personalized career guidance and strategic talent acquisition.',
+    hi: 'भारत भर में आईटी, इंजीनियरिंग, वित्त और कॉर्पोरेट क्षेत्रों में योग्य उम्मीदवारों को सत्यापित कंपनियों से जोड़ना। समर्पित करियर मार्गदर्शन एवं परामर्श।',
     gu: 'સમગ્ર ભારતમાં આઈટી, એન્જિનિયરિંગ, ફાઇનાન્સ અને કોર્પોરેટ ક્ષેત્રોમાં યોગ્ય ઉમેદવારોને ચકાસાયેલી કંપનીઓ સાથે જોડવું.'
   };
 
@@ -41,7 +41,7 @@ export async function generateMetadata({
       'Infidell Technology LLP',
       'Career placement services',
       'Tech recruitment',
-      'Free candidate registration'
+      'Career advisory registration'
     ],
     metadataBase: new URL('https://infidelltech.com'),
     openGraph: {

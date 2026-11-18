@@ -43,7 +43,7 @@
     "ctaSecondary": "Partner With Us",
     "pillProduct": "Recruitment & Placement",
     "pillSecure": "Verified Employers",
-    "pillAutomation": "Zero Candidate Fees",
+    "pillAutomation": "Personalized Career Advisory",
     "pillPartnership": "End-to-End Support",
     "floatingBadgeRole": "Senior Full-Stack Engineer",
     "floatingBadgeCompany": "Fintech Enterprise",
@@ -81,7 +81,7 @@
     "relationshipsMatter": "Recruitment is an ongoing collaboration, not a one-time transaction."
   },
   "Approach": {
-    "badge": "OUR METHODOLOGY",
+    "badge": "WHAT WE ARE DOING",
     "title": "A Thoughtful Recruitment Architecture",
     "subtitle": "Four foundational principles that govern how we discover talent, evaluate potential, and connect careers.",
     "principle1Number": "01",
@@ -115,6 +115,8 @@
     "step6Desc": "Briefings on company culture, mock interview sessions, and direct scheduling with hiring managers.",
     "step7": "Recruitment Guidance",
     "step7Desc": "Transparent offer evaluation, compensation negotiation, and smooth transition into your new role.",
+    "step8": "Onboarding & Career Growth",
+    "step8Desc": "Ongoing post-placement support, milestone check-ins, and long-term advisory for sustained career momentum.",
     "cta": "Create Your Candidate Profile"
   },
   "EmployerExperience": {
@@ -160,8 +162,8 @@
     "badge": "FOR AMBITIOUS CANDIDATES",
     "title": "Your Next Career Move Starts Here.",
     "subtitle": "Whether you are a fresh graduate stepping into the corporate world or an experienced specialist seeking executive advancement, Infidell is your dedicated placement partner.",
-    "feature1Title": "Zero-Cost Registration",
-    "feature1Desc": "No hidden charges or application fees. Candidates access our recruitment services 100% free.",
+    "feature1Title": "Strategic Career Guidance",
+    "feature1Desc": "1-on-1 career consultation from seasoned recruiters who tailor your trajectory to market expectations.",
     "feature2Title": "Expert Resume Evaluation",
     "feature2Desc": "Actionable feedback to optimize your CV for ATS algorithms and hiring managers.",
     "feature3Title": "Direct Corporate Access",
@@ -228,7 +230,7 @@
     "story3Role": "Senior Automation Engineer",
     "story3Prev": "PLC Maintenance Tech",
     "story3Company": "Global Robotics & Industrial Automation Leader",
-    "story3Quote": "Completely transparent process from day one. Zero fees charged to me, consistent mock interviews, and quick feedback. Highly recommend Infidell to any engineer."
+    "story3Quote": "Completely transparent process from day one. Consistent mock interviews, strategic resume restructuring, and fast recruiter feedback. Highly recommend Infidell to any professional."
   },
   "ReferEarn": {
     "badge": "COMMUNITY REWARDS PROGRAM",
@@ -265,8 +267,8 @@
     "badge": "CLARITY & TRANSPARENCY",
     "title": "Frequently Asked Questions",
     "subtitle": "Get clear answers about our recruitment process, candidate services, and employer partnerships.",
-    "q1": "Does Infidell charge any registration or placement fees from candidates?",
-    "a1": "No. Infidell does NOT charge job seekers any fees for registration, resume evaluation, interview scheduling, or placement. Our recruitment fees are compensated directly by our corporate hiring partners.",
+    "q1": "How does Infidell support candidates throughout their career journey?",
+    "a1": "Infidell provides high-touch advisory: ATS resume optimization, targeted interview prep, salary negotiation guidance, and direct introductions to verified enterprises across India.",
     "q2": "Does registering with Infidell guarantee immediate job placement?",
     "a2": "No recruitment agency can ethically guarantee job placement. Placement depends on client hiring mandates, market conditions, and candidate performance during client interviews. However, we maximize your visibility by actively presenting your profile to matching employers.",
     "q3": "How does the profile matching process work?",
@@ -370,7 +372,7 @@
   },
   "CandidateForm": {
     "title": "Candidate Registration",
-    "subtitle": "Register your profile with Infidell. There are zero fees charged to candidates at any stage.",
+    "subtitle": "Register your profile with Infidell to connect with dedicated recruitment advisors and verified enterprise opportunities.",
     "fullName": "Full Name (as per government ID)",
     "email": "Email Address",
     "phone": "Mobile Number (WhatsApp enabled)",

@@ -301,7 +301,7 @@ export function JobsExplorer({ initialJobs }: JobsExplorerProps) {
 
             <div className="mt-8 pt-4 border-t border-[#202A30] flex items-center justify-between">
               <span className="text-xs text-[#AEB8C2]">
-                Zero candidate fees at any stage
+                Verified positions with direct hiring manager access
               </span>
               <Link
                 href={`/register/candidate?job=${encodeURIComponent(selectedJob.title)}&jobId=${selectedJob.id}`}

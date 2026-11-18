@@ -48,7 +48,7 @@ const SUPPORTING_ARTICLES: InsightArticle[] = [
     author: 'Governance & Ethics',
     title: 'The True Cost of Unverified Placement Guarantees in Tech Staffing',
     excerpt:
-      'Why reputable enterprises are turning away from aggressive volume brokers in favor of ethical search firms with transparent fee structures.',
+      'Why reputable enterprises are turning away from aggressive volume brokers in favor of ethical search firms with transparent engagement models.',
     category: 'Recruitment Ethics',
     imageSrc: '/images/insights/insight-social-vetting.jpg',
     readTime: '5 min read'
@@ -126,10 +126,6 @@ export function InsightsSection() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 sm:mb-20">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C1517] border border-[#17BEBB]/40 text-[11px] font-bold text-[#17BEBB] tracking-widest uppercase mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-              THOUGHT LEADERSHIP
-            </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F5F8F8] tracking-tight leading-[1.12]">
               Insights That Shape <br />
               <span className="cyan-text-gradient">Careers &amp; Enterprise Growth</span>

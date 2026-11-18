@@ -5,7 +5,12 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useGSAP } from '@gsap/react';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+}
 
 interface ColorfulCard {
   id: number;
@@ -25,25 +30,25 @@ interface ColorfulCard {
 const COLORFUL_CARDS: ColorfulCard[] = [
   {
     id: 1,
-    index: '01 / ADVISORY',
+    index: 'ADVISORY',
     title: 'Work with the Firm',
     tagline: 'Dedicated 1-on-1 placement advisory',
     description: 'Direct executive representation guiding ambitious professionals from initial credential review to verified offers.',
-    image: '/images/solutions/job-placement.avif',
+    image: '/images/practices/practice-advisory.jpg',
     accent: '#00D5DF',
     borderColor: '#00D5DF',
     glowColor: 'rgba(0, 213, 223, 0.5)',
-    footerTag: 'Direct Advisory · ₹0 Fees',
+    footerTag: 'Direct Advisory · Executive Track',
     href: '#candidate',
     entrance: 'hero'
   },
   {
     id: 2,
-    index: '02 / ARCHITECTURE',
+    index: 'ARCHITECTURE',
     title: 'Candidate Career Path',
     tagline: 'Profile architecture & ATS readiness',
     description: 'Rebuilding your resume and digital presence to clear automated ATS filters and captivate engineering leadership.',
-    image: '/images/solutions/talent-acquisition.avif',
+    image: '/images/practices/practice-architecture.jpg',
     accent: '#A78BFA',
     borderColor: '#8B5CF6',
     glowColor: 'rgba(139, 92, 246, 0.5)',
@@ -53,11 +58,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 3,
-    index: '03 / ENTERPRISE',
+    index: 'ENTERPRISE',
     title: 'Collaborate with Us',
     tagline: 'Curated talent acquisition for teams',
     description: 'Partner with Infidell to close critical engineering, fintech, and management requisitions without resume clutter.',
-    image: '/images/solutions/recruitment-staffing.avif',
+    image: '/images/practices/practice-enterprise.jpg',
     accent: '#34D399',
     borderColor: '#10B981',
     glowColor: 'rgba(16, 185, 129, 0.5)',
@@ -67,11 +72,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 4,
-    index: '04 / SKILLS',
+    index: 'SKILLS',
     title: 'Tech & Domain Upskilling',
     tagline: 'Modern engineering frameworks',
     description: 'Targeted skill architecture aligned with emerging cloud, AI, and fullstack requirements demanded by employers.',
-    image: '/images/solutions/it-training.avif',
+    image: '/images/practices/practice-skills.jpg',
     accent: '#FBBF24',
     borderColor: '#F59E0B',
     glowColor: 'rgba(245, 158, 11, 0.5)',
@@ -81,11 +86,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 5,
-    index: '05 / INTEGRITY',
+    index: 'INTEGRITY',
     title: 'Credential Verification',
     tagline: 'Compliant & authentic vetting',
     description: 'Comprehensive background checks, employment history authentication, and degree verification for enterprise compliance.',
-    image: '/images/solutions/background-verification.avif',
+    image: '/images/practices/practice-integrity.jpg',
     accent: '#FB7185',
     borderColor: '#F43F5E',
     glowColor: 'rgba(244, 63, 94, 0.5)',
@@ -95,11 +100,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 6,
-    index: '06 / FINANCE',
+    index: 'FINANCE',
     title: 'Finance & Executive Hiring',
     tagline: 'Accounting, tax & corporate roles',
     description: 'Specialized recruitment for certified accountants, tax specialists, finance controllers, and corporate leadership.',
-    image: '/images/solutions/accounting-taxes.avif',
+    image: '/images/practices/practice-finance.jpg',
     accent: '#38BDF8',
     borderColor: '#0284C7',
     glowColor: 'rgba(2, 132, 199, 0.5)',
@@ -109,11 +114,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 7,
-    index: '07 / GLOBAL',
+    index: 'GLOBAL',
     title: 'Global Career Mobility',
     tagline: 'Cross-border & overseas hiring',
     description: 'Connecting top-tier talent with multinational enterprises, overseas work authorization guidance, and relocation.',
-    image: '/images/insights/insight-h1b-visa.jpg',
+    image: '/images/practices/practice-global.jpg',
     accent: '#E879F9',
     borderColor: '#D946EF',
     glowColor: 'rgba(217, 70, 239, 0.5)',
@@ -123,11 +128,11 @@ const COLORFUL_CARDS: ColorfulCard[] = [
   },
   {
     id: 8,
-    index: '08 / RESEARCH',
+    index: 'RESEARCH',
     title: 'Read the Journal',
     tagline: 'Hiring benchmarks & salary data',
     description: 'Data-driven salary reports, emerging industry hiring trends, and strategic recruitment playbooks published regularly.',
-    image: '/images/insights/insight-talent-acquisition.jpg',
+    image: '/images/practices/practice-research.jpg',
     accent: '#2DD4BF',
     borderColor: '#14B8A6',
     glowColor: 'rgba(20, 184, 166, 0.5)',
@@ -141,7 +146,6 @@ export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const card1Ref = useRef<HTMLAnchorElement>(null);
 
   useGSAP(
     () => {
@@ -166,180 +170,81 @@ export function AboutSection() {
         }
       );
 
-      // 2. Responsive Scroll-Triggered Card Orchestration
-      const mm = gsap.matchMedia(sectionRef);
+      // 2. Sideways Horizontal Pinned Carousel Animation (with Centered Hold Plateaus)
+      const container = stageRef.current;
+      if (container) {
+        const slides = gsap.utils.toArray<HTMLElement>('.carousel__item', container);
 
-      // ==========================================
-      // DESKTOP (1024px+): True Pinned GSAP Scroll Animation
-      // Card 1 starts BIG & centered, then shrinks to slot 1
-      // Other 7 cards slide in from Left & Right into the 4x2 grid
-      // ==========================================
-      mm.add('(min-width: 1024px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: stageRef.current,
-            start: 'top 8%',
-            end: '+=160%',
+        if (slides.length > 0) {
+          const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+
+          ScrollTrigger.create({
+            animation: tl,
+            id: 'practice-horizontal-st',
+            trigger: container,
+            start: 'top top',
+            end: () => `+=${container.clientHeight * (slides.length - 1)}`,
             pin: true,
             scrub: 1,
+            snap: {
+              snapTo: 'labels',
+              duration: { min: 0.25, max: 0.6 },
+              ease: 'power1.out'
+            },
             anticipatePin: 1
-          }
-        });
+          });
 
-        // Card 1: Starts in center of stage, large (1.32x) with glowing cyan aura
-        tl.fromTo(
-          card1Ref.current,
-          {
-            xPercent: 150,
-            yPercent: 50,
-            scale: 1.32,
-            zIndex: 40,
-            boxShadow: '0 30px 80px -10px rgba(0, 213, 223, 0.55), 0 0 40px rgba(0, 213, 223, 0.25)'
-          },
-          {
+          // Reset all slides: horizontal sideways translation only (xPercent, yPercent is strictly 0)
+          gsap.set(slides, {
+            xPercent: 115,
+            yPercent: 0,
+            scale: 0.9,
+            opacity: 0,
+            zIndex: 1
+          });
+
+          // First slide begins active, centered and visible
+          gsap.set(slides[0], {
             xPercent: 0,
             yPercent: 0,
-            scale: 1,
-            zIndex: 10,
-            boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
-            ease: 'power2.inOut',
-            duration: 1
-          },
-          0
-        );
-
-        // Left incoming cards (Card 2, Card 5, Card 6): slide in from the left
-        tl.fromTo(
-          '.card-from-left',
-          {
-            x: -360,
-            opacity: 0,
-            scale: 0.86,
-            pointerEvents: 'none'
-          },
-          {
-            x: 0,
             opacity: 1,
             scale: 1,
-            pointerEvents: 'auto',
-            stagger: 0.08,
-            ease: 'power2.out',
-            duration: 0.95
-          },
-          0.06
-        );
+            zIndex: 20
+          });
 
-        // Right incoming cards (Card 3, Card 4, Card 7, Card 8): slide in from the right
-        tl.fromTo(
-          '.card-from-right',
-          {
-            x: 360,
-            opacity: 0,
-            scale: 0.86,
-            pointerEvents: 'none'
-          },
-          {
-            x: 0,
-            opacity: 1,
-            scale: 1,
-            pointerEvents: 'auto',
-            stagger: 0.08,
-            ease: 'power2.out',
-            duration: 0.95
-          },
-          0.06
-        );
-      });
+          // Label for slide 1 during initial centered rest
+          tl.add('our-work-1', 0);
+          // Initial pause so Slide 1 rests centered before scrolling away
+          tl.to({}, { duration: 0.5 });
 
-      // ==========================================
-      // TABLET (768px - 1023px): Smooth Scroll Flow
-      // ==========================================
-      mm.add('(min-width: 768px) and (max-width: 1023px)', () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: stageRef.current,
-            start: 'top 75%',
-            end: 'center 45%',
-            scrub: 1
+          // Sequential horizontal sideways transitions with hold plateaus
+          for (let i = 1; i < slides.length; i++) {
+            // Sideways Slide: Previous slide exits left (-115%), Current slide enters from right (115% -> 0%)
+            tl.to(slides[i - 1], {
+              xPercent: -115,
+              opacity: 0,
+              scale: 0.9,
+              zIndex: 10,
+              duration: 1.0
+            })
+              .to(
+                slides[i],
+                {
+                  xPercent: 0,
+                  opacity: 1,
+                  scale: 1,
+                  zIndex: 20,
+                  duration: 1.0
+                },
+                '<'
+              )
+              // Centered Hold Plateau: Holds cleanly in center for reading
+              .to({}, { duration: 0.5 })
+              // Add label exactly at the centered hold point for accurate snapping
+              .add(`our-work-${i + 1}`);
           }
-        });
-
-        tl.fromTo(
-          card1Ref.current,
-          { scale: 1.15, opacity: 0.9 },
-          { scale: 1, opacity: 1, ease: 'power2.out', duration: 1 },
-          0
-        );
-
-        tl.fromTo(
-          '.card-from-left',
-          { x: -140, opacity: 0 },
-          { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
-          0.08
-        );
-
-        tl.fromTo(
-          '.card-from-right',
-          { x: 140, opacity: 0 },
-          { x: 0, opacity: 1, stagger: 0.1, ease: 'power2.out', duration: 1 },
-          0.08
-        );
-      });
-
-      // ==========================================
-      // MOBILE (<768px): Touch-Friendly Entrance
-      // ==========================================
-      mm.add('(max-width: 767px)', () => {
-        gsap.fromTo(
-          card1Ref.current,
-          { scale: 1.08, opacity: 0.9 },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none'
-            }
-          }
-        );
-
-        gsap.fromTo(
-          '.card-from-left',
-          { x: -40, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            stagger: 0.08,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 75%',
-              toggleActions: 'play none none none'
-            }
-          }
-        );
-
-        gsap.fromTo(
-          '.card-from-right',
-          { x: 40, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            stagger: 0.08,
-            duration: 0.6,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: stageRef.current,
-              start: 'top 75%',
-              toggleActions: 'play none none none'
-            }
-          }
-        );
-      });
+        }
+      }
 
       // 3. Founder's Note entrance
       gsap.fromTo(
@@ -358,23 +263,64 @@ export function AboutSection() {
         }
       );
 
-      // 4. Staggered Stat numbers
-      gsap.fromTo(
-        '.luna-stat-item',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.luna-stats-row',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      // 4. Staggered Stat numbers with continuous re-count from 0 every time user scrolls into view
+      let statTweens: gsap.core.Tween[] = [];
+
+      const animateCounters = () => {
+        statTweens.forEach((t) => t.kill());
+        statTweens = [];
+
+        const statElements = sectionRef.current?.querySelectorAll<HTMLElement>('.luna-stat-number');
+        if (!statElements) return;
+
+        statElements.forEach((el) => {
+          const target = parseFloat(el.getAttribute('data-target') || '0');
+          const suffix = el.getAttribute('data-suffix') || '';
+          const hasComma = el.getAttribute('data-comma') === 'true';
+
+          el.textContent = '0' + suffix;
+          const counter = { val: 0 };
+          const tween = gsap.to(counter, {
+            val: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            onUpdate: () => {
+              const rounded = Math.round(counter.val);
+              el.textContent = (hasComma ? rounded.toLocaleString('en-US') : rounded.toString()) + suffix;
+            }
+          });
+          statTweens.push(tween);
+        });
+
+        gsap.fromTo(
+          '.luna-stat-item',
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', overwrite: 'auto' }
+        );
+      };
+
+      const resetCounters = () => {
+        statTweens.forEach((t) => t.kill());
+        statTweens = [];
+
+        const statElements = sectionRef.current?.querySelectorAll<HTMLElement>('.luna-stat-number');
+        if (!statElements) return;
+
+        statElements.forEach((el) => {
+          const suffix = el.getAttribute('data-suffix') || '';
+          el.textContent = '0' + suffix;
+        });
+        gsap.set('.luna-stat-item', { opacity: 0, y: 25 });
+      };
+
+      ScrollTrigger.create({
+        trigger: '.luna-stats-row',
+        start: 'top 85%',
+        onEnter: () => animateCounters(),
+        onEnterBack: () => animateCounters(),
+        onLeave: () => resetCounters(),
+        onLeaveBack: () => resetCounters()
+      });
     },
     { scope: sectionRef }
   );
@@ -388,187 +334,185 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================
-            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY (PURE PROSE)
+            PART 1: MASTER TITLE & EDITORIAL PHILOSOPHY
         ======================================================== */}
-        <div className="mb-14 sm:mb-20">
-          {/* Giant Clean Title */}
-          <h2 
-            ref={headlineRef}
-            className="luna-header-fade text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-normal tracking-tight text-white mb-6 sm:mb-8"
-          >
-            About
-          </h2>
-
-          {/* Master Headline */}
-          <div className="luna-header-fade max-w-4xl mb-8 sm:mb-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-mono text-[#00D5DF] tracking-wide mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] animate-pulse" />
-              <span>INFIDELL TECHNOLOGY LLP</span>
-            </div>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white leading-tight">
-              People First. Possibilities Without Limits.
+        <div className="mb-16 sm:mb-24">
+          {/* Top Title Bar: "About Us" and Philosophy Subtitle */}
+          <div className="luna-header-fade mb-10 sm:mb-12">
+            <h2 
+              ref={headlineRef}
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-light tracking-tight text-white leading-none mb-4 sm:mb-5"
+            >
+              About Us
+            </h2>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white leading-snug">
+              People First.{' '}
+              <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                Possibilities Without Limits.
+              </span>
             </h3>
           </div>
 
-          {/* Editorial Paragraph Narrative — Clean prose without card boxes or "02 / CANDIDATE ADVOCACY" tags */}
-          <div className="luna-header-fade max-w-4xl space-y-6 pt-6 border-t border-[#203536]/80">
-            <p className="text-lg sm:text-xl lg:text-2xl text-white font-normal leading-relaxed">
-              One dedicated placement firm, no automated agency in between. Infidell is{' '}
-              <strong className="font-semibold text-white">career advocacy</strong>. We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
-            </p>
+          {/* 12-Column Grid: Balanced Text on Left & Full Landscape Artwork on Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column (6 cols): Balanced Editorial Narrative */}
+            <div className="lg:col-span-6 flex flex-col justify-center space-y-5">
+              {/* Hero Lead Paragraph */}
+              <p className="luna-header-fade text-lg sm:text-xl lg:text-[1.22rem] font-light text-white leading-relaxed">
+                One dedicated placement firm, no impersonal algorithms in between. Infidell is{' '}
+                <strong className="font-semibold bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                  career advocacy
+                </strong>
+                . We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
+              </p>
 
-            <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
-              INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal portals and automated keyword algorithms to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
-            </p>
+              {/* Supporting Editorial Paragraphs */}
+              <p className="luna-header-fade text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
+                INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal job boards and keyword spam to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
+              </p>
 
-            <p className="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed">
-              Every career has a next chapter that deserves dedicated advocacy. Job seekers work one-on-one with specialized domain advisors who restructure resumes to beat strict ATS filters, coordinate technical mock interviews with industry peers, and negotiate competitive compensation packages — completely free of candidate fees. Simultaneously, fast-scaling startups and established corporate enterprises turn to Infidell to close critical engineering, fintech, and management requisitions without resume clutter, receiving rigorously pre-screened shortlists within strict 48–72 hour SLAs backed by replacement guarantees.
-            </p>
-          </div>
+              <p className="luna-header-fade text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
+                Job seekers work one-on-one with specialized domain advisors to optimize resumes for strict ATS filters, conduct mock interviews, and negotiate competitive compensation packages. Simultaneously, fast-scaling startups and corporate enterprises turn to Infidell to close critical requisitions within strict 48–72 hour SLAs backed by replacement guarantees.
+              </p>
+            </div>
 
-          {/* Philosophy Callout Banner */}
-          <div className="luna-header-fade mt-10 p-6 sm:p-8 rounded-2xl bg-[#081014] border border-[#203536] relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[#00D5DF]/5 rounded-full blur-3xl pointer-events-none" />
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="max-w-3xl">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] mb-2 block">
-                  OUR RECRUITMENT PHILOSOPHY
-                </span>
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-white leading-snug">
-                  &ldquo;Algorithms can scan keywords, but they cannot evaluate ambition, integrity, or culture-fit. At Infidell, we put people first because lasting careers are built on human trust, not automated transactions.&rdquo;
-                </h4>
-              </div>
-              <div className="shrink-0 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#102426] border border-[#203536] flex items-center justify-center text-[#00D5DF] font-bold text-sm">
-                  ∞
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-semibold text-white">The Infidell Creed</div>
-                  <div className="text-[11px] text-neutral-400">Long-term Career Advocacy</div>
-                </div>
+            {/* Right Column (6 cols): Pure Image Showcase (Uncropped Natural 3:2 Proportions) */}
+            <div className="lg:col-span-6 flex items-center justify-center">
+              <div className="luna-header-fade relative w-full aspect-[3/2] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-500 shadow-2xl shadow-black/80 bg-[#060D10] group">
+                <Image
+                  src="/about-bg.png"
+                  alt="Infidell Technology LLP Headquarters"
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                {/* Subtle top edge highlight */}
+                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00D5DF]/60 to-transparent pointer-events-none" />
               </div>
             </div>
+
           </div>
         </div>
 
         {/* ========================================================
-            PART 2: 8 PRACTICE VERTICALS WITH PINNED GSAP SCROLL ANIMATION
+            PART 2: 8 PRACTICE VERTICALS PINNED CAROUSEL WITH GSAP ANIMATION
         ======================================================== */}
         <div 
           ref={stageRef} 
-          className="relative w-full min-h-[85vh] flex flex-col justify-center py-6 overflow-visible"
+          className="practice-carousel-stage our-work relative w-full min-h-screen flex items-center py-12 sm:py-20 overflow-hidden"
         >
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#00D5DF] block mb-1">
-                SPECIALIZED PRACTICE VERTICALS
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Explore Our 8 Practice Areas
+          {/* Subtle atmospheric ambient glow behind the carousel */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D5DF]/10 rounded-full blur-[200px] pointer-events-none" />
+
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+            
+            {/* Left Column (5 cols): Sticky Heading & Narrative */}
+            <div className="lg:col-span-5 flex flex-col justify-center space-y-5">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight">
+                Strategic Practice Areas &{' '}
+                <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                  Executive Solutions
+                </span>
               </h3>
+
+              <p className="text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
+                Explore our specialized recruitment practices spanning executive search, technical architecture, credential verification, and global talent acquisition.
+              </p>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#00D5DF]">
-              <span className="w-2 h-2 rounded-full bg-[#00D5DF] animate-ping" />
-              <span>Scroll to expand all verticals</span>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 relative">
-            {COLORFUL_CARDS.map((card) => {
-              const isHero = card.entrance === 'hero';
-              const isLeft = card.entrance === 'left';
-
-              return (
-                <a
-                  key={card.id}
-                  ref={isHero ? card1Ref : undefined}
-                  href={card.href}
-                  className={`group relative h-[300px] sm:h-[320px] lg:h-[335px] rounded-2xl lg:rounded-3xl overflow-hidden border transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between shadow-xl shadow-black/70 ${
-                    isHero
-                      ? 'card-hero-1'
-                      : isLeft
-                      ? 'card-from-left'
-                      : 'card-from-right'
-                  }`}
-                  style={{
-                    borderColor: `${card.borderColor}40`,
-                    backgroundColor: '#090E12'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = card.borderColor;
-                    e.currentTarget.style.boxShadow = `0 12px 35px -8px ${card.glowColor}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = `${card.borderColor}40`;
-                    e.currentTarget.style.boxShadow = '';
-                  }}
-                >
-                  {/* Full-Bleed Editorial Photographic Background with Gradient Overlay */}
-                  <div className="absolute inset-0 z-0">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105 opacity-80"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#060A0D] via-[#060A0D]/75 to-black/35 pointer-events-none" />
-                    <div 
-                      className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        background: `radial-gradient(circle at 50% 0%, ${card.accent}, transparent 70%)`
-                      }}
-                    />
-                  </div>
-
-                  {/* Top Row: Category Pill Tag + Round Arrow Action */}
-                  <div className="relative z-10 flex items-center justify-between gap-2">
-                    <span 
-                      className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border bg-black/60 backdrop-blur-md"
-                      style={{
-                        color: card.accent,
-                        borderColor: `${card.accent}55`
-                      }}
-                    >
-                      {card.index}
-                    </span>
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 border border-white/20 backdrop-blur-md flex items-center justify-center text-white/90 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300 shadow-sm shrink-0">
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            {/* Right Column (7 cols): Pinned Stacked Card Carousel Slider */}
+            <div className="lg:col-span-7 w-full">
+              
+              {/* Carousel Slider */}
+              <div className="carousel__slider relative w-full h-[460px] sm:h-[490px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl">
+                {COLORFUL_CARDS.map((card, idx) => (
+                  <div
+                    key={card.id}
+                    id={`our-work-${idx + 1}`}
+                    className="carousel__item absolute inset-0 w-full h-full rounded-3xl border border-white/15 overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+                    style={{
+                      borderColor: `${card.borderColor}60`,
+                      backgroundColor: '#090E12'
+                    }}
+                  >
+                    {/* Full-Bleed Photographic Background with Crisp Clarity & Subtle Bottom Scrim */}
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover object-center opacity-100 brightness-105 contrast-105"
+                        sizes="(max-width: 1024px) 100vw, 55vw"
+                      />
+                      {/* Subtle bottom gradient scrim so upper image is 100% visible, vibrant & unblocked while bottom text is crystal clear */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050708] via-[#050708]/80 via-45% to-transparent pointer-events-none" />
                     </div>
-                  </div>
 
-                  {/* Bottom Content: Title, Tagline, Description & Meta */}
-                  <div className="relative z-10 mt-auto pt-4">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-0.5 leading-snug group-hover:text-white transition-colors">
-                      {card.title}
-                    </h3>
-                    <p 
-                      className="text-[11px] sm:text-xs font-semibold mb-1.5"
-                      style={{ color: card.accent }}
-                    >
-                      {card.tagline}
-                    </p>
-                    <p className="text-xs text-[#A5B2B3] line-clamp-2 font-normal leading-relaxed mb-3">
-                      {card.description}
-                    </p>
+                    {/* Top Edge Ambient Highlight in Card Accent Color */}
+                    <div 
+                      className="absolute top-0 inset-x-0 h-[2px] pointer-events-none"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${card.accent}, transparent)`
+                      }}
+                    />
 
-                    {/* Bottom Footer Row */}
-                    <div className="pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-                      <span className="text-[#A5B2B3] tracking-wide">
-                        {card.footerTag}
-                      </span>
+                    {/* Top Row: Domain Pill Tag + Action Arrow */}
+                    <div className="relative z-10 flex items-center justify-between gap-2">
                       <span 
-                        className="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                        className="text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 rounded-full border bg-black/60 backdrop-blur-md"
+                        style={{
+                          color: card.accent,
+                          borderColor: `${card.accent}60`
+                        }}
+                      >
+                        {card.index}
+                      </span>
+
+                      <a 
+                        href={card.href}
+                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-md flex items-center justify-center text-white/90 hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-md shrink-0"
+                      >
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    </div>
+
+                    {/* Bottom Content: Title, Tagline, Description & Meta */}
+                    <div className="relative z-10 mt-auto pt-4">
+                      <h2 className="text-2xl sm:text-3xl md:text-[2rem] font-bold text-white mb-1.5 leading-snug tracking-tight">
+                        {card.title}
+                      </h2>
+                      <p 
+                        className="text-xs sm:text-sm font-semibold mb-2.5"
                         style={{ color: card.accent }}
                       >
-                        <span>Explore</span>
-                        <span>→</span>
-                      </span>
+                        {card.tagline}
+                      </p>
+                      <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed mb-4 max-w-xl">
+                        {card.description}
+                      </p>
+
+                      {/* Bottom Footer Row */}
+                      <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm">
+                        <span className="text-neutral-400 font-mono tracking-wide">
+                          {card.footerTag}
+                        </span>
+                        <a 
+                          href={card.href}
+                          className="font-medium hover:translate-x-1.5 transition-transform inline-flex items-center gap-1.5"
+                          style={{ color: card.accent }}
+                        >
+                          <span>Explore Practice</span>
+                          <span>→</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </a>
-              );
-            })}
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -603,35 +547,50 @@ export function AboutSection() {
           {/* Minimalist Divider Line (Clean & Elegant, No Stars) */}
           <div className="w-full h-px bg-[#203536]/70 my-10 sm:my-14" />
 
-          {/* Minimalist Big Numbers (matching Luna UI 58 / 12 / 17 style) */}
-          <div className="luna-stats-row grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-2">
+          {/* Minimalist Big Numbers - Centered & Animated */}
+          <div className="luna-stats-row grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-4 max-w-5xl mx-auto">
             {/* Stat 1 */}
-            <div className="luna-stat-item">
-              <div className="text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3">
-                4,800+
+            <div className="luna-stat-item flex flex-col items-center text-center">
+              <div 
+                className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
+                data-target="4800"
+                data-suffix="+"
+                data-comma="true"
+              >
+                0+
               </div>
-              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide">
+              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide text-center">
                 Candidates placed
               </div>
             </div>
 
             {/* Stat 2 */}
-            <div className="luna-stat-item">
-              <div className="text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3">
-                350+
+            <div className="luna-stat-item flex flex-col items-center text-center">
+              <div 
+                className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
+                data-target="350"
+                data-suffix="+"
+                data-comma="false"
+              >
+                0+
               </div>
-              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide">
+              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide text-center">
                 Corporate hiring partners
               </div>
             </div>
 
             {/* Stat 3 */}
-            <div className="luna-stat-item">
-              <div className="text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3">
-                ₹0
+            <div className="luna-stat-item flex flex-col items-center text-center">
+              <div 
+                className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
+                data-target="98"
+                data-suffix="%"
+                data-comma="false"
+              >
+                0%
               </div>
-              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide">
-                Candidate placement fees
+              <div className="text-xs sm:text-sm text-neutral-400 font-normal tracking-wide text-center">
+                Placement satisfaction rate
               </div>
             </div>
           </div>

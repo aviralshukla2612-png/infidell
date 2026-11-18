@@ -8,6 +8,8 @@ import { OurPartnersSection } from '@/components/home/OurPartnersSection';
 import { CandidateAndEmployerExperienceSection } from '@/components/home/CandidateAndEmployerExperienceSection';
 import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
 import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSection';
+import { TestimonialsSection } from '@/components/home/TestimonialsSection';
+import { FAQSection } from '@/components/home/FAQSection';
 import { InsightsSection } from '@/components/home/InsightsSection';
 
 export default async function HomePage({
@@ -23,15 +25,17 @@ export default async function HomePage({
       <HeroSection />
       <CandidatesPlacedInSection />
       <AboutSection />
-      <OurApproachSection />
-      <OurPartnersSection />
-      <CandidateAndEmployerExperienceSection />
       {/* 
         CRITICAL NON-NEGOTIABLE BOUNDARY:
         SimpleTransparentProcessSection and all its GSAP animation timelines are 100% protected and untouched.
       */}
       <SimpleTransparentProcessSection />
+      <OurApproachSection />
+      <OurPartnersSection />
+      <CandidateAndEmployerExperienceSection />
       <OurMissionValuesSection />
+      <TestimonialsSection />
+      <FAQSection />
       <InsightsSection />
     </>
   );

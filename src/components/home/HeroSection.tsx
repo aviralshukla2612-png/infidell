@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
@@ -9,11 +9,24 @@ import { useGSAP } from '@gsap/react';
 import { 
   ArrowRight, 
   Building2, 
-  Code2, 
-  Layers, 
-  Zap, 
+  Briefcase, 
+  BadgeCheck, 
+  Compass, 
   ShieldCheck 
 } from 'lucide-react';
+
+const LINE1_PREFIX = "Every Career Has a ";
+const LINE1_HIGHLIGHT = "Next";
+const LINE1_SUFFIX = " Chapter.";
+
+const LINE2_PREFIX = "Let's Make ";
+const LINE2_HIGHLIGHT = "Yours";
+const LINE2_SUFFIX = " Count.";
+
+const TOTAL_LINE1 = LINE1_PREFIX.length + LINE1_HIGHLIGHT.length + LINE1_SUFFIX.length; // 32
+const TOTAL_LINE2 = LINE2_PREFIX.length + LINE2_HIGHLIGHT.length + LINE2_SUFFIX.length; // 23
+const TOTAL_CHARS = TOTAL_LINE1 + TOTAL_LINE2; // 55
+const LINE2_CUTOFF = TOTAL_CHARS - LINE2_SUFFIX.length; // 48
 
 export function HeroSection() {
   const t = useTranslations('Hero');
@@ -22,19 +35,145 @@ export function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const bgVisualRef = useRef<HTMLDivElement>(null);
 
+  // Typewriter effect state (initialized to full length for SEO & zero CLS)
+  const [mounted, setMounted] = useState(false);
+  const [charCount, setCharCount] = useState(TOTAL_CHARS);
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('pausing');
+
+  useEffect(() => {
+    setMounted(true);
+    setCharCount(0);
+    setPhase('typing');
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    let timer: NodeJS.Timeout;
+
+    if (phase === 'typing') {
+      if (charCount < TOTAL_CHARS) {
+        // Natural typewriter cadence: slight hesitation between line 1 and line 2
+        const delay = charCount === TOTAL_LINE1 ? 160 : 36;
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, delay);
+      } else {
+        // Finished typing initial headline -> hold for 4 seconds
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 4000);
+      }
+    } else if (phase === 'deleting') {
+      // Smoothly backspace the punchline " Count."
+      if (charCount > LINE2_CUTOFF) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev - 1);
+        }, 48);
+      } else {
+        // Paused at "Let's Make Yours "
+        timer = setTimeout(() => {
+          setPhase('retyping');
+        }, 400);
+      }
+    } else if (phase === 'retyping') {
+      if (charCount < TOTAL_CHARS) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, 55);
+      } else {
+        // Fully typed again -> hold 5.5s before next subtle cycle
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 5500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [mounted, charCount, phase]);
+
+  const renderLine1 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE1_PREFIX}</span>
+          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {LINE1_HIGHLIGHT}
+          </span>
+          <span>{LINE1_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c1 = Math.min(charCount, TOTAL_LINE1);
+    const p1Length = LINE1_PREFIX.length;
+    const h1Length = LINE1_HIGHLIGHT.length;
+    const s1Length = LINE1_SUFFIX.length;
+
+    const showPrefix = LINE1_PREFIX.slice(0, Math.min(c1, p1Length));
+    const showHighlight = c1 > p1Length ? LINE1_HIGHLIGHT.slice(0, Math.min(c1 - p1Length, h1Length)) : '';
+    const showSuffix = c1 > p1Length + h1Length ? LINE1_SUFFIX.slice(0, Math.min(c1 - (p1Length + h1Length), s1Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+      </>
+    );
+  };
+
+  const renderLine2 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE2_PREFIX}</span>
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {LINE2_HIGHLIGHT}
+          </span>
+          <span>{LINE2_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c2 = Math.max(0, charCount - TOTAL_LINE1);
+    const p2Length = LINE2_PREFIX.length;
+    const h2Length = LINE2_HIGHLIGHT.length;
+    const s2Length = LINE2_SUFFIX.length;
+
+    const showPrefix = LINE2_PREFIX.slice(0, Math.min(c2, p2Length));
+    const showHighlight = c2 > p2Length ? LINE2_HIGHLIGHT.slice(0, Math.min(c2 - p2Length, h2Length)) : '';
+    const showSuffix = c2 > p2Length + h2Length ? LINE2_SUFFIX.slice(0, Math.min(c2 - (p2Length + h2Length), s2Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+      </>
+    );
+  };
+
   useGSAP(
     () => {
       if (typeof window === 'undefined') return;
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Headline words reveal
+      // 1. Headline container fade-in
       if (headlineRef.current) {
-        const words = headlineRef.current.querySelectorAll('.hero-word');
         tl.fromTo(
-          words,
-          { opacity: 0, y: 40, filter: 'blur(8px)' },
-          { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, stagger: 0.08, delay: 0.15 }
+          headlineRef.current,
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.6, delay: 0.1 }
         );
       }
 
@@ -107,24 +246,16 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-10 xl:col-span-10 space-y-6 sm:space-y-8">
-            {/* Headline with word-by-word reveal — Guaranteed Exactly 2 Lines */}
+            {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
             <h1 
               ref={headlineRef}
               className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-white leading-[1.12]"
             >
-              <span className="block whitespace-nowrap">
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Every</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Career</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Has</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">a</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2 text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">Next</span>
-                <span className="hero-word inline-block">Chapter.</span>
+              <span className="block whitespace-nowrap min-h-[1.12em]">
+                {renderLine1()}
               </span>
-              <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white">
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Let&apos;s</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2">Make</span>
-                <span className="hero-word inline-block mr-1 xs:mr-1.5 sm:mr-2 cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">Yours</span>
-                <span className="hero-word inline-block">Count.</span>
+              <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white min-h-[1.12em]">
+                {renderLine2()}
               </span>
             </h1>
 
@@ -158,47 +289,55 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Sleek Horizontal Feature Strip with Vertical Dividers */}
+      {/* Sleek Horizontal Feature Strip with Vertical Dividers & Premium Glowing Icon Badges */}
       <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 mt-12 sm:mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-[#F5F8F8]">
-            {/* Item 1 */}
-            <div className="flex items-center gap-2.5 group">
-              <Code2 className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
+            {/* Item 1: Recruitment & Placement */}
+            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <Briefcase className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+              </div>
+              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillProduct')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
-            {/* Item 2 */}
-            <div className="flex items-center gap-2.5 group">
-              <Layers className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
+            {/* Item 2: Verified Employers */}
+            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <BadgeCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+              </div>
+              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillSecure')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
-            {/* Item 3 */}
-            <div className="flex items-center gap-2.5 group">
-              <Zap className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
+            {/* Item 3: Personalized Career Advisory */}
+            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <Compass className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+              </div>
+              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillAutomation')}
               </span>
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-4 w-[1px] bg-[#203536]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
-            {/* Item 4 */}
-            <div className="flex items-center gap-2.5 group">
-              <ShieldCheck className="w-4 h-4 text-[#17BEBB] flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium tracking-wide">
+            {/* Item 4: End-to-End Support */}
+            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <ShieldCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+              </div>
+              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillPartnership')}
               </span>
             </div>

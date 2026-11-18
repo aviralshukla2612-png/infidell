@@ -280,7 +280,7 @@ export function WhatIsInfidellSection() {
                       <span className="truncate">{pillar.keyBenefit}</span>
                     </div>
                     <div className="flex items-center justify-between text-xs text-[#AEB8C2]/80 pt-0.5">
-                      <span>Zero candidate fees</span>
+                      <span>Dedicated placement advisory</span>
                       <span
                         className="inline-flex items-center gap-1 font-bold group-hover:translate-x-0.5 transition-transform"
                         style={{ color: pillar.accentColor }}

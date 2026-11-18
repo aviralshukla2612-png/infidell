@@ -22,7 +22,6 @@ const FOOTER_NAV_LINKS = [
 ];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
@@ -187,13 +186,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Navigation (Identical to Navbar links) */}
-        <div className="border-t border-white/[0.08] pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm text-neutral-400 gap-4">
-          <div>
-            © {currentYear} — Infidell Technology LLP — Ethical Placement &amp; Workforce Solutions
-          </div>
-
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 font-bold tracking-wider text-[11px] sm:text-xs uppercase">
+        {/* Bottom Bar: Navigation */}
+        <div className="border-t border-white/[0.08] pt-6 sm:pt-8 flex items-center justify-center text-xs sm:text-sm text-neutral-400">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 font-bold tracking-wider text-[11px] sm:text-xs uppercase">
             {FOOTER_NAV_LINKS.map((link) => (
               <a
                 key={link.label}

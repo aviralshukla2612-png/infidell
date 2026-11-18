@@ -42,11 +42,6 @@ export function OurMissionValuesSection() {
           
           {/* Left Column: Typography-Driven Mission & Values */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C1517] border border-[#17BEBB]/40 text-[11px] font-bold text-[#17BEBB] tracking-widest uppercase mb-6 w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-              ETHICAL FOUNDATION
-            </div>
-
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#F5F8F8] tracking-tight leading-[1.08] mb-6 sm:mb-8">
               Trust. Transparency. <br />
               <span className="cyan-text-gradient">Meaningful Impact.</span>
@@ -60,9 +55,9 @@ export function OurMissionValuesSection() {
             {/* Core Values Key Points */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
               <div className="p-4 rounded-xl bg-[#0C1517] border border-[#203536]">
-                <h4 className="text-sm font-bold text-[#F5F8F8] mb-1">Zero Exploitation</h4>
+                <h4 className="text-sm font-bold text-[#F5F8F8] mb-1">Quality & Integrity</h4>
                 <p className="text-xs text-[#A5B2B3] leading-relaxed">
-                  We never charge candidate placement fees or promote unverified vacancies.
+                  We partner exclusively with verified employers and deliver genuine career advancement opportunities.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#0C1517] border border-[#203536]">

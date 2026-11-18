@@ -19,6 +19,7 @@ interface Principle {
   descKey: string;
   icon: React.ReactNode;
   tag: string;
+  accent: string;
 }
 
 export function OurApproachSection() {
@@ -31,28 +32,32 @@ export function OurApproachSection() {
       titleKey: 'principle1Title',
       descKey: 'principle1Desc',
       tag: 'Discovery & Listening',
-      icon: <Compass className="w-5 h-5 text-[#17BEBB]" strokeWidth={1.75} />
+      icon: <Compass className="w-5 h-5 text-[#00D5DF]" strokeWidth={1.75} />,
+      accent: '#00D5DF'
     },
     {
       num: '02',
       titleKey: 'principle2Title',
       descKey: 'principle2Desc',
       tag: 'Strategic Alignment',
-      icon: <Target className="w-5 h-5 text-[#00D5DF]" strokeWidth={1.75} />
+      icon: <Target className="w-5 h-5 text-[#38BDF8]" strokeWidth={1.75} />,
+      accent: '#38BDF8'
     },
     {
       num: '03',
       titleKey: 'principle3Title',
       descKey: 'principle3Desc',
       tag: 'Comprehensive Support',
-      icon: <BriefcaseBusiness className="w-5 h-5 text-[#17BEBB]" strokeWidth={1.75} />
+      icon: <BriefcaseBusiness className="w-5 h-5 text-[#2DD4BF]" strokeWidth={1.75} />,
+      accent: '#2DD4BF'
     },
     {
       num: '04',
       titleKey: 'principle4Title',
       descKey: 'principle4Desc',
       tag: 'Long-Term Continuity',
-      icon: <Handshake className="w-5 h-5 text-[#00D5DF]" strokeWidth={1.75} />
+      icon: <Handshake className="w-5 h-5 text-[#818CF8]" strokeWidth={1.75} />,
+      accent: '#818CF8'
     }
   ];
 
@@ -61,28 +66,24 @@ export function OurApproachSection() {
       if (typeof window === 'undefined') return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // Sequential entrance for each editorial row
-      const rows = sectionRef.current?.querySelectorAll('.approach-row');
-      if (rows) {
-        rows.forEach((row, idx) => {
-          gsap.fromTo(
-            row,
-            { opacity: 0, y: 35 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.75,
-              delay: idx * 0.08,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: row,
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-              }
-            }
-          );
-        });
-      }
+      // Staggered luxury entrance for the 4 bento cards
+      gsap.fromTo(
+        '.approach-card',
+        { opacity: 0, y: 32, scale: 0.98 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.approach-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -91,69 +92,97 @@ export function OurApproachSection() {
     <section 
       ref={sectionRef} 
       id="approach"
-      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80"
+      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sm:mb-20">
+        {/* Header - Clean & Elegant (No Pill Badge) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sm:mb-18">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0C1517] border border-[#17BEBB]/40 text-[11px] font-bold text-[#17BEBB] tracking-widest uppercase mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF]" />
-              {t('badge')}
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F5F8F8] tracking-tight leading-tight">
-              {t('title')}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-tight">
+              A Thoughtful{' '}
+              <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                Recruitment Architecture
+              </span>
             </h2>
           </div>
-          <p className="text-sm sm:text-base text-[#A5B2B3] max-w-md leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-300 max-w-md leading-relaxed font-normal">
             {t('subtitle')}
           </p>
         </div>
 
-        {/* Horizontal Editorial Principle Rows */}
-        <div className="space-y-4">
-          {principles.map((principle, index) => (
+        {/* 4 Luxury Bento Cards in 2x2 Grid */}
+        <div className="approach-grid grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {principles.map((principle) => (
             <div 
               key={principle.num}
-              className="approach-row p-6 sm:p-8 rounded-2xl bg-[#0C1517] border border-[#203536] hover:border-[#17BEBB]/50 transition-all duration-300 relative group"
+              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-[#070D10] border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:-translate-y-1.5"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                
-                {/* Index Number & Icon (Left 3 cols) */}
-                <div className="lg:col-span-3 flex items-center gap-4">
-                  <span className="text-2xl sm:text-3xl font-black text-[#102426] group-hover:text-[#17BEBB] transition-colors duration-300 font-mono">
-                    {principle.num}
-                  </span>
-                  <div className="w-10 h-10 rounded-xl bg-[#102426] border border-[#203536] flex items-center justify-center flex-shrink-0">
-                    {principle.icon}
+              {/* Ambient Radial Hover Glow */}
+              <div 
+                className="absolute -top-20 -right-20 w-52 h-52 rounded-full blur-[90px] opacity-0 group-hover:opacity-25 transition-opacity duration-700 pointer-events-none"
+                style={{ backgroundColor: principle.accent }}
+              />
+
+              {/* Top Accent Light Bar on Hover */}
+              <div 
+                className="absolute top-0 inset-x-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${principle.accent}, transparent)`
+                }}
+              />
+
+              {/* Card Body */}
+              <div>
+                {/* Header Row: Icon, Tag Pill, Index Number, Arrow */}
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div 
+                      className="w-11 h-11 rounded-2xl bg-[#0B1519] border border-[#203536] flex items-center justify-center transition-all duration-300 group-hover:scale-105"
+                      style={{ borderColor: `${principle.accent}40` }}
+                    >
+                      {principle.icon}
+                    </div>
+                    <span 
+                      className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full border bg-black/40 backdrop-blur-md"
+                      style={{ color: principle.accent, borderColor: `${principle.accent}40` }}
+                    >
+                      {principle.tag}
+                    </span>
                   </div>
-                  <span className="text-xs font-semibold text-[#17BEBB] tracking-wider uppercase">
-                    {principle.tag}
-                  </span>
-                </div>
 
-                {/* Principle Title (Middle 4 cols) */}
-                <div className="lg:col-span-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-[#F5F8F8] group-hover:text-[#00D5DF] transition-colors duration-300">
-                    {t(principle.titleKey)}
-                  </h3>
-                </div>
-
-                {/* Principle Description (Right 5 cols) */}
-                <div className="lg:col-span-5 flex items-center justify-between gap-4">
-                  <p className="text-xs sm:text-sm text-[#A5B2B3] leading-relaxed">
-                    {t(principle.descKey)}
-                  </p>
-                  <div className="hidden sm:flex w-8 h-8 rounded-full border border-[#203536] items-center justify-center text-[#A5B2B3] group-hover:text-[#F5F8F8] group-hover:border-[#17BEBB] transition-all flex-shrink-0">
+                  <a 
+                    href="#contact"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-neutral-400 group-hover:text-white group-hover:border-[#00D5DF]/60 group-hover:bg-[#00D5DF]/20 group-hover:rotate-45 transition-all duration-300"
+                  >
                     <ArrowUpRight className="w-4 h-4" />
-                  </div>
+                  </a>
                 </div>
 
+                {/* Principle Title */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-[#7DD3FC] transition-colors duration-300 leading-snug">
+                  {t(principle.titleKey)}
+                </h3>
+
+                {/* Principle Description */}
+                <p className="text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
+                  {t(principle.descKey)}
+                </p>
               </div>
 
-              {/* Thin Bottom Progress Highlight */}
-              <div className="absolute inset-x-8 bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#17BEBB]/0 to-transparent group-hover:via-[#17BEBB]/70 transition-all duration-500" />
+              {/* Bottom Metadata Row */}
+              <div className="pt-6 mt-8 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neutral-400">
+                <span className="tracking-wide">Executive Principle</span>
+                <a 
+                  href="#contact"
+                  className="font-medium inline-flex items-center gap-1.5 hover:translate-x-1 transition-transform"
+                  style={{ color: principle.accent }}
+                >
+                  <span>Learn more</span>
+                  <span>→</span>
+                </a>
+              </div>
+
             </div>
           ))}
         </div>
@@ -162,4 +191,3 @@ export function OurApproachSection() {
     </section>
   );
 }
-

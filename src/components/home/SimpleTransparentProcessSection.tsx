@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -239,14 +240,13 @@ const LINE2_WORDS = ['PROCESS', 'FOR', 'EVERYONE'];
 const CARD_ANGLES = [-6, -3, 0, 3, 6];
 const CARD_TRANSLATES = [12, 3, 0, 3, 12];
 
-// Dedicated entrance time slots for the 1-by-1 card scroll reveal
-const CARD_SLOTS = [0.36, 0.48, 0.60, 0.72, 0.84];
+// Dedicated entrance time slots for the 1-by-1 card scroll reveal (generously spaced out across 60%+ of the scrub)
+const CARD_SLOTS = [0.26, 0.40, 0.54, 0.68, 0.82];
 const CARD_DURATION = 0.10;
 
 export function SimpleTransparentProcessSection() {
   const [activeTab, setActiveTab] = useState<'jobSeekers' | 'employers'>('jobSeekers');
   const [activeStepIdx, setActiveStepIdx] = useState(0);
-  const isInitialMount = useRef(true);
   const sectionRef = useRef<HTMLDivElement>(null);
   const pinContainerRef = useRef<HTMLDivElement>(null);
   const headlineWrapperRef = useRef<HTMLDivElement>(null);
@@ -263,8 +263,11 @@ export function SimpleTransparentProcessSection() {
 
   const currentSteps = activeTab === 'jobSeekers' ? JOB_SEEKER_STEPS : EMPLOYER_STEPS;
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
+      if (typeof window === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
       const mm = gsap.matchMedia();
 
       mm.add(
@@ -281,11 +284,11 @@ export function SimpleTransparentProcessSection() {
           };
 
           const m = isMobile ? 0.45 : isTablet ? 0.75 : 1;
-          const pinDistance = isDesktop ? '+=3400' : isTablet ? '+=2600' : '+=1900';
+          const pinDistance = isDesktop ? '+=3200' : isTablet ? '+=2500' : '+=1900';
 
-          // Initial setup: Headline is visible; Cards container is completely hidden
+          // Initial setup: Headline is visible; Cards container starts invisible via autoAlpha (keeps DOM layout stable)
           if (headlineWrapperRef.current) {
-            gsap.set(headlineWrapperRef.current, { autoAlpha: 1, display: 'flex' });
+            gsap.set(headlineWrapperRef.current, { autoAlpha: 1 });
           }
 
           line1LettersRef.current.forEach((el) => {
@@ -295,28 +298,28 @@ export function SimpleTransparentProcessSection() {
             if (el) gsap.set(el, { opacity: 1, x: 0, y: 0, z: 0, rotationX: 0, rotationY: 0, rotationZ: 0, scale: 1, filter: 'blur(0px)' });
           });
 
-          // Cards container starts HIDDEN so it NEVER overlaps with the headline
           if (cardsContainerRef.current) {
-            gsap.set(cardsContainerRef.current, { autoAlpha: 0, display: 'none', pointerEvents: 'none' });
+            gsap.set(cardsContainerRef.current, { autoAlpha: 0, pointerEvents: 'none' });
           }
 
           if (toggleRef.current) {
             gsap.set(toggleRef.current, { opacity: 0, y: -20 });
           }
 
+          // Initial setup for all 5 cards: hidden below, ready to enter 1 by 1
           cardsRef.current.forEach((card) => {
             if (card) {
               gsap.set(card, {
                 opacity: 0,
-                y: isMobile ? 100 : 140,
+                y: isMobile ? 120 : 200,
                 rotateZ: 0,
-                scale: 0.88,
+                scale: 0.82,
                 transformOrigin: '50% 100%'
               });
             }
           });
 
-          // Master Timeline pinned with GSAP ScrollTrigger scrub (Desktop, Tablet & Mobile)
+          // Master Timeline pinned with GSAP ScrollTrigger scrub
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -324,35 +327,34 @@ export function SimpleTransparentProcessSection() {
               end: pinDistance,
               pin: pinContainerRef.current,
               pinSpacing: true,
-              scrub: 1.1,
+              scrub: 1.0,
               anticipatePin: 1,
               invalidateOnRefresh: true,
               onUpdate: (self) => {
                 const p = self.progress;
-                // Strict visibility toggle ensuring ZERO overlap:
-                // Headline is strictly visible ONLY during scatter phase (p <= 0.33)
-                // Cards are strictly visible ONLY during cards phase (p >= 0.33)
+                // Strict visibility control
                 if (headlineWrapperRef.current) {
-                  headlineWrapperRef.current.style.display = p > 0.33 ? 'none' : 'flex';
+                  headlineWrapperRef.current.style.visibility = p > 0.25 ? 'hidden' : 'visible';
                 }
                 if (cardsContainerRef.current) {
-                  cardsContainerRef.current.style.display = p < 0.33 ? 'none' : 'flex';
+                  cardsContainerRef.current.style.visibility = p < 0.22 ? 'hidden' : 'visible';
+                  cardsContainerRef.current.style.pointerEvents = p >= 0.22 ? 'auto' : 'none';
                 }
 
                 // Update active step for mobile progress dots
-                if (p >= 0.84) setActiveStepIdx(4);
-                else if (p >= 0.72) setActiveStepIdx(3);
-                else if (p >= 0.60) setActiveStepIdx(2);
-                else if (p >= 0.48) setActiveStepIdx(1);
+                if (p >= 0.82) setActiveStepIdx(4);
+                else if (p >= 0.68) setActiveStepIdx(3);
+                else if (p >= 0.54) setActiveStepIdx(2);
+                else if (p >= 0.40) setActiveStepIdx(1);
                 else setActiveStepIdx(0);
               }
             }
           });
 
-          // Phase 1: Hold headline briefly at top of scroll (0.00 -> 0.10)
-          tl.to({}, { duration: 0.10 });
+          // Phase 1: Hold headline briefly at top (0.00 -> 0.06)
+          tl.to({}, { duration: 0.06 });
 
-          // Phase 2: Letters Scatter into 3D space with blur and rotation (0.10 -> 0.32)
+          // Phase 2: Letters Scatter into 3D space (0.06 -> 0.22)
           line1Scatter.forEach((item) => {
             const el = line1LettersRef.current[item.i];
             if (el) {
@@ -368,10 +370,10 @@ export function SimpleTransparentProcessSection() {
                   scale: item.scale,
                   opacity: 0,
                   filter: 'blur(14px)',
-                  duration: 0.18,
+                  duration: 0.16,
                   ease: 'power2.in'
                 },
-                0.10 + item.delay
+                0.06 + item.delay
               );
             }
           });
@@ -391,38 +393,38 @@ export function SimpleTransparentProcessSection() {
                   scale: item.scale,
                   opacity: 0,
                   filter: 'blur(14px)',
-                  duration: 0.18,
+                  duration: 0.16,
                   ease: 'power2.in'
                 },
-                0.12 + item.delay
+                0.07 + item.delay
               );
             }
           });
 
-          // Fade out headline container cleanly (0.30 -> 0.33)
+          // Fade out headline cleanly (0.21 -> 0.24)
           if (headlineWrapperRef.current) {
-            tl.to(headlineWrapperRef.current, { autoAlpha: 0, duration: 0.03, ease: 'power1.out' }, 0.30);
+            tl.to(headlineWrapperRef.current, { autoAlpha: 0, duration: 0.03, ease: 'power1.out' }, 0.21);
           }
 
-          // Phase 3: Reveal Cards container and Toggle button (0.33 -> 0.36)
+          // Phase 3: Reveal Cards container and Toggle button (0.22 -> 0.25)
           if (cardsContainerRef.current) {
-            tl.to(cardsContainerRef.current, { autoAlpha: 1, pointerEvents: 'auto', duration: 0.04, ease: 'power2.out' }, 0.33);
+            tl.to(cardsContainerRef.current, { autoAlpha: 1, pointerEvents: 'auto', duration: 0.03, ease: 'power2.out' }, 0.22);
           }
 
           if (toggleRef.current) {
-            tl.to(toggleRef.current, { opacity: 1, y: 0, duration: 0.05, ease: 'power2.out' }, 0.34);
+            tl.to(toggleRef.current, { opacity: 1, y: 0, duration: 0.04, ease: 'power2.out' }, 0.23);
           }
 
-          // Phase 4: CARDS COME IN 1 BY 1 AS YOU SCROLL! (Across all devices)
+          // Phase 4: CARDS COME IN 1 BY 1 AS YOU SCROLL!
           cardsRef.current.forEach((card, idx) => {
             if (card) {
               tl.fromTo(
                 card,
                 {
                   opacity: 0,
-                  y: isMobile ? 80 : 160,
-                  rotateZ: isMobile ? 0 : 0,
-                  scale: 0.85
+                  y: isMobile ? 120 : 200,
+                  rotateZ: isMobile ? 0 : (idx < 2 ? -12 : idx > 2 ? 12 : 0),
+                  scale: 0.82
                 },
                 {
                   opacity: 1,
@@ -430,7 +432,8 @@ export function SimpleTransparentProcessSection() {
                   rotateZ: isMobile ? 0 : CARD_ANGLES[idx],
                   scale: 1,
                   duration: CARD_DURATION,
-                  ease: 'power2.out'
+                  ease: 'power2.out',
+                  immediateRender: false
                 },
                 CARD_SLOTS[idx]
               );
@@ -458,39 +461,13 @@ export function SimpleTransparentProcessSection() {
             });
           }
 
-          // Hold phase (0.94 -> 1.00) so the entire deck is settled and interactive
-          tl.to({}, { duration: 0.06 }, 0.94);
+          // Hold phase (0.92 -> 1.00) so the entire deck is settled and interactive
+          tl.to({}, { duration: 0.08 }, 0.92);
         }
       );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [line1Scatter, line2Scatter]);
-
-  // Smooth cross-fade transition ONLY when toggling between Job Seekers and Employers AFTER mount
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-    if (cardsRef.current && cardsRef.current.length > 0) {
-      cardsRef.current.forEach((card, idx) => {
-        if (card) {
-          gsap.fromTo(
-            card,
-            { opacity: 0.35, y: 15 },
-            {
-              opacity: 1,
-              y: CARD_TRANSLATES[idx],
-              duration: 0.35,
-              delay: idx * 0.05,
-              ease: 'power2.out'
-            }
-          );
-        }
-      });
-    }
-  }, [activeTab]);
+    },
+    { scope: sectionRef, dependencies: [activeTab] }
+  );
 
   return (
     <section
@@ -574,21 +551,19 @@ export function SimpleTransparentProcessSection() {
           >
             <button
               onClick={() => setActiveTab('jobSeekers')}
-              className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
-                activeTab === 'jobSeekers'
+              className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${activeTab === 'jobSeekers'
                   ? 'bg-[#1e3ef0] text-white shadow-md'
                   : 'text-white/70 hover:text-white'
-              }`}
+                }`}
             >
               For Job Seekers
             </button>
             <button
               onClick={() => setActiveTab('employers')}
-              className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
-                activeTab === 'employers'
+              className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${activeTab === 'employers'
                   ? 'bg-[#1e3ef0] text-white shadow-md'
                   : 'text-white/70 hover:text-white'
-              }`}
+                }`}
             >
               For Employers
             </button>
@@ -599,9 +574,8 @@ export function SimpleTransparentProcessSection() {
             {currentSteps.map((_, i) => (
               <span
                 key={i}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  activeStepIdx === i ? 'w-6 bg-[#00E5F0]' : 'w-1.5 bg-white/30'
-                }`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${activeStepIdx === i ? 'w-6 bg-[#00E5F0]' : 'w-1.5 bg-white/30'
+                  }`}
               />
             ))}
           </div>
@@ -618,13 +592,15 @@ export function SimpleTransparentProcessSection() {
                 ref={(el) => {
                   cardsRef.current[idx] = el;
                 }}
-                className="group snap-center flex-shrink-0 w-[78vw] max-w-[260px] sm:w-[225px] md:w-[235px] lg:w-[185px] xl:w-[215px] 2xl:w-[235px] rounded-[1.75rem] sm:rounded-[2rem] lg:rounded-[1.75rem] xl:rounded-[2.25rem] p-4.5 sm:p-5 lg:p-4 xl:p-5 flex flex-col justify-between shadow-2xl transition-all duration-300 hover:scale-[1.06] hover:!rotate-0 hover:!-translate-y-4 hover:z-50 relative cursor-pointer overflow-hidden"
+                className="group snap-center flex-shrink-0 w-[78vw] max-w-[260px] sm:w-[225px] md:w-[235px] lg:w-[185px] xl:w-[215px] 2xl:w-[235px] rounded-[1.75rem] sm:rounded-[2rem] lg:rounded-[1.75rem] xl:rounded-[2.25rem] p-4.5 sm:p-5 lg:p-4 xl:p-5 flex flex-col justify-between shadow-2xl hover:scale-[1.06] hover:!rotate-0 hover:!-translate-y-4 hover:z-50 relative cursor-pointer overflow-hidden transition-[box-shadow] duration-200"
                 style={{
                   backgroundColor: card.bg,
                   minHeight: '370px',
                   maxHeight: '425px',
                   transformOrigin: '50% 100%',
-                  transformStyle: 'preserve-3d'
+                  transformStyle: 'preserve-3d',
+                  opacity: 0,
+                  transform: 'translateY(200px) scale(0.82)'
                 }}
               >
                 {/* Snow Cap Decoration on Top Edge (Authentic Netbounce Style) */}

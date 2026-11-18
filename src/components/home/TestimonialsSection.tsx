@@ -99,7 +99,7 @@ export function TestimonialsSection() {
   return (
     <section 
       id="testimonials"
-      className="min-h-screen flex flex-col justify-center py-10 sm:py-14 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="min-h-screen flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
       {/* Dynamic Background: /testimonialbg.png */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -115,17 +115,17 @@ export function TestimonialsSection() {
       </div>
 
       {/* Ambient background glows */}
-      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-[550px] h-[550px] bg-[#00D5DF]/10 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#38BDF8]/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-[350px] sm:w-[550px] h-[350px] sm:h-[550px] bg-[#00D5DF]/10 rounded-full blur-[140px] sm:blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-[#38BDF8]/10 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         
         {/* Header - Matching About Us Structure */}
-        <div className="max-w-3xl mb-8 sm:mb-10">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-white leading-none mb-2.5 sm:mb-3">
+        <div className="max-w-3xl mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none mb-2 sm:mb-3">
             Testimonials
           </h2>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-white leading-snug mb-2 sm:mb-2.5">
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-white leading-snug mb-2 sm:mb-2.5">
             Voices of{' '}
             <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
               Verified Success.
@@ -136,7 +136,7 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Featured Testimonial Card - Sized to fit comfortably on 1 screen */}
+        {/* Featured Testimonial Card - Fully Responsive Across Mobile, Tablet & Desktop */}
         <div className="max-w-4xl mx-auto pt-6 sm:pt-8 w-full">
           <div 
             key={active.id}
@@ -144,14 +144,14 @@ export function TestimonialsSection() {
             role="button"
             tabIndex={0}
             aria-label="Click to view next testimonial"
-            className="relative bg-[#F4F5F7] text-neutral-900 rounded-[28px] sm:rounded-[36px] pt-8 sm:pt-10 pb-6 sm:pb-8 px-6 sm:px-10 md:px-12 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer"
+            className="relative bg-[#F4F5F7] text-neutral-900 rounded-[24px] sm:rounded-[32px] md:rounded-[36px] pt-7 sm:pt-9 md:pt-10 pb-6 sm:pb-8 px-5 sm:px-8 md:px-12 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer"
             style={{
               boxShadow: '0 30px 70px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,213,223,0.12)'
             }}
           >
             {/* Scalloped Flower Avatar overlapping top-left corner */}
-            <div className="absolute -top-10 -left-3 sm:-top-14 sm:-left-5 md:-top-16 md:-left-6 z-20">
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 filter drop-shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+            <div className="absolute -top-8 -left-2 sm:-top-12 sm:-left-4 md:-top-16 md:-left-6 z-20">
+              <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.32)]">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 100 100">
                   <defs>
                     <clipPath id={`scallop-${active.id}`}>
@@ -194,34 +194,34 @@ export function TestimonialsSection() {
             </div>
 
             {/* Top-Right Ambient Quote Watermark */}
-            <Quote className="absolute top-6 right-6 sm:top-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 text-neutral-300/40 pointer-events-none" />
+            <Quote className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 text-neutral-300/40 pointer-events-none" />
 
-            {/* Author Meta Section (Offset from the enlarged overlapping scallop avatar) */}
-            <div className="pl-24 sm:pl-32 md:pl-36 mb-4 sm:mb-5 min-h-[44px] sm:min-h-[55px] flex flex-col justify-center">
+            {/* Author Meta Section (Responsive offset from the overlapping scallop avatar) */}
+            <div className="pl-20 sm:pl-28 md:pl-36 mb-4 sm:mb-5 min-h-[44px] sm:min-h-[55px] flex flex-col justify-center">
               {/* Person Name in distinguished font / accent */}
               <h3 
-                className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-tight mb-1"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold tracking-tight mb-0.5 sm:mb-1"
                 style={{ color: active.accent }}
               >
                 {active.name}
               </h3>
 
               {/* Title / Role in clean uppercase */}
-              <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-600 uppercase">
+              <p className="text-[11px] sm:text-xs md:text-sm font-bold tracking-widest text-neutral-600 uppercase">
                 {active.role}
               </p>
             </div>
 
-            {/* Testimonial Quote Body - Ultra Clean & Minimal */}
+            {/* Testimonial Quote Body - Responsive Typography */}
             <div className="relative z-10 pt-1 pb-1">
-              <p className="text-base sm:text-xl md:text-2xl font-normal text-neutral-900 leading-relaxed italic">
+              <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-normal text-neutral-900 leading-relaxed italic">
                 &ldquo;{active.quote}&rdquo;
               </p>
             </div>
           </div>
 
           {/* Minimal, Sleek Pagination Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-5 sm:mt-6">
+          <div className="flex items-center justify-center gap-2 mt-4 sm:mt-6">
             {TESTIMONIALS.map((item, idx) => (
               <button
                 key={item.id}

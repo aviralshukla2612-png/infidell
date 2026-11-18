@@ -46,23 +46,23 @@ export function FAQSection() {
   return (
     <section 
       id="faq" 
-      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="py-16 sm:py-24 md:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
       {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#00D5DF]/10 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-[#38BDF8]/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#00D5DF]/10 rounded-full blur-[140px] sm:blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-[#38BDF8]/10 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header - Prominent Headline */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-light tracking-tight text-white leading-tight mb-4">
+        <div className="max-w-3xl mb-8 sm:mb-12 md:mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight mb-3 sm:mb-4">
             Frequently Asked{' '}
             <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
               Questions.
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm md:text-base text-neutral-300 leading-relaxed font-normal">
             Clear, transparent guidance on our ethical placement standards, employer shortlisting velocity, and personalized career representation.
           </p>
         </div>

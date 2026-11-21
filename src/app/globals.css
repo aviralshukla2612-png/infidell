@@ -153,17 +153,17 @@
    LIGHT / DARK DUAL-THEME SWITCHING UTILITIES
 ======================================================== */
 .light-only {
-  display: none !important;
+  display: block;
 }
 .dark-only {
-  display: block !important;
+  display: none;
 }
 
-html.light .light-only {
-  display: block !important;
-}
-html.light .dark-only {
+html.dark .light-only {
   display: none !important;
+}
+html.dark .dark-only {
+  display: block !important;
 }
 
 /* Default Dark Mode Card Styles */

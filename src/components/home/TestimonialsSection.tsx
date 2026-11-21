@@ -109,7 +109,7 @@ export function TestimonialsSection() {
             src="/testimonialbg.png"
             alt="Testimonials Atmosphere Background"
             fill
-            priority
+            sizes="100vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
@@ -121,7 +121,7 @@ export function TestimonialsSection() {
             src="/testimonialbg-light.png"
             alt="Testimonials Atmosphere Background - Light Theme"
             fill
-            priority
+            sizes="100vw"
             className="object-cover object-center opacity-100"
           />
           {/* Subtle edge blend with neighbor sections */}
@@ -156,9 +156,6 @@ export function TestimonialsSection() {
           <div
             key={active.id}
             onClick={handleNext}
-            role="button"
-            tabIndex={0}
-            aria-label="Click to view next testimonial"
             className="testimonial-card relative bg-[#FFFFFF] text-neutral-900 rounded-[20px] sm:rounded-[28px] md:rounded-[32px] pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 px-5 sm:px-7 md:px-10 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer border border-[#203536]/30"
             style={{
               boxShadow: '0 30px 70px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,213,223,0.12)'

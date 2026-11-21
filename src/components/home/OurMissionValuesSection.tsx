@@ -55,13 +55,13 @@ export function OurMissionValuesSection() {
             {/* Core Values Key Points */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
               <div className="p-4 rounded-xl bg-[#0C1517] border border-[#203536]">
-                <h4 className="text-sm font-bold text-[#F5F8F8] mb-1">Quality & Integrity</h4>
+                <h3 className="text-sm font-bold text-[#F5F8F8] mb-1">Quality & Integrity</h3>
                 <p className="text-xs text-[#A5B2B3] leading-relaxed">
                   We partner exclusively with verified employers and deliver genuine career advancement opportunities.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#0C1517] border border-[#203536]">
-                <h4 className="text-sm font-bold text-[#F5F8F8] mb-1">Enduring Trust</h4>
+                <h3 className="text-sm font-bold text-[#F5F8F8] mb-1">Enduring Trust</h3>
                 <p className="text-xs text-[#A5B2B3] leading-relaxed">
                   Long-term career alignment prioritizing candidate welfare and employer stability.
                 </p>

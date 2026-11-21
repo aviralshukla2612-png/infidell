@@ -343,9 +343,6 @@ export function CareersSection() {
                       e.stopPropagation();
                       setActiveJob(role);
                     }}
-                    role="link"
-                    tabIndex={0}
-                    aria-label={role.title.replace('\n', ' ')}
                   >
                     {/* Background Workplace Image */}
                     <Image

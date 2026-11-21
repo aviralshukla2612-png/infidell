@@ -50,14 +50,6 @@ export function WhatsAppButton({
         <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[150px] transition-all duration-300 ease-in-out text-xs sm:text-sm font-bold tracking-wide pl-0 group-hover:pl-2.5">
           Chat with us
         </span>
-
-        {/* Online Indicator Badge */}
-        <span 
-          className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-300 border-2 border-[#000000] rounded-full shadow-sm"
-          title="Online"
-        >
-          <span className="sr-only">Support Online</span>
-        </span>
       </a>
 
       {/* Persistent subtle tooltip on first load or hover */}

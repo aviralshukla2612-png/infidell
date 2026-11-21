@@ -485,6 +485,7 @@ export function AboutSection() {
 
                       <a
                         href={card.href}
+                        aria-label={`Explore ${card.title} Practice`}
                         className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-md flex items-center justify-center text-white/90 hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-md shrink-0"
                       >
                         <ArrowUpRight className="w-4 h-4" />

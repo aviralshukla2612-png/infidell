@@ -345,7 +345,7 @@ export function CareersSection() {
                     }}
                     role="link"
                     tabIndex={0}
-                    aria-label={`View ${role.title.replace('\n', ' ')} details`}
+                    aria-label={role.title.replace('\n', ' ')}
                   >
                     {/* Background Workplace Image */}
                     <Image
@@ -353,7 +353,6 @@ export function CareersSection() {
                       alt={role.title.replace('\n', ' ')}
                       fill
                       sizes="(max-width: 768px) 100vw, 500px"
-                      priority={idx < 3}
                       className="object-cover"
                     />
 
@@ -391,9 +390,9 @@ export function CareersSection() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-base font-bold text-[#102B50] dark:text-white leading-tight">
+              <h3 className="text-base font-bold text-[#102B50] dark:text-white leading-tight">
                 Seeking a Confidential Executive Search?
-              </h4>
+              </h3>
               <p className="text-xs sm:text-sm text-[#475569] dark:text-neutral-300 mt-0.5">
                 Over 60% of our Director, VP, and C-suite mandates operate under strict non-disclosure agreements.
               </p>

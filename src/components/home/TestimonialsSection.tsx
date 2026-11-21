@@ -235,19 +235,24 @@ export function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Minimal, Sleek Pagination Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-3 sm:mt-4">
+          {/* Minimal, Sleek Pagination Indicators with Compliant Touch Targets */}
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mt-3 sm:mt-4">
             {TESTIMONIALS.map((item, idx) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`h-1.5 transition-all duration-300 rounded-full ${idx === activeIdx
-                    ? 'w-8 bg-[#00D5DF] shadow-[0_0_10px_rgba(0,213,223,0.5)]'
-                    : 'w-2.5 bg-neutral-700/80 hover:bg-neutral-500'
-                  }`}
+                className="min-w-[32px] min-h-[32px] flex items-center justify-center p-1.5 group cursor-pointer"
                 aria-label={`Go to testimonial ${idx + 1}`}
-              />
+              >
+                <span
+                  className={`h-1.5 transition-all duration-300 rounded-full block ${
+                    idx === activeIdx
+                      ? 'w-8 bg-[#00D5DF] shadow-[0_0_10px_rgba(0,213,223,0.5)]'
+                      : 'w-2.5 bg-neutral-700/80 group-hover:bg-neutral-500'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

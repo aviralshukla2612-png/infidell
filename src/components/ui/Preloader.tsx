@@ -20,13 +20,16 @@ export function Preloader() {
     // Prevent background scroll while preloader is active
     document.body.style.overflow = 'hidden';
 
-    // Fluid letter wave showcase for ~600ms then swift slide up to unmask hero LCP
+    // Fast, elegant unmasking: 220ms wave showcase on mobile / 350ms on desktop
+    const isMobile = window.innerWidth < 768;
+    const holdTime = isMobile ? 220 : 350;
+
     const timer = setTimeout(() => {
       if (containerRef.current) {
         gsap.to(containerRef.current, {
           yPercent: -100,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.35,
           ease: 'power3.inOut',
           onComplete: () => {
             setHidden(true);
@@ -37,7 +40,7 @@ export function Preloader() {
         setHidden(true);
         document.body.style.overflow = '';
       }
-    }, 600);
+    }, holdTime);
 
     return () => {
       clearTimeout(timer);
@@ -71,7 +74,6 @@ export function Preloader() {
               alt="Infidell Infinity Emblem"
               width={80}
               height={80}
-              priority
               className="w-full h-full object-contain filter drop-shadow-[0_4px_16px_rgba(8,127,203,0.35)] dark:drop-shadow-[0_0_20px_rgba(0,213,223,0.6)]"
             />
           </div>

@@ -28,14 +28,8 @@ const TOTAL_LINE2 = LINE2_PREFIX.length + LINE2_HIGHLIGHT.length + LINE2_SUFFIX.
 const TOTAL_CHARS = TOTAL_LINE1 + TOTAL_LINE2; // 55
 const LINE2_CUTOFF = TOTAL_CHARS - LINE2_SUFFIX.length; // 48
 
-export function HeroSection() {
-  const t = useTranslations('Hero');
-
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const bgVisualRef = useRef<HTMLDivElement>(null);
-
-  // Typewriter effect state (initialized to full length for SEO & zero CLS)
+// Isolated Typewriter Subcomponent to prevent re-rendering the entire 400-line HeroSection 55 times during page load
+function HeroHeadlineTypewriter() {
   const [mounted, setMounted] = useState(false);
   const [charCount, setCharCount] = useState(TOTAL_CHARS);
   const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('pausing');
@@ -53,25 +47,21 @@ export function HeroSection() {
 
     if (phase === 'typing') {
       if (charCount < TOTAL_CHARS) {
-        // Natural typewriter cadence: slight hesitation between line 1 and line 2
         const delay = charCount === TOTAL_LINE1 ? 160 : 36;
         timer = setTimeout(() => {
           setCharCount((prev) => prev + 1);
         }, delay);
       } else {
-        // Finished typing initial headline -> hold for 4 seconds
         timer = setTimeout(() => {
           setPhase('deleting');
         }, 4000);
       }
     } else if (phase === 'deleting') {
-      // Smoothly backspace the punchline " Count."
       if (charCount > LINE2_CUTOFF) {
         timer = setTimeout(() => {
           setCharCount((prev) => prev - 1);
         }, 48);
       } else {
-        // Paused at "Let's Make Yours "
         timer = setTimeout(() => {
           setPhase('retyping');
         }, 400);
@@ -82,7 +72,6 @@ export function HeroSection() {
           setCharCount((prev) => prev + 1);
         }, 55);
       } else {
-        // Fully typed again -> hold 5.5s before next subtle cycle
         timer = setTimeout(() => {
           setPhase('deleting');
         }, 5500);
@@ -97,7 +86,7 @@ export function HeroSection() {
       return (
         <>
           <span>{LINE1_PREFIX}</span>
-          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+          <span className="text-[#087FCB] dark:text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
             {LINE1_HIGHLIGHT}
           </span>
           <span>{LINE1_SUFFIX}</span>
@@ -118,7 +107,7 @@ export function HeroSection() {
       <>
         <span>{showPrefix}</span>
         {showHighlight && (
-          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+          <span className="text-[#087FCB] dark:text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
             {showHighlight}
           </span>
         )}
@@ -162,6 +151,25 @@ export function HeroSection() {
     );
   };
 
+  return (
+    <>
+      <span className="block whitespace-nowrap min-h-[1.12em]">
+        {renderLine1()}
+      </span>
+      <span className="block whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em]">
+        {renderLine2()}
+      </span>
+    </>
+  );
+}
+
+export function HeroSection() {
+  const t = useTranslations('Hero');
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const bgVisualRef = useRef<HTMLDivElement>(null);
+
   useGSAP(
     () => {
       if (typeof window === 'undefined') return;
@@ -193,13 +201,13 @@ export function HeroSection() {
         '-=0.5'
       );
 
-      // 4. Background infinity visual entrance
+      // 4. Background infinity visual entrance (Immediate opacity for instant LCP scoring without artificial delays)
       if (bgVisualRef.current) {
         tl.fromTo(
           bgVisualRef.current,
-          { opacity: 0, scale: 1.12, filter: 'blur(10px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' },
-          0.1
+          { opacity: 0.85, scale: 1.04 },
+          { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' },
+          0
         );
       }
 
@@ -248,6 +256,7 @@ export function HeroSection() {
             alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
             fill
             priority
+            fetchPriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
             className="object-contain sm:object-contain object-right opacity-95 scale-85 sm:scale-75 lg:scale-70 origin-right transition-transform"
           />
@@ -265,14 +274,9 @@ export function HeroSection() {
             {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
             <h1 
               ref={headlineRef}
-              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-white leading-[1.12]"
+              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.12]"
             >
-              <span className="block whitespace-nowrap min-h-[1.12em]">
-                {renderLine1()}
-              </span>
-              <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white min-h-[1.12em]">
-                {renderLine2()}
-              </span>
+              <HeroHeadlineTypewriter />
             </h1>
 
             {/* Description */}
@@ -322,6 +326,7 @@ export function HeroSection() {
             {/* Service 1: Career Placement & Advisory */}
             <a
               href="#candidate"
+              aria-label="Career Placement & Advisory - 100% Free Candidate Track"
               className="group p-3 sm:p-3.5 lg:p-4 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#00D5DF]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
               style={{
                 borderColor: 'rgba(0, 213, 223, 0.4)',
@@ -330,21 +335,21 @@ export function HeroSection() {
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#087FCB] dark:text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
                     <Compass className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#00D5DF] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#087FCB] dark:text-[#00D5DF] uppercase tracking-wider block">
                       01 · Candidate Track
                     </span>
-                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#00D5DF] transition-colors leading-tight">
+                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#087FCB] dark:group-hover:text-[#00D5DF] transition-colors leading-tight">
                       Career Placement &amp; Advisory
-                    </h3>
+                    </h2>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00D5DF] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
                 100% free candidate career advocacy: ATS resume architecture, compensation benchmarking, and direct introductions to engineering leadership.
               </p>
             </a>
@@ -352,6 +357,7 @@ export function HeroSection() {
             {/* Service 2: Corporate Recruitment & Staffing */}
             <a
               href="#employer"
+              aria-label="Corporate Recruitment & Staffing - 48h Enterprise Track"
               className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#38BDF8]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
               style={{
                 borderColor: 'rgba(56, 189, 248, 0.4)',
@@ -360,21 +366,21 @@ export function HeroSection() {
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#0284C7] dark:text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
                     <Building2 className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#0284C7] dark:text-[#38BDF8] uppercase tracking-wider block">
                       02 · Enterprise Track
                     </span>
-                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
+                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#0284C7] dark:group-hover:text-[#38BDF8] transition-colors leading-tight">
                       Corporate Recruitment &amp; Staffing
-                    </h3>
+                    </h2>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#38BDF8] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
                 Multi-tier vetted technical shortlists delivered in 48 to 72 hours with verified notice periods and replacement guarantees.
               </p>
             </a>
@@ -382,6 +388,7 @@ export function HeroSection() {
             {/* Service 3: Executive Search & Leadership */}
             <a
               href="mailto:contact@infidelltech.com?subject=Executive%20Search%20Inquiry"
+              aria-label="Executive Search & Leadership - Confidential Advisory"
               className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#A78BFA]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
               style={{
                 borderColor: 'rgba(167, 139, 250, 0.4)',
@@ -390,21 +397,21 @@ export function HeroSection() {
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#A78BFA]/10 border border-[#A78BFA]/30 flex items-center justify-center text-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#A78BFA]/10 border border-[#A78BFA]/30 flex items-center justify-center text-[#7C3AED] dark:text-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.2)] group-hover:scale-105 transition-transform shrink-0">
                     <ShieldCheck className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#A78BFA] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#7C3AED] dark:text-[#A78BFA] uppercase tracking-wider block">
                       03 · Executive Track
                     </span>
-                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#A78BFA] transition-colors leading-tight">
+                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors leading-tight">
                       Executive Search &amp; Leadership
-                    </h3>
+                    </h2>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#A78BFA] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
                 Confidential headhunting for Director, VP of Engineering, and C-suite leadership with strict NDA background due diligence.
               </p>
             </a>

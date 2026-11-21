@@ -15,6 +15,7 @@ const FOOTER_LETTERS = ['I', 'N', 'F', 'I', 'D', 'E', 'L', 'L'];
 
 const FOOTER_NAV_LINKS = [
   { label: 'Home', href: '#home' },
+  { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
   { label: 'How It Works', href: '#process' },
   { label: 'What We Are Doing', href: '#approach' },

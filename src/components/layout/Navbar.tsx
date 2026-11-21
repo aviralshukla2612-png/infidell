@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 
 const SECTIONS = [
   { id: 'home', label: 'Home' },
+  { id: 'services', label: 'Services' },
   { id: 'about', label: 'About' },
   { id: 'process', label: 'How It Works' },
   { id: 'approach', label: 'What We Are Doing' },

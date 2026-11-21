@@ -1,45 +1,198 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
-import { verifiedJobs } from '@/data/jobs';
-import { Job } from '@/types';
+import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import confetti from 'canvas-confetti';
 import {
-  Briefcase,
   MapPin,
   Clock,
-  IndianRupee,
   ArrowRight,
-  Sparkles,
   CheckCircle2,
   X,
   Send,
-  Building2,
-  Filter,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
   ShieldCheck,
-  TrendingUp,
-  SlidersHorizontal,
-  ChevronRight
+  Building2
 } from 'lucide-react';
 
-// Department styling themes
-const TRACK_ACCENTS: { [key: string]: { accent: string; label: string; bg: string } } = {
-  Executive: { accent: '#A78BFA', label: 'Executive Track', bg: 'rgba(167, 139, 250, 0.12)' },
-  Engineering: { accent: '#00D5DF', label: 'Engineering Track', bg: 'rgba(0, 213, 223, 0.12)' },
-  Infrastructure: { accent: '#38BDF8', label: 'Cloud & Infrastructure', bg: 'rgba(56, 189, 248, 0.12)' },
-  Commercial: { accent: '#10B981', label: 'Commercial & Sales', bg: 'rgba(16, 185, 129, 0.12)' },
-  Finance: { accent: '#F59E0B', label: 'Finance & Advisory', bg: 'rgba(245, 158, 11, 0.12)' },
-  Operations: { accent: '#EC4899', label: 'Operations & Supply Chain', bg: 'rgba(236, 72, 153, 0.12)' },
-  'Human Resources': { accent: '#818CF8', label: 'Human Resources', bg: 'rgba(129, 140, 248, 0.12)' }
-};
+interface CareerRole {
+  id: string;
+  slug: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  experienceYears: string;
+  salaryRange: string;
+  img: string;
+  description: string;
+  requirements: string[];
+  skills: string[];
+}
+
+const CAREER_ROLES: CareerRole[] = [
+  {
+    id: 'role-1',
+    slug: 'full-stack-developer',
+    title: 'Full Stack\nDeveloper',
+    department: 'Engineering',
+    location: 'Ahmedabad / Hybrid',
+    type: 'Full-Time',
+    experienceYears: '5–8 Years',
+    salaryRange: '₹18,00,000 – ₹24,00,000 P.A.',
+    img: '/images/practices/practice-architecture.jpg',
+    description: 'Build scalable enterprise web architectures and high-concurrency microservices using Next.js, Node.js, and cloud ecosystems.',
+    requirements: [
+      'Mastery of React, Next.js, Node.js, and strict TypeScript patterns',
+      'Production experience with PostgreSQL, Redis caching, and Docker',
+      'Demonstrated architectural decision-making and junior engineer mentorship'
+    ],
+    skills: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Docker', 'TypeScript']
+  },
+  {
+    id: 'role-2',
+    slug: 'director-engineering',
+    title: 'Director of\nEngineering',
+    department: 'Executive',
+    location: 'Bengaluru / Hybrid',
+    type: 'Full-Time',
+    experienceYears: '10–15 Years',
+    salaryRange: '₹38,00,000 – ₹52,00,000 P.A. + Equity',
+    img: '/images/practices/practice-enterprise.jpg',
+    description: 'Spearhead cross-functional engineering organizations across distributed microservices, platform reliability, and executive strategic roadmaps.',
+    requirements: [
+      'Proven engineering leadership managing 40+ software engineers across multiple squads',
+      'Architectural mastery in high-scale distributed systems and multi-region cloud platforms',
+      'Direct executive reporting to CTO / CEO and board-level technology alignment'
+    ],
+    skills: ['Engineering Leadership', 'Distributed Systems', 'Cloud Strategy', 'Executive Management']
+  },
+  {
+    id: 'role-3',
+    slug: 'cloud-devops-architect',
+    title: 'Cloud DevOps\nArchitect',
+    department: 'Infrastructure',
+    location: 'Pune / Remote',
+    type: 'Full-Time',
+    experienceYears: '4–7 Years',
+    salaryRange: '₹16,00,000 – ₹24,00,000 P.A.',
+    img: '/images/practices/practice-global.jpg',
+    description: 'Design robust GitOps CI/CD pipelines, container orchestration, and multi-cloud infrastructure monitoring across AWS and GCP environments.',
+    requirements: [
+      'Extensive hands-on expertise with AWS, Terraform, and production Kubernetes',
+      'Proven experience building GitOps pipelines with GitHub Actions / GitLab CI',
+      'Strong Linux system administration and statutory network security grounding'
+    ],
+    skills: ['AWS', 'Kubernetes', 'Terraform', 'CI/CD', 'GitOps', 'Linux']
+  },
+  {
+    id: 'role-4',
+    slug: 'ai-llm-solutions-architect',
+    title: 'AI & LLM\nArchitect',
+    department: 'Engineering',
+    location: 'Hyderabad / Remote',
+    type: 'Full-Time',
+    experienceYears: '7–12 Years',
+    salaryRange: '₹30,00,000 – ₹45,00,000 P.A.',
+    img: '/images/practices/practice-skills.jpg',
+    description: 'Design and deploy enterprise generative AI pipelines, vector retrieval architectures (RAG), and fine-tuned LLM microservices.',
+    requirements: [
+      'Deep expertise in Python, PyTorch, LangChain, and vector databases (Pinecone/Milvus)',
+      'Production deployment experience with LLM agents, guardrails, and model quantization',
+      'Demonstrated experience building enterprise AI applications with verified scalability'
+    ],
+    skills: ['Generative AI', 'LLMs', 'Vector Databases', 'Python', 'PyTorch', 'RAG']
+  },
+  {
+    id: 'role-5',
+    slug: 'chartered-financial-analyst',
+    title: 'Chartered\nFinancial Analyst',
+    department: 'Finance',
+    location: 'Mumbai / On-site',
+    type: 'Full-Time',
+    experienceYears: '3–6 Years',
+    salaryRange: '₹12,00,000 – ₹18,00,000 P.A.',
+    img: '/images/practices/practice-finance.jpg',
+    description: 'Perform rigorous financial modeling, statutory audit compliance, valuation advisory, and quarterly budgeting for institutional clients.',
+    requirements: [
+      'Qualified CA or Level 2/3 CFA charterholder',
+      'Expertise in advanced financial modeling, discounted cash flow, and valuation metrics',
+      'Thorough knowledge of Indian Accounting Standards (Ind AS) and regulatory compliance'
+    ],
+    skills: ['Financial Modeling', 'Statutory Audit', 'Ind AS', 'Taxation', 'ERP SAP']
+  },
+  {
+    id: 'role-6',
+    slug: 'enterprise-b2b-sales-manager',
+    title: 'Enterprise B2B\nSales Manager',
+    department: 'Commercial',
+    location: 'Bengaluru / Hybrid',
+    type: 'Full-Time',
+    experienceYears: '5–9 Years',
+    salaryRange: '₹18,00,000 – ₹26,00,000 P.A. + Incentives',
+    img: '/images/practices/practice-advisory.jpg',
+    description: 'Drive high-ticket enterprise SaaS acquisition, negotiate master service agreements, and cultivate strategic CXO partnerships.',
+    requirements: [
+      'Proven track record selling enterprise software or IT consulting solutions',
+      'Strong CXO relationship management and consultative enterprise sales methodology',
+      'Demonstrated quota achievement of ₹2Cr+ annual recurring revenue'
+    ],
+    skills: ['B2B Sales', 'Enterprise Accounts', 'SaaS', 'Contract Negotiation']
+  },
+  {
+    id: 'role-7',
+    slug: 'robotics-automation-lead',
+    title: 'Robotics &\nAutomation Lead',
+    department: 'Engineering',
+    location: 'Vadodara / Plant On-site',
+    type: 'Full-Time',
+    experienceYears: '3–6 Years',
+    salaryRange: '₹10,00,000 – ₹15,00,000 P.A.',
+    img: '/images/insights/insight-tech-roles.jpg',
+    description: 'Design and program PLC/SCADA systems, robotic arm integrations, and automated assembly line monitoring for precision manufacturing.',
+    requirements: [
+      'B.Tech / B.E. in Mechatronics, Electrical, or Instrumentation Engineering',
+      'Proven experience with Siemens S7-1200/1500 and Allen-Bradley PLCs',
+      'Commissioning experience on manufacturing shop floors and plant automation'
+    ],
+    skills: ['PLC Programming', 'SCADA', 'Siemens TIA Portal', 'Industrial Robotics']
+  },
+  {
+    id: 'role-8',
+    slug: 'talent-acquisition-specialist',
+    title: 'Talent Acquisition\nSpecialist',
+    department: 'Human Resources',
+    location: 'Ahmedabad / On-site',
+    type: 'Full-Time',
+    experienceYears: '2–5 Years',
+    salaryRange: '₹7,00,000 – ₹11,00,000 P.A.',
+    img: '/images/solutions/talent-acquisition.avif',
+    description: 'Source niche engineering talent, coordinate hiring loops, and manage end-to-end recruitment pipelines for partner enterprise clients.',
+    requirements: [
+      'Minimum 2 years dedicated IT and executive recruitment experience',
+      'Proficiency in LinkedIn Recruiter, GitHub talent sourcing, and modern ATS platforms',
+      'Strong verbal communication and candidate career advisory engagement'
+    ],
+    skills: ['Tech Recruitment', 'Sourcing', 'Candidate Screening', 'ATS Management']
+  }
+];
 
 export function CareersSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [activeJob, setActiveJob] = useState<Job | null>(null);
+  const pinTrackRef = useRef<HTMLDivElement>(null);
+  const pinViewportRef = useRef<HTMLDivElement>(null);
+  const cardStageRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+  const currentIndexRef = useRef<number>(0);
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
+
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeJob, setActiveJob] = useState<CareerRole | null>(null);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -48,73 +201,109 @@ export function CareersSection() {
     fullName: '',
     email: '',
     phone: '',
-    linkedIn: '',
     experience: '',
     noticePeriod: '30 Days',
+    linkedIn: '',
     notes: ''
   });
 
-  const categories = [
-    { id: 'all', label: 'All Disciplines', count: verifiedJobs.length },
-    { id: 'Engineering', label: 'Engineering & Tech', count: verifiedJobs.filter((j) => j.department === 'Engineering').length },
-    { id: 'Infrastructure', label: 'Cloud & DevOps', count: verifiedJobs.filter((j) => j.department === 'Infrastructure').length },
-    { id: 'Executive', label: 'Executive Search', count: verifiedJobs.filter((j) => j.department === 'Executive').length },
-    { id: 'Commercial', label: 'Commercial & Sales', count: verifiedJobs.filter((j) => j.department === 'Commercial' || j.department === 'Finance').length }
-  ];
-
-  const filteredJobs = useMemo(() => {
-    if (selectedCategory === 'all') return verifiedJobs;
-    if (selectedCategory === 'Commercial') {
-      return verifiedJobs.filter((j) => j.department === 'Commercial' || j.department === 'Finance');
-    }
-    return verifiedJobs.filter((j) => j.department === selectedCategory);
-  }, [selectedCategory]);
-
-  // GSAP Scroll Animation
+  // GSAP Pinned Horizontal Carousel Animation (Exact Zarvion Technologies Architecture)
   useGSAP(
     () => {
       if (typeof window === 'undefined') return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // Header entrance
-      gsap.fromTo(
-        '.careers-header-anim',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 82%',
-            toggleActions: 'play none none none'
+      const track = pinTrackRef.current;
+      const viewport = pinViewportRef.current;
+      const stage = cardStageRef.current;
+      const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
+
+      if (!track || !viewport || !stage || cards.length === 0) return;
+
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) {
+        // Mobile fallback: clean vertical presentation without pinning
+        track.style.height = 'auto';
+        stage.style.transform = 'none';
+        cards.forEach((c) => {
+          c.classList.add('active');
+          c.style.opacity = '1';
+          c.style.transform = 'none';
+        });
+        return;
+      }
+
+      // Calculate total horizontal scroll distance
+      const cardWidth = (cards[0].offsetWidth || 460) + 32; // card width + 32px gap
+      const totalCards = CAREER_ROLES.length;
+      const totalDistance = cardWidth * (totalCards - 1);
+
+      // Set initial active state on card 0
+      cards.forEach((card, idx) => {
+        card.classList.toggle('active', idx === 0);
+      });
+
+      // Pinned GSAP Timeline with Scrub & Snap
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: track,
+          start: 'top top',
+          end: `+=${totalDistance}`,
+          scrub: 0.8,
+          pin: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          fastScrollEnd: true,
+          snap: {
+            snapTo: 1 / (totalCards - 1),
+            duration: { min: 0.25, max: 0.6 },
+            ease: 'power1.inOut'
+          },
+          onUpdate: (self) => {
+            const rawProgress = self.progress * (totalCards - 1);
+            const activeIdx = Math.min(Math.max(Math.round(rawProgress), 0), totalCards - 1);
+
+            if (activeIdx !== currentIndexRef.current) {
+              cards[currentIndexRef.current]?.classList.remove('active');
+              cards[activeIdx]?.classList.add('active');
+              currentIndexRef.current = activeIdx;
+              setActiveIndex(activeIdx);
+            }
           }
         }
+      });
+
+      scrollTriggerRef.current = tl.scrollTrigger || null;
+
+      // Translate stage horizontally as user scrolls
+      tl.fromTo(
+        stage,
+        { x: 0 },
+        { x: -totalDistance, ease: 'none', force3D: true },
+        0
       );
 
-      // Staggered cards entrance
-      gsap.fromTo(
-        '.career-card',
-        { opacity: 0, y: 35, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.75,
-          stagger: 0.08,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.careers-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      ScrollTrigger.refresh();
     },
-    { scope: sectionRef, dependencies: [selectedCategory] }
+    { scope: sectionRef }
   );
+
+  // Navigate to specific card index programmatically
+  const scrollToCard = (index: number) => {
+    const targetIdx = Math.max(0, Math.min(index, CAREER_ROLES.length - 1));
+    const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
+    const st = scrollTriggerRef.current;
+
+    if (st && cards.length > 0) {
+      const targetProgress = targetIdx / (CAREER_ROLES.length - 1);
+      const scrollPos = st.start + targetProgress * (st.end - st.start);
+      window.scrollTo({
+        top: scrollPos,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleApplySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -124,8 +313,8 @@ export function CareersSection() {
       setIsSubmitting(false);
       setFormSubmitted(true);
       confetti({
-        particleCount: 80,
-        spread: 60,
+        particleCount: 85,
+        spread: 65,
         origin: { y: 0.6 }
       });
     }, 900);
@@ -138,9 +327,9 @@ export function CareersSection() {
       fullName: '',
       email: '',
       phone: '',
-      linkedIn: '',
       experience: '',
       noticePeriod: '30 Days',
+      linkedIn: '',
       notes: ''
     });
   };
@@ -149,217 +338,133 @@ export function CareersSection() {
     <section
       ref={sectionRef}
       id="careers"
-      className="py-20 sm:py-28 md:py-32 bg-[#F8FAFC] dark:bg-[#050708] relative overflow-hidden border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none transition-colors duration-300"
+      className="roles-section relative overflow-hidden bg-[#F8FAFC] dark:bg-[#050708] border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none transition-colors duration-300"
     >
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[#00D5DF]/10 dark:bg-[#00D5DF]/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[#38BDF8]/10 dark:bg-[#38BDF8]/10 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-2xl">
-            {/* Live Eyebrow Badge */}
-            <div className="careers-header-anim inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-[#0C1517] border border-[#087FCB]/30 dark:border-[#00D5DF]/30 text-xs font-mono font-bold text-[#087FCB] dark:text-[#00D5DF] tracking-wider uppercase mb-3.5 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Career Opportunities · Actively Hiring</span>
-            </div>
-
-            <h2 className="careers-header-anim text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-3">
-              Curated Positions for{' '}
-              <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
-                Ambitious Minds.
-              </span>
-            </h2>
-
-            <p className="careers-header-anim text-sm sm:text-base text-[#334155] dark:text-neutral-300 leading-relaxed font-normal">
-              Direct executive representation, verified compensation benchmarks, and zero candidate fees. Explore active opportunities across India's premier tech hubs.
-            </p>
-          </div>
-
-          {/* Header Action */}
-          <div className="careers-header-anim flex items-center gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-[#087FCB] dark:text-[#00D5DF] bg-white dark:bg-[#0C1517] border border-[#087FCB]/30 dark:border-[#00D5DF]/30 hover:border-[#087FCB] dark:hover:border-[#00D5DF] shadow-sm hover:shadow transition-all"
-            >
-              <span>Submit General Candidacy</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+      {/* Section Header */}
+      <div className="pt-20 sm:pt-28 pb-10 sm:pb-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+        {/* Zarvion-Style Hot Career Opportunities Eyebrow Badge */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-[#0C1517] border border-[#087FCB]/30 dark:border-[#00D5DF]/30 text-xs font-mono font-bold text-[#087FCB] dark:text-[#00D5DF] tracking-widest uppercase mb-4 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>HOT CAREER OPPORTUNITIES</span>
         </div>
 
-        {/* Filter Chips Bar */}
-        <div className="careers-header-anim flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-8 sm:mb-10 no-scrollbar">
-          {categories.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-tight whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 border ${
-                  isSelected
-                    ? 'bg-[#087FCB] dark:bg-gradient-to-r dark:from-[#00D5DF] dark:to-[#38BDF8] text-white dark:text-black font-semibold border-transparent shadow-[0_4px_16px_rgba(8,127,203,0.3)] dark:shadow-[0_0_20px_rgba(0,213,223,0.4)] scale-105'
-                    : 'bg-white dark:bg-[#070D10] text-[#334155] dark:text-neutral-300 border-[#DCE5EF] dark:border-[#203536] hover:border-[#087FCB]/60 dark:hover:border-[#00D5DF]/60 shadow-sm'
-                }`}
-              >
-                <span>{cat.label}</span>
-                <span
-                  className={`text-[11px] font-mono px-1.5 py-0.2 rounded-full ${
-                    isSelected
-                      ? 'bg-white/20 dark:bg-black/20 text-white dark:text-black'
-                      : 'bg-slate-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-400'
-                  }`}
-                >
-                  {cat.count}
-                </span>
-              </button>
-            );
-          })}
+        {/* Section Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-4">
+          Most Demanded{' '}
+          <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">
+            Career Roles.
+          </span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
+          Explore today's fastest-growing careers across technology and enterprise leadership. Discover direct representation with verified 48h placement SLAs.
+        </p>
+
+        {/* Arrow Navigation Indicator */}
+        <div className="hidden md:flex items-center justify-center gap-3 mt-2">
+          <button
+            type="button"
+            onClick={() => scrollToCard(activeIndex - 1)}
+            disabled={activeIndex === 0}
+            aria-label="Previous Career Role"
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#0C1517] border border-[#DCE5EF] dark:border-[#203536] flex items-center justify-center text-[#102B50] dark:text-white shadow-sm hover:border-[#087FCB] dark:hover:border-[#00D5DF] disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <span className="text-xs font-mono font-semibold text-slate-500 dark:text-neutral-400 px-3">
+            0{activeIndex + 1} / 0{CAREER_ROLES.length}
+          </span>
+
+          <button
+            type="button"
+            onClick={() => scrollToCard(activeIndex + 1)}
+            disabled={activeIndex === CAREER_ROLES.length - 1}
+            aria-label="Next Career Role"
+            className="w-10 h-10 rounded-full bg-white dark:bg-[#0C1517] border border-[#DCE5EF] dark:border-[#203536] flex items-center justify-center text-[#102B50] dark:text-white shadow-sm hover:border-[#087FCB] dark:hover:border-[#00D5DF] disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
+      </div>
 
-        {/* Cards Grid */}
-        <div className="careers-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredJobs.map((job) => {
-            const track = TRACK_ACCENTS[job.department] || {
-              accent: '#087FCB',
-              label: `${job.department} Track`,
-              bg: 'rgba(8, 127, 203, 0.12)'
-            };
-
-            return (
-              <div
-                key={job.id}
-                className="career-card group relative rounded-3xl p-6 sm:p-7 bg-white dark:bg-[#070D10] border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5"
-                style={{
-                  borderColor: `${track.accent}55`,
-                  boxShadow: `0 8px 30px -4px ${track.accent}15`
-                }}
-              >
-                {/* Top Subtle Light Accent Line */}
-                <div
-                  className="absolute top-0 inset-x-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${track.accent}, transparent)`
+      {/* ========================================================
+          ZARVION-STYLE PINNED HORIZONTAL CARD SCROLL STAGE
+      ======================================================== */}
+      <div className="pin-track" ref={pinTrackRef}>
+        <div className="pin-viewport" ref={pinViewportRef}>
+          <div className="card-stage" ref={cardStageRef}>
+            {CAREER_ROLES.map((role, idx) => {
+              return (
+                <article
+                  key={role.id}
+                  ref={(el) => {
+                    cardsRef.current[idx] = el;
                   }}
-                />
-
-                {/* Corner Glow */}
-                <div
-                  className="absolute -top-16 -right-16 w-36 h-36 rounded-full blur-[60px] opacity-15 group-hover:opacity-35 transition-opacity pointer-events-none"
-                  style={{ backgroundColor: track.accent }}
-                />
-
-                <div>
-                  {/* Card Header Row: Track Badge + Work Type */}
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <span
-                      className="text-[11px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border transition-colors"
-                      style={{
-                        color: track.accent,
-                        borderColor: `${track.accent}55`,
-                        backgroundColor: track.bg
-                      }}
-                    >
-                      {track.label}
-                    </span>
-
-                    <span className="text-[11px] font-semibold text-slate-500 dark:text-neutral-400 bg-slate-100 dark:bg-neutral-800/80 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-neutral-700">
-                      {job.type}
-                    </span>
-                  </div>
-
-                  {/* Role Title */}
-                  <h3 className="text-lg sm:text-xl font-bold text-[#102B50] dark:text-white mb-2 tracking-tight group-hover:text-[#087FCB] dark:group-hover:text-[#7DD3FC] transition-colors leading-snug">
-                    {job.title}
-                  </h3>
-
-                  {/* Location & Experience Meta */}
-                  <div className="space-y-1.5 mb-4 text-xs text-[#475569] dark:text-neutral-300 font-medium">
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span>{job.location}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      <span>{job.experienceYears} · {job.experienceLevel}</span>
-                    </div>
-                  </div>
-
-                  {/* Compensation Benchmark Box */}
+                  data-index={idx}
+                  className="demanded-role-card"
+                  onClick={() => scrollToCard(idx)}
+                >
                   <div
-                    className="p-3 rounded-2xl border mb-5 transition-colors"
-                    style={{
-                      borderColor: `${track.accent}30`,
-                      backgroundColor: `${track.accent}08`
+                    className="card-image"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveJob(role);
                     }}
+                    role="link"
+                    tabIndex={0}
+                    aria-label={`View ${role.title.replace('\n', ' ')} details`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-neutral-400">
-                        Target CTC Benchmark
-                      </span>
-                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3" />
-                        Verified
+                    {/* Background Workplace Image */}
+                    <Image
+                      src={role.img}
+                      alt={role.title.replace('\n', ' ')}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      priority={idx < 3}
+                      className="object-cover"
+                    />
+
+                    {/* Gradient Dim Overlay */}
+                    <div className="image-overlay" />
+
+                    {/* Ambient Glow */}
+                    <div className="image-glow" />
+
+                    {/* Big Bold Role Title (Centered / Bottom aligned) */}
+                    <h3 className="image-title whitespace-pre-line">
+                      {role.title}
+                    </h3>
+
+                    {/* Glassmorphic Pill Button (Zarvion Signature) */}
+                    <div className="explore-career-wrapper">
+                      <span className="explore-career-btn">
+                        <span>Explore Career</span>
+                        <ArrowRight className="w-4 h-4 ml-1" />
                       </span>
                     </div>
-                    <div className="text-sm sm:text-base font-extrabold text-[#102B50] dark:text-white mt-0.5">
-                      {job.salaryRange}
-                    </div>
                   </div>
-
-                  {/* Skills Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {job.skills.slice(0, 4).map((skill, sIdx) => (
-                      <span
-                        key={sIdx}
-                        className="text-[11px] font-medium px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-neutral-800/80 text-slate-600 dark:text-neutral-300 border border-slate-200 dark:border-neutral-700/60"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                    {job.skills.length > 4 && (
-                      <span className="text-[10px] text-slate-400 dark:text-neutral-500 self-center font-mono">
-                        +{job.skills.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Card Bottom CTA */}
-                <div className="pt-4 border-t border-slate-100 dark:border-neutral-800 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-slate-400 dark:text-neutral-500">
-                    48h Shortlist SLA
-                  </span>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveJob(job)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold transition-all group-hover:translate-x-1 cursor-pointer"
-                    style={{ color: track.accent }}
-                  >
-                    <span>Quick Apply</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+                </article>
+              );
+            })}
+          </div>
         </div>
+      </div>
 
-        {/* Bottom Assurance Strip */}
-        <div className="mt-14 sm:mt-18 p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#070D10] border border-[#DCE5EF] dark:border-[#203536] shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* Bottom Assistance Banner */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-28 relative z-10 w-full">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#070D10] border border-[#DCE5EF] dark:border-[#203536] shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#087FCB]/10 dark:bg-[#00D5DF]/10 border border-[#087FCB]/30 dark:border-[#00D5DF]/30 flex items-center justify-center text-[#087FCB] dark:text-[#00D5DF] shrink-0">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
               <h4 className="text-base font-bold text-[#102B50] dark:text-white leading-tight">
-                Don't See Your Exact Role Listed?
+                Seeking a Confidential Executive Search?
               </h4>
               <p className="text-xs sm:text-sm text-[#475569] dark:text-neutral-300 mt-0.5">
-                Over 60% of our executive mandates and confidential senior positions are unadvertised to safeguard enterprise strategy.
+                Over 60% of our Director, VP, and C-suite mandates operate under strict non-disclosure agreements.
               </p>
             </div>
           </div>
@@ -368,7 +473,7 @@ export function CareersSection() {
             href="#contact"
             className="w-full md:w-auto text-center shrink-0 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#087FCB] to-[#00BFCB] hover:shadow-[0_0_25px_rgba(8,127,203,0.4)] transition-all hover:scale-105"
           >
-            Connect With a Talent Partner →
+            Connect With an Executive Advisor →
           </a>
         </div>
       </div>
@@ -377,12 +482,13 @@ export function CareersSection() {
           ROLE DOSSIER & QUICK APPLY MODAL
       ======================================================== */}
       {activeJob && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/65 backdrop-blur-md animate-in fade-in duration-200">
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-[#0B1519] border border-[#DCE5EF] dark:border-[#203536] rounded-3xl p-6 sm:p-8 shadow-2xl">
             {/* Close Button */}
             <button
               type="button"
               onClick={closeModal}
+              aria-label="Close modal"
               className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:text-neutral-300 dark:hover:text-white transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
@@ -395,7 +501,7 @@ export function CareersSection() {
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#087FCB] dark:text-[#00D5DF] block mb-1">
                     {activeJob.department} Track · Verified Mandate
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#102B50] dark:text-white leading-tight">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#102B50] dark:text-white leading-tight whitespace-pre-line">
                     {activeJob.title}
                   </h3>
                   <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-[#475569] dark:text-neutral-300">
@@ -432,7 +538,7 @@ export function CareersSection() {
                 {/* Quick Application Form */}
                 <form onSubmit={handleApplySubmit} className="space-y-4">
                   <div className="text-sm font-bold text-[#102B50] dark:text-white border-b border-slate-200 dark:border-neutral-800 pb-2">
-                    Submit Fast-Track Candidacy (100% Free)
+                    Submit Fast-Track Candidacy (100% Free Advisory)
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -533,14 +639,14 @@ export function CareersSection() {
                       rows={2}
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      placeholder="Mention your current CTC, preferred work location, or any specific expertise..."
+                      placeholder="Current CTC, preferred location, or specific competencies..."
                       className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-[#070D10] border border-slate-200 dark:border-neutral-700 text-xs text-[#102B50] dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#087FCB] dark:focus:border-[#00D5DF]"
                     />
                   </div>
 
                   <div className="pt-2 flex items-center justify-between gap-4">
                     <span className="text-[10px] text-slate-500 dark:text-neutral-400 font-mono">
-                      Strict NDA · Profile never broadcasted without consent
+                      Strict NDA · Profile never shared without your permission
                     </span>
 
                     <button
@@ -570,7 +676,7 @@ export function CareersSection() {
                   Application Received!
                 </h3>
                 <p className="text-xs sm:text-sm text-[#475569] dark:text-neutral-300 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-[#102B50] dark:text-white">{formData.fullName}</strong>. Your profile for <strong className="text-[#087FCB] dark:text-[#00D5DF]">{activeJob.title}</strong> has been prioritized under our 48-hour candidate review SLA. A dedicated talent advisor will contact you shortly.
+                  Thank you, <strong className="text-[#102B50] dark:text-white">{formData.fullName}</strong>. Your candidacy for <strong className="text-[#087FCB] dark:text-[#00D5DF]">{activeJob.title.replace('\n', ' ')}</strong> has been received under our 48-hour candidate review SLA. An executive talent advisor will connect with you shortly.
                 </p>
                 <div className="pt-4">
                   <button

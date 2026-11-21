@@ -6,12 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import confetti from 'canvas-confetti';
-import { 
-  UserCheck, 
-  Upload, 
-  CheckCircle2, 
-  AlertCircle, 
-  ShieldCheck, 
+import {
+  UserCheck,
+  Upload,
+  CheckCircle2,
+  AlertCircle,
+  ShieldCheck,
   FileText,
   Sparkles
 } from 'lucide-react';

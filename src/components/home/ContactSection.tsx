@@ -102,7 +102,7 @@ export function ContactSection() {
           <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-10">
             <div>
               {/* Eyebrow Badge (Zarvion Signature) */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0C1517] border border-[#00D5DF]/40 text-xs font-mono font-bold text-[#00D5DF] tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(0,213,223,0.15)]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0C1517] border border-[#00D5DF]/40 text-xs font-mono font-bold text-[#00F0FF] tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(0,213,223,0.15)]">
                 <span className="text-amber-400">★</span>
                 <span>GET IN TOUCH</span>
               </div>

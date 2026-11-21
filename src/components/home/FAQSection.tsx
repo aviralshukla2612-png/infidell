@@ -247,7 +247,7 @@ export function FAQSection() {
                     <span 
                       className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border shrink-0 transition-colors ${
                         isOpen 
-                          ? 'bg-[#087FCB]/10 dark:bg-[#00D5DF]/15 text-[#087FCB] dark:text-[#00D5DF] border-[#087FCB]/30 dark:border-[#00D5DF]/40' 
+                          ? 'bg-[#087FCB]/10 dark:bg-[#00D5DF]/15 text-[#0369A1] dark:text-[#00D5DF] border-[#087FCB]/30 dark:border-[#00D5DF]/40' 
                           : 'bg-slate-100 dark:bg-neutral-800 text-slate-800 dark:text-neutral-200 border-slate-300 dark:border-neutral-700'
                       }`}
                     >

@@ -334,19 +334,19 @@ export function HeroSection() {
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#087FCB] dark:text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
                     <Compass className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#087FCB] dark:text-[#00D5DF] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#00E5F0] uppercase tracking-wider block">
                       01 · Candidate Track
                     </span>
-                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#087FCB] dark:group-hover:text-[#00D5DF] transition-colors leading-tight">
+                    <h2 className="text-sm sm:text-base font-bold text-white group-hover:text-[#00E5F0] transition-colors leading-tight">
                       Career Placement &amp; Advisory
                     </h2>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00D5DF] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00E5F0] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
               <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
                 100% free candidate career advocacy: ATS resume architecture, compensation benchmarking, and direct introductions to engineering leadership.
@@ -364,14 +364,14 @@ export function HeroSection() {
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#0284C7] dark:text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
                     <Building2 className="w-4.5 h-4.5" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#0284C7] dark:text-[#38BDF8] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
                       02 · Enterprise Track
                     </span>
-                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#0284C7] dark:group-hover:text-[#38BDF8] transition-colors leading-tight">
+                    <h2 className="text-sm sm:text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
                       Corporate Recruitment &amp; Staffing
                     </h2>
                   </div>

@@ -202,7 +202,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-center bg-[#000000] overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20"
+      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-[#000000] overflow-hidden pt-24 sm:pt-28 pb-12 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -234,7 +234,7 @@ export function HeroSection() {
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-            className="object-cover object-right"
+            className="object-cover object-right-bottom"
           />
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 via-30% to-transparent pointer-events-none" />

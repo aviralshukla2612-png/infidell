@@ -68,9 +68,12 @@ export async function generateMetadata({
       }
     },
     icons: {
-      icon: '/icon.png',
-      shortcut: '/favicon.ico',
-      apple: '/apple-icon.png'
+      icon: [
+        { url: '/infidell-infinity-icon.png', sizes: 'any' },
+        { url: '/icon.png', sizes: '32x32', type: 'image/png' }
+      ],
+      shortcut: '/infidell-infinity-icon.png',
+      apple: '/infidell-infinity-icon.png'
     }
   };
 }
@@ -95,6 +98,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/infidell-infinity-icon.png" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />
+      </head>
       <body className="bg-[#000000] text-white antialiased min-h-screen selection:bg-[#00E5F0]/30 selection:text-white">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrollProvider>

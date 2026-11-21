@@ -17,10 +17,10 @@ export function Logo({
   showText = true,
   showTagline = true
 }: LogoProps) {
-  const imageDimensions = {
-    sm: { width: 56, height: 28, className: 'h-6 sm:h-7 w-auto' },
-    md: { width: 74, height: 38, className: 'h-8 sm:h-9 md:h-10 w-auto' },
-    lg: { width: 96, height: 49, className: 'h-11 sm:h-12 w-auto' }
+  const iconDimensions = {
+    sm: { size: 32, className: 'w-7 h-7 sm:w-8 sm:h-8' },
+    md: { size: 40, className: 'w-9 h-9 sm:w-10 sm:h-10' },
+    lg: { size: 56, className: 'w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14' }
   };
 
   const titleSizes = {
@@ -35,21 +35,21 @@ export function Logo({
     lg: 'text-[10px] sm:text-[11px]'
   };
 
-  const currentSize = imageDimensions[size];
+  const currentIcon = iconDimensions[size];
 
   return (
     <Link
       href="/"
       className={`inline-flex items-center gap-2.5 sm:gap-3 group transition-opacity hover:opacity-95 cursor-pointer select-none bg-transparent ${className}`}
     >
-      {/* Official Transparent Infinity Logo (NO black background) */}
-      <div className="relative flex items-center justify-center shrink-0 bg-transparent">
+      {/* Official Infidell Infinity Icon */}
+      <div className="relative flex items-center justify-center shrink-0 rounded-full overflow-hidden shadow-[0_0_15px_rgba(0,213,223,0.25)] border border-[#00D5DF]/30">
         <Image
-          src="/logo-transparent.png"
+          src="/infidell-infinity-icon.png"
           alt="INFIDELL Logo"
-          width={currentSize.width}
-          height={currentSize.height}
-          className={`${currentSize.className} object-contain bg-transparent transform group-hover:scale-105 transition-transform duration-300`}
+          width={currentIcon.size}
+          height={currentIcon.size}
+          className={`${currentIcon.className} object-cover transform group-hover:scale-105 transition-transform duration-300`}
           priority
         />
       </div>

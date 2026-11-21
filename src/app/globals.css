@@ -254,6 +254,14 @@ html.light .text-\[\#00E5F0\] {
   color: #0891B2 !important;
 }
 
+/* Gradient text legibility in Light Mode */
+html.light span.bg-clip-text {
+  background: linear-gradient(to right, #0F172A, #0284C7, #0891B2) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
 /* ========================================================
    CRITICAL CONTRAST PROTECTION: Elements with dark backgrounds MUST retain white text
 ======================================================== */

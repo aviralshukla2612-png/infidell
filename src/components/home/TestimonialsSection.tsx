@@ -115,16 +115,17 @@ export function TestimonialsSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
         </div>
 
-        {/* Light Mode Background Visual: Warm sunlit alabaster wall with palm shadows */}
+        {/* Light Mode Background Visual: Official User Provided Background (/testimonialbg-light.png) */}
         <div className="light-only absolute inset-0">
           <Image
             src="/testimonialbg-light.png"
             alt="Testimonials Atmosphere Background - Light Theme"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center opacity-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC] via-transparent to-[#F8FAFC] opacity-75 pointer-events-none" />
+          {/* Subtle edge blend with neighbor sections */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/40 via-transparent to-[#F8FAFC]/40 pointer-events-none" />
         </div>
       </div>
 

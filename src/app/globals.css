@@ -135,13 +135,16 @@ html.light .dark-only {
 }
 
 /* Default Dark Mode Card Styles */
-.journey-card {
+html:not(.light) .journey-card,
+html.dark .journey-card {
   background: linear-gradient(135deg, rgba(0, 213, 223, 0.08), #070B0E 65%);
 }
-.employer-step-card {
+html:not(.light) .employer-step-card,
+html.dark .employer-step-card {
   background: linear-gradient(145deg, rgba(0, 213, 223, 0.08), #070B0E 70%);
 }
-.experience-cta-card {
+html:not(.light) .experience-cta-card,
+html.dark .experience-cta-card {
   background: linear-gradient(135deg, rgba(0, 213, 223, 0.12), #070D10 40%, rgba(56, 189, 248, 0.12));
 }
 
@@ -211,6 +214,25 @@ html.light .experience-cta-card {
   background: linear-gradient(135deg, #FFFFFF, #F0FDFA 60%, #F8FAFC) !important;
   border-color: #CBD5E1 !important;
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Card typography protection in Light Mode */
+html.light .journey-card h3,
+html.light .employer-step-card h3 {
+  color: #0F172A !important;
+}
+html.light .journey-card p,
+html.light .employer-step-card p {
+  color: #475569 !important;
+}
+
+/* Feature Strip & Process Heading protection in Light Mode */
+html.light .hero-feature-strip {
+  border-color: #E2E8F0 !important;
+}
+html.light #process h2 {
+  filter: none !important;
+  text-shadow: none !important;
 }
 
 /* Border Overrides in Light Mode */

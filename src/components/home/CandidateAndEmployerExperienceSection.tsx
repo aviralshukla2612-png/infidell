@@ -597,7 +597,7 @@ export function CandidateAndEmployerExperienceSection() {
                     {isLeft ? (
                       <div className="md:pr-8 lg:pr-10 md:flex md:justify-end">
                         <div 
-                          className="journey-card journey-card-left relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
+                          className="journey-card journey-card-left bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
                             borderColor: `${step.borderColor}60`
                           }}
@@ -671,7 +671,7 @@ export function CandidateAndEmployerExperienceSection() {
                     {!isLeft ? (
                       <div className="md:pl-8 lg:pl-10 md:flex md:justify-start">
                         <div 
-                          className="journey-card journey-card-right relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
+                          className="journey-card journey-card-right bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
                             borderColor: `${step.borderColor}60`
                           }}
@@ -783,7 +783,7 @@ export function CandidateAndEmployerExperienceSection() {
               return (
                 <div 
                   key={step.titleKey}
-                  className="employer-step-card p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+                  className="employer-step-card bg-white dark:bg-transparent p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
                   style={{
                     borderColor: `${step.accent}35`
                   }}

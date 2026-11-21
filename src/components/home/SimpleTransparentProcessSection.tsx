@@ -263,6 +263,18 @@ export function SimpleTransparentProcessSection() {
 
   const currentSteps = activeTab === 'jobSeekers' ? JOB_SEEKER_STEPS : EMPLOYER_STEPS;
 
+  const handleTabChange = (tab: 'jobSeekers' | 'employers') => {
+    if (tab === activeTab) return;
+    setActiveTab(tab);
+    if (cardsRef.current && cardsRef.current.length > 0) {
+      gsap.fromTo(
+        cardsRef.current.filter(Boolean),
+        { scale: 0.96 },
+        { scale: 1, duration: 0.35, ease: 'back.out(1.4)', stagger: 0.02 }
+      );
+    }
+  };
+
   useGSAP(
     () => {
       if (typeof window === 'undefined') return;
@@ -466,7 +478,7 @@ export function SimpleTransparentProcessSection() {
         }
       );
     },
-    { scope: sectionRef, dependencies: [activeTab] }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -550,7 +562,7 @@ export function SimpleTransparentProcessSection() {
             className="process-audience-toggle inline-flex items-center p-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-lg mb-6 sm:mb-8 lg:mb-10 select-none pointer-events-auto"
           >
             <button
-              onClick={() => setActiveTab('jobSeekers')}
+              onClick={() => handleTabChange('jobSeekers')}
               className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${activeTab === 'jobSeekers'
                   ? 'bg-[#1e3ef0] text-white shadow-md'
                   : 'text-white/70 hover:text-white'
@@ -559,7 +571,7 @@ export function SimpleTransparentProcessSection() {
               For Job Seekers
             </button>
             <button
-              onClick={() => setActiveTab('employers')}
+              onClick={() => handleTabChange('employers')}
               className={`px-6 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${activeTab === 'employers'
                   ? 'bg-[#1e3ef0] text-white shadow-md'
                   : 'text-white/70 hover:text-white'
@@ -598,9 +610,7 @@ export function SimpleTransparentProcessSection() {
                   minHeight: '370px',
                   maxHeight: '425px',
                   transformOrigin: '50% 100%',
-                  transformStyle: 'preserve-3d',
-                  opacity: 0,
-                  transform: 'translateY(200px) scale(0.82)'
+                  transformStyle: 'preserve-3d'
                 }}
               >
                 {/* Snow Cap Decoration on Top Edge (Authentic Netbounce Style) */}

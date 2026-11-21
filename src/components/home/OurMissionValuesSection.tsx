@@ -39,7 +39,7 @@ export function OurMissionValuesSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Typography-Driven Mission & Values */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#F5F8F8] tracking-tight leading-[1.08] mb-6 sm:mb-8">
@@ -72,7 +72,7 @@ export function OurMissionValuesSection() {
           {/* Right Column: Refined Dark Circle with Character Inside & Snugly Contained Badges */}
           <div className="lg:col-span-6 flex items-center justify-center relative">
             <div className="relative w-[300px] h-[300px] xs:w-[340px] xs:h-[340px] sm:w-[420px] sm:h-[420px] md:w-[460px] md:h-[460px] lg:w-[480px] lg:h-[480px] flex items-center justify-center">
-              
+
               {/* The Circle Container (100% contained, overflow: hidden so character does not bleed outside) */}
               <div className="mission-circle-container relative w-full h-full rounded-full bg-gradient-to-b from-[#102426] via-[#0C1517] to-[#050708] shadow-[0_0_60px_rgba(23,190,187,0.18)] border border-[#203536] overflow-hidden flex items-end justify-center">
                 {/* Subtle Radial Sheen */}

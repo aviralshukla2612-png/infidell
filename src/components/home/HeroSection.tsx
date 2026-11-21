@@ -241,20 +241,18 @@ export function HeroSection() {
           <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00E5F0]/15 rounded-full blur-[130px]" />
         </div>
 
-        {/* Light Mode Background Visual: Luminous daylight aesthetic */}
+        {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
         <div className="light-only absolute inset-0">
           <Image
-            src="/images/bg-light.png"
+            src="/lightbg.png"
             alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
             fill
             priority
             className="object-contain sm:object-cover object-center sm:object-right opacity-95 scale-105 sm:scale-100"
           />
-          {/* Ambient Light Gradient Overlays for optimal typography readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/40" />
-          {/* Soft ambient cyan glow */}
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00D5DF]/10 rounded-full blur-[140px]" />
+          {/* Subtle Ambient Light Gradient Overlays for optimal typography readability on the left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/30" />
         </div>
       </div>
 

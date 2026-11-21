@@ -1,32 +1,166 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import {
-  ArrowRight,
-  Building2,
-  Briefcase,
-  BadgeCheck,
-  Compass,
-  ShieldCheck,
-  Sparkles
+import { 
+  ArrowRight, 
+  Building2, 
+  Briefcase, 
+  BadgeCheck, 
+  Compass, 
+  ShieldCheck 
 } from 'lucide-react';
-import { CyanParticleWave } from './hero/CyanParticleWave';
-import { IrisApertureLens } from './hero/IrisApertureLens';
+
+const LINE1_PREFIX = "Every Career Has a ";
+const LINE1_HIGHLIGHT = "Next";
+const LINE1_SUFFIX = " Chapter.";
+
+const LINE2_PREFIX = "Let's Make ";
+const LINE2_HIGHLIGHT = "Yours";
+const LINE2_SUFFIX = " Count.";
+
+const TOTAL_LINE1 = LINE1_PREFIX.length + LINE1_HIGHLIGHT.length + LINE1_SUFFIX.length; // 32
+const TOTAL_LINE2 = LINE2_PREFIX.length + LINE2_HIGHLIGHT.length + LINE2_SUFFIX.length; // 23
+const TOTAL_CHARS = TOTAL_LINE1 + TOTAL_LINE2; // 55
+const LINE2_CUTOFF = TOTAL_CHARS - LINE2_SUFFIX.length; // 48
 
 export function HeroSection() {
   const t = useTranslations('Hero');
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
-  const headlineLine1Ref = useRef<HTMLSpanElement>(null);
-  const headlineLine2Ref = useRef<HTMLSpanElement>(null);
-  const descRef = useRef<HTMLParagraphElement>(null);
-  const ctaGroupRef = useRef<HTMLDivElement>(null);
-  const irisLensWrapperRef = useRef<HTMLDivElement>(null);
-  const featureStripRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const bgVisualRef = useRef<HTMLDivElement>(null);
+
+  // Typewriter effect state (initialized to full length for SEO & zero CLS)
+  const [mounted, setMounted] = useState(false);
+  const [charCount, setCharCount] = useState(TOTAL_CHARS);
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('pausing');
+
+  useEffect(() => {
+    setMounted(true);
+    setCharCount(0);
+    setPhase('typing');
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    let timer: NodeJS.Timeout;
+
+    if (phase === 'typing') {
+      if (charCount < TOTAL_CHARS) {
+        // Natural typewriter cadence: slight hesitation between line 1 and line 2
+        const delay = charCount === TOTAL_LINE1 ? 160 : 36;
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, delay);
+      } else {
+        // Finished typing initial headline -> hold for 4 seconds
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 4000);
+      }
+    } else if (phase === 'deleting') {
+      // Smoothly backspace the punchline " Count."
+      if (charCount > LINE2_CUTOFF) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev - 1);
+        }, 48);
+      } else {
+        // Paused at "Let's Make Yours "
+        timer = setTimeout(() => {
+          setPhase('retyping');
+        }, 400);
+      }
+    } else if (phase === 'retyping') {
+      if (charCount < TOTAL_CHARS) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, 55);
+      } else {
+        // Fully typed again -> hold 5.5s before next subtle cycle
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 5500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [mounted, charCount, phase]);
+
+  const renderLine1 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE1_PREFIX}</span>
+          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {LINE1_HIGHLIGHT}
+          </span>
+          <span>{LINE1_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c1 = Math.min(charCount, TOTAL_LINE1);
+    const p1Length = LINE1_PREFIX.length;
+    const h1Length = LINE1_HIGHLIGHT.length;
+    const s1Length = LINE1_SUFFIX.length;
+
+    const showPrefix = LINE1_PREFIX.slice(0, Math.min(c1, p1Length));
+    const showHighlight = c1 > p1Length ? LINE1_HIGHLIGHT.slice(0, Math.min(c1 - p1Length, h1Length)) : '';
+    const showSuffix = c1 > p1Length + h1Length ? LINE1_SUFFIX.slice(0, Math.min(c1 - (p1Length + h1Length), s1Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+      </>
+    );
+  };
+
+  const renderLine2 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE2_PREFIX}</span>
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {LINE2_HIGHLIGHT}
+          </span>
+          <span>{LINE2_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c2 = Math.max(0, charCount - TOTAL_LINE1);
+    const p2Length = LINE2_PREFIX.length;
+    const h2Length = LINE2_HIGHLIGHT.length;
+    const s2Length = LINE2_SUFFIX.length;
+
+    const showPrefix = LINE2_PREFIX.slice(0, Math.min(c2, p2Length));
+    const showHighlight = c2 > p2Length ? LINE2_HIGHLIGHT.slice(0, Math.min(c2 - p2Length, h2Length)) : '';
+    const showSuffix = c2 > p2Length + h2Length ? LINE2_SUFFIX.slice(0, Math.min(c2 - (p2Length + h2Length), s2Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+      </>
+    );
+  };
 
   useGSAP(
     () => {
@@ -34,184 +168,135 @@ export function HeroSection() {
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Eyebrow reveal
-      if (eyebrowRef.current) {
+      // 1. Headline container fade-in
+      if (headlineRef.current) {
         tl.fromTo(
-          eyebrowRef.current,
-          { opacity: 0, y: -15, filter: 'blur(6px)' },
-          { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, delay: 0.1 }
-        );
-      }
-
-      // 2. Headline reveal line-by-line
-      if (headlineLine1Ref.current && headlineLine2Ref.current) {
-        tl.fromTo(
-          headlineLine1Ref.current,
-          { opacity: 0, y: 35, skewY: 1.5 },
-          { opacity: 1, y: 0, skewY: 0, duration: 0.8 },
-          '-=0.4'
-        );
-        tl.fromTo(
-          headlineLine2Ref.current,
-          { opacity: 0, y: 40, skewY: 1.5 },
-          { opacity: 1, y: 0, skewY: 0, duration: 0.85 },
-          '-=0.6'
-        );
-      }
-
-      // 3. Supporting Description
-      if (descRef.current) {
-        tl.fromTo(
-          descRef.current,
-          { opacity: 0, y: 22 },
-          { opacity: 1, y: 0, duration: 0.75 },
-          '-=0.5'
-        );
-      }
-
-      // 4. CTAs Staggered Entrance
-      if (ctaGroupRef.current) {
-        tl.fromTo(
-          '.hero-cta-btn',
-          { opacity: 0, y: 20, scale: 0.95 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.14 },
-          '-=0.45'
-        );
-      }
-
-      // 5. Iris Aperture Lens Entrance (Orchestrated counter-zoom reveal)
-      if (irisLensWrapperRef.current) {
-        tl.fromTo(
-          irisLensWrapperRef.current,
-          { opacity: 0, scale: 0.86, filter: 'blur(10px)' },
-          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.25, ease: 'expo.out' },
-          0.3
-        );
-      }
-
-      // 6. Horizontal Feature Strip Reveal
-      if (featureStripRef.current) {
-        tl.fromTo(
-          featureStripRef.current,
+          headlineRef.current,
           { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-          '-=0.5'
+          { opacity: 1, y: 0, duration: 0.6, delay: 0.1 }
         );
       }
+
+      // 2. Description fade-in
+      tl.fromTo(
+        '.hero-desc',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        '-=0.4'
+      );
+
+      // 3. CTAs
+      tl.fromTo(
+        '.hero-cta-btn',
+        { opacity: 0, y: 20, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12 },
+        '-=0.5'
+      );
+
+      // 4. Background infinity visual entrance
+      if (bgVisualRef.current) {
+        tl.fromTo(
+          bgVisualRef.current,
+          { opacity: 0, scale: 1.12, filter: 'blur(10px)' },
+          { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' },
+          0.1
+        );
+      }
+
+      // 5. Horizontal feature strip reveal
+      tl.fromTo(
+        '.hero-feature-strip',
+        { opacity: 0, y: 25 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+        '-=0.6'
+      );
     },
     { scope: containerRef }
   );
 
   return (
-    <section
+    <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 border-b border-[#1D3035]/80 select-none"
+      className="relative min-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-6 sm:pb-10 lg:pt-36 lg:pb-12"
     >
-      {/* 1. Real-Time Dynamic Cyan Particle Wave Canvas */}
-      <CyanParticleWave />
+      {/* Dynamic Background: Official Metallic Infinity Visual (bg.png) */}
+      <div 
+        ref={bgVisualRef}
+        className="absolute inset-0 z-0 pointer-events-none select-none opacity-95 overflow-hidden"
+      >
+        <Image
+          src="/images/bg.png"
+          alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
+          fill
+          priority
+          className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
+        />
 
-      {/* 2. Cinematic Ambient Lighting Overlays */}
-      <div className="absolute top-1/4 right-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#00E5F0]/10 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#168CFF]/8 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/60 via-transparent to-[#000000] pointer-events-none" />
+        {/* Ambient Dark Gradient Overlays for optimal typography readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
 
-      {/* 3. Main Hero Content Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto py-6 sm:py-10">
+        {/* Subtle cyan glow accent */}
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00E5F0]/15 rounded-full blur-[130px]" />
+      </div>
+
+      {/* Main Hero Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
-          {/* Left Column (7 cols): Editorial Master Copy & Conversion CTAs */}
-          <div className="lg:col-span-7 xl:col-span-7 space-y-6 sm:space-y-8">
-
-            {/* Eyebrow Badge */}
-            <div
-              ref={eyebrowRef}
-              className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#0D1519]/90 border border-[#1D3035] text-[11px] sm:text-xs font-mono font-medium tracking-widest text-[#00E5F0] uppercase shadow-[0_0_20px_rgba(0,229,240,0.15)]"
+          {/* Left Column: Hero Content */}
+          <div className="lg:col-span-10 xl:col-span-10 space-y-6 sm:space-y-8">
+            {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
+            <h1 
+              ref={headlineRef}
+              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-white leading-[1.12]"
             >
-              <span className="w-2 h-2 rounded-full bg-[#00E5F0] animate-pulse" />
-              <span>CAREER PLACEMENT &amp; TALENT SOLUTIONS</span>
-            </div>
-
-            {/* Main Cinematic Heading: "Find Your Next Opportunity." */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[4.5rem] xl:text-[5.1rem] font-extrabold tracking-tight text-white leading-[1.08]">
-              <span ref={headlineLine1Ref} className="block text-white">
-                Find Your Next
+              <span className="block whitespace-nowrap min-h-[1.12em]">
+                {renderLine1()}
               </span>
-              <span
-                ref={headlineLine2Ref}
-                className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#00E5F0] via-[#00BFD0] to-[#168CFF] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(0,229,240,0.4)]"
-              >
-                Opportunity.
+              <span className="block whitespace-nowrap mt-1 sm:mt-2 text-white min-h-[1.12em]">
+                {renderLine2()}
               </span>
             </h1>
 
-            {/* Supporting Description */}
-            <p
-              ref={descRef}
-              className="text-base sm:text-lg md:text-xl text-[#AAB5BC] max-w-xl leading-relaxed font-normal"
-            >
-              People-first career placement. Real guidance. Better opportunities. One dedicated placement firm connecting ambitious professionals with verified corporate hiring partners across India.
+            {/* Description */}
+            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
+              {t('description')}
             </p>
 
-            {/* Conversion CTA Group */}
-            <div
-              ref={ctaGroupRef}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none"
-            >
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-4 rounded-full text-sm sm:text-base font-bold text-black bg-gradient-to-r from-[#00E5F0] to-[#00BFD0] hover:brightness-110 transition-all duration-300 shadow-[0_0_30px_rgba(0,229,240,0.4)] hover:shadow-[0_0_45px_rgba(0,229,240,0.6)] transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
               >
-                <span>Explore Opportunities</span>
+                <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="w-4 h-4 text-black" />
               </a>
 
               <a
                 href="#employer"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-4 rounded-full text-sm sm:text-base font-semibold text-[#FFFFFF] bg-[#090F12]/90 hover:bg-[#0D1519] border border-[#1D3035] hover:border-[#00E5F0]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
+                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-[#F5F8F8] bg-[#0C1517]/90 hover:bg-[#102426] border border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
               >
-                <Building2 className="w-4 h-4 text-[#00E5F0]" />
-                <span>For Employers</span>
+                <Building2 className="w-4 h-4 text-[#17BEBB]" />
+                <span>{t('ctaSecondary')}</span>
               </a>
             </div>
-
-            {/* Subtle live indicator */}
-            <div className="pt-2 flex items-center gap-4 text-xs font-mono text-neutral-400">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#00E5F0] animate-ping" />
-                <span className="text-[#00E5F0] font-semibold">ZERO CANDIDATE FEES</span>
-              </div>
-              <span className="text-[#1D3035]">|</span>
-              <span>48–72H EMPLOYER SLA</span>
-              <span className="hidden sm:inline text-[#1D3035]">|</span>
-              <span className="hidden sm:inline">100% STATUTORY COMPLIANT</span>
-            </div>
-
           </div>
 
-          {/* Right Column (5 cols): The Iris Camera Aperture Lens with Metallic Infinity Ribbon */}
-          <div
-            ref={irisLensWrapperRef}
-            className="lg:col-span-5 xl:col-span-5 flex items-center justify-center py-4 lg:py-0"
-          >
-            <IrisApertureLens />
-          </div>
-
+          {/* Right Column: Left unobstructed so the 3D infinity visual is 100% visible */}
+          <div className="hidden lg:block lg:col-span-2 xl:col-span-2" />
         </div>
       </div>
 
-      {/* 4. Sleek Horizontal Feature Strip with Glowing Icons */}
-      <div
-        ref={featureStripRef}
-        className="relative z-10 w-full border-t border-[#1D3035]/80 pt-6 mt-8 sm:mt-12 bg-gradient-to-t from-[#050809] to-transparent"
-      >
+      {/* Sleek Horizontal Feature Strip with Vertical Dividers & Premium Glowing Icon Badges */}
+      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 mt-12 sm:mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-[#FFFFFF]">
-
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-[#F5F8F8]">
             {/* Item 1: Recruitment & Placement */}
             <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#090F12] border border-[#1D3035] flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,229,240,0.18)] group-hover:border-[#00E5F0] group-hover:shadow-[0_0_20px_rgba(0,229,240,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <Briefcase className="w-4 h-4 text-[#00E5F0]" strokeWidth={2} />
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <Briefcase className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
               </div>
               <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillProduct')}
@@ -219,12 +304,12 @@ export function HeroSection() {
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#1D3035]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
             {/* Item 2: Verified Employers */}
             <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#090F12] border border-[#1D3035] flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,229,240,0.18)] group-hover:border-[#00E5F0] group-hover:shadow-[0_0_20px_rgba(0,229,240,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <BadgeCheck className="w-4 h-4 text-[#00E5F0]" strokeWidth={2} />
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <BadgeCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
               </div>
               <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillSecure')}
@@ -232,12 +317,12 @@ export function HeroSection() {
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#1D3035]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
             {/* Item 3: Personalized Career Advisory */}
             <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#090F12] border border-[#1D3035] flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,229,240,0.18)] group-hover:border-[#00E5F0] group-hover:shadow-[0_0_20px_rgba(0,229,240,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <Compass className="w-4 h-4 text-[#00E5F0]" strokeWidth={2} />
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <Compass className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
               </div>
               <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillAutomation')}
@@ -245,18 +330,17 @@ export function HeroSection() {
             </div>
 
             {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#1D3035]" />
+            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
 
             {/* Item 4: End-to-End Support */}
             <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#090F12] border border-[#1D3035] flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,229,240,0.18)] group-hover:border-[#00E5F0] group-hover:shadow-[0_0_20px_rgba(0,229,240,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <ShieldCheck className="w-4 h-4 text-[#00E5F0]" strokeWidth={2} />
+              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <ShieldCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
               </div>
               <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
                 {t('pillPartnership')}
               </span>
             </div>
-
           </div>
         </div>
       </div>

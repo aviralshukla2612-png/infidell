@@ -201,22 +201,12 @@ export function HeroSection() {
         '-=0.5'
       );
 
-      // 4. Background infinity visual entrance (Immediate opacity for instant LCP scoring without artificial delays)
-      if (bgVisualRef.current) {
-        tl.fromTo(
-          bgVisualRef.current,
-          { opacity: 0.85, scale: 1.04 },
-          { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' },
-          0
-        );
-      }
-
-      // 5. Horizontal feature strip reveal
+      // 4. Horizontal feature strip reveal
       tl.fromTo(
         '.hero-feature-strip',
         { opacity: 0, y: 25 },
         { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.6'
+        '-=0.4'
       );
     },
     { scope: containerRef }
@@ -258,7 +248,7 @@ export function HeroSection() {
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-            className="object-contain sm:object-contain object-right opacity-95 scale-85 sm:scale-75 lg:scale-70 origin-right transition-transform"
+            className="object-contain sm:object-contain object-right scale-85 sm:scale-75 lg:scale-70 origin-right"
           />
           {/* Subtle Ambient Light Gradient Overlays for optimal typography readability on the left */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/50 to-transparent pointer-events-none" />

@@ -429,7 +429,6 @@ export function CareersSection() {
                   src={activeJob.img}
                   alt={activeJob.title.replace('\n', ' ')}
                   fill
-                  priority
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#070D10]/80 via-transparent to-transparent pointer-events-none" />

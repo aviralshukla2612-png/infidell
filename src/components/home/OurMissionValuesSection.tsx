@@ -85,7 +85,6 @@ export function OurMissionValuesSection() {
                     alt="Infidell Talent Advisory Specialist"
                     fill
                     className="object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)]"
-                    priority
                   />
                 </div>
 

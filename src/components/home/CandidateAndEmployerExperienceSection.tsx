@@ -154,83 +154,87 @@ export function CandidateAndEmployerExperienceSection() {
         const parentContainer = sectionRef.current?.querySelector<HTMLElement>('.timeline-wrapper');
         if (!parentContainer) return;
 
-        // Desktop S-curve rope path calculation
-        const knotsDesktop = parentContainer.querySelectorAll<HTMLElement>('.rope-knot-desktop');
-        const desktopSvg = parentContainer.querySelector<SVGElement>('.central-rope-svg-desktop');
-        if (knotsDesktop && knotsDesktop.length >= 2 && desktopSvg) {
-          const parentRect = parentContainer.getBoundingClientRect();
-          const points: { x: number; y: number }[] = [];
+        const isDesktop = window.innerWidth >= 768;
 
-          knotsDesktop.forEach((knot) => {
-            const r = knot.getBoundingClientRect();
-            points.push({
-              x: (r.left + r.width / 2) - parentRect.left,
-              y: (r.top + r.height / 2) - parentRect.top
+        // Desktop S-curve rope path calculation (only computed when desktop is active)
+        if (isDesktop) {
+          const knotsDesktop = parentContainer.querySelectorAll<HTMLElement>('.rope-knot-desktop');
+          const desktopSvg = parentContainer.querySelector<SVGElement>('.central-rope-svg-desktop');
+          if (knotsDesktop && knotsDesktop.length >= 2 && desktopSvg) {
+            const parentRect = parentContainer.getBoundingClientRect();
+            const points: { x: number; y: number }[] = [];
+
+            knotsDesktop.forEach((knot) => {
+              const r = knot.getBoundingClientRect();
+              points.push({
+                x: (r.left + r.width / 2) - parentRect.left,
+                y: (r.top + r.height / 2) - parentRect.top
+              });
             });
-          });
 
-          if (points.length >= 2) {
-            // Build smooth cubic Bézier S-curve through knots
-            const p0 = points[0];
-            // Gentle top hanging curl
-            let d = `M ${p0.x - 6} ${p0.y - 36} C ${p0.x - 4} ${p0.y - 18}, ${p0.x} ${p0.y - 8}, ${p0.x} ${p0.y}`;
+            if (points.length >= 2) {
+              // Build smooth cubic Bézier S-curve through knots
+              const p0 = points[0];
+              // Gentle top hanging curl
+              let d = `M ${p0.x - 6} ${p0.y - 36} C ${p0.x - 4} ${p0.y - 18}, ${p0.x} ${p0.y - 8}, ${p0.x} ${p0.y}`;
 
-            for (let i = 0; i < points.length - 1; i++) {
-              const curr = points[i];
-              const next = points[i + 1];
-              const dy = next.y - curr.y;
-              // S-curve control points creating organic left & right sway
-              const cp1x = curr.x;
-              const cp1y = curr.y + dy * 0.45;
-              const cp2x = next.x;
-              const cp2y = next.y - dy * 0.45;
-              d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+              for (let i = 0; i < points.length - 1; i++) {
+                const curr = points[i];
+                const next = points[i + 1];
+                const dy = next.y - curr.y;
+                // S-curve control points creating organic left & right sway
+                const cp1x = curr.x;
+                const cp1y = curr.y + dy * 0.45;
+                const cp2x = next.x;
+                const cp2y = next.y - dy * 0.45;
+                d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+              }
+
+              // Gentle bottom curl at final knot
+              const pLast = points[points.length - 1];
+              d += ` C ${pLast.x} ${pLast.y + 16}, ${pLast.x + 8} ${pLast.y + 28}, ${pLast.x + 12} ${pLast.y + 36}`;
+
+              const paths = desktopSvg.querySelectorAll<SVGPathElement>('.rope-path');
+              paths.forEach((p) => p.setAttribute('d', d));
             }
-
-            // Gentle bottom curl at final knot
-            const pLast = points[points.length - 1];
-            d += ` C ${pLast.x} ${pLast.y + 16}, ${pLast.x + 8} ${pLast.y + 28}, ${pLast.x + 12} ${pLast.y + 36}`;
-
-            const paths = desktopSvg.querySelectorAll<SVGPathElement>('.rope-path');
-            paths.forEach((p) => p.setAttribute('d', d));
           }
-        }
+        } else {
+          // Mobile organic rope path calculation (only computed on mobile viewports)
+          const knotsMobile = parentContainer.querySelectorAll<HTMLElement>('.rope-knot-mobile');
+          const mobileSvg = parentContainer.querySelector<SVGElement>('.central-rope-svg-mobile');
+          if (knotsMobile && knotsMobile.length >= 2 && mobileSvg) {
+            const parentRect = parentContainer.getBoundingClientRect();
+            const points: { x: number; y: number }[] = [];
 
-        // Mobile organic rope path calculation
-        const knotsMobile = parentContainer.querySelectorAll<HTMLElement>('.rope-knot-mobile');
-        const mobileSvg = parentContainer.querySelector<SVGElement>('.central-rope-svg-mobile');
-        if (knotsMobile && knotsMobile.length >= 2 && mobileSvg) {
-          const parentRect = parentContainer.getBoundingClientRect();
-          const points: { x: number; y: number }[] = [];
-
-          knotsMobile.forEach((knot) => {
-            const r = knot.getBoundingClientRect();
-            points.push({
-              x: (r.left + r.width / 2) - parentRect.left,
-              y: (r.top + r.height / 2) - parentRect.top
+            knotsMobile.forEach((knot) => {
+              const r = knot.getBoundingClientRect();
+              points.push({
+                x: (r.left + r.width / 2) - parentRect.left,
+                y: (r.top + r.height / 2) - parentRect.top
+              });
             });
-          });
 
-          if (points.length >= 2) {
-            const p0 = points[0];
-            let d = `M ${p0.x} ${p0.y - 24} L ${p0.x} ${p0.y}`;
+            if (points.length >= 2) {
+              const p0 = points[0];
+              let d = `M ${p0.x} ${p0.y - 24} L ${p0.x} ${p0.y}`;
 
-            for (let i = 0; i < points.length - 1; i++) {
-              const curr = points[i];
-              const next = points[i + 1];
-              const dy = next.y - curr.y;
-              const cp1x = curr.x;
-              const cp1y = curr.y + dy * 0.45;
-              const cp2x = next.x;
-              const cp2y = next.y - dy * 0.45;
-              d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+              for (let i = 0; i < points.length - 1; i++) {
+                const curr = points[i];
+                const next = points[i + 1];
+                const dy = next.y - curr.y;
+                const cp1x = curr.x;
+                const cp1y = curr.y + dy * 0.45;
+                const cp2x = next.x;
+                const cp2y = next.y - dy * 0.45;
+                d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${next.x} ${next.y}`;
+              }
+
+              const pLast = points[points.length - 1];
+              d += ` L ${pLast.x} ${pLast.y + 24}`;
+
+              const paths = mobileSvg.querySelectorAll<SVGPathElement>('.rope-path');
+              paths.forEach((p) => p.setAttribute('d', d));
             }
-
-            const pLast = points[points.length - 1];
-            d += ` L ${pLast.x} ${pLast.y + 24}`;
-
-            const paths = mobileSvg.querySelectorAll<SVGPathElement>('.rope-path');
-            paths.forEach((p) => p.setAttribute('d', d));
           }
         }
       };

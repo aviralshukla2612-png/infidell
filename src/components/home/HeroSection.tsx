@@ -36,8 +36,11 @@ function HeroHeadlineTypewriter() {
 
   useEffect(() => {
     setMounted(true);
-    setCharCount(0);
-    setPhase('typing');
+    // Maintain full headline during hydration to eliminate 55 layout re-renders during LCP window
+    const timer = setTimeout(() => {
+      setPhase('deleting');
+    }, 3800);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {

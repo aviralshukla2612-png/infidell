@@ -46,30 +46,45 @@ export function Navbar() {
     }
   };
 
-  // Scroll listener for sticky navbar & active section detection
+  // Passive, throttled scroll listener for sticky navbar & IntersectionObserver for 0-reflow active section detection
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      // Detect active section on scroll
-      const scrollPos = window.scrollY + 200;
-      const sortedSections = [...SECTIONS].sort((a, b) => {
-        const elA = document.getElementById(a.id);
-        const elB = document.getElementById(b.id);
-        return (elA?.offsetTop || 0) - (elB?.offsetTop || 0);
-      });
-      for (let i = sortedSections.length - 1; i >= 0; i--) {
-        const sec = sortedSections[i];
-        const el = document.getElementById(sec.id);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sec.id);
-          break;
-        }
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // High-performance IntersectionObserver replaces costly offsetTop forced reflow loops
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -55% 0px',
+        threshold: 0.1
+      }
+    );
+
+    SECTIONS.forEach((sec) => {
+      const el = document.getElementById(sec.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   // Sync indicator when activeSection changes or window resizes

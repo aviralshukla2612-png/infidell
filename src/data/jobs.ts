@@ -168,6 +168,48 @@ export const verifiedJobs: Job[] = [
     skills: ['Supply Chain', 'Logistics Operations', 'Freight Forwarding', 'Warehouse SOPs'],
     isFeatured: false,
     isOpen: true
+  },
+  {
+    id: 'job-109',
+    title: 'Director of Product Engineering',
+    department: 'Executive',
+    industry: 'Information Technology',
+    location: 'Bengaluru / Hybrid',
+    type: 'Full-Time',
+    experienceLevel: 'Senior (6+ yrs)',
+    experienceYears: '10-15 Years',
+    salaryRange: '₹38,00,000 - ₹52,00,000 P.A. + Equity',
+    postedDate: '2026-11-18',
+    description: 'Spearhead cross-functional engineering organizations across distributed microservices, platform reliability, and executive strategic roadmaps.',
+    requirements: [
+      'Proven engineering leadership managing 40+ software engineers across multiple squads',
+      'Architectural mastery in high-scale distributed systems and cloud platforms',
+      'Direct executive reporting to CTO / CEO and board-level technology alignment'
+    ],
+    skills: ['Engineering Leadership', 'Distributed Systems', 'Cloud Strategy', 'Executive Management', 'Talent Mentorship'],
+    isFeatured: true,
+    isOpen: true
+  },
+  {
+    id: 'job-110',
+    title: 'Principal AI / LLM Solutions Architect',
+    department: 'Engineering',
+    industry: 'Information Technology',
+    location: 'Hyderabad / Remote',
+    type: 'Full-Time',
+    experienceLevel: 'Senior (6+ yrs)',
+    experienceYears: '7-12 Years',
+    salaryRange: '₹30,00,000 - ₹45,00,000 P.A.',
+    postedDate: '2026-11-19',
+    description: 'Design and deploy enterprise generative AI pipelines, vector retrieval architectures (RAG), and fine-tuned LLM microservices.',
+    requirements: [
+      'Deep expertise in Python, PyTorch, LangChain/LlamaIndex, and vector databases',
+      'Production deployment experience with LLM agents, guardrails, and model quantization',
+      'Demonstrated experience building enterprise-grade AI applications with verified scalability'
+    ],
+    skills: ['Generative AI', 'LLMs', 'Vector Databases', 'Python', 'PyTorch', 'RAG Architecture'],
+    isFeatured: true,
+    isOpen: true
   }
 ];
 

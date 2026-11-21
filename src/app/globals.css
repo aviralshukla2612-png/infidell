@@ -233,6 +233,7 @@ html.light #home {
 html.light .candidates-placed-section,
 html.light #process,
 html.light #partners,
+html.light #careers,
 html.light #testimonials,
 html.light #insights {
   background-color: #F8FAFC !important;
@@ -261,6 +262,7 @@ html.light #footer {
 }
 
 /* Card & Surface Overrides in Light Mode */
+html.light .career-card,
 html.light .journey-card,
 html.light .journey-card-left,
 html.light .journey-card-right,

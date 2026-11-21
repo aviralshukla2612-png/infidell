@@ -18,6 +18,7 @@ const FOOTER_NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'How It Works', href: '#process' },
   { label: 'What We Are Doing', href: '#approach' },
+  { label: 'Careers', href: '#careers' },
   { label: 'Insights', href: '#insights' }
 ];
 

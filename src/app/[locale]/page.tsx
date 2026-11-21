@@ -6,6 +6,7 @@ import { AboutSection } from '@/components/home/AboutSection';
 import { OurApproachSection } from '@/components/home/OurApproachSection';
 import { OurPartnersSection } from '@/components/home/OurPartnersSection';
 import { CandidateAndEmployerExperienceSection } from '@/components/home/CandidateAndEmployerExperienceSection';
+import { CareersSection } from '@/components/home/CareersSection';
 import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
 import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
@@ -33,6 +34,7 @@ export default async function HomePage({
       <OurApproachSection />
       <OurPartnersSection />
       <CandidateAndEmployerExperienceSection />
+      <CareersSection />
       <OurMissionValuesSection />
       <TestimonialsSection />
       <FAQSection />

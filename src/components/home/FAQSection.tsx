@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  ArrowRight, 
-  ShieldCheck, 
+import {
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
   HelpCircle,
   CheckCircle2,
   ChevronRight
@@ -360,8 +360,8 @@ export function FAQSection() {
   const activeFAQ = FAQS.find((faq) => faq.id === activeId) || FAQS[0];
 
   return (
-    <section 
-      id="faq" 
+    <section
+      id="faq"
       className="py-16 sm:py-24 md:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
       {/* Ambient background glows */}
@@ -369,7 +369,7 @@ export function FAQSection() {
       <div className="absolute bottom-1/4 left-1/4 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-[#38BDF8]/10 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        
+
         {/* Master Section Header - Consistent with About Us & Testimonials */}
         <div className="max-w-3xl mb-8 sm:mb-12 md:mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none mb-2 sm:mb-3">
@@ -388,10 +388,10 @@ export function FAQSection() {
 
         {/* Master Showcase Grid: Left Question Stack + Right Rich White Card (Image 1 Style) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-          
+
           {/* Left Column (4 cols on lg, 5 on xl): Vertical Question Cards Navigation */}
           <div className="lg:col-span-4 space-y-3">
-            
+
             {/* Horizontal scroll on mobile, vertical stack on desktop */}
             <div className="flex lg:flex-col gap-2.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-none">
               {FAQS.map((faq) => {
@@ -401,19 +401,17 @@ export function FAQSection() {
                     key={faq.id}
                     type="button"
                     onClick={() => setActiveId(faq.id)}
-                    className={`text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 shrink-0 lg:w-full min-w-[240px] sm:min-w-[280px] lg:min-w-0 cursor-pointer ${
-                      isActive
+                    className={`text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 shrink-0 lg:w-full min-w-[240px] sm:min-w-[280px] lg:min-w-0 cursor-pointer ${isActive
                         ? 'bg-[#0E1A1C] border-[#00D5DF] shadow-[0_0_20px_rgba(0,213,223,0.18)] text-white'
                         : 'bg-[#0C1517]/80 border-[#203536] text-neutral-400 hover:text-white hover:border-[#00D5DF]/40 hover:bg-[#0E1A1C]/50'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <span 
-                        className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 ${
-                          isActive
+                      <span
+                        className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded border shrink-0 ${isActive
                             ? 'bg-[#00D5DF]/15 text-[#00D5DF] border-[#00D5DF]/30'
                             : 'bg-neutral-800/80 text-neutral-400 border-neutral-700/60'
-                        }`}
+                          }`}
                       >
                         {faq.num}
                       </span>
@@ -426,11 +424,10 @@ export function FAQSection() {
                         </span>
                       </div>
                     </div>
-                    
-                    <ChevronRight 
-                      className={`w-4 h-4 shrink-0 transition-transform ${
-                        isActive ? 'text-[#00D5DF] translate-x-0.5' : 'text-neutral-500'
-                      }`} 
+
+                    <ChevronRight
+                      className={`w-4 h-4 shrink-0 transition-transform ${isActive ? 'text-[#00D5DF] translate-x-0.5' : 'text-neutral-500'
+                        }`}
                     />
                   </button>
                 );
@@ -447,7 +444,7 @@ export function FAQSection() {
 
           {/* Right Column (8 cols on lg, 7 on xl): Pristine White Detailed Card (Image 1 Aesthetic) */}
           <div className="lg:col-span-8 w-full">
-            <div 
+            <div
               key={activeFAQ.id}
               className="bg-white text-neutral-900 rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 md:p-11 shadow-2xl relative overflow-hidden border border-neutral-200/90 transition-all duration-300"
               style={{
@@ -510,7 +507,7 @@ export function FAQSection() {
 
                 <div className="space-y-2.5">
                   {activeFAQ.highlights.map((hl, hIdx) => (
-                    <div 
+                    <div
                       key={hIdx}
                       className="border-l-2 border-neutral-900 pl-3.5 sm:pl-4 py-1.5 text-xs sm:text-sm text-neutral-700 leading-relaxed bg-neutral-50/90 rounded-r-lg hover:bg-neutral-100/90 transition-colors"
                     >

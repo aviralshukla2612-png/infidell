@@ -10,10 +10,9 @@ const SECTIONS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'process', label: 'How It Works' },
-  { id: 'approach', label: 'What We Are Doing' },
   { id: 'careers', label: 'Careers' },
-  { id: 'insights', label: 'Insights' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'approach', label: 'What We Are Doing' },
+  { id: 'insights', label: 'Insights' }
 ];
 
 export function Navbar() {

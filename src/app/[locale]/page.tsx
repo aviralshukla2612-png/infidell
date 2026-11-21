@@ -32,10 +32,10 @@ export default async function HomePage({
         SimpleTransparentProcessSection and all its GSAP animation timelines are 100% protected and untouched.
       */}
       <SimpleTransparentProcessSection />
+      <CareersSection />
       <OurApproachSection />
       <OurPartnersSection />
       <CandidateAndEmployerExperienceSection />
-      <CareersSection />
       <OurMissionValuesSection />
       <TestimonialsSection />
       <FAQSection />

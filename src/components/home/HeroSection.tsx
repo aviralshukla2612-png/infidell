@@ -283,7 +283,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
               >
                 <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="w-4 h-4 text-black" />
@@ -291,7 +291,7 @@ export function HeroSection() {
 
               <a
                 href="#employer"
-                className="hero-cta-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-[#F5F8F8] bg-[#0C1517]/90 hover:bg-[#102426] border border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-[#F5F8F8] bg-[#0C1517]/90 hover:bg-[#102426] border border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
               >
                 <Building2 className="w-4 h-4 text-[#17BEBB]" />
                 <span>{t('ctaSecondary')}</span>

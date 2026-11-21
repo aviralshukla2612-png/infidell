@@ -751,18 +751,18 @@ export function CandidateAndEmployerExperienceSection() {
           <div className="text-center pt-10 sm:pt-14 relative z-20">
             <a
               href="#process"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold text-black bg-gradient-to-r from-[#00D5DF] to-[#38BDF8] hover:shadow-[0_0_30px_rgba(0,213,223,0.5)] transition-all hover:scale-105"
+              className="btn-primary-blue inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#087FCB] to-[#00BFCB] hover:shadow-[0_0_30px_rgba(8,127,203,0.5)] transition-all hover:scale-105"
             >
               <span>{tCandidate('cta')}</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-white" />
             </a>
           </div>
         </div>
 
         {/* ========================================================
-            PART 2: EMPLOYER EXPERIENCE
+            PART 2: EMPLOYER EXPERIENCE (Section 17: Deep-Blue Visual Contrast Block)
         ======================================================== */}
-        <div id="employer" ref={employerPanelRef} className="scroll-mt-28">
+        <div id="employer" ref={employerPanelRef} className="employer-contrast-block scroll-mt-28 p-6 sm:p-10 lg:p-14 rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden transition-all duration-300">
           {/* Header */}
           <div className="max-w-3xl mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-tight mb-4">

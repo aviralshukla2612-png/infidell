@@ -2,6 +2,40 @@
 
 @layer base {
   :root {
+    /* Primary surfaces */
+    --background: #FFFFFF;
+    --background-secondary: #F8FAFC;
+    --background-tertiary: #F1F5F9;
+    --surface-card: #FFFFFF;
+    --surface-elevated: #FFFFFF;
+    --surface-soft-blue: #EFF6FF;
+    --surface-soft-cyan: #ECFEFF;
+
+    /* Brand colours */
+    --brand-navy: #102B50;
+    --brand-blue: #087FCB;
+    --brand-cyan: #00BFCB;
+    --brand-light-blue: #DCEEFF;
+    --brand-gradient: linear-gradient(120deg, #087FCB, #00BFCB);
+
+    /* Typography colours */
+    --text-primary: #102B50;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --text-subtle: #94A3B8;
+    --text-inverse: #FFFFFF;
+
+    /* Borders and shadows */
+    --border-primary: #DCE5EF;
+    --border-secondary: #E8EEF5;
+    --border-accent: #B7DDF5;
+
+    /* Shadows */
+    --shadow-sm: 0 4px 18px rgba(16, 43, 80, 0.05);
+    --shadow-elevated: 0 12px 35px rgba(16, 43, 80, 0.08);
+    --shadow-hover: 0 18px 45px rgba(16, 43, 80, 0.11);
+
+    /* Dark Mode Defaults */
     --bg-primary: #050708;
     --bg-secondary: #0A1113;
     --bg-card: #0C1517;
@@ -9,8 +43,6 @@
     --primary-accent: #17BEBB;
     --secondary-accent: #00D5DF;
     --soft-mint: #A6E7DF;
-    --text-primary: #F5F8F8;
-    --text-secondary: #A5B2B3;
     --border-color: #203536;
     --primary-cyan: #00D5DF;
     --secondary-cyan: #17BEBB;
@@ -29,7 +61,7 @@
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   }
 
   body {
@@ -40,6 +72,7 @@
     max-width: 100vw;
     width: 100%;
     position: relative;
+    font-family: inherit;
   }
 
   /* Custom subtle scrollbar */
@@ -113,10 +146,6 @@
     linear-gradient(to bottom, rgba(32, 53, 54, 0.25) 1px, transparent 1px);
 }
 
-
-/* ========================================================
-   LIGHT MODE OVERRIDES
-======================================================== */
 /* ========================================================
    LIGHT / DARK DUAL-THEME SWITCHING UTILITIES
 ======================================================== */
@@ -153,16 +182,34 @@ html.dark .experience-cta-card {
 ======================================================== */
 html.light {
   color-scheme: light;
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+  background-color: #FFFFFF !important;
+  color: #102B50 !important;
 }
 
 html.light body {
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+  background-color: #FFFFFF !important;
+  color: #102B50 !important;
 }
 
-/* Section Background Overrides */
+html.light ::selection {
+  background: rgba(8, 127, 203, 0.2);
+  color: #102B50;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border: 1px solid #E2E8F0;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #087FCB;
+}
+
+/* Section Background Alternating Rhythm in Light Mode */
 html.light section[id],
 html.light .bg-\[\#000000\],
 html.light .bg-\[\#050708\],
@@ -173,14 +220,47 @@ html.light .bg-\[\#080B0E\],
 html.light .bg-\[\#0A0D10\],
 html.light .bg-\[\#12171E\],
 html.light .bg-\[\#151B21\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light #home {
+  background-color: #FFFFFF !important;
+}
+
+html.light .candidates-placed-section,
+html.light #process,
+html.light #partners,
+html.light #testimonials,
+html.light #insights {
   background-color: #F8FAFC !important;
+}
+
+html.light #about,
+html.light #approach,
+html.light #candidate,
+html.light #mission,
+html.light #faq {
+  background-color: #FFFFFF !important;
+}
+
+/* Section 17: Deep Navy Visual Contrast Block for Employer Experience */
+html.light .employer-contrast-block {
+  background-color: #102B50 !important;
+  border-color: #1E3A5F !important;
+  box-shadow: 0 25px 60px -15px rgba(16, 43, 80, 0.3) !important;
+}
+
+/* Footer in Deep Enterprise Navy */
+html.light #footer {
+  background-color: #102B50 !important;
+  color: #FFFFFF !important;
+  border-top: 1px solid #1E3A5F !important;
 }
 
 /* Card & Surface Overrides in Light Mode */
 html.light .journey-card,
 html.light .journey-card-left,
 html.light .journey-card-right,
-html.light .employer-step-card,
 html.light .approach-card,
 html.light .bg-\[\#070D10\],
 html.light .bg-\[\#0B1519\],
@@ -193,46 +273,64 @@ html.light .bg-\[\#0E1A1C\],
 html.light .bg-\[\#0E1A1C\]\/50,
 html.light .bg-\[\#0E1A1C\]\/60,
 html.light .bg-\[\#102426\],
-html.light .insight-featured-card {
+html.light .insight-featured-card,
+html.light .insight-supporting-row {
   background: #FFFFFF !important;
   background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03) !important;
+  border-color: #DCE5EF !important;
+  box-shadow: 0 4px 18px rgba(16, 43, 80, 0.05) !important;
 }
 
 /* Card Hover States */
 html.light .journey-card:hover,
 html.light .employer-step-card:hover,
-html.light .approach-card:hover {
+html.light .approach-card:hover,
+html.light .insight-featured-card:hover,
+html.light .insight-supporting-row:hover {
   background: #FFFFFF !important;
-  border-color: #00D5DF !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 213, 223, 0.15), 0 4px 16px -2px rgba(0, 0, 0, 0.04) !important;
+  border-color: #087FCB !important;
+  box-shadow: 0 18px 45px rgba(16, 43, 80, 0.11) !important;
+}
+
+/* Employer Step Cards on Navy Background in Light Mode */
+html.light .employer-step-card {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-color: #DCE5EF !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light .employer-step-card h3 {
+  color: #102B50 !important;
+}
+
+html.light .employer-step-card p {
+  color: #475569 !important;
 }
 
 /* Experience CTA Card in Light Mode */
 html.light .experience-cta-card {
-  background: linear-gradient(135deg, #FFFFFF, #F0FDFA 60%, #F8FAFC) !important;
-  border-color: #CBD5E1 !important;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07) !important;
+  background: linear-gradient(135deg, rgba(8, 127, 203, 0.15), #0B1E38 45%, rgba(0, 191, 203, 0.15)) !important;
+  border-color: #00BFCB !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* Card typography protection in Light Mode */
-html.light .journey-card h3,
-html.light .employer-step-card h3 {
-  color: #0F172A !important;
+html.light .journey-card h3 {
+  color: #102B50 !important;
 }
-html.light .journey-card p,
-html.light .employer-step-card p {
+html.light .journey-card p {
   color: #475569 !important;
 }
 
 /* Feature Strip & Process Heading protection in Light Mode */
 html.light .hero-feature-strip {
-  border-color: #E2E8F0 !important;
+  border-color: #DCE5EF !important;
 }
 html.light #process h2 {
   filter: none !important;
   text-shadow: none !important;
+  color: #102B50 !important;
 }
 
 /* Border Overrides in Light Mode */
@@ -249,12 +347,12 @@ html.light .border-white\/10,
 html.light .border-white\/15,
 html.light .border-white\/20,
 html.light .border-white\/30 {
-  border-color: #E2E8F0 !important;
+  border-color: #DCE5EF !important;
 }
 
 /* Text Overrides for Light Mode */
 html.light .text-white {
-  color: #0F172A !important;
+  color: #102B50 !important;
 }
 
 html.light .text-neutral-200,
@@ -270,23 +368,78 @@ html.light .text-neutral-500 {
   color: #64748B !important;
 }
 
-/* High contrast cyan text for light backgrounds */
+/* High contrast brand text for light backgrounds */
 html.light .text-\[\#00D5DF\],
-html.light .text-\[\#00E5F0\] {
-  color: #0891B2 !important;
+html.light .text-\[\#00E5F0\],
+html.light .text-\[\#17BEBB\] {
+  color: #087FCB !important;
 }
 
 /* Gradient text legibility in Light Mode */
+html.light .cyan-text-gradient {
+  background: linear-gradient(120deg, #087FCB, #00BFCB) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 html.light span.bg-clip-text {
-  background: linear-gradient(to right, #0F172A, #0284C7, #0891B2) !important;
+  background: linear-gradient(120deg, #102B50 0%, #087FCB 60%, #00BFCB 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
 }
 
+/* Primary and Secondary CTA Button overrides in Light Mode */
+html.light .hero-cta-primary {
+  background-color: #087FCB !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 18px rgba(8, 127, 203, 0.35) !important;
+}
+html.light .hero-cta-primary:hover {
+  background-color: #076EAF !important;
+  box-shadow: 0 8px 25px rgba(8, 127, 203, 0.5) !important;
+}
+
+html.light .hero-cta-secondary {
+  background-color: #FFFFFF !important;
+  color: #102B50 !important;
+  border: 1px solid #DCE5EF !important;
+  box-shadow: 0 2px 10px rgba(16, 43, 80, 0.04) !important;
+}
+html.light .hero-cta-secondary:hover {
+  background-color: #F8FAFC !important;
+  border-color: #B7DDF5 !important;
+}
+
 /* ========================================================
    CRITICAL CONTRAST PROTECTION: Elements with dark backgrounds MUST retain white text
 ======================================================== */
+html.light #footer .text-white,
+html.light #footer h1,
+html.light #footer h2,
+html.light #footer h3,
+html.light #footer h4,
+html.light #footer span.text-white,
+html.light .employer-contrast-block h2,
+html.light .employer-contrast-block h3.text-white,
+html.light .employer-contrast-block .text-white,
+html.light button.bg-\[\#1e3ef0\],
+html.light .btn-primary-blue,
+html.light .btn-primary-blue span {
+  color: #FFFFFF !important;
+}
+
+html.light #footer .text-neutral-300,
+html.light #footer .text-neutral-400,
+html.light #footer .text-\[\#A5B2B3\] {
+  color: #CBD5E1 !important;
+}
+
+html.light .employer-contrast-block p.text-neutral-300 {
+  color: #DCEEFF !important;
+}
+
 html.light .about-carousel-card .text-white,
 html.light .about-carousel-card h3,
 html.light .about-carousel-card h4,
@@ -295,24 +448,14 @@ html.light .carousel__item h3,
 html.light .carousel__item h4,
 html.light .process-card .text-white,
 html.light .process-card h3,
-html.light .process-card h4,
-html.light button.bg-\[\#1e3ef0\],
-html.light #footer .text-white,
-html.light #footer h1,
-html.light #footer h2,
-html.light #footer h3,
-html.light #footer h4,
-html.light #footer span.text-white {
+html.light .process-card h4 {
   color: #FFFFFF !important;
 }
 
 html.light .about-carousel-card .text-neutral-300,
 html.light .about-carousel-card p,
 html.light .carousel__item .text-neutral-300,
-html.light .carousel__item p,
-html.light #footer .text-neutral-300,
-html.light #footer .text-neutral-400,
-html.light #footer .text-\[\#A5B2B3\] {
+html.light .carousel__item p {
   color: #CBD5E1 !important;
 }
 
@@ -320,7 +463,8 @@ html.light #footer .text-\[\#A5B2B3\] {
 html.light .partner-logo-img,
 html.light img[src*="/images/partners/"] {
   filter: none !important;
-  opacity: 0.85 !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 html.light .partner-logo-img:hover,
 html.light img[src*="/images/partners/"]:hover {
@@ -329,92 +473,85 @@ html.light img[src*="/images/partners/"]:hover {
 
 /* Process Section Audience Toggle */
 html.light .process-audience-toggle {
-  background-color: #E2E8F0 !important;
-  border-color: #CBD5E1 !important;
+  background-color: #E8EEF5 !important;
+  border-color: #DCE5EF !important;
 }
 html.light .process-audience-toggle button.bg-\[\#1e3ef0\] {
   color: #FFFFFF !important;
-  background-color: #0284C7 !important;
+  background-color: #087FCB !important;
 }
 html.light .process-audience-toggle button.text-white\/70 {
-  color: #475569 !important;
+  color: #64748B !important;
 }
 html.light .process-audience-toggle button.text-white\/70:hover {
-  color: #0F172A !important;
+  color: #102B50 !important;
 }
 
 /* Mission & Values in Light Mode */
 html.light .mission-circle-container {
-  background: linear-gradient(to bottom, #E0F2FE, #F0FDFA, #FFFFFF) !important;
-  border-color: #BAE6FD !important;
-  box-shadow: 0 20px 50px rgba(0, 213, 223, 0.15) !important;
+  background: linear-gradient(to bottom, #EFF6FF, #ECFEFF, #FFFFFF) !important;
+  border-color: #B7DDF5 !important;
+  box-shadow: 0 12px 35px rgba(16, 43, 80, 0.08) !important;
 }
 html.light .mission-circle-fade {
   display: none !important;
 }
 html.light .mission-badge {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  color: #0F172A !important;
-  border-color: #CBD5E1 !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #102B50 !important;
+  border-color: #DCE5EF !important;
+  box-shadow: 0 4px 18px rgba(16, 43, 80, 0.08) !important;
 }
 html.light .mission-badge span {
-  color: #0F172A !important;
+  color: #102B50 !important;
 }
 
-/* Testimonial Card Shadow in Light Mode */
+/* Testimonial Card in Light Mode */
 html.light .testimonial-card {
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.08), 0 0 30px rgba(0, 213, 223, 0.1) !important;
-  border-color: #E2E8F0 !important;
+  box-shadow: 0 12px 35px rgba(16, 43, 80, 0.08) !important;
+  border-color: #DCE5EF !important;
+  background-color: #FFFFFF !important;
 }
 
 /* Header & Sticky Navbar in Light Mode */
 html.light header#main-navbar {
-  background-color: rgba(255, 255, 255, 0.88) !important;
-  border-color: #E2E8F0 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #DCE5EF !important;
+  box-shadow: 0 4px 18px rgba(16, 43, 80, 0.05) !important;
 }
 
 html.light header#main-navbar a {
   color: #334155 !important;
 }
 
-html.light header#main-navbar a:hover,
+html.light header#main-navbar a:hover {
+  color: #102B50 !important;
+}
+
 html.light header#main-navbar a.font-semibold {
-  color: #0F172A !important;
+  color: #087FCB !important;
 }
 
-/* Hero Section adjustments in Light Mode */
-html.light #home {
-  background-color: #F8FAFC !important;
-}
-
-html.light #home .hero-desc {
-  color: #475569 !important;
-}
-
-/* Keep Footer in rich dark contrast */
-html.light #footer {
-  background-color: #090E11 !important;
+html.light header#main-navbar .navbar-cta-btn {
+  background-color: #087FCB !important;
   color: #FFFFFF !important;
-  border-top: 1px solid #1E293B !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(8, 127, 203, 0.3) !important;
 }
 
-/* Atmospheric Glows in light mode: softer pastel */
-html.light .bg-\[\#00D5DF\]\/10,
-html.light .bg-\[\#38BDF8\]\/10 {
-  opacity: 0.45 !important;
+html.light header#main-navbar .navbar-cta-btn:hover {
+  background-color: #076EAF !important;
 }
 
 /* FAQ Card in Light Mode */
 html.light #faq .bg-\[\#0E1A1C\] {
-  background-color: #F0FDFA !important;
-  border-color: #00D5DF !important;
+  background-color: #EFF6FF !important;
+  border-color: #087FCB !important;
 }
 
 html.light #faq .bg-\[\#0C1517\]\/85 {
   background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
+  border-color: #E8EEF5 !important;
 }
 
 html.light .bg-neutral-800\/80 {
@@ -425,11 +562,11 @@ html.light .bg-neutral-800\/80 {
 
 /* Insights badges in Light Mode */
 html.light .insight-featured-card span.bg-\[\#0C1517\]\/85 {
-  background-color: #FFFFFF !important;
-  border-color: #E2E8F0 !important;
-  color: #0891B2 !important;
+  background-color: #EFF6FF !important;
+  border-color: #B7DDF5 !important;
+  color: #087FCB !important;
 }
 html.light .insight-featured-card span.bg-\[\#050708\]\/75 {
   background-color: #F1F5F9 !important;
-  color: #475569 !important;
+  color: #64748B !important;
 }

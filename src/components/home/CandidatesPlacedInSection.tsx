@@ -133,7 +133,7 @@ export function CandidatesPlacedInSection() {
   const marqueeList = [...logos, ...logos];
 
   return (
-    <section className="py-10 bg-[#000000] border-y border-[#202A30] relative overflow-hidden">
+    <section className="candidates-placed-section py-10 bg-[#000000] border-y border-[#202A30] relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00E5F0]/5 to-transparent pointer-events-none" />
 

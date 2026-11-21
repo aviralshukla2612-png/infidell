@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Logo } from '@/components/ui/Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 const SECTIONS = [
@@ -160,9 +159,8 @@ export function Navbar() {
             />
           </nav>
 
-          {/* Right Action: Language Switcher + Theme Toggle + "Let's Talk →" Pill Button */}
+          {/* Right Action: Theme Toggle + "Let's Talk →" Pill Button */}
           <div className="hidden md:flex items-center gap-3">
-            <LanguageSwitcher />
             <ThemeToggle />
             <a
               href="#contact"
@@ -177,9 +175,8 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Right Controls: Language Switcher + Theme Toggle + Hamburger Button */}
+          {/* Mobile Right Controls: Theme Toggle + Hamburger Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <LanguageSwitcher />
             <ThemeToggle />
             <button
               type="button"

@@ -8,8 +8,6 @@ import { useGSAP } from '@gsap/react';
 import {
   ArrowRight,
   X,
-  ChevronLeft,
-  ChevronRight,
   ShieldCheck,
   Sparkles
 } from 'lucide-react';
@@ -317,36 +315,9 @@ export function CareersSection() {
         </h2>
 
         {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal mb-6">
+        <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
           Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover direct representation with verified 48h placement SLAs.
         </p>
-
-        {/* Zarvion Signature Arrow Navigation & Counter (Image 2: < 01 / 10 >) */}
-        <div className="flex items-center justify-center gap-4 mt-2">
-          <button
-            type="button"
-            onClick={() => scrollToCard(activeIndex - 1)}
-            disabled={activeIndex === 0}
-            aria-label="Previous Career Role"
-            className="w-12 h-12 rounded-full bg-[#0C1517] dark:bg-[#0C1517] border border-[#203536] flex items-center justify-center text-white hover:border-[#00D5DF] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md cursor-pointer"
-          >
-            <ChevronLeft className="w-5 h-5 text-neutral-300" />
-          </button>
-
-          <span className="text-sm sm:text-base font-mono font-bold tracking-widest text-[#087FCB] dark:text-[#00D5DF] px-3">
-            {String(activeIndex + 1).padStart(2, '0')} / {String(CAREER_ROLES.length).padStart(2, '0')}
-          </span>
-
-          <button
-            type="button"
-            onClick={() => scrollToCard(activeIndex + 1)}
-            disabled={activeIndex === CAREER_ROLES.length - 1}
-            aria-label="Next Career Role"
-            className="w-12 h-12 rounded-full bg-[#0C1517] dark:bg-[#0C1517] border border-[#203536] flex items-center justify-center text-white hover:border-[#00D5DF] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-md cursor-pointer"
-          >
-            <ChevronRight className="w-5 h-5 text-white" />
-          </button>
-        </div>
       </div>
 
       {/* ========================================================

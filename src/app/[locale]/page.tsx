@@ -2,7 +2,6 @@ import React from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { CandidatesPlacedInSection } from '@/components/home/CandidatesPlacedInSection';
-import { ServicesSection } from '@/components/home/ServicesSection';
 import { AboutSection } from '@/components/home/AboutSection';
 import { OurApproachSection } from '@/components/home/OurApproachSection';
 import { OurPartnersSection } from '@/components/home/OurPartnersSection';
@@ -25,7 +24,6 @@ export default async function HomePage({
     <>
       <HeroSection />
       <CandidatesPlacedInSection />
-      <ServicesSection />
       <AboutSection />
       {/* 
         CRITICAL NON-NEGOTIABLE BOUNDARY:

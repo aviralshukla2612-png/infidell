@@ -289,58 +289,97 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Sleek Horizontal Feature Strip with Vertical Dividers & Premium Glowing Icon Badges */}
-      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 mt-12 sm:mt-16">
+      {/* Three Main Services Highlight Bar (Integrated Directly into the Hero) */}
+      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 sm:pt-7 pb-2 mt-10 sm:mt-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center lg:justify-between gap-4 sm:gap-x-10 text-[#F5F8F8]">
-            {/* Item 1: Recruitment & Placement */}
-            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <Briefcase className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+          <div className="mb-3.5 flex items-center justify-between">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#00D5DF] font-bold flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] shadow-[0_0_8px_#00D5DF]" />
+              Our Three Main Services
+            </span>
+            <span className="text-xs text-neutral-400 hidden sm:inline-block">
+              Dedicated Placement &amp; Enterprise Staffing Architecture
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-6">
+            {/* Service 1: Career Placement & Advisory */}
+            <a
+              href="#candidate"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                    <Compass className="w-4.5 h-4.5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-[#00D5DF] uppercase tracking-wider block">
+                      01 · Candidate Track
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#00D5DF] transition-colors leading-tight">
+                      Career Placement &amp; Advisory
+                    </h3>
+                  </div>
+                </div>
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00D5DF] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
-                {t('pillProduct')}
-              </span>
-            </div>
+              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+                100% free candidate career advocacy: ATS resume architecture, compensation benchmarking, and direct introductions to engineering leadership.
+              </p>
+            </a>
 
-            {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
-
-            {/* Item 2: Verified Employers */}
-            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <BadgeCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+            {/* Service 2: Corporate Recruitment & Staffing */}
+            <a
+              href="#employer"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#38BDF8]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                    <Building2 className="w-4.5 h-4.5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
+                      02 · Enterprise Track
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
+                      Corporate Recruitment &amp; Staffing
+                    </h3>
+                  </div>
+                </div>
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#38BDF8] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
-                {t('pillSecure')}
-              </span>
-            </div>
+              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+                Multi-tier vetted technical shortlists delivered in 48 to 72 hours with verified notice periods and replacement guarantees.
+              </p>
+            </a>
 
-            {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
-
-            {/* Item 3: Personalized Career Advisory */}
-            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <Compass className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
+            {/* Service 3: Executive Search & Leadership */}
+            <a
+              href="mailto:contact@infidelltech.com?subject=Executive%20Search%20Inquiry"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#A78BFA]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#A78BFA]/10 border border-[#A78BFA]/30 flex items-center justify-center text-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.2)] group-hover:scale-105 transition-transform shrink-0">
+                    <ShieldCheck className="w-4.5 h-4.5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-[#A78BFA] uppercase tracking-wider block">
+                      03 · Executive Track
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#A78BFA] transition-colors leading-tight">
+                      Executive Search &amp; Leadership
+                    </h3>
+                  </div>
+                </div>
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#A78BFA] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
-                {t('pillAutomation')}
-              </span>
-            </div>
-
-            {/* Vertical Divider */}
-            <div className="hidden sm:block h-5 w-[1px] bg-[#203536]" />
-
-            {/* Item 4: End-to-End Support */}
-            <div className="flex items-center gap-3 group py-1.5 px-2 rounded-xl transition-all duration-300">
-              <div className="w-8 h-8 rounded-lg bg-[#0C1A1E] border border-[#17BEBB]/40 flex items-center justify-center text-[#00D5DF] shadow-[0_0_12px_rgba(0,213,223,0.18)] group-hover:border-[#00D5DF] group-hover:shadow-[0_0_20px_rgba(0,213,223,0.4)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
-                <ShieldCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={2} />
-              </div>
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-200 group-hover:text-white transition-colors">
-                {t('pillPartnership')}
-              </span>
-            </div>
+              <p className="text-xs text-neutral-300 leading-relaxed font-normal">
+                Confidential headhunting for Director, VP of Engineering, and C-suite leadership with strict NDA background due diligence.
+              </p>
+            </a>
           </div>
         </div>
       </div>

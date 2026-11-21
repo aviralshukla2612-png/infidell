@@ -130,11 +130,11 @@ export function HeroSection() {
             priority
             fetchPriority="high"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-            className="object-contain sm:object-contain object-right scale-85 sm:scale-75 lg:scale-70 origin-right"
+            className="object-cover object-right"
           />
-          {/* Subtle Ambient Light Gradient Overlays for optimal typography readability on the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/50 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/30 pointer-events-none" />
+          {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 via-30% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
 

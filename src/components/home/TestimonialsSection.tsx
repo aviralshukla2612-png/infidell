@@ -99,7 +99,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="min-h-screen flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-center py-6 sm:py-8 lg:py-6 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
       {/* Dynamic Background Atmosphere */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
@@ -135,38 +135,38 @@ export function TestimonialsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
 
-        {/* Header - Matching About Us Structure */}
-        <div className="max-w-3xl mb-6 sm:mb-8 md:mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none mb-2 sm:mb-3">
+        {/* Header - Compact Elegant Single-Screen Proportions */}
+        <div className="max-w-3xl mb-3 sm:mb-4 lg:mb-5">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white leading-tight mb-0.5 sm:mb-1">
             Testimonials
           </h2>
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-white leading-snug mb-2 sm:mb-2.5">
+          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-tight text-white leading-snug mb-1">
             Voices of{' '}
             <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
               Verified Success.
             </span>
           </h3>
-          <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+          <p className="text-xs sm:text-[13px] text-neutral-300 leading-relaxed font-normal max-w-2xl">
             Direct experiences from candidates placed in career-defining roles and enterprise partners who rely on Infidell for precision talent shortlists.
           </p>
         </div>
 
-        {/* Featured Testimonial Card - Fully Responsive Across Mobile, Tablet & Desktop */}
-        <div className="max-w-4xl mx-auto pt-6 sm:pt-8 w-full">
+        {/* Featured Testimonial Card - Perfectly Proportioned to fit on 1 screen */}
+        <div className="max-w-4xl mx-auto pt-2 sm:pt-4 w-full">
           <div
             key={active.id}
             onClick={handleNext}
             role="button"
             tabIndex={0}
             aria-label="Click to view next testimonial"
-            className="testimonial-card relative bg-[#FFFFFF] text-neutral-900 rounded-[24px] sm:rounded-[32px] md:rounded-[36px] pt-7 sm:pt-9 md:pt-10 pb-6 sm:pb-8 px-5 sm:px-8 md:px-12 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer border border-[#203536]/30"
+            className="testimonial-card relative bg-[#FFFFFF] text-neutral-900 rounded-[20px] sm:rounded-[28px] md:rounded-[32px] pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 px-5 sm:px-7 md:px-10 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer border border-[#203536]/30"
             style={{
               boxShadow: '0 30px 70px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,213,223,0.12)'
             }}
           >
             {/* Scalloped Flower Avatar overlapping top-left corner */}
-            <div className="absolute -top-8 -left-2 sm:-top-12 sm:-left-4 md:-top-16 md:-left-6 z-20">
-              <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.32)]">
+            <div className="absolute -top-6 sm:-top-8 md:-top-9 -left-2 sm:-left-3 z-20">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 filter drop-shadow-[0_10px_22px_rgba(0,0,0,0.25)]">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 100 100">
                   <defs>
                     <clipPath id={`scallop-${active.id}`}>
@@ -209,34 +209,34 @@ export function TestimonialsSection() {
             </div>
 
             {/* Top-Right Ambient Quote Watermark */}
-            <Quote className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 text-neutral-300/40 pointer-events-none" />
+            <Quote className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 md:top-6 md:right-6 w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 text-neutral-300/40 pointer-events-none" />
 
             {/* Author Meta Section (Responsive offset from the overlapping scallop avatar) */}
-            <div className="pl-20 sm:pl-28 md:pl-36 mb-4 sm:mb-5 min-h-[44px] sm:min-h-[55px] flex flex-col justify-center">
+            <div className="pl-16 sm:pl-20 md:pl-24 mb-2 sm:mb-2.5 min-h-[36px] sm:min-h-[42px] flex flex-col justify-center">
               {/* Person Name in distinguished font / accent */}
               <h3
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold tracking-tight mb-0.5 sm:mb-1"
+                className="text-lg sm:text-xl md:text-2xl font-serif font-bold tracking-tight mb-0.5"
                 style={{ color: active.accent }}
               >
                 {active.name}
               </h3>
 
               {/* Title / Role in clean uppercase */}
-              <p className="text-[11px] sm:text-xs md:text-sm font-bold tracking-widest text-neutral-600 uppercase">
+              <p className="text-[10px] sm:text-xs font-bold tracking-widest text-neutral-600 uppercase">
                 {active.role}
               </p>
             </div>
 
             {/* Testimonial Quote Body - Responsive Typography */}
-            <div className="relative z-10 pt-1 pb-1">
-              <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-normal text-neutral-900 leading-relaxed italic">
+            <div className="relative z-10 pt-0.5 pb-0.5">
+              <p className="text-xs sm:text-sm md:text-base lg:text-[17px] font-normal text-neutral-900 leading-relaxed italic">
                 &ldquo;{active.quote}&rdquo;
               </p>
             </div>
           </div>
 
           {/* Minimal, Sleek Pagination Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-4 sm:mt-6">
+          <div className="flex items-center justify-center gap-2 mt-3 sm:mt-4">
             {TESTIMONIALS.map((item, idx) => (
               <button
                 key={item.id}

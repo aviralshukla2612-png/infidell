@@ -237,9 +237,11 @@ export function FAQSection() {
                 {/* Question Trigger */}
                 <button
                   type="button"
+                  id={`faq-trigger-${faq.id}`}
                   onClick={() => toggleFAQ(faq.id)}
                   className="w-full py-5 px-6 sm:px-8 text-left flex items-center justify-between gap-4 focus:outline-none transition-colors cursor-pointer"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${faq.id}`}
                 >
                   <div className="flex items-center gap-3.5 sm:gap-4 pr-2">
                     <span 
@@ -265,6 +267,9 @@ export function FAQSection() {
 
                 {/* Answer Content - Smooth CSS Grid Transition */}
                 <div
+                  id={`faq-panel-${faq.id}`}
+                  role="region"
+                  aria-labelledby={`faq-trigger-${faq.id}`}
                   className={`grid transition-[grid-template-rows] duration-300 ease-out ${
                     isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
                   }`}

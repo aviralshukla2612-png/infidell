@@ -11,17 +11,23 @@ export function Preloader() {
   const brandLetters = ['I', 'N', 'F', 'I', 'D', 'E', 'L', 'L'];
 
   useEffect(() => {
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setHidden(true);
+      return;
+    }
+
     // Prevent background scroll while preloader is active
     document.body.style.overflow = 'hidden';
 
-    // Allow the fluid letter wave animation to showcase for ~1.4s then smoothly slide up to reveal the page
+    // Fluid letter wave showcase for ~600ms then swift slide up to unmask hero LCP
     const timer = setTimeout(() => {
       if (containerRef.current) {
         gsap.to(containerRef.current, {
           yPercent: -100,
-          opacity: 0.95,
-          duration: 0.85,
-          ease: 'power4.inOut',
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power3.inOut',
           onComplete: () => {
             setHidden(true);
             document.body.style.overflow = '';
@@ -31,7 +37,7 @@ export function Preloader() {
         setHidden(true);
         document.body.style.overflow = '';
       }
-    }, 1400);
+    }, 600);
 
     return () => {
       clearTimeout(timer);

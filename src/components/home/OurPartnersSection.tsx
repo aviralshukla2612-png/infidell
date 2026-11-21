@@ -48,6 +48,8 @@ export function OurPartnersSection() {
               <img
                 src={partner.src}
                 alt={partner.name}
+                width={160}
+                height={40}
                 className="partner-logo-img h-8 sm:h-10 w-auto max-w-[140px] sm:max-w-[170px] object-contain select-none transition-all duration-300 filter invert hue-rotate-180 brightness-110 contrast-105"
                 loading="lazy"
               />

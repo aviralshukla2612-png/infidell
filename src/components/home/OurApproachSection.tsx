@@ -163,6 +163,7 @@ export function OurApproachSection() {
 
                   <a 
                     href="#contact"
+                    aria-label={`Inquire about ${t(principle.titleKey)}`}
                     className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-500 dark:text-neutral-400 group-hover:text-white group-hover:border-[#087FCB] dark:group-hover:border-[#00D5DF]/60 group-hover:bg-[#087FCB] dark:group-hover:bg-[#00D5DF]/20 group-hover:rotate-45 transition-all duration-300"
                   >
                     <ArrowUpRight className="w-4 h-4" />

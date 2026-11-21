@@ -162,10 +162,11 @@ export function CandidateRegistrationForm({
       {/* Basic Contact Info */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-fullName" className="block text-xs font-semibold text-white mb-1.5">
             {t('fullName')} *
           </label>
           <input
+            id="cand-fullName"
             {...register('fullName')}
             type="text"
             placeholder="e.g. Priyank Sharma"
@@ -177,10 +178,11 @@ export function CandidateRegistrationForm({
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-email" className="block text-xs font-semibold text-white mb-1.5">
             {t('email')} *
           </label>
           <input
+            id="cand-email"
             {...register('email')}
             type="email"
             placeholder="priyank@example.com"
@@ -192,10 +194,11 @@ export function CandidateRegistrationForm({
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-phone" className="block text-xs font-semibold text-white mb-1.5">
             {t('phone')} *
           </label>
           <input
+            id="cand-phone"
             {...register('phone')}
             type="tel"
             placeholder="10-digit mobile number"
@@ -210,10 +213,11 @@ export function CandidateRegistrationForm({
       {/* Qualification & Experience */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-education" className="block text-xs font-semibold text-white mb-1.5">
             {t('education')} *
           </label>
           <select
+            id="cand-education"
             {...register('education')}
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors cursor-pointer"
           >
@@ -231,10 +235,11 @@ export function CandidateRegistrationForm({
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-experience" className="block text-xs font-semibold text-white mb-1.5">
             {t('experience')} *
           </label>
           <select
+            id="cand-experience"
             {...register('experience')}
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors cursor-pointer"
           >
@@ -253,10 +258,11 @@ export function CandidateRegistrationForm({
 
       {/* Skills */}
       <div>
-        <label className="block text-xs font-semibold text-white mb-1.5">
+        <label htmlFor="cand-skills" className="block text-xs font-semibold text-white mb-1.5">
           {t('skills')} *
         </label>
         <input
+          id="cand-skills"
           {...register('skills')}
           type="text"
           placeholder="e.g. Next.js, React, Node.js, Financial Modeling, B2B Sales, PLC Automation"
@@ -270,10 +276,11 @@ export function CandidateRegistrationForm({
       {/* Preferred Industry & Location */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-preferredIndustry" className="block text-xs font-semibold text-white mb-1.5">
             {t('preferredIndustry')} *
           </label>
           <select
+            id="cand-preferredIndustry"
             {...register('preferredIndustry')}
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors cursor-pointer"
           >
@@ -293,10 +300,11 @@ export function CandidateRegistrationForm({
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-white mb-1.5">
+          <label htmlFor="cand-preferredLocation" className="block text-xs font-semibold text-white mb-1.5">
             {t('preferredLocation')} *
           </label>
           <input
+            id="cand-preferredLocation"
             {...register('preferredLocation')}
             type="text"
             placeholder="e.g. Ahmedabad, Pune, Bengaluru, or Remote"
@@ -310,7 +318,7 @@ export function CandidateRegistrationForm({
 
       {/* Resume Upload File Box */}
       <div>
-        <label className="block text-xs font-semibold text-white mb-1.5">
+        <label htmlFor="cand-resume" className="block text-xs font-semibold text-white mb-1.5">
           {t('resume')}
         </label>
         <div className="p-4 rounded-xl border border-dashed border-[#202A30] bg-[#080B0E] hover:border-[#00E5F0]/50 transition-colors flex items-center justify-between">
@@ -328,9 +336,10 @@ export function CandidateRegistrationForm({
             </div>
           </div>
 
-          <label className="px-3.5 py-1.5 rounded-lg bg-[#0A0D10] border border-[#202A30] hover:border-[#00E5F0] text-xs font-semibold text-white cursor-pointer transition-colors">
+          <label htmlFor="cand-resume" className="px-3.5 py-1.5 rounded-lg bg-[#0A0D10] border border-[#202A30] hover:border-[#00E5F0] text-xs font-semibold text-white cursor-pointer transition-colors">
             <span>Browse</span>
             <input
+              id="cand-resume"
               type="file"
               accept=".pdf,.doc,.docx"
               onChange={handleFileChange}

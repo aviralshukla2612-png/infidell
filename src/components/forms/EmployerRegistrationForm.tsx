@@ -106,10 +106,11 @@ export function EmployerRegistrationForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {/* Company Name */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-companyName" className="block text-xs font-semibold text-white mb-2">
             {t('companyName')} *
           </label>
           <input
+            id="emp-companyName"
             {...register('companyName')}
             type="text"
             placeholder="e.g. Acme Technologies Pvt Ltd"
@@ -122,10 +123,11 @@ export function EmployerRegistrationForm() {
 
         {/* Contact Person */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-contactPerson" className="block text-xs font-semibold text-white mb-2">
             {t('contactPerson')} *
           </label>
           <input
+            id="emp-contactPerson"
             {...register('contactPerson')}
             type="text"
             placeholder="e.g. Ramesh Shah, VP - Talent Acquisition"
@@ -138,10 +140,11 @@ export function EmployerRegistrationForm() {
 
         {/* Work Email */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-workEmail" className="block text-xs font-semibold text-white mb-2">
             {t('workEmail')} *
           </label>
           <input
+            id="emp-workEmail"
             {...register('workEmail')}
             type="email"
             placeholder="hr@yourcompany.com"
@@ -154,10 +157,11 @@ export function EmployerRegistrationForm() {
 
         {/* Phone */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-phone" className="block text-xs font-semibold text-white mb-2">
             {t('phone')} *
           </label>
           <input
+            id="emp-phone"
             {...register('phone')}
             type="tel"
             placeholder="+91 98250 XXXXX"
@@ -170,10 +174,11 @@ export function EmployerRegistrationForm() {
 
         {/* Industry */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-industry" className="block text-xs font-semibold text-white mb-2">
             {t('industry')} *
           </label>
           <select
+            id="emp-industry"
             {...register('industry')}
             className="w-full px-4 py-3 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00C7B1] transition-colors cursor-pointer"
           >
@@ -194,10 +199,11 @@ export function EmployerRegistrationForm() {
 
         {/* Role & Open Positions */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-hiringRole" className="block text-xs font-semibold text-white mb-2">
             {t('hiringRole')} *
           </label>
           <input
+            id="emp-hiringRole"
             {...register('hiringRole')}
             type="text"
             placeholder="e.g. Senior Frontend Engineer"
@@ -209,10 +215,11 @@ export function EmployerRegistrationForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-openPositions" className="block text-xs font-semibold text-white mb-2">
             {t('openPositions')} *
           </label>
           <input
+            id="emp-openPositions"
             {...register('openPositions')}
             type="number"
             min="1"
@@ -225,10 +232,11 @@ export function EmployerRegistrationForm() {
 
         {/* Job Location */}
         <div>
-          <label className="block text-xs font-semibold text-white mb-2">
+          <label htmlFor="emp-jobLocation" className="block text-xs font-semibold text-white mb-2">
             {t('jobLocation')} *
           </label>
           <input
+            id="emp-jobLocation"
             {...register('jobLocation')}
             type="text"
             placeholder="e.g. Ahmedabad / Remote / Pune"
@@ -242,10 +250,11 @@ export function EmployerRegistrationForm() {
 
       {/* Job Description */}
       <div>
-        <label className="block text-xs font-semibold text-white mb-2">
+        <label htmlFor="emp-jobDescription" className="block text-xs font-semibold text-white mb-2">
           {t('jobDescription')} *
         </label>
         <textarea
+          id="emp-jobDescription"
           {...register('jobDescription')}
           rows={4}
           placeholder="Briefly describe the role, required experience in years, key technical/functional skills, and proposed CTC budget range..."

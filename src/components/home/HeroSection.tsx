@@ -231,7 +231,7 @@ export function HeroSection() {
             src="/images/bg.png"
             alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
             fill
-            priority
+            sizes="(max-width: 768px) 100vw, 1000px"
             className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
           />
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
@@ -248,6 +248,7 @@ export function HeroSection() {
             alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
             fill
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
             className="object-contain sm:object-contain object-right opacity-95 scale-85 sm:scale-75 lg:scale-70 origin-right transition-transform"
           />
           {/* Subtle Ambient Light Gradient Overlays for optimal typography readability on the left */}

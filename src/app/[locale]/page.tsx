@@ -1,18 +1,42 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { CandidatesPlacedInSection } from '@/components/home/CandidatesPlacedInSection';
 import { AboutSection } from '@/components/home/AboutSection';
 import { OurApproachSection } from '@/components/home/OurApproachSection';
-import { OurPartnersSection } from '@/components/home/OurPartnersSection';
-import { CandidateAndEmployerExperienceSection } from '@/components/home/CandidateAndEmployerExperienceSection';
-import { CareersSection } from '@/components/home/CareersSection';
 import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
-import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSection';
-import { TestimonialsSection } from '@/components/home/TestimonialsSection';
-import { FAQSection } from '@/components/home/FAQSection';
-import { InsightsSection } from '@/components/home/InsightsSection';
-import { ContactSection } from '@/components/home/ContactSection';
+import { CareersSection } from '@/components/home/CareersSection';
+
+// Dynamically split below-the-fold sections with SSR enabled for maximum Performance & SEO
+const OurPartnersSection = dynamic(
+  () => import('@/components/home/OurPartnersSection').then((mod) => mod.OurPartnersSection),
+  { ssr: true }
+);
+const CandidateAndEmployerExperienceSection = dynamic(
+  () => import('@/components/home/CandidateAndEmployerExperienceSection').then((mod) => mod.CandidateAndEmployerExperienceSection),
+  { ssr: true }
+);
+const OurMissionValuesSection = dynamic(
+  () => import('@/components/home/OurMissionValuesSection').then((mod) => mod.OurMissionValuesSection),
+  { ssr: true }
+);
+const TestimonialsSection = dynamic(
+  () => import('@/components/home/TestimonialsSection').then((mod) => mod.TestimonialsSection),
+  { ssr: true }
+);
+const FAQSection = dynamic(
+  () => import('@/components/home/FAQSection').then((mod) => mod.FAQSection),
+  { ssr: true }
+);
+const InsightsSection = dynamic(
+  () => import('@/components/home/InsightsSection').then((mod) => mod.InsightsSection),
+  { ssr: true }
+);
+const ContactSection = dynamic(
+  () => import('@/components/home/ContactSection').then((mod) => mod.ContactSection),
+  { ssr: true }
+);
 
 export default async function HomePage({
   params

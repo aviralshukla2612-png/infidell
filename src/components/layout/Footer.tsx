@@ -16,8 +16,8 @@ const FOOTER_LETTERS = ['I', 'N', 'F', 'I', 'D', 'E', 'L', 'L'];
 const FOOTER_NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'How It Works', href: '#process' },
-  { label: 'What We Are Doing', href: '#approach' },
   { label: 'Careers', href: '#careers' },
   { label: 'Insights', href: '#insights' }
 ];
@@ -144,6 +144,7 @@ export function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Infidell on LinkedIn"
               className="text-2xl sm:text-3xl font-medium text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
             >
               <span>LinkedIn</span>
@@ -153,6 +154,7 @@ export function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Infidell on Twitter / X"
               className="text-2xl sm:text-3xl font-medium text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
             >
               <span>Twitter / X</span>
@@ -162,6 +164,7 @@ export function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Infidell on Instagram"
               className="text-2xl sm:text-3xl font-medium text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
             >
               <span>Instagram</span>

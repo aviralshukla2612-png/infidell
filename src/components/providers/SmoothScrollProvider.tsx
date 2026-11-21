@@ -12,14 +12,22 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     // Only execute on browser
     if (typeof window === 'undefined') return;
 
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     gsap.registerPlugin(ScrollTrigger);
+
+    const isMobile = window.innerWidth < 768;
 
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.8,
+      smoothWheel: !isMobile,
+      syncTouch: false,
+      touchMultiplier: 1.0,
+      wheelMultiplier: 0.95
     });
     lenisRef.current = lenis;
 
@@ -31,7 +39,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     };
 
     gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(tickerCb);

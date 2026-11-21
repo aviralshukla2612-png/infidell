@@ -219,10 +219,11 @@ export function ContactSection() {
                     {/* Row 1: Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                        <label htmlFor="contact-fullName" className="text-xs font-semibold text-neutral-300 block mb-1.5">
                           Your Name *
                         </label>
                         <input
+                          id="contact-fullName"
                           type="text"
                           required
                           value={formData.name}
@@ -233,10 +234,11 @@ export function ContactSection() {
                       </div>
 
                       <div>
-                        <label className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                        <label htmlFor="contact-email" className="text-xs font-semibold text-neutral-300 block mb-1.5">
                           Your Email *
                         </label>
                         <input
+                          id="contact-email"
                           type="email"
                           required
                           value={formData.email}
@@ -249,11 +251,13 @@ export function ContactSection() {
 
                     {/* Row 2: Phone with Country Code */}
                     <div>
-                      <label className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-phone" className="text-xs font-semibold text-neutral-300 block mb-1.5">
                         Phone Number *
                       </label>
                       <div className="flex gap-2">
                         <select
+                          id="contact-countryCode"
+                          aria-label="Country Dial Code"
                           value={formData.countryCode}
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                           className="w-28 px-3 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white focus:outline-none focus:border-[#00D5DF] transition-colors cursor-pointer shrink-0"
@@ -266,6 +270,7 @@ export function ContactSection() {
                           <option value="+61">🇦🇺 +61</option>
                         </select>
                         <input
+                          id="contact-phone"
                           type="tel"
                           required
                           value={formData.phone}
@@ -278,10 +283,11 @@ export function ContactSection() {
 
                     {/* Row 3: Inquiry Type */}
                     <div>
-                      <label className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-inquiryType" className="text-xs font-semibold text-neutral-300 block mb-1.5">
                         Inquiry Nature
                       </label>
                       <select
+                        id="contact-inquiryType"
                         value={formData.inquiryType}
                         onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white focus:outline-none focus:border-[#00D5DF] transition-colors cursor-pointer"
@@ -295,10 +301,11 @@ export function ContactSection() {
 
                     {/* Row 4: Your Message */}
                     <div>
-                      <label className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-message" className="text-xs font-semibold text-neutral-300 block mb-1.5">
                         Your Message
                       </label>
                       <textarea
+                        id="contact-message"
                         rows={4}
                         required
                         value={formData.message}

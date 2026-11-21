@@ -547,7 +547,7 @@ export function SimpleTransparentProcessSection() {
           {/* Dual Audience Toggle ("For Job Seekers" | "For Employers") */}
           <div
             ref={toggleRef}
-            className="inline-flex items-center p-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-lg mb-6 sm:mb-8 lg:mb-10 select-none pointer-events-auto"
+            className="process-audience-toggle inline-flex items-center p-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md shadow-lg mb-6 sm:mb-8 lg:mb-10 select-none pointer-events-auto"
           >
             <button
               onClick={() => setActiveTab('jobSeekers')}

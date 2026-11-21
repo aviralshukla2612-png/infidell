@@ -326,8 +326,8 @@ export function AboutSection() {
   );
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       id="about"
       className="relative w-full bg-[#050708] text-white py-20 sm:py-28 overflow-hidden border-t border-[#203536]/80 select-none"
     >
@@ -339,7 +339,7 @@ export function AboutSection() {
         <div className="mb-16 sm:mb-24">
           {/* Top Title Bar: "About Us" and Philosophy Subtitle */}
           <div className="luna-header-fade mb-10 sm:mb-12">
-            <h2 
+            <h2
               ref={headlineRef}
               className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-light tracking-tight text-white leading-none mb-4 sm:mb-5"
             >
@@ -355,7 +355,7 @@ export function AboutSection() {
 
           {/* 12-Column Grid: Balanced Text on Left & Full Landscape Artwork on Right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
+
             {/* Left Column (6 cols): Balanced Editorial Narrative */}
             <div className="lg:col-span-6 flex flex-col justify-center space-y-5">
               {/* Hero Lead Paragraph */}
@@ -413,15 +413,15 @@ export function AboutSection() {
         {/* ========================================================
             PART 2: 8 PRACTICE VERTICALS PINNED CAROUSEL WITH GSAP ANIMATION
         ======================================================== */}
-        <div 
-          ref={stageRef} 
+        <div
+          ref={stageRef}
           className="practice-carousel-stage our-work relative w-full min-h-screen flex items-center py-12 sm:py-20 overflow-hidden"
         >
           {/* Subtle atmospheric ambient glow behind the carousel */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D5DF]/10 rounded-full blur-[200px] pointer-events-none" />
 
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-            
+
             {/* Left Column (5 cols): Sticky Heading & Narrative */}
             <div className="lg:col-span-5 flex flex-col justify-center space-y-5">
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight">
@@ -438,17 +438,16 @@ export function AboutSection() {
 
             {/* Right Column (7 cols): Pinned Stacked Card Carousel Slider */}
             <div className="lg:col-span-7 w-full">
-              
+
               {/* Carousel Slider */}
               <div className="carousel__slider relative w-full h-[460px] sm:h-[490px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl">
                 {COLORFUL_CARDS.map((card, idx) => (
                   <div
                     key={card.id}
                     id={`our-work-${idx + 1}`}
-                    className="carousel__item absolute inset-0 w-full h-full rounded-3xl border border-white/15 overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-2xl backdrop-blur-xl"
+                    className="carousel__item about-carousel-card absolute inset-0 w-full h-full rounded-3xl border border-white/15 overflow-hidden p-6 sm:p-8 md:p-10 flex flex-col justify-between shadow-2xl backdrop-blur-xl bg-[#090E12]"
                     style={{
-                      borderColor: `${card.borderColor}60`,
-                      backgroundColor: '#090E12'
+                      borderColor: `${card.borderColor}60`
                     }}
                   >
                     {/* Full-Bleed Photographic Background with Crisp Clarity & Subtle Bottom Scrim */}
@@ -465,7 +464,7 @@ export function AboutSection() {
                     </div>
 
                     {/* Top Edge Ambient Highlight in Card Accent Color */}
-                    <div 
+                    <div
                       className="absolute top-0 inset-x-0 h-[2px] pointer-events-none"
                       style={{
                         background: `linear-gradient(90deg, transparent, ${card.accent}, transparent)`
@@ -474,7 +473,7 @@ export function AboutSection() {
 
                     {/* Top Row: Domain Pill Tag + Action Arrow */}
                     <div className="relative z-10 flex items-center justify-between gap-2">
-                      <span 
+                      <span
                         className="text-[11px] sm:text-xs font-semibold tracking-[0.14em] uppercase px-3.5 py-1.5 rounded-full border bg-black/60 backdrop-blur-md"
                         style={{
                           color: card.accent,
@@ -484,7 +483,7 @@ export function AboutSection() {
                         {card.index}
                       </span>
 
-                      <a 
+                      <a
                         href={card.href}
                         className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-md flex items-center justify-center text-white/90 hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-md shrink-0"
                       >
@@ -497,7 +496,7 @@ export function AboutSection() {
                       <h2 className="text-2xl sm:text-3xl md:text-[2rem] font-bold text-white mb-1.5 leading-snug tracking-tight">
                         {card.title}
                       </h2>
-                      <p 
+                      <p
                         className="text-xs sm:text-sm font-semibold mb-2.5"
                         style={{ color: card.accent }}
                       >
@@ -512,7 +511,7 @@ export function AboutSection() {
                         <span className="text-neutral-400 font-mono tracking-wide">
                           {card.footerTag}
                         </span>
-                        <a 
+                        <a
                           href={card.href}
                           className="font-medium hover:translate-x-1.5 transition-transform inline-flex items-center gap-1.5"
                           style={{ color: card.accent }}
@@ -551,7 +550,7 @@ export function AboutSection() {
                   The hard part is the thinking behind it: what to build, why and how it all connects.
                 </strong>
               </p>
-              
+
               <p className="luna-founder-content text-sm sm:text-base text-neutral-400 font-normal leading-relaxed pt-2">
                 A career that stands out with genuine purpose in a market full of noise. That&apos;s why we built Infidell.
               </p>
@@ -565,7 +564,7 @@ export function AboutSection() {
           <div className="luna-stats-row grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-4 max-w-5xl mx-auto">
             {/* Stat 1 */}
             <div className="luna-stat-item flex flex-col items-center text-center">
-              <div 
+              <div
                 className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
                 data-target="4800"
                 data-suffix="+"
@@ -580,7 +579,7 @@ export function AboutSection() {
 
             {/* Stat 2 */}
             <div className="luna-stat-item flex flex-col items-center text-center">
-              <div 
+              <div
                 className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
                 data-target="350"
                 data-suffix="+"
@@ -595,7 +594,7 @@ export function AboutSection() {
 
             {/* Stat 3 */}
             <div className="luna-stat-item flex flex-col items-center text-center">
-              <div 
+              <div
                 className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
                 data-target="98"
                 data-suffix="%"

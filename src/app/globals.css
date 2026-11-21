@@ -134,6 +134,17 @@ html.light .dark-only {
   display: none !important;
 }
 
+/* Default Dark Mode Card Styles */
+.journey-card {
+  background: linear-gradient(135deg, rgba(0, 213, 223, 0.08), #070B0E 65%);
+}
+.employer-step-card {
+  background: linear-gradient(145deg, rgba(0, 213, 223, 0.08), #070B0E 70%);
+}
+.experience-cta-card {
+  background: linear-gradient(135deg, rgba(0, 213, 223, 0.12), #070D10 40%, rgba(56, 189, 248, 0.12));
+}
+
 /* ========================================================
    LIGHT THEME DESIGN SYSTEM (PREMIUM EDITORIAL LUXURY)
 ======================================================== */
@@ -148,16 +159,28 @@ html.light body {
   color: #0F172A !important;
 }
 
-/* Background overrides */
+/* Section Background Overrides */
 html.light section[id],
-html.light .bg-\[\#050708\],
 html.light .bg-\[\#000000\],
+html.light .bg-\[\#050708\],
+html.light .bg-\[\#050709\],
 html.light .bg-\[\#060D10\],
-html.light .bg-\[\#04090D\] {
+html.light .bg-\[\#04090D\],
+html.light .bg-\[\#080B0E\],
+html.light .bg-\[\#0A0D10\],
+html.light .bg-\[\#12171E\],
+html.light .bg-\[\#151B21\] {
   background-color: #F8FAFC !important;
 }
 
-/* Card & Surface overrides */
+/* Card & Surface Overrides in Light Mode */
+html.light .journey-card,
+html.light .journey-card-left,
+html.light .journey-card-right,
+html.light .employer-step-card,
+html.light .approach-card,
+html.light .bg-\[\#070D10\],
+html.light .bg-\[\#0B1519\],
 html.light .bg-\[\#0C1517\],
 html.light .bg-\[\#0C1517\]\/80,
 html.light .bg-\[\#0C1517\]\/85,
@@ -165,12 +188,35 @@ html.light .bg-\[\#0C1517\]\/90,
 html.light .bg-\[\#0A1113\],
 html.light .bg-\[\#0E1A1C\],
 html.light .bg-\[\#0E1A1C\]\/50,
-html.light .bg-\[\#0E1A1C\]\/60 {
+html.light .bg-\[\#0E1A1C\]\/60,
+html.light .bg-\[\#102426\],
+html.light .insight-featured-card {
+  background: #FFFFFF !important;
   background-color: #FFFFFF !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -2px rgba(0, 0, 0, 0.03) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03) !important;
 }
 
-/* Border overrides */
+/* Card Hover States */
+html.light .journey-card:hover,
+html.light .employer-step-card:hover,
+html.light .approach-card:hover {
+  background: #FFFFFF !important;
+  border-color: #00D5DF !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 213, 223, 0.15), 0 4px 16px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Experience CTA Card in Light Mode */
+html.light .experience-cta-card {
+  background: linear-gradient(135deg, #FFFFFF, #F0FDFA 60%, #F8FAFC) !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* Border Overrides in Light Mode */
+html.light .border-\[\#202A30\],
+html.light .border-\[\#202A30\]\/50,
+html.light .border-\[\#202A30\]\/60,
 html.light .border-\[\#203536\],
 html.light .border-\[\#203536\]\/80,
 html.light .border-\[\#203536\]\/70,
@@ -184,7 +230,7 @@ html.light .border-white\/30 {
   border-color: #E2E8F0 !important;
 }
 
-/* Text overrides */
+/* Text Overrides for Light Mode */
 html.light .text-white {
   color: #0F172A !important;
 }
@@ -208,7 +254,91 @@ html.light .text-\[\#00E5F0\] {
   color: #0891B2 !important;
 }
 
-/* Header & Sticky Navbar */
+/* ========================================================
+   CRITICAL CONTRAST PROTECTION: Elements with dark backgrounds MUST retain white text
+======================================================== */
+html.light .about-carousel-card .text-white,
+html.light .about-carousel-card h3,
+html.light .about-carousel-card h4,
+html.light .carousel__item .text-white,
+html.light .carousel__item h3,
+html.light .carousel__item h4,
+html.light .process-card .text-white,
+html.light .process-card h3,
+html.light .process-card h4,
+html.light button.bg-\[\#1e3ef0\],
+html.light #footer .text-white,
+html.light #footer h1,
+html.light #footer h2,
+html.light #footer h3,
+html.light #footer h4,
+html.light #footer span.text-white {
+  color: #FFFFFF !important;
+}
+
+html.light .about-carousel-card .text-neutral-300,
+html.light .about-carousel-card p,
+html.light .carousel__item .text-neutral-300,
+html.light .carousel__item p,
+html.light #footer .text-neutral-300,
+html.light #footer .text-neutral-400,
+html.light #footer .text-\[\#A5B2B3\] {
+  color: #CBD5E1 !important;
+}
+
+/* Partner Logos in Light Mode */
+html.light .partner-logo-img,
+html.light img[src*="/images/partners/"] {
+  filter: none !important;
+  opacity: 0.85 !important;
+}
+html.light .partner-logo-img:hover,
+html.light img[src*="/images/partners/"]:hover {
+  opacity: 1 !important;
+}
+
+/* Process Section Audience Toggle */
+html.light .process-audience-toggle {
+  background-color: #E2E8F0 !important;
+  border-color: #CBD5E1 !important;
+}
+html.light .process-audience-toggle button.bg-\[\#1e3ef0\] {
+  color: #FFFFFF !important;
+  background-color: #0284C7 !important;
+}
+html.light .process-audience-toggle button.text-white\/70 {
+  color: #475569 !important;
+}
+html.light .process-audience-toggle button.text-white\/70:hover {
+  color: #0F172A !important;
+}
+
+/* Mission & Values in Light Mode */
+html.light .mission-circle-container {
+  background: linear-gradient(to bottom, #E0F2FE, #F0FDFA, #FFFFFF) !important;
+  border-color: #BAE6FD !important;
+  box-shadow: 0 20px 50px rgba(0, 213, 223, 0.15) !important;
+}
+html.light .mission-circle-fade {
+  display: none !important;
+}
+html.light .mission-badge {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+html.light .mission-badge span {
+  color: #0F172A !important;
+}
+
+/* Testimonial Card Shadow in Light Mode */
+html.light .testimonial-card {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.08), 0 0 30px rgba(0, 213, 223, 0.1) !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Header & Sticky Navbar in Light Mode */
 html.light header#main-navbar {
   background-color: rgba(255, 255, 255, 0.88) !important;
   border-color: #E2E8F0 !important;
@@ -237,16 +367,7 @@ html.light #home .hero-desc {
 html.light #footer {
   background-color: #090E11 !important;
   color: #FFFFFF !important;
-}
-
-html.light #footer .text-white {
-  color: #FFFFFF !important;
-}
-
-html.light #footer .text-neutral-300,
-html.light #footer .text-neutral-400,
-html.light #footer .text-\[\#A5B2B3\] {
-  color: #A5B2B3 !important;
+  border-top: 1px solid #1E293B !important;
 }
 
 /* Atmospheric Glows in light mode: softer pastel */
@@ -270,4 +391,15 @@ html.light .bg-neutral-800\/80 {
   background-color: #F1F5F9 !important;
   color: #475569 !important;
   border-color: #CBD5E1 !important;
+}
+
+/* Insights badges in Light Mode */
+html.light .insight-featured-card span.bg-\[\#0C1517\]\/85 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0891B2 !important;
+}
+html.light .insight-featured-card span.bg-\[\#050708\]\/75 {
+  background-color: #F1F5F9 !important;
+  color: #475569 !important;
 }

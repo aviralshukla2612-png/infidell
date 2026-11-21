@@ -599,8 +599,7 @@ export function CandidateAndEmployerExperienceSection() {
                         <div 
                           className="journey-card journey-card-left relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
-                            borderColor: `${step.borderColor}60`,
-                            background: `linear-gradient(135deg, ${step.accent}12, #070B0E 65%)`
+                            borderColor: `${step.borderColor}60`
                           }}
                         >
                           {/* Horizontal Connector to Left-Tilted Knot */}
@@ -674,8 +673,7 @@ export function CandidateAndEmployerExperienceSection() {
                         <div 
                           className="journey-card journey-card-right relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
-                            borderColor: `${step.borderColor}60`,
-                            background: `linear-gradient(135deg, ${step.accent}12, #070B0E 65%)`
+                            borderColor: `${step.borderColor}60`
                           }}
                         >
                           {/* Horizontal Connector to Right-Tilted Knot */}
@@ -785,9 +783,8 @@ export function CandidateAndEmployerExperienceSection() {
               return (
                 <div 
                   key={step.titleKey}
-                  className="p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+                  className="employer-step-card p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
                   style={{
-                    background: `linear-gradient(145deg, ${step.accent}12, #070B0E 70%)`,
                     borderColor: `${step.accent}35`
                   }}
                 >
@@ -847,9 +844,8 @@ export function CandidateAndEmployerExperienceSection() {
 
           {/* Employer Bottom Banner CTA - Visually High-Power Glassmorphic Card */}
           <div 
-            className="p-8 sm:p-12 rounded-3xl border relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
+            className="experience-cta-card p-8 sm:p-12 rounded-3xl border relative overflow-hidden shadow-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(0,213,223,0.12), #070D10 40%, rgba(56,189,248,0.12))',
               borderColor: 'rgba(0,213,223,0.35)'
             }}
           >

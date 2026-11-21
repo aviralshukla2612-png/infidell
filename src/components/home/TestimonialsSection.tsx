@@ -86,7 +86,7 @@ export function TestimonialsSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 1800);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 
@@ -158,7 +158,7 @@ export function TestimonialsSection() {
             role="button"
             tabIndex={0}
             aria-label="Click to view next testimonial"
-            className="relative bg-[#F4F5F7] text-neutral-900 rounded-[24px] sm:rounded-[32px] md:rounded-[36px] pt-7 sm:pt-9 md:pt-10 pb-6 sm:pb-8 px-5 sm:px-8 md:px-12 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer"
+            className="testimonial-card relative bg-[#FFFFFF] text-neutral-900 rounded-[24px] sm:rounded-[32px] md:rounded-[36px] pt-7 sm:pt-9 md:pt-10 pb-6 sm:pb-8 px-5 sm:px-8 md:px-12 shadow-2xl transition-all duration-300 animate-fadeIn cursor-pointer border border-[#203536]/30"
             style={{
               boxShadow: '0 30px 70px -15px rgba(0,0,0,0.8), 0 0 40px rgba(0,213,223,0.12)'
             }}

@@ -155,6 +155,7 @@
 .light-only {
   display: block;
 }
+
 .dark-only {
   display: none;
 }
@@ -162,6 +163,7 @@
 html.dark .light-only {
   display: none !important;
 }
+
 html.dark .dark-only {
   display: block !important;
 }
@@ -171,10 +173,12 @@ html:not(.light) .journey-card,
 html.dark .journey-card {
   background: linear-gradient(135deg, rgba(0, 213, 223, 0.08), #070B0E 65%);
 }
+
 html:not(.light) .employer-step-card,
 html.dark .employer-step-card {
   background: linear-gradient(145deg, rgba(0, 213, 223, 0.08), #070B0E 70%);
 }
+
 html:not(.light) .experience-cta-card,
 html.dark .experience-cta-card {
   background: linear-gradient(135deg, rgba(0, 213, 223, 0.12), #070D10 40%, rgba(56, 189, 248, 0.12));
@@ -337,6 +341,7 @@ html.light .experience-cta-card {
 html.light .journey-card h3 {
   color: #102B50 !important;
 }
+
 html.light .journey-card p {
   color: #475569 !important;
 }
@@ -345,6 +350,7 @@ html.light .journey-card p {
 html.light .hero-feature-strip {
   border-color: #DCE5EF !important;
 }
+
 html.light #process h2 {
   filter: none !important;
   text-shadow: none !important;
@@ -421,13 +427,14 @@ html.light .employer-contrast-block .employer-heading-gradient,
 
 /* Primary and Secondary CTA Button overrides in Light Mode */
 html.light .hero-cta-primary {
-  background-color: #087FCB !important;
+  background-color: #076EAF !important;
   color: #FFFFFF !important;
   border-color: transparent !important;
   box-shadow: 0 4px 18px rgba(8, 127, 203, 0.35) !important;
 }
+
 html.light .hero-cta-primary:hover {
-  background-color: #076EAF !important;
+  background-color: #055A91 !important;
   box-shadow: 0 8px 25px rgba(8, 127, 203, 0.5) !important;
 }
 
@@ -437,6 +444,7 @@ html.light .hero-cta-secondary {
   border: 1px solid #DCE5EF !important;
   box-shadow: 0 2px 10px rgba(16, 43, 80, 0.04) !important;
 }
+
 html.light .hero-cta-secondary:hover {
   background-color: #F8FAFC !important;
   border-color: #B7DDF5 !important;
@@ -496,6 +504,7 @@ html.light img[src*="/images/partners/"] {
   opacity: 0.8 !important;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 html.light .partner-logo-img:hover,
 html.light img[src*="/images/partners/"]:hover {
   opacity: 1 !important;
@@ -506,13 +515,16 @@ html.light .process-audience-toggle {
   background-color: #E8EEF5 !important;
   border-color: #DCE5EF !important;
 }
+
 html.light .process-audience-toggle button.bg-\[\#1e3ef0\] {
   color: #FFFFFF !important;
   background-color: #087FCB !important;
 }
+
 html.light .process-audience-toggle button.text-white\/70 {
   color: #64748B !important;
 }
+
 html.light .process-audience-toggle button.text-white\/70:hover {
   color: #102B50 !important;
 }
@@ -523,15 +535,18 @@ html.light .mission-circle-container {
   border-color: #B7DDF5 !important;
   box-shadow: 0 12px 35px rgba(16, 43, 80, 0.08) !important;
 }
+
 html.light .mission-circle-fade {
   display: none !important;
 }
+
 html.light .mission-badge {
   background-color: rgba(255, 255, 255, 0.95) !important;
   color: #102B50 !important;
   border-color: #DCE5EF !important;
   box-shadow: 0 4px 18px rgba(16, 43, 80, 0.08) !important;
 }
+
 html.light .mission-badge span {
   color: #102B50 !important;
 }
@@ -601,6 +616,7 @@ html.light .insight-featured-card span.bg-\[\#0C1517\]\/85 {
   border-color: #B7DDF5 !important;
   color: #087FCB !important;
 }
+
 html.light .insight-featured-card span.bg-\[\#050708\]\/75 {
   background-color: #F1F5F9 !important;
   color: #64748B !important;
@@ -611,18 +627,22 @@ html.light .insight-featured-card span.bg-\[\#050708\]\/75 {
   --wave-accent: #087FCB;
   --wave-glow: rgba(8, 127, 203, 0.75);
 }
+
 html.dark {
   --wave-accent: #00D5DF;
   --wave-glow: rgba(0, 213, 223, 0.85);
 }
 
 @keyframes letterWave {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
     opacity: 0.55;
     color: inherit;
     text-shadow: none;
   }
+
   50% {
     transform: translateY(-16px) scale(1.14);
     opacity: 1;
@@ -675,7 +695,7 @@ html.light #contact .contact-badge {
   background: #EFF6FF !important;
   background-color: #EFF6FF !important;
   border-color: #B7DDF5 !important;
-  color: #087FCB !important;
+  color: #0369A1 !important;
   box-shadow: 0 2px 10px rgba(8, 127, 203, 0.1) !important;
 }
 
@@ -857,10 +877,12 @@ html.dark #contact .contact-value {
     left: -30%;
     width: 30%;
   }
+
   50% {
     left: 25%;
     width: 55%;
   }
+
   100% {
     left: 100%;
     width: 30%;
@@ -911,9 +933,9 @@ html.dark #contact .contact-value {
   min-height: 340px;
   padding: 0;
   transition: border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
   position: relative;
   transform: scale(0.85);
@@ -967,7 +989,7 @@ html.light .demanded-role-card.active {
   pointer-events: none;
   z-index: 1;
   background: linear-gradient(rgba(5, 8, 22, 0.1) 30%, rgba(5, 8, 22, 0.85) 100%),
-              linear-gradient(90deg, rgba(8, 127, 203, 0.25) 0%, rgba(8, 127, 203, 0) 60%);
+    linear-gradient(90deg, rgba(8, 127, 203, 0.25) 0%, rgba(8, 127, 203, 0) 60%);
   position: absolute;
   inset: 0;
 }
@@ -999,7 +1021,7 @@ html.light .demanded-role-card.active {
   line-height: 1.08;
   letter-spacing: -0.02em;
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1020,7 +1042,7 @@ html.light .demanded-role-card.active {
   opacity: 0;
   transform: translateY(12px) scale(0.95);
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .demanded-role-card.active .explore-career-wrapper {
@@ -1057,12 +1079,14 @@ html.light .demanded-role-card.active {
   .pin-track {
     height: auto !important;
   }
+
   .pin-viewport {
     height: auto;
     padding: 20px 0 40px;
     position: relative;
     overflow: visible;
   }
+
   .card-stage {
     flex-direction: column;
     gap: 24px;
@@ -1071,6 +1095,7 @@ html.light .demanded-role-card.active {
     padding: 0 20px;
     transform: none !important;
   }
+
   .demanded-role-card {
     width: 100%;
     max-width: 440px;
@@ -1080,15 +1105,18 @@ html.light .demanded-role-card.active {
     opacity: 1 !important;
     transform: none !important;
   }
+
   .demanded-role-card .card-image img {
     filter: blur(0px) brightness(0.85);
   }
+
   .image-title {
     opacity: 1;
     transform: none;
     font-size: 28px;
     padding: 0 24px 70px;
   }
+
   .explore-career-wrapper {
     opacity: 1;
     transform: none;

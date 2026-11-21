@@ -106,7 +106,7 @@ export function ContactSection() {
             <div>
               {/* Eyebrow Badge */}
               <div
-                className="contact-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] dark:bg-[#0C1517] border border-[#B7DDF5] dark:border-[#00D5DF]/40 text-xs font-mono font-bold text-[#087FCB] dark:text-[#00F0FF] tracking-widest uppercase mb-6 shadow-[0_2px_10px_rgba(8,127,203,0.1)] dark:shadow-[0_0_15px_rgba(0,213,223,0.15)]"
+                className="contact-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] dark:bg-[#0C1517] border border-[#B7DDF5] dark:border-[#00D5DF]/40 text-xs font-mono font-bold text-[#0369A1] dark:text-[#00F0FF] tracking-widest uppercase mb-6 shadow-[0_2px_10px_rgba(8,127,203,0.1)] dark:shadow-[0_0_15px_rgba(0,213,223,0.15)]"
               >
                 <span className="text-amber-500 dark:text-amber-400">★</span>
                 <span>GET IN TOUCH</span>

@@ -202,7 +202,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-[#000000] overflow-hidden pt-24 sm:pt-28 pb-12 sm:pb-16"
+      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-white dark:bg-[#000000] overflow-hidden pt-24 sm:pt-28 pb-12 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 

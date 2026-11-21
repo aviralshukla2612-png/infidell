@@ -597,9 +597,10 @@ export function CandidateAndEmployerExperienceSection() {
                     {isLeft ? (
                       <div className="md:pr-8 lg:pr-10 md:flex md:justify-end">
                         <div 
-                          className="journey-card journey-card-left bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
+                          className="journey-card journey-card-left bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
-                            borderColor: `${step.borderColor}60`
+                            borderColor: `${step.borderColor}60`,
+                            boxShadow: `0 8px 30px -4px ${step.accent}18`
                           }}
                         >
                           {/* Horizontal Connector to Left-Tilted Knot */}
@@ -653,12 +654,12 @@ export function CandidateAndEmployerExperienceSection() {
                           </div>
 
                           {/* Title */}
-                          <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug tracking-tight relative z-10">
+                          <h3 className="text-base sm:text-lg font-bold text-[#102B50] dark:text-white mb-2 leading-snug tracking-tight relative z-10">
                             {tCandidate(step.titleKey)}
                           </h3>
 
                           {/* Description */}
-                          <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed relative z-10">
+                          <p className="text-xs sm:text-sm text-[#334155] dark:text-neutral-300 font-normal leading-relaxed relative z-10">
                             {tCandidate(step.descKey)}
                           </p>
                         </div>
@@ -671,9 +672,10 @@ export function CandidateAndEmployerExperienceSection() {
                     {!isLeft ? (
                       <div className="md:pl-8 lg:pl-10 md:flex md:justify-start">
                         <div 
-                          className="journey-card journey-card-right bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-2xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
+                          className="journey-card journey-card-right bg-white dark:bg-transparent relative w-full md:max-w-[430px] p-6 sm:p-7 rounded-3xl border transition-[box-shadow,border-color] duration-300 shadow-xl hover:-translate-y-1 group overflow-hidden pl-14 md:pl-7"
                           style={{
-                            borderColor: `${step.borderColor}60`
+                            borderColor: `${step.borderColor}60`,
+                            boxShadow: `0 8px 30px -4px ${step.accent}18`
                           }}
                         >
                           {/* Horizontal Connector to Right-Tilted Knot */}
@@ -727,12 +729,12 @@ export function CandidateAndEmployerExperienceSection() {
                           </div>
 
                           {/* Title */}
-                          <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug tracking-tight relative z-10">
+                          <h3 className="text-base sm:text-lg font-bold text-[#102B50] dark:text-white mb-2 leading-snug tracking-tight relative z-10">
                             {tCandidate(step.titleKey)}
                           </h3>
 
                           {/* Description */}
-                          <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed relative z-10">
+                          <p className="text-xs sm:text-sm text-[#334155] dark:text-neutral-300 font-normal leading-relaxed relative z-10">
                             {tCandidate(step.descKey)}
                           </p>
                         </div>
@@ -783,9 +785,10 @@ export function CandidateAndEmployerExperienceSection() {
               return (
                 <div 
                   key={step.titleKey}
-                  className="employer-step-card bg-white dark:bg-transparent p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+                  className="employer-step-card bg-white dark:bg-transparent p-7 sm:p-8 rounded-3xl border transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-xl hover:-translate-y-1.5"
                   style={{
-                    borderColor: `${step.accent}35`
+                    borderColor: `${step.accent}55`,
+                    boxShadow: `0 8px 30px -4px ${step.accent}18`
                   }}
                 >
                   {/* Top Ambient Gradient Border */}
@@ -828,12 +831,12 @@ export function CandidateAndEmployerExperienceSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-bold text-white mb-2.5 tracking-tight group-hover:text-white transition-colors">
+                    <h3 className="text-lg font-bold text-[#102B50] dark:text-white mb-2.5 tracking-tight group-hover:text-[#087FCB] dark:group-hover:text-white transition-colors">
                       {tEmployer(step.titleKey)}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#334155] dark:text-neutral-300 font-normal leading-relaxed">
                       {tEmployer(step.descKey)}
                     </p>
                   </div>

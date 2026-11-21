@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Ensure Tailwind v4 classes like dark:bg-* only apply when .dark class is on html */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     /* Primary surfaces */
@@ -262,6 +265,7 @@ html.light .journey-card,
 html.light .journey-card-left,
 html.light .journey-card-right,
 html.light .approach-card,
+html.light .employer-step-card,
 html.light .bg-\[\#070D10\],
 html.light .bg-\[\#0B1519\],
 html.light .bg-\[\#0C1517\],
@@ -277,7 +281,6 @@ html.light .insight-featured-card,
 html.light .insight-supporting-row {
   background: #FFFFFF !important;
   background-color: #FFFFFF !important;
-  border-color: #DCE5EF !important;
   box-shadow: 0 4px 18px rgba(16, 43, 80, 0.05) !important;
 }
 
@@ -288,24 +291,36 @@ html.light .approach-card:hover,
 html.light .insight-featured-card:hover,
 html.light .insight-supporting-row:hover {
   background: #FFFFFF !important;
-  border-color: #087FCB !important;
-  box-shadow: 0 18px 45px rgba(16, 43, 80, 0.11) !important;
+  box-shadow: 0 18px 45px rgba(16, 43, 80, 0.12) !important;
 }
 
-/* Employer Step Cards on Navy Background in Light Mode */
+/* Employer Step Cards in Light Mode */
 html.light .employer-step-card {
   background: #FFFFFF !important;
   background-color: #FFFFFF !important;
-  border-color: #DCE5EF !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 8px 25px rgba(16, 43, 80, 0.08) !important;
 }
 
-html.light .employer-step-card h3 {
+html.light .employer-step-card h3,
+html.light .employer-step-card h3.text-white,
+html.light .employer-step-card .text-white {
   color: #102B50 !important;
 }
 
-html.light .employer-step-card p {
-  color: #475569 !important;
+html.light .employer-step-card p,
+html.light .employer-step-card .text-neutral-300 {
+  color: #334155 !important;
+}
+
+/* Approach Card Typography */
+html.light .approach-card h3,
+html.light .approach-card .text-white {
+  color: #102B50 !important;
+}
+
+html.light .approach-card p,
+html.light .approach-card .text-neutral-300 {
+  color: #334155 !important;
 }
 
 /* Experience CTA Card in Light Mode */

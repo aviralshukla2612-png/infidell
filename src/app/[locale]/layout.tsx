@@ -104,7 +104,7 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('infidell-theme');if(t==='light'){document.documentElement.classList.add('light');}else{document.documentElement.classList.remove('light');}}catch(e){}})();`
+            __html: `(function(){try{var t=localStorage.getItem('infidell-theme');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');}else{document.documentElement.classList.add('light');document.documentElement.classList.remove('dark');}}catch(e){}})();`
           }}
         />
       </head>

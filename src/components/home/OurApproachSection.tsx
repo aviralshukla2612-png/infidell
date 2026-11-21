@@ -116,7 +116,11 @@ export function OurApproachSection() {
           {principles.map((principle) => (
             <div 
               key={principle.num}
-              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-[#070D10] border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] hover:-translate-y-1.5"
+              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-[#070D10] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+              style={{
+                borderColor: `${principle.accent}55`,
+                boxShadow: `0 8px 32px -4px ${principle.accent}18`
+              }}
             >
               {/* Ambient Radial Hover Glow */}
               <div 
@@ -138,14 +142,21 @@ export function OurApproachSection() {
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
                     <div 
-                      className="w-11 h-11 rounded-2xl bg-[#0B1519] border border-[#203536] flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-                      style={{ borderColor: `${principle.accent}40` }}
+                      className="w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 border"
+                      style={{ 
+                        borderColor: `${principle.accent}55`,
+                        backgroundColor: `${principle.accent}14`
+                      }}
                     >
                       {principle.icon}
                     </div>
                     <span 
-                      className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full border bg-black/40 backdrop-blur-md"
-                      style={{ color: principle.accent, borderColor: `${principle.accent}40` }}
+                      className="text-xs font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border transition-all duration-300 font-mono"
+                      style={{ 
+                        color: principle.accent, 
+                        borderColor: `${principle.accent}55`,
+                        backgroundColor: `${principle.accent}14`
+                      }}
                     >
                       {principle.tag}
                     </span>

@@ -321,7 +321,11 @@ export function HeroSection() {
             {/* Service 1: Career Placement & Advisory */}
             <a
               href="#candidate"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#00D5DF]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              style={{
+                borderColor: 'rgba(0, 213, 223, 0.4)',
+                boxShadow: '0 4px 25px -3px rgba(0, 213, 223, 0.12)'
+              }}
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
@@ -347,7 +351,11 @@ export function HeroSection() {
             {/* Service 2: Corporate Recruitment & Staffing */}
             <a
               href="#employer"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#38BDF8]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#38BDF8]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              style={{
+                borderColor: 'rgba(56, 189, 248, 0.4)',
+                boxShadow: '0 4px 25px -3px rgba(56, 189, 248, 0.12)'
+              }}
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">
@@ -373,7 +381,11 @@ export function HeroSection() {
             {/* Service 3: Executive Search & Leadership */}
             <a
               href="mailto:contact@infidelltech.com?subject=Executive%20Search%20Inquiry"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border border-[#203536] hover:border-[#A78BFA]/60 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#A78BFA]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              style={{
+                borderColor: 'rgba(167, 139, 250, 0.4)',
+                boxShadow: '0 4px 25px -3px rgba(167, 139, 250, 0.12)'
+              }}
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-center gap-2.5">

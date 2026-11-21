@@ -13,7 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('dark');
+  const [theme, setThemeState] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,15 +23,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setThemeState(savedTheme);
         if (savedTheme === 'light') {
           document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
         } else {
+          document.documentElement.classList.add('dark');
           document.documentElement.classList.remove('light');
         }
       } else {
-        // Default to dark theme
-        document.documentElement.classList.remove('light');
+        // Default to premium light theme
+        setThemeState('light');
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
       }
     } catch {
-      // Fallback
+      // Fallback to light
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
     }
     setMounted(true);
   }, []);
@@ -42,7 +48,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('infidell-theme', newTheme);
       if (newTheme === 'light') {
         document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
       } else {
+        document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
       }
     } catch {
@@ -55,7 +63,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: mounted ? theme : 'dark', toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: mounted ? theme : 'light', toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

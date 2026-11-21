@@ -84,7 +84,12 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 md:py-32 bg-[#050708] text-white relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="scroll-mt-28 pt-24 sm:pt-32 pb-20 sm:pb-28 md:pb-32 bg-[#050708] text-white relative overflow-hidden border-t border-[#203536]/80 select-none"
+      style={{
+        backgroundColor: '#050708',
+        color: '#FFFFFF',
+        scrollMarginTop: '100px'
+      }}
     >
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-[#00D5DF]/10 rounded-full blur-[160px] pointer-events-none" />
@@ -102,13 +107,16 @@ export function ContactSection() {
           <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-10">
             <div>
               {/* Eyebrow Badge (Zarvion Signature) */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0C1517] border border-[#00D5DF]/40 text-xs font-mono font-bold text-[#00F0FF] tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(0,213,223,0.15)]">
+              <div
+                className="contact-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0C1517] border border-[#00D5DF]/40 text-xs font-mono font-bold text-[#00F0FF] tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(0,213,223,0.15)]"
+                style={{ backgroundColor: '#0C1517', borderColor: 'rgba(0, 213, 223, 0.4)', color: '#00F0FF' }}
+              >
                 <span className="text-amber-400">★</span>
                 <span>GET IN TOUCH</span>
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight uppercase mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight uppercase mb-4" style={{ color: '#FFFFFF' }}>
                 LET'S BUILD THE{' '}
                 <span className="bg-gradient-to-r from-white via-[#7DD3FC] to-[#00D5DF] bg-clip-text text-transparent">
                   FUTURE TOGETHER
@@ -116,7 +124,7 @@ export function ContactSection() {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal max-w-md">
+              <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal max-w-md" style={{ color: '#CBD5E1' }}>
                 Let&apos;s connect today and discuss your futuristic career trajectory or strategic corporate talent acquisition requirements.
               </p>
             </div>
@@ -124,57 +132,68 @@ export function ContactSection() {
             {/* Contact Details Cards */}
             <div className="space-y-4">
               {/* Phone */}
-              <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#00D5DF]/50 transition-all duration-300 group">
+              <div
+                className="contact-card flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#00D5DF]/50 transition-all duration-300 group"
+                style={{ backgroundColor: '#070D10', borderColor: '#203536' }}
+              >
                 <div className="w-11 h-11 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#00D5DF] shrink-0 group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5">
+                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#94A3B8' }}>
                     Phone
                   </div>
                   <a
                     href="tel:+917949001234"
                     className="text-sm sm:text-base font-bold text-white hover:text-[#00D5DF] transition-colors"
+                    style={{ color: '#FFFFFF' }}
                   >
                     +91 (079) 4900 1234
                   </a>
-                  <span className="text-xs text-neutral-400 block mt-0.5">
+                  <span className="text-xs text-neutral-400 block mt-0.5" style={{ color: '#94A3B8' }}>
                     Mon – Sat, 9:30 AM – 7:00 PM IST
                   </span>
                 </div>
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#38BDF8]/50 transition-all duration-300 group">
+              <div
+                className="contact-card flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#38BDF8]/50 transition-all duration-300 group"
+                style={{ backgroundColor: '#070D10', borderColor: '#203536' }}
+              >
                 <div className="w-11 h-11 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shrink-0 group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5">
+                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#94A3B8' }}>
                     Email
                   </div>
                   <a
                     href="mailto:contact@infidelltech.com"
                     className="text-sm sm:text-base font-bold text-white hover:text-[#38BDF8] transition-colors"
+                    style={{ color: '#FFFFFF' }}
                   >
                     contact@infidelltech.com
                   </a>
-                  <span className="text-xs text-neutral-400 block mt-0.5">
+                  <span className="text-xs text-neutral-400 block mt-0.5" style={{ color: '#94A3B8' }}>
                     Direct Response SLA: &lt; 24 Hours
                   </span>
                 </div>
               </div>
 
               {/* Office */}
-              <div className="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#A78BFA]/50 transition-all duration-300 group">
+              <div
+                className="contact-card flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D10] border border-[#203536] hover:border-[#A78BFA]/50 transition-all duration-300 group"
+                style={{ backgroundColor: '#070D10', borderColor: '#203536' }}
+              >
                 <div className="w-11 h-11 rounded-xl bg-[#A78BFA]/10 border border-[#A78BFA]/30 flex items-center justify-center text-[#A78BFA] shrink-0 group-hover:scale-105 transition-transform">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5">
+                  <div className="text-xs font-mono text-neutral-400 font-semibold uppercase tracking-wider mb-0.5" style={{ color: '#94A3B8' }}>
                     Corporate Office
                   </div>
-                  <div className="text-xs sm:text-sm font-medium text-white leading-relaxed">
+                  <div className="text-xs sm:text-sm font-medium text-white leading-relaxed" style={{ color: '#FFFFFF' }}>
                     Infidell Technology LLP, Corporate Office, Technology Park, SG Highway, Ahmedabad, Gujarat, India – 380015
                   </div>
                 </div>
@@ -182,7 +201,7 @@ export function ContactSection() {
             </div>
 
             {/* Trust Assurance */}
-            <div className="pt-2 flex items-center gap-3 text-xs text-neutral-400">
+            <div className="pt-2 flex items-center gap-3 text-xs text-neutral-400" style={{ color: '#94A3B8' }}>
               <ShieldCheck className="w-4 h-4 text-[#00D5DF]" />
               <span>100% Confidential · Ethical Placement Standards</span>
             </div>
@@ -192,7 +211,10 @@ export function ContactSection() {
               RIGHT COLUMN: INTERACTIVE FORM CARD (Zarvion Signature)
           ======================================================== */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl p-7 sm:p-10 bg-[#070D10]/90 border border-[#203536] backdrop-blur-2xl shadow-2xl relative overflow-hidden">
+            <div
+              className="contact-form-panel rounded-3xl p-7 sm:p-10 bg-[#070D10]/90 border border-[#203536] backdrop-blur-2xl shadow-2xl relative overflow-hidden"
+              style={{ backgroundColor: 'rgba(7, 13, 16, 0.95)', borderColor: '#203536' }}
+            >
               
               {/* Ambient Radial Accent */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-[#087FCB]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -200,10 +222,10 @@ export function ContactSection() {
               {!submitted ? (
                 <>
                   <div className="mb-8">
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2" style={{ color: '#FFFFFF' }}>
                       Let&apos;s Build Together
                     </h3>
-                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed" style={{ color: '#CBD5E1' }}>
                       Fill out the details below and an executive talent specialist will reach out to you within 24 hours.
                     </p>
                   </div>
@@ -219,7 +241,7 @@ export function ContactSection() {
                     {/* Row 1: Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="contact-fullName" className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                        <label htmlFor="contact-fullName" className="text-xs font-semibold text-neutral-300 block mb-1.5" style={{ color: '#E2E8F0' }}>
                           Your Name *
                         </label>
                         <input
@@ -230,11 +252,12 @@ export function ContactSection() {
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="John Doe"
                           className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#00D5DF] transition-colors"
+                          style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="contact-email" className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                        <label htmlFor="contact-email" className="text-xs font-semibold text-neutral-300 block mb-1.5" style={{ color: '#E2E8F0' }}>
                           Your Email *
                         </label>
                         <input
@@ -245,13 +268,14 @@ export function ContactSection() {
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="john@example.com"
                           className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#00D5DF] transition-colors"
+                          style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                         />
                       </div>
                     </div>
 
                     {/* Row 2: Phone with Country Code */}
                     <div>
-                      <label htmlFor="contact-phone" className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-phone" className="text-xs font-semibold text-neutral-300 block mb-1.5" style={{ color: '#E2E8F0' }}>
                         Phone Number *
                       </label>
                       <div className="flex gap-2">
@@ -261,13 +285,14 @@ export function ContactSection() {
                           value={formData.countryCode}
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                           className="w-28 px-3 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white focus:outline-none focus:border-[#00D5DF] transition-colors cursor-pointer shrink-0"
+                          style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                         >
-                          <option value="+91">🇮🇳 +91</option>
-                          <option value="+1">🇺🇸 +1</option>
-                          <option value="+44">🇬🇧 +44</option>
-                          <option value="+971">🇦🇪 +971</option>
-                          <option value="+65">🇸🇬 +65</option>
-                          <option value="+61">🇦🇺 +61</option>
+                          <option value="+91" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇮🇳 +91</option>
+                          <option value="+1" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇺🇸 +1</option>
+                          <option value="+44" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇬🇧 +44</option>
+                          <option value="+971" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇦🇪 +971</option>
+                          <option value="+65" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇸🇬 +65</option>
+                          <option value="+61" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>🇦🇺 +61</option>
                         </select>
                         <input
                           id="contact-phone"
@@ -277,13 +302,14 @@ export function ContactSection() {
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="(555) 123-4567"
                           className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#00D5DF] transition-colors"
+                          style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                         />
                       </div>
                     </div>
 
                     {/* Row 3: Inquiry Type */}
                     <div>
-                      <label htmlFor="contact-inquiryType" className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-inquiryType" className="text-xs font-semibold text-neutral-300 block mb-1.5" style={{ color: '#E2E8F0' }}>
                         Inquiry Nature
                       </label>
                       <select
@@ -291,17 +317,18 @@ export function ContactSection() {
                         value={formData.inquiryType}
                         onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white focus:outline-none focus:border-[#00D5DF] transition-colors cursor-pointer"
+                        style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                       >
-                        <option value="Candidate Placement Advisory">Candidate Career Representation &amp; Advisory (100% Free)</option>
-                        <option value="Corporate Recruitment & Staffing">Corporate Recruitment &amp; Technical Staffing (48h SLA)</option>
-                        <option value="Executive Search & Leadership">Confidential Executive Search &amp; Leadership Headhunting</option>
-                        <option value="Referral & Partnership">Refer &amp; Earn Program Inquiry</option>
+                        <option value="Candidate Placement Advisory" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>Candidate Career Representation &amp; Advisory (100% Free)</option>
+                        <option value="Corporate Recruitment & Staffing" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>Corporate Recruitment &amp; Technical Staffing (48h SLA)</option>
+                        <option value="Executive Search & Leadership" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>Confidential Executive Search &amp; Leadership Headhunting</option>
+                        <option value="Referral & Partnership" style={{ backgroundColor: '#0C1517', color: '#FFFFFF' }}>Refer &amp; Earn Program Inquiry</option>
                       </select>
                     </div>
 
                     {/* Row 4: Your Message */}
                     <div>
-                      <label htmlFor="contact-message" className="text-xs font-semibold text-neutral-300 block mb-1.5">
+                      <label htmlFor="contact-message" className="text-xs font-semibold text-neutral-300 block mb-1.5" style={{ color: '#E2E8F0' }}>
                         Your Message
                       </label>
                       <textarea
@@ -312,6 +339,7 @@ export function ContactSection() {
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Tell us about how we can help you..."
                         className="w-full px-4 py-3 rounded-xl bg-[#0C1517] border border-[#203536] text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#00D5DF] transition-colors resize-y"
+                        style={{ backgroundColor: '#0C1517', color: '#FFFFFF', borderColor: '#203536' }}
                       />
                     </div>
 

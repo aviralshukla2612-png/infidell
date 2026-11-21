@@ -93,7 +93,9 @@ export function Navbar() {
     } else {
       const el = document.getElementById(id);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+        const yOffset = -90;
+        const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
   };

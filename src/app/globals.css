@@ -649,17 +649,116 @@ html.light #testimonials .text-neutral-300 {
   color: #334155 !important;
 }
 
+/* ========================================================
+   #CONTACT: ALWAYS LUXURY ZARVION SIGNATURE DARK IN ALL MODES
+   ======================================================== */
+#contact,
 html.light #contact {
-  background-color: #070D10 !important;
+  background-color: #050708 !important;
+  background: #050708 !important;
+  color: #FFFFFF !important;
+  scroll-margin-top: 100px !important;
 }
-html.light #contact .text-white,
+
+/* Contact Cards (Phone, Email, Corporate Office) */
+#contact .contact-card,
+html.light #contact .contact-card,
+#contact .bg-\[\#070D10\],
+html.light #contact .bg-\[\#070D10\],
+#contact .bg-\[\#0C1517\],
+html.light #contact .bg-\[\#0C1517\] {
+  background: #070D10 !important;
+  background-color: #070D10 !important;
+  border-color: #203536 !important;
+  box-shadow: none !important;
+}
+
+/* Eyebrow Badge */
+#contact .contact-badge,
+html.light #contact .contact-badge {
+  background: #0C1517 !important;
+  background-color: #0C1517 !important;
+  border-color: rgba(0, 213, 223, 0.4) !important;
+  color: #00F0FF !important;
+}
+
+/* Contact Form Container Panel */
+#contact .contact-form-panel,
+html.light #contact .contact-form-panel {
+  background: rgba(7, 13, 16, 0.95) !important;
+  background-color: rgba(7, 13, 16, 0.95) !important;
+  border-color: #203536 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Form Inputs, Selects, and Textareas */
+#contact input,
+#contact select,
+#contact textarea,
+html.light #contact input,
+html.light #contact select,
+html.light #contact textarea {
+  background: #0C1517 !important;
+  background-color: #0C1517 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #203536 !important;
+  border-color: #203536 !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+#contact input:focus,
+#contact select:focus,
+#contact textarea:focus,
+html.light #contact input:focus,
+html.light #contact select:focus,
+html.light #contact textarea:focus {
+  border-color: #00D5DF !important;
+  outline: none !important;
+  box-shadow: 0 0 15px rgba(0, 213, 223, 0.25) !important;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder,
+html.light #contact input::placeholder,
+html.light #contact textarea::placeholder {
+  color: #64748B !important;
+  -webkit-text-fill-color: #64748B !important;
+}
+
+#contact select option,
+html.light #contact select option {
+  background: #0C1517 !important;
+  background-color: #0C1517 !important;
+  color: #FFFFFF !important;
+}
+
+/* Typography inside #contact */
+#contact h2,
+#contact h3,
+#contact .text-white,
 html.light #contact h2,
 html.light #contact h3,
-html.light #contact label,
-html.light #contact input,
-html.light #contact textarea,
-html.light #contact select {
+html.light #contact .text-white {
   color: #FFFFFF !important;
+}
+
+#contact label,
+html.light #contact label {
+  color: #E2E8F0 !important;
+}
+
+#contact p,
+html.light #contact p,
+#contact .text-neutral-300,
+html.light #contact .text-neutral-300 {
+  color: #CBD5E1 !important;
+}
+
+#contact .text-neutral-400,
+html.light #contact .text-neutral-400 {
+  color: #94A3B8 !important;
 }
 
 @keyframes progressPulse {

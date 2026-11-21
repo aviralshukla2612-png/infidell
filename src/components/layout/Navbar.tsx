@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Logo } from '@/components/ui/Logo';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 const SECTIONS = [
@@ -160,8 +161,9 @@ export function Navbar() {
             />
           </nav>
 
-          {/* Right Action: "Let's Talk →" Pill Button (Scrolls smoothly to footer contact) */}
-          <div className="hidden md:flex items-center">
+          {/* Right Action: Theme Toggle + "Let's Talk →" Pill Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <a
               href="#footer"
               onClick={(e) => scrollTo(e, 'footer')}
@@ -172,8 +174,9 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile Right Controls: Theme Toggle + Hamburger Button */}
+          <div className="flex items-center gap-2.5 md:hidden">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

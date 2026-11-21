@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { routing } from '@/i18n/routing';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -97,21 +98,28 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/infidell-infinity-icon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('infidell-theme');if(t==='light'){document.documentElement.classList.add('light');}else{document.documentElement.classList.remove('light');}}catch(e){}})();`
+          }}
+        />
       </head>
-      <body className="bg-[#000000] text-white antialiased min-h-screen selection:bg-[#00E5F0]/30 selection:text-white">
+      <body className="bg-[#000000] text-white antialiased min-h-screen selection:bg-[#00E5F0]/30 selection:text-white transition-colors duration-300">
         <NextIntlClientProvider messages={messages}>
-          <SmoothScrollProvider>
-            <Navbar />
-            <main className="relative min-h-screen">
-              {children}
-            </main>
-            <Footer />
-            <WhatsAppButton />
-          </SmoothScrollProvider>
+          <ThemeProvider>
+            <SmoothScrollProvider>
+              <Navbar />
+              <main className="relative min-h-screen">
+                {children}
+              </main>
+              <Footer />
+              <WhatsAppButton />
+            </SmoothScrollProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

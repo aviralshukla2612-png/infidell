@@ -137,16 +137,16 @@ export function TestimonialsSection() {
 
         {/* Header - Compact Elegant Single-Screen Proportions */}
         <div className="max-w-3xl mb-3 sm:mb-4 lg:mb-5">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white leading-tight mb-0.5 sm:mb-1">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-0.5 sm:mb-1">
             Testimonials
           </h2>
-          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-tight text-white leading-snug mb-1">
+          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light tracking-tight text-[#102B50] dark:text-white leading-snug mb-1">
             Voices of{' '}
-            <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+            <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
               Verified Success.
             </span>
           </h3>
-          <p className="text-xs sm:text-[13px] text-neutral-300 leading-relaxed font-normal max-w-2xl">
+          <p className="text-xs sm:text-[13px] text-slate-600 dark:text-neutral-300 leading-relaxed font-normal max-w-2xl">
             Direct experiences from candidates placed in career-defining roles and enterprise partners who rely on Infidell for precision talent shortlists.
           </p>
         </div>

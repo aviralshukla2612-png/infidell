@@ -5,47 +5,21 @@ import Image from 'next/image';
 import gsap from 'gsap';
 
 export function Preloader() {
-  const [mounted, setMounted] = useState(false);
   const [hidden, setHidden] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const lettersRef = useRef<(HTMLSpanElement | null)[]>([]);
 
   const brandLetters = ['I', 'N', 'F', 'I', 'D', 'E', 'L', 'L'];
 
   useEffect(() => {
-    setMounted(true);
-
     // Prevent background scroll while preloader is active
     document.body.style.overflow = 'hidden';
 
-    // GSAP wave timeline for letters
-    const validLetters = lettersRef.current.filter(Boolean);
-    const ctx = gsap.context(() => {
-      // Fluid letter wave animation
-      gsap.fromTo(
-        validLetters,
-        { y: 12, opacity: 0.3, scale: 0.95 },
-        {
-          y: -14,
-          opacity: 1,
-          scale: 1.08,
-          duration: 0.65,
-          stagger: {
-            each: 0.09,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut'
-          }
-        }
-      );
-    }, containerRef);
-
-    // Allow the wave animation to showcase for ~1.3s then smoothly reveal the page
+    // Allow the fluid letter wave animation to showcase for ~1.4s then smoothly slide up to reveal the page
     const timer = setTimeout(() => {
       if (containerRef.current) {
         gsap.to(containerRef.current, {
           yPercent: -100,
-          opacity: 0.9,
+          opacity: 0.95,
           duration: 0.85,
           ease: 'power4.inOut',
           onComplete: () => {
@@ -57,16 +31,15 @@ export function Preloader() {
         setHidden(true);
         document.body.style.overflow = '';
       }
-    }, 1250);
+    }, 1400);
 
     return () => {
       clearTimeout(timer);
-      ctx.revert();
       document.body.style.overflow = '';
     };
   }, []);
 
-  if (!mounted || hidden) return null;
+  if (hidden) return null;
 
   return (
     <div
@@ -98,17 +71,14 @@ export function Preloader() {
           </div>
         </div>
 
-        {/* Brand Letters with Wave Motion */}
+        {/* Brand Letters with Guaranteed Smooth Pure CSS Wave Motion */}
         <div className="flex items-center gap-2 sm:gap-3 text-3xl sm:text-4xl md:text-5xl font-black tracking-[0.22em] text-[#102B50] dark:text-white">
           {brandLetters.map((char, index) => (
             <span
               key={index}
-              ref={(el) => {
-                lettersRef.current[index] = el;
-              }}
-              className="inline-block transition-colors duration-300 transform-gpu cursor-default"
+              className="letter-wave-char inline-block cursor-default select-none transform-gpu"
               style={{
-                textShadow: '0 4px 18px rgba(8, 127, 203, 0.25)'
+                animationDelay: `${index * 0.09}s`
               }}
             >
               {char}

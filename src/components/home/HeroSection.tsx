@@ -218,7 +218,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-6 sm:pb-10 lg:pt-36 lg:pb-12"
+      className="relative min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-20 sm:pt-24 lg:pt-24 pb-4 sm:pb-6 lg:pb-5"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -248,11 +248,11 @@ export function HeroSection() {
             alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
             fill
             priority
-            className="object-contain sm:object-cover object-center sm:object-right opacity-95 scale-105 sm:scale-100"
+            className="object-contain sm:object-contain object-right opacity-95 scale-85 sm:scale-75 lg:scale-70 origin-right transition-transform"
           />
           {/* Subtle Ambient Light Gradient Overlays for optimal typography readability on the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/90 via-[#F8FAFC]/50 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/30 pointer-events-none" />
         </div>
       </div>
 
@@ -305,10 +305,10 @@ export function HeroSection() {
       </div>
 
       {/* Three Main Services Highlight Bar (Integrated Directly into the Hero) */}
-      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-6 sm:pt-7 pb-2 mt-10 sm:mt-14">
+      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-3 sm:pt-4 pb-1 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-3.5 flex items-center justify-between">
-            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#00D5DF] font-bold flex items-center gap-2">
+          <div className="mb-2 sm:mb-2.5 flex items-center justify-between">
+            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#00D5DF] font-bold flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] shadow-[0_0_8px_#00D5DF]" />
               Our Three Main Services
             </span>
@@ -317,11 +317,11 @@ export function HeroSection() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-3.5 lg:gap-4">
             {/* Service 1: Career Placement & Advisory */}
             <a
               href="#candidate"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#00D5DF]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
+              className="group p-3 sm:p-3.5 lg:p-4 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#00D5DF]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
               style={{
                 borderColor: 'rgba(0, 213, 223, 0.4)',
                 boxShadow: '0 4px 25px -3px rgba(0, 213, 223, 0.12)'

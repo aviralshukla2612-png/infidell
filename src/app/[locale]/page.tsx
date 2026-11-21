@@ -12,6 +12,7 @@ import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSecti
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { FAQSection } from '@/components/home/FAQSection';
 import { InsightsSection } from '@/components/home/InsightsSection';
+import { ContactSection } from '@/components/home/ContactSection';
 
 export default async function HomePage({
   params
@@ -39,6 +40,7 @@ export default async function HomePage({
       <TestimonialsSection />
       <FAQSection />
       <InsightsSection />
+      <ContactSection />
     </>
   );
 }

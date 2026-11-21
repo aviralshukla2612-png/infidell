@@ -111,15 +111,16 @@ export function OurApproachSection() {
           </p>
         </div>
 
-        {/* 4 Luxury Bento Cards in 2x2 Grid */}
+        {/* 4 Luxury Bento Cards in 2x2 Grid with Vibrant Color Borders */}
         <div className="approach-grid grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {principles.map((principle) => (
             <div 
               key={principle.num}
-              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-[#070D10] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#070D10] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
               style={{
-                borderColor: `${principle.accent}55`,
-                boxShadow: `0 8px 32px -4px ${principle.accent}18`
+                borderColor: principle.accent,
+                borderWidth: '1.5px',
+                boxShadow: `0 8px 32px -4px ${principle.accent}25`
               }}
             >
               {/* Ambient Radial Hover Glow */}
@@ -138,45 +139,41 @@ export function OurApproachSection() {
 
               {/* Card Body */}
               <div>
-                {/* Header Row: Icon, Tag Pill, Index Number, Arrow */}
+                {/* Header Row: Icon Anchor on Left, Arrow Action on Right (Clean & Removed Dark Grey Tag) */}
                 <div className="flex items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
                     <div 
-                      className="w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 border"
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 border shadow-sm"
                       style={{ 
-                        borderColor: `${principle.accent}55`,
+                        borderColor: `${principle.accent}70`,
                         backgroundColor: `${principle.accent}14`
                       }}
                     >
                       {principle.icon}
                     </div>
                     <span 
-                      className="text-xs font-semibold tracking-wider uppercase px-3.5 py-1 rounded-full border transition-all duration-300 font-mono"
-                      style={{ 
-                        color: principle.accent, 
-                        borderColor: `${principle.accent}55`,
-                        backgroundColor: `${principle.accent}14`
-                      }}
+                      className="text-xs font-mono font-bold tracking-widest uppercase px-2.5 py-1 rounded-md"
+                      style={{ color: principle.accent, backgroundColor: `${principle.accent}12` }}
                     >
-                      {principle.tag}
+                      {principle.num}
                     </span>
                   </div>
 
                   <a 
                     href="#contact"
-                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-neutral-400 group-hover:text-white group-hover:border-[#00D5DF]/60 group-hover:bg-[#00D5DF]/20 group-hover:rotate-45 transition-all duration-300"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-500 dark:text-neutral-400 group-hover:text-white group-hover:border-[#087FCB] dark:group-hover:border-[#00D5DF]/60 group-hover:bg-[#087FCB] dark:group-hover:bg-[#00D5DF]/20 group-hover:rotate-45 transition-all duration-300"
                   >
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                 </div>
 
                 {/* Principle Title */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-[#7DD3FC] transition-colors duration-300 leading-snug">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#102B50] dark:text-white mb-3 tracking-tight group-hover:text-[#087FCB] dark:group-hover:text-[#7DD3FC] transition-colors duration-300 leading-snug">
                   {t(principle.titleKey)}
                 </h3>
 
                 {/* Principle Description */}
-                <p className="text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-neutral-300 font-normal leading-relaxed">
                   {t(principle.descKey)}
                 </p>
               </div>

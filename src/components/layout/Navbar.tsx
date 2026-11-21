@@ -12,7 +12,8 @@ const SECTIONS = [
   { id: 'process', label: 'How It Works' },
   { id: 'approach', label: 'What We Are Doing' },
   { id: 'careers', label: 'Careers' },
-  { id: 'insights', label: 'Insights' }
+  { id: 'insights', label: 'Insights' },
+  { id: 'contact', label: 'Contact' }
 ];
 
 export function Navbar() {
@@ -167,12 +168,15 @@ export function Navbar() {
             <LanguageSwitcher />
             <ThemeToggle />
             <a
-              href="#footer"
-              onClick={(e) => scrollTo(e, 'footer')}
-              className="navbar-cta-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs lg:text-sm font-semibold text-white bg-transparent border border-[#00E5F0]/60 hover:border-[#00E5F0] transition-all duration-300 shadow-[0_0_15px_rgba(0,229,240,0.3)] hover:shadow-[0_0_25px_rgba(0,229,240,0.55)] group cursor-pointer"
+              href="#contact"
+              onClick={(e) => scrollTo(e, 'contact')}
+              className="navbar-cta-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs lg:text-sm font-semibold !text-white bg-transparent border border-[#00E5F0]/60 hover:border-[#00E5F0] transition-all duration-300 shadow-[0_0_15px_rgba(0,229,240,0.3)] hover:shadow-[0_0_25px_rgba(0,229,240,0.55)] group cursor-pointer"
+              style={{
+                color: '#FFFFFF'
+              }}
             >
-              <span>Let&apos;s Talk</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-1 transition-transform" />
+              <span style={{ color: '#FFFFFF' }}>Let&apos;s Talk</span>
+              <ArrowRight className="w-3.5 h-3.5 !text-white group-hover:translate-x-1 transition-transform" style={{ color: '#FFFFFF' }} />
             </a>
           </div>
 
@@ -213,12 +217,12 @@ export function Navbar() {
 
             <div className="pt-3 border-t border-[#202A30]">
               <a
-                href="#footer"
-                onClick={(e) => scrollTo(e, 'footer')}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-xs font-bold text-black bg-[#00E5F0] cursor-pointer"
+                href="#contact"
+                onClick={(e) => scrollTo(e, 'contact')}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-xs font-bold text-white bg-[#087FCB] dark:bg-[#00E5F0] dark:text-black cursor-pointer shadow-md"
               >
                 <span>Let&apos;s Talk</span>
-                <ArrowRight className="w-3.5 h-3.5 text-black" />
+                <ArrowRight className="w-3.5 h-3.5 text-white dark:text-black" />
               </a>
             </div>
           </div>

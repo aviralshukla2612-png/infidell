@@ -18,64 +18,64 @@ interface TestimonialItem {
 
 const TESTIMONIALS: TestimonialItem[] = [
   {
-    id: 'linda-p',
-    name: 'Linda P.',
-    role: 'MARKETING DIRECTOR',
-    outcome: 'Placed at High-Growth Fintech',
-    companyBadge: 'Fintech Leadership',
-    accent: '#A33B26', // Terracotta from user screenshot
-    image: '/images/testimonials/avatar-1.jpg',
+    id: 'ananya-s',
+    name: 'Ananya S.',
+    role: 'LEAD FULL STACK ARCHITECT',
+    outcome: 'Tier-1 Fintech Platform · Bengaluru',
+    companyBadge: 'Bengaluru Tech Hub',
+    accent: '#A33B26', // Terracotta
+    image: '/images/testimonials/indian-avatar-1.jpg',
     rating: 5,
     quote:
-      'Infidell completely redefined what working with a recruitment partner looks like. Within two weeks, I had direct conversations with executive leadership that aligned with my compensation goals and leadership aspirations.'
+      'Finding an executive recruitment partner in India that truly understands notice period dynamics and compensation transparency is rare. Infidell facilitated direct conversations with engineering leadership in Bengaluru, leading to an offer aligned with my leadership trajectory.'
   },
   {
-    id: 'marcus-c',
-    name: 'Marcus C.',
-    role: 'VP OF ENGINEERING',
-    outcome: 'Enterprise Cloud Infrastructure',
-    companyBadge: 'Qualcomm Ecosystem',
+    id: 'rohan-p',
+    name: 'Rohan P.',
+    role: 'SR. CLOUD & DEVOPS ARCHITECT',
+    outcome: 'Enterprise Cloud Platform · Pune / Hybrid',
+    companyBadge: 'Cloud Infrastructure',
     accent: '#0284C7', // Sky Blue
-    image: '/images/testimonials/avatar-2.jpg',
+    image: '/images/testimonials/indian-avatar-2.jpg',
     rating: 5,
     quote:
-      'The pre-screening caliber at Infidell is unlike any staffing firm we’ve engaged. Every single candidate shortlisted had the exact architectural depth and cultural agility our engineering teams demanded.'
+      'No algorithmic black holes or candidate fees. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud architecture mandates, coordinating interview rounds with surgical precision from day one.'
   },
   {
-    id: 'sarah-j',
-    name: 'Sarah J.',
-    role: 'HEAD OF TALENT ACQUISITION',
-    outcome: 'Global HealthTech Partner',
-    companyBadge: 'HealthTech Enterprise',
+    id: 'priya-s',
+    name: 'Priya S.',
+    role: 'DIRECTOR OF PRODUCT MANAGEMENT',
+    outcome: 'Global SaaS Enterprise · Hyderabad',
+    companyBadge: 'SaaS Leadership',
     accent: '#059669', // Emerald
-    image: '/images/testimonials/avatar-3.jpg',
+    image: '/images/testimonials/indian-avatar-3.jpg',
     rating: 5,
     quote:
-      'In a hyper-competitive tech market, Infidell delivered vetted engineering shortlists in under 48 hours. Their transparent placement model has made them our primary executive search advisory.'
+      'Infidell treats career transition like an executive advisory service rather than a resume broadcast. They mapped out three strategic conversations with verified enterprise leaders in Hyderabad, completely aligned with my product roadmap vision.'
   },
   {
-    id: 'david-k',
-    name: 'David K.',
-    role: 'LEAD CLOUD ARCHITECT',
-    outcome: 'Placed at Fortune 100 Financial',
-    companyBadge: 'Capital Markets Group',
+    id: 'vikram-m',
+    name: 'Vikram M.',
+    role: 'VP OF SOFTWARE ENGINEERING',
+    outcome: 'High-Growth Tech Unicorn · Gurugram',
+    companyBadge: 'Executive Search',
     accent: '#D97706', // Amber
-    image: '/images/testimonials/avatar-4.jpg',
+    image: '/images/testimonials/indian-avatar-4.jpg',
     rating: 5,
     quote:
-      'No algorithmic black holes or ghosting. My Infidell advisor mapped out interview strategy, compensation benchmarks, and contract negotiation with surgical precision from day one.'
+      'From compensation benchmarking and ESOP negotiation to confidential interview scheduling with the CTO in Gurugram, Infidell provided world-class representation throughout my career move. Exceptional professionalism.'
   },
   {
-    id: 'elena-r',
-    name: 'Elena R.',
-    role: 'CHIEF PEOPLE OFFICER',
-    outcome: 'Scaling Enterprise SaaS',
-    companyBadge: 'Global SaaS Group',
+    id: 'sneha-k',
+    name: 'Sneha K.',
+    role: 'PRINCIPAL DATA SCIENTIST',
+    outcome: 'Enterprise AI Lab · Mumbai / Remote',
+    companyBadge: 'AI & Machine Learning',
     accent: '#7C3AED', // Violet
-    image: '/images/testimonials/avatar-5.jpg',
+    image: '/images/testimonials/indian-avatar-5.jpg',
     rating: 5,
     quote:
-      'What sets Infidell apart is ethical alignment and speed. They don’t flood our inbox with generic resumes; they present verified leaders who deliver immediate team impact and high retention.'
+      'The personalized attention from Infidell was remarkable. They understood my specialized background in generative AI and LLM pipelines, matching me directly with enterprise AI labs in Mumbai that offered both remote flexibility and tier-1 compensation.'
   }
 ];
 
@@ -97,7 +97,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section 
+    <section
       id="testimonials"
       className="min-h-screen flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
@@ -119,7 +119,7 @@ export function TestimonialsSection() {
       <div className="absolute bottom-1/4 right-1/4 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-[#38BDF8]/10 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        
+
         {/* Header - Matching About Us Structure */}
         <div className="max-w-3xl mb-6 sm:mb-8 md:mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none mb-2 sm:mb-3">
@@ -138,7 +138,7 @@ export function TestimonialsSection() {
 
         {/* Featured Testimonial Card - Fully Responsive Across Mobile, Tablet & Desktop */}
         <div className="max-w-4xl mx-auto pt-6 sm:pt-8 w-full">
-          <div 
+          <div
             key={active.id}
             onClick={handleNext}
             role="button"
@@ -199,7 +199,7 @@ export function TestimonialsSection() {
             {/* Author Meta Section (Responsive offset from the overlapping scallop avatar) */}
             <div className="pl-20 sm:pl-28 md:pl-36 mb-4 sm:mb-5 min-h-[44px] sm:min-h-[55px] flex flex-col justify-center">
               {/* Person Name in distinguished font / accent */}
-              <h3 
+              <h3
                 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold tracking-tight mb-0.5 sm:mb-1"
                 style={{ color: active.accent }}
               >
@@ -227,11 +227,10 @@ export function TestimonialsSection() {
                 key={item.id}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  idx === activeIdx 
-                    ? 'w-8 bg-[#00D5DF] shadow-[0_0_10px_rgba(0,213,223,0.5)]' 
+                className={`h-1.5 transition-all duration-300 rounded-full ${idx === activeIdx
+                    ? 'w-8 bg-[#00D5DF] shadow-[0_0_10px_rgba(0,213,223,0.5)]'
                     : 'w-2.5 bg-neutral-700/80 hover:bg-neutral-500'
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
             ))}

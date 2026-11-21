@@ -8,11 +8,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { 
   ArrowRight, 
-  Building2, 
-  Briefcase, 
-  BadgeCheck, 
-  Compass, 
-  ShieldCheck 
+  Building2 
 } from 'lucide-react';
 
 const LINE1_PREFIX = "Every Career Has a ";
@@ -110,9 +106,6 @@ function HeroHeadlineTypewriter() {
           </span>
         )}
         <span>{showSuffix}</span>
-        {charCount < TOTAL_LINE1 && (
-          <span className="inline-block w-[3px] h-[0.85em] bg-[#087FCB] dark:bg-[#00D5DF] ml-1 animate-pulse align-middle" />
-        )}
       </>
     );
   };
@@ -148,9 +141,6 @@ function HeroHeadlineTypewriter() {
           </span>
         )}
         <span>{showSuffix}</span>
-        {charCount >= TOTAL_LINE1 && (
-          <span className="inline-block w-[3px] h-[0.85em] bg-[#00BFCB] dark:bg-[#00E5F0] ml-1 animate-pulse align-middle" />
-        )}
       </>
     );
   };
@@ -204,14 +194,6 @@ export function HeroSection() {
         { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12 },
         '-=0.5'
       );
-
-      // 4. Horizontal feature strip reveal
-      tl.fromTo(
-        '.hero-feature-strip',
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.4'
-      );
     },
     { scope: containerRef }
   );
@@ -220,7 +202,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-20 sm:pt-24 lg:pt-24 pb-4 sm:pb-6 lg:pb-5"
+      className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-center bg-[#000000] overflow-hidden pt-28 sm:pt-32 pb-16 sm:pb-20"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -264,7 +246,7 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-10 xl:col-span-10 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-8 xl:col-span-8 space-y-6 sm:space-y-8">
             {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
             <h1 
               ref={headlineRef}
@@ -274,7 +256,7 @@ export function HeroSection() {
             </h1>
 
             {/* Description */}
-            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
+            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#475569] dark:text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
               {t('description')}
             </p>
 
@@ -282,7 +264,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn hero-cta-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
               >
                 <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="w-4 h-4 text-black" />
@@ -290,123 +272,16 @@ export function HeroSection() {
 
               <a
                 href="#employer"
-                className="hero-cta-btn hero-cta-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm font-semibold text-[#F5F8F8] bg-[#0C1517]/90 hover:bg-[#102426] border border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 backdrop-blur-md cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm backdrop-blur-md cursor-pointer text-center"
               >
-                <Building2 className="w-4 h-4 text-[#17BEBB]" />
+                <Building2 className="w-4 h-4 text-[#087FCB] dark:text-[#17BEBB]" />
                 <span>{t('ctaSecondary')}</span>
               </a>
             </div>
           </div>
 
           {/* Right Column: Left unobstructed so the 3D infinity visual is 100% visible */}
-          <div className="hidden lg:block lg:col-span-2 xl:col-span-2" />
-        </div>
-      </div>
-
-      {/* Three Main Services Highlight Bar (Integrated Directly into the Hero) */}
-      <div className="hero-feature-strip relative z-10 w-full border-t border-[#203536]/80 pt-3 sm:pt-4 pb-1 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-2 sm:mb-2.5 flex items-center justify-between">
-            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#00D5DF] font-bold flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D5DF] shadow-[0_0_8px_#00D5DF]" />
-              Our Three Main Services
-            </span>
-            <span className="text-xs text-neutral-400 hidden sm:inline-block">
-              Dedicated Placement &amp; Enterprise Staffing Architecture
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-3.5 lg:gap-4">
-            {/* Service 1: Career Placement & Advisory */}
-            <a
-              href="#candidate"
-              className="group p-3 sm:p-3.5 lg:p-4 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#00D5DF]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
-              style={{
-                borderColor: 'rgba(0, 213, 223, 0.4)',
-                boxShadow: '0 4px 25px -3px rgba(0, 213, 223, 0.12)'
-              }}
-            >
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#00D5DF]/10 border border-[#00D5DF]/30 flex items-center justify-center text-[#00E5F0] shadow-[0_0_12px_rgba(0,213,223,0.2)] group-hover:scale-105 transition-transform shrink-0">
-                    <Compass className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-[#00E5F0] uppercase tracking-wider block">
-                      01 · Candidate Track
-                    </span>
-                    <h2 className="text-sm sm:text-base font-bold text-white group-hover:text-[#00E5F0] transition-colors leading-tight">
-                      Career Placement &amp; Advisory
-                    </h2>
-                  </div>
-                </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#00E5F0] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-              </div>
-              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
-                100% free candidate career advocacy: ATS resume architecture, compensation benchmarking, and direct introductions to engineering leadership.
-              </p>
-            </a>
-
-            {/* Service 2: Corporate Recruitment & Staffing */}
-            <a
-              href="#employer"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#38BDF8]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
-              style={{
-                borderColor: 'rgba(56, 189, 248, 0.4)',
-                boxShadow: '0 4px 25px -3px rgba(56, 189, 248, 0.12)'
-              }}
-            >
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/30 flex items-center justify-center text-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.2)] group-hover:scale-105 transition-transform shrink-0">
-                    <Building2 className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-[#38BDF8] uppercase tracking-wider block">
-                      02 · Enterprise Track
-                    </span>
-                    <h2 className="text-sm sm:text-base font-bold text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
-                      Corporate Recruitment &amp; Staffing
-                    </h2>
-                  </div>
-                </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#38BDF8] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-              </div>
-              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
-                Multi-tier vetted technical shortlists delivered in 48 to 72 hours with verified notice periods and replacement guarantees.
-              </p>
-            </a>
-
-            {/* Service 3: Executive Search & Leadership */}
-            <a
-              href="mailto:contact@infidelltech.com?subject=Executive%20Search%20Inquiry"
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0C1517]/85 hover:bg-[#0E1A1C] border hover:border-[#A78BFA]/80 transition-all duration-300 shadow-lg flex flex-col justify-between cursor-pointer"
-              style={{
-                borderColor: 'rgba(167, 139, 250, 0.4)',
-                boxShadow: '0 4px 25px -3px rgba(167, 139, 250, 0.12)'
-              }}
-            >
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#A78BFA]/10 border border-[#A78BFA]/30 flex items-center justify-center text-[#7C3AED] dark:text-[#A78BFA] shadow-[0_0_12px_rgba(167,139,250,0.2)] group-hover:scale-105 transition-transform shrink-0">
-                    <ShieldCheck className="w-4.5 h-4.5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-[#7C3AED] dark:text-[#A78BFA] uppercase tracking-wider block">
-                      03 · Executive Track
-                    </span>
-                    <h2 className="text-sm sm:text-base font-bold text-[#102B50] dark:text-white group-hover:text-[#7C3AED] dark:group-hover:text-[#A78BFA] transition-colors leading-tight">
-                      Executive Search &amp; Leadership
-                    </h2>
-                  </div>
-                </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-[#A78BFA] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-              </div>
-              <p className="text-xs text-slate-600 dark:text-neutral-300 leading-relaxed font-normal">
-                Confidential headhunting for Director, VP of Engineering, and C-suite leadership with strict NDA background due diligence.
-              </p>
-            </a>
-          </div>
+          <div className="hidden lg:block lg:col-span-4 xl:col-span-4" />
         </div>
       </div>
     </section>

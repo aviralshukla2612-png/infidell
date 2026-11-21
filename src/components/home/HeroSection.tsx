@@ -220,25 +220,42 @@ export function HeroSection() {
       ref={containerRef}
       className="relative min-h-screen flex flex-col justify-between bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-6 sm:pb-10 lg:pt-36 lg:pb-12"
     >
-      {/* Dynamic Background: Official Metallic Infinity Visual (bg.png) */}
+      {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
         ref={bgVisualRef}
-        className="absolute inset-0 z-0 pointer-events-none select-none opacity-95 overflow-hidden"
+        className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
       >
-        <Image
-          src="/images/bg.png"
-          alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
-          fill
-          priority
-          className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
-        />
+        {/* Dark Mode Background Visual */}
+        <div className="dark-only absolute inset-0">
+          <Image
+            src="/images/bg.png"
+            alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
+            fill
+            priority
+            className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
+          />
+          {/* Ambient Dark Gradient Overlays for optimal typography readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
+          {/* Subtle cyan glow accent */}
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00E5F0]/15 rounded-full blur-[130px]" />
+        </div>
 
-        {/* Ambient Dark Gradient Overlays for optimal typography readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
-
-        {/* Subtle cyan glow accent */}
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00E5F0]/15 rounded-full blur-[130px]" />
+        {/* Light Mode Background Visual: Luminous daylight aesthetic */}
+        <div className="light-only absolute inset-0">
+          <Image
+            src="/images/bg-light.png"
+            alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
+            fill
+            priority
+            className="object-contain sm:object-cover object-center sm:object-right opacity-95 scale-105 sm:scale-100"
+          />
+          {/* Ambient Light Gradient Overlays for optimal typography readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC] via-transparent to-[#F8FAFC]/40" />
+          {/* Soft ambient cyan glow */}
+          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00D5DF]/10 rounded-full blur-[140px]" />
+        </div>
       </div>
 
       {/* Main Hero Content */}

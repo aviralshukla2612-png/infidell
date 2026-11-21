@@ -117,6 +117,26 @@
 /* ========================================================
    LIGHT MODE OVERRIDES
 ======================================================== */
+/* ========================================================
+   LIGHT / DARK DUAL-THEME SWITCHING UTILITIES
+======================================================== */
+.light-only {
+  display: none !important;
+}
+.dark-only {
+  display: block !important;
+}
+
+html.light .light-only {
+  display: block !important;
+}
+html.light .dark-only {
+  display: none !important;
+}
+
+/* ========================================================
+   LIGHT THEME DESIGN SYSTEM (PREMIUM EDITORIAL LUXURY)
+======================================================== */
 html.light {
   color-scheme: light;
   background-color: #F8FAFC !important;
@@ -182,6 +202,12 @@ html.light .text-neutral-500 {
   color: #64748B !important;
 }
 
+/* High contrast cyan text for light backgrounds */
+html.light .text-\[\#00D5DF\],
+html.light .text-\[\#00E5F0\] {
+  color: #0891B2 !important;
+}
+
 /* Header & Sticky Navbar */
 html.light header#main-navbar {
   background-color: rgba(255, 255, 255, 0.88) !important;
@@ -205,14 +231,6 @@ html.light #home {
 
 html.light #home .hero-desc {
   color: #475569 !important;
-}
-
-html.light #home .bg-gradient-to-r.from-\[\#000000\] {
-  background: linear-gradient(to right, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.75), transparent) !important;
-}
-
-html.light #home .bg-gradient-to-t.from-\[\#000000\] {
-  background: linear-gradient(to top, rgba(248, 250, 252, 0.95), transparent) !important;
 }
 
 /* Keep Footer in rich dark contrast */
@@ -246,4 +264,10 @@ html.light #faq .bg-\[\#0E1A1C\] {
 html.light #faq .bg-\[\#0C1517\]\/85 {
   background-color: #FFFFFF !important;
   border-color: #E2E8F0 !important;
+}
+
+html.light .bg-neutral-800\/80 {
+  background-color: #F1F5F9 !important;
+  color: #475569 !important;
+  border-color: #CBD5E1 !important;
 }

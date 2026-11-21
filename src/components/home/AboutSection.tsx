@@ -380,14 +380,28 @@ export function AboutSection() {
             {/* Right Column (6 cols): Pure Image Showcase (Uncropped Natural 3:2 Proportions) */}
             <div className="lg:col-span-6 flex items-center justify-center">
               <div className="luna-header-fade relative w-full aspect-[3/2] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-500 shadow-2xl shadow-black/80 bg-[#060D10] group">
-                <Image
-                  src="/about-bg.png"
-                  alt="Infidell Technology LLP Headquarters"
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
+                {/* Dark Mode Office Visual */}
+                <div className="dark-only relative w-full h-full">
+                  <Image
+                    src="/about-bg.png"
+                    alt="Infidell Technology LLP Headquarters"
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+                {/* Light Mode Office Visual */}
+                <div className="light-only relative w-full h-full">
+                  <Image
+                    src="/about-bg-light.png"
+                    alt="Infidell Technology LLP Headquarters - Light Theme"
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
                 {/* Subtle top edge highlight */}
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00D5DF]/60 to-transparent pointer-events-none" />
               </div>

@@ -101,17 +101,31 @@ export function TestimonialsSection() {
       id="testimonials"
       className="min-h-screen flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
     >
-      {/* Dynamic Background: /testimonialbg.png */}
+      {/* Dynamic Background Atmosphere */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-        <Image
-          src="/testimonialbg.png"
-          alt="Testimonials Atmosphere Background"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        {/* Soft edge blending with neighbor sections while keeping the palm shadow aesthetic visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
+        {/* Dark Mode Background Visual */}
+        <div className="dark-only absolute inset-0">
+          <Image
+            src="/testimonialbg.png"
+            alt="Testimonials Atmosphere Background"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
+        </div>
+
+        {/* Light Mode Background Visual: Warm sunlit alabaster wall with palm shadows */}
+        <div className="light-only absolute inset-0">
+          <Image
+            src="/testimonialbg-light.png"
+            alt="Testimonials Atmosphere Background - Light Theme"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC] via-transparent to-[#F8FAFC] opacity-75 pointer-events-none" />
+        </div>
       </div>
 
       {/* Ambient background glows */}

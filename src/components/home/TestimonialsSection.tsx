@@ -18,8 +18,8 @@ interface TestimonialItem {
 
 const TESTIMONIALS: TestimonialItem[] = [
   {
-    id: 'ananya-s',
-    name: 'Ananya S.',
+    id: 'ananya-sharma',
+    name: 'Ananya Sharma',
     role: 'LEAD FULL STACK ARCHITECT',
     outcome: 'Tier-1 Fintech Platform · Bengaluru',
     companyBadge: 'Bengaluru Tech Hub',
@@ -30,8 +30,8 @@ const TESTIMONIALS: TestimonialItem[] = [
       'Finding an executive recruitment partner in India that truly understands notice period dynamics and compensation transparency is rare. Infidell facilitated direct conversations with engineering leadership in Bengaluru, leading to an offer aligned with my leadership trajectory.'
   },
   {
-    id: 'rohan-p',
-    name: 'Rohan P.',
+    id: 'rohan-patel',
+    name: 'Rohan Patel',
     role: 'SR. CLOUD & DEVOPS ARCHITECT',
     outcome: 'Enterprise Cloud Platform · Pune / Hybrid',
     companyBadge: 'Cloud Infrastructure',
@@ -42,8 +42,8 @@ const TESTIMONIALS: TestimonialItem[] = [
       'No algorithmic black holes or candidate fees. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud architecture mandates, coordinating interview rounds with surgical precision from day one.'
   },
   {
-    id: 'priya-s',
-    name: 'Priya S.',
+    id: 'priya-sundaram',
+    name: 'Priya Sundaram',
     role: 'DIRECTOR OF PRODUCT MANAGEMENT',
     outcome: 'Global SaaS Enterprise · Hyderabad',
     companyBadge: 'SaaS Leadership',
@@ -54,8 +54,8 @@ const TESTIMONIALS: TestimonialItem[] = [
       'Infidell treats career transition like an executive advisory service rather than a resume broadcast. They mapped out three strategic conversations with verified enterprise leaders in Hyderabad, completely aligned with my product roadmap vision.'
   },
   {
-    id: 'vikram-m',
-    name: 'Vikram M.',
+    id: 'vikram-malhotra',
+    name: 'Vikram Malhotra',
     role: 'VP OF SOFTWARE ENGINEERING',
     outcome: 'High-Growth Tech Unicorn · Gurugram',
     companyBadge: 'Executive Search',
@@ -66,8 +66,8 @@ const TESTIMONIALS: TestimonialItem[] = [
       'From compensation benchmarking and ESOP negotiation to confidential interview scheduling with the CTO in Gurugram, Infidell provided world-class representation throughout my career move. Exceptional professionalism.'
   },
   {
-    id: 'sneha-k',
-    name: 'Sneha K.',
+    id: 'sneha-kulkarni',
+    name: 'Sneha Kulkarni',
     role: 'PRINCIPAL DATA SCIENTIST',
     outcome: 'Enterprise AI Lab · Mumbai / Remote',
     companyBadge: 'AI & Machine Learning',

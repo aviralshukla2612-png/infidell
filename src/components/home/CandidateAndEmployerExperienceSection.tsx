@@ -769,7 +769,14 @@ export function CandidateAndEmployerExperienceSection() {
           <div className="max-w-3xl mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-tight mb-4">
               Build Your Team With the{' '}
-              <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] via-[#00D5DF] to-[#38BDF8] bg-clip-text text-transparent">
+              <span 
+                className="font-medium bg-clip-text text-transparent employer-heading-gradient"
+                style={{
+                  background: 'linear-gradient(120deg, #FFFFFF 0%, #7DD3FC 40%, #00D5DF 75%, #38BDF8 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
                 Right People.
               </span>
             </h2>

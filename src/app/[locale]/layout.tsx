@@ -9,6 +9,7 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvide
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { Preloader } from '@/components/ui/Preloader';
 import '@/app/globals.css';
 
 export function generateStaticParams() {
@@ -109,6 +110,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="bg-[#000000] text-white antialiased min-h-screen selection:bg-[#00E5F0]/30 selection:text-white transition-colors duration-300">
+        <Preloader />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <SmoothScrollProvider>

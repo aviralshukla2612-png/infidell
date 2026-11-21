@@ -406,6 +406,18 @@ html.light span.bg-clip-text {
   color: transparent !important;
 }
 
+/* High-contrast luminous gradient on dark navy contrast blocks (e.g. "Right People.") */
+html.light .employer-contrast-block span.bg-clip-text,
+html.light .employer-contrast-block .employer-heading-gradient,
+.employer-contrast-block span.bg-clip-text,
+.employer-contrast-block .employer-heading-gradient {
+  background: linear-gradient(120deg, #FFFFFF 0%, #7DD3FC 40%, #00D5DF 75%, #38BDF8 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
 /* Primary and Secondary CTA Button overrides in Light Mode */
 html.light .hero-cta-primary {
   background-color: #087FCB !important;
@@ -586,4 +598,39 @@ html.light .insight-featured-card span.bg-\[\#0C1517\]\/85 {
 html.light .insight-featured-card span.bg-\[\#050708\]\/75 {
   background-color: #F1F5F9 !important;
   color: #64748B !important;
+}
+
+/* Letter Wave Animation for Preloader & Loading Screen */
+@keyframes letterWave {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.55;
+    color: currentColor;
+    text-shadow: none;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.08);
+    opacity: 1;
+    color: #00BFCB;
+    text-shadow: 0 4px 18px rgba(0, 191, 203, 0.7);
+  }
+}
+
+.letter-wave-char {
+  animation: letterWave 1.3s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0% {
+    left: -30%;
+    width: 30%;
+  }
+  50% {
+    left: 25%;
+    width: 55%;
+  }
+  100% {
+    left: 100%;
+    width: 30%;
+  }
 }

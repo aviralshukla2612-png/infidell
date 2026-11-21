@@ -27,13 +27,13 @@ export default async function HomePage({
       <HeroSection />
       <CandidatesPlacedInSection />
       <AboutSection />
+      <OurApproachSection />
       {/* 
         CRITICAL NON-NEGOTIABLE BOUNDARY:
         SimpleTransparentProcessSection and all its GSAP animation timelines are 100% protected and untouched.
       */}
       <SimpleTransparentProcessSection />
       <CareersSection />
-      <OurApproachSection />
       <OurPartnersSection />
       <CandidateAndEmployerExperienceSection />
       <OurMissionValuesSection />

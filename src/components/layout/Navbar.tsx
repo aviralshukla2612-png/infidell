@@ -9,9 +9,9 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 const SECTIONS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'services', label: 'Services' },
   { id: 'process', label: 'How It Works' },
   { id: 'careers', label: 'Careers' },
-  { id: 'approach', label: 'What We Are Doing' },
   { id: 'insights', label: 'Insights' }
 ];
 
@@ -102,11 +102,10 @@ export function Navbar() {
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3.5'
-          : 'bg-transparent border-b border-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3.5'
+        : 'bg-transparent border-b border-transparent py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -133,11 +132,10 @@ export function Navbar() {
                 }}
                 onClick={(e) => scrollTo(e, sec.id)}
                 onMouseEnter={(e) => updateIndicatorToEl(e.currentTarget)}
-                className={`relative text-xs lg:text-sm font-medium transition-colors py-1 cursor-pointer select-none ${
-                  activeSection === sec.id
-                    ? 'text-white font-semibold'
-                    : 'text-[#AEB8C2] hover:text-white'
-                }`}
+                className={`relative text-xs lg:text-sm font-medium transition-colors py-1 cursor-pointer select-none ${activeSection === sec.id
+                  ? 'text-white font-semibold'
+                  : 'text-[#AEB8C2] hover:text-white'
+                  }`}
               >
                 <span>{sec.label}</span>
               </a>
@@ -204,11 +202,10 @@ export function Navbar() {
                 key={sec.id}
                 href={`#${sec.id}`}
                 onClick={(e) => scrollTo(e, sec.id)}
-                className={`block px-3 py-2 text-sm font-medium rounded-lg cursor-pointer ${
-                  activeSection === sec.id
-                    ? 'text-white bg-white/10 font-semibold'
-                    : 'text-[#AEB8C2] hover:bg-white/5 hover:text-white'
-                }`}
+                className={`block px-3 py-2 text-sm font-medium rounded-lg cursor-pointer ${activeSection === sec.id
+                  ? 'text-white bg-white/10 font-semibold'
+                  : 'text-[#AEB8C2] hover:bg-white/5 hover:text-white'
+                  }`}
               >
                 {sec.label}
               </a>

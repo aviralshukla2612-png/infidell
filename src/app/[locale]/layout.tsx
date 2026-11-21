@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import '@/app/globals.css';
 
 export function generateStaticParams() {
@@ -102,6 +103,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            <WhatsAppButton />
           </SmoothScrollProvider>
         </NextIntlClientProvider>
       </body>

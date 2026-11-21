@@ -23,23 +23,145 @@ const LINE2_PREFIX = "Let's Make ";
 const LINE2_HIGHLIGHT = "Yours";
 const LINE2_SUFFIX = " Count.";
 
-// Stable, Full Headline (prevents truncation artifacts like "Yours Co" while optimizing CWV)
-function HeroHeadline() {
+const TOTAL_LINE1 = LINE1_PREFIX.length + LINE1_HIGHLIGHT.length + LINE1_SUFFIX.length; // 32
+const TOTAL_LINE2 = LINE2_PREFIX.length + LINE2_HIGHLIGHT.length + LINE2_SUFFIX.length; // 23
+const TOTAL_CHARS = TOTAL_LINE1 + TOTAL_LINE2; // 55
+const LINE2_CUTOFF = TOTAL_CHARS - LINE2_SUFFIX.length; // 48
+
+// Signature Futuristic Typewriter Headline Animation with Pulsing Cursor
+function HeroHeadlineTypewriter() {
+  const [mounted, setMounted] = useState(false);
+  const [charCount, setCharCount] = useState(0);
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('typing');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    let timer: NodeJS.Timeout;
+
+    if (phase === 'typing') {
+      if (charCount < TOTAL_CHARS) {
+        const delay = charCount === TOTAL_LINE1 ? 160 : 36;
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, delay);
+      } else {
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 4000);
+      }
+    } else if (phase === 'deleting') {
+      if (charCount > LINE2_CUTOFF) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev - 1);
+        }, 48);
+      } else {
+        timer = setTimeout(() => {
+          setPhase('retyping');
+        }, 400);
+      }
+    } else if (phase === 'retyping') {
+      if (charCount < TOTAL_CHARS) {
+        timer = setTimeout(() => {
+          setCharCount((prev) => prev + 1);
+        }, 55);
+      } else {
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 5500);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [mounted, charCount, phase]);
+
+  const renderLine1 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE1_PREFIX}</span>
+          <span className="text-[#087FCB] dark:text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {LINE1_HIGHLIGHT}
+          </span>
+          <span>{LINE1_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c1 = Math.min(charCount, TOTAL_LINE1);
+    const p1Length = LINE1_PREFIX.length;
+    const h1Length = LINE1_HIGHLIGHT.length;
+    const s1Length = LINE1_SUFFIX.length;
+
+    const showPrefix = LINE1_PREFIX.slice(0, Math.min(c1, p1Length));
+    const showHighlight = c1 > p1Length ? LINE1_HIGHLIGHT.slice(0, Math.min(c1 - p1Length, h1Length)) : '';
+    const showSuffix = c1 > p1Length + h1Length ? LINE1_SUFFIX.slice(0, Math.min(c1 - (p1Length + h1Length), s1Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="text-[#087FCB] dark:text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+        {charCount < TOTAL_LINE1 && (
+          <span className="inline-block w-[3px] h-[0.85em] bg-[#087FCB] dark:bg-[#00D5DF] ml-1 animate-pulse align-middle" />
+        )}
+      </>
+    );
+  };
+
+  const renderLine2 = () => {
+    if (!mounted) {
+      return (
+        <>
+          <span>{LINE2_PREFIX}</span>
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {LINE2_HIGHLIGHT}
+          </span>
+          <span>{LINE2_SUFFIX}</span>
+        </>
+      );
+    }
+
+    const c2 = Math.max(0, charCount - TOTAL_LINE1);
+    const p2Length = LINE2_PREFIX.length;
+    const h2Length = LINE2_HIGHLIGHT.length;
+    const s2Length = LINE2_SUFFIX.length;
+
+    const showPrefix = LINE2_PREFIX.slice(0, Math.min(c2, p2Length));
+    const showHighlight = c2 > p2Length ? LINE2_HIGHLIGHT.slice(0, Math.min(c2 - p2Length, h2Length)) : '';
+    const showSuffix = c2 > p2Length + h2Length ? LINE2_SUFFIX.slice(0, Math.min(c2 - (p2Length + h2Length), s2Length)) : '';
+
+    return (
+      <>
+        <span>{showPrefix}</span>
+        {showHighlight && (
+          <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
+            {showHighlight}
+          </span>
+        )}
+        <span>{showSuffix}</span>
+        {charCount >= TOTAL_LINE1 && (
+          <span className="inline-block w-[3px] h-[0.85em] bg-[#00BFCB] dark:bg-[#00E5F0] ml-1 animate-pulse align-middle" />
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <span className="block whitespace-nowrap min-h-[1.12em]">
-        <span>{LINE1_PREFIX}</span>
-        <span className="text-[#087FCB] dark:text-[#00D5DF] drop-shadow-[0_0_20px_rgba(0,213,223,0.4)]">
-          {LINE1_HIGHLIGHT}
-        </span>
-        <span>{LINE1_SUFFIX}</span>
+        {renderLine1()}
       </span>
       <span className="block whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em]">
-        <span>{LINE2_PREFIX}</span>
-        <span className="cyan-text-gradient drop-shadow-[0_0_25px_rgba(23,190,187,0.35)]">
-          {LINE2_HIGHLIGHT}
-        </span>
-        <span>{LINE2_SUFFIX}</span>
+        {renderLine2()}
       </span>
     </>
   );
@@ -143,12 +265,12 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-10 xl:col-span-10 space-y-6 sm:space-y-8">
-            {/* Headline — Guaranteed Exactly 2 Lines */}
+            {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
             <h1 
               ref={headlineRef}
               className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.12]"
             >
-              <HeroHeadline />
+              <HeroHeadlineTypewriter />
             </h1>
 
             {/* Description */}

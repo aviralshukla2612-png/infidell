@@ -220,15 +220,15 @@ export function HeroSection() {
       >
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
-          {/* Mobile Dark Visual: Proportionately sized infinity sculpture */}
+          {/* Mobile Dark Visual: Official User Provided Background (/images/darkbgphone.png) */}
           <div className="hero-floating-artwork block sm:hidden absolute inset-0 w-full h-full will-change-transform">
             <Image
-              src="/images/bg-mobile.png"
+              src="/images/darkbgphone.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Dark Mobile"
               fill
               priority
               sizes="100vw"
-              className="object-cover object-top opacity-90 mix-blend-screen"
+              className="object-cover object-center opacity-95"
             />
           </div>
           {/* Desktop/Tablet Dark Visual: Original Full Artwork */}
@@ -241,26 +241,26 @@ export function HeroSection() {
               className="object-contain sm:object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen scale-105 sm:scale-100"
             />
           </div>
-          {/* Ambient Dark Gradient Overlays for optimal typography readability */}
+          {/* Ambient Dark Gradient Overlays for optimal typography readability on desktop */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent hidden sm:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60 pointer-events-none hidden sm:block" />
           {/* Multi-layered specular ambient depth glows */}
-          <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
-          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px]" />
+          <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px] hidden sm:block" />
+          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px] hidden sm:block" />
         </div>
 
         {/* Light Mode Background Visual: Official User Provided Light Background */}
         <div className="light-only absolute inset-0">
-          {/* Mobile Light Visual: Proportionately sized infinity sculpture */}
+          {/* Mobile Light Visual: Official User Provided Background (/images/lightbgphone.png) */}
           <div className="hero-floating-artwork block sm:hidden absolute inset-0 w-full h-full will-change-transform">
             <Image
-              src="/lightbg-mobile.png"
+              src="/images/lightbgphone.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Mobile"
               fill
               priority
               fetchPriority="high"
               sizes="100vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
           {/* Desktop/Tablet Light Visual: Original Full Artwork */}
@@ -279,7 +279,7 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-35% to-transparent pointer-events-none hidden sm:block" />
           <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent pointer-events-none hidden sm:block" />
           {/* Subtle azure specular bloom */}
-          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none hidden sm:block" />
         </div>
       </div>
 

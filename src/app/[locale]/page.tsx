@@ -4,7 +4,6 @@ import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { CandidatesPlacedInSection } from '@/components/home/CandidatesPlacedInSection';
 import { AboutSection } from '@/components/home/AboutSection';
-import { WorkforceSolutionSection } from '@/components/home/WorkforceSolutionSection';
 import { OurApproachSection } from '@/components/home/OurApproachSection';
 import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
 import { CareersSection } from '@/components/home/CareersSection';
@@ -52,7 +51,6 @@ export default async function HomePage({
       <HeroSection />
       <CandidatesPlacedInSection />
       <AboutSection />
-      <WorkforceSolutionSection />
       <OurApproachSection />
       {/* 
         CRITICAL NON-NEGOTIABLE BOUNDARY:

@@ -85,9 +85,11 @@ export function OurApproachSection() {
   return (
     <section 
       ref={sectionRef} 
-      id="approach"
+      id="services"
       className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none scroll-mt-20"
     >
+      {/* Anchor for backward compatibility with #approach */}
+      <div id="approach" className="absolute top-0 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header - Clean & Elegant (No Pill Badge) */}

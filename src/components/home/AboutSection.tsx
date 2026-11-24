@@ -345,9 +345,9 @@ export function AboutSection() {
             >
               About Us
             </h2>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-white leading-snug">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-[#102B50] dark:text-white leading-snug">
               People First.{' '}
-              <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+              <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
                 Possibilities Without Limits.
               </span>
             </h3>
@@ -359,9 +359,9 @@ export function AboutSection() {
             {/* Left Column (6 cols): Balanced Editorial Narrative */}
             <div className="lg:col-span-6 flex flex-col justify-center space-y-5">
               {/* Hero Lead Paragraph */}
-              <p className="luna-header-fade text-lg sm:text-xl lg:text-[1.22rem] font-light text-white leading-relaxed">
+              <p className="luna-header-fade text-lg sm:text-xl lg:text-[1.22rem] font-light text-[#102B50] dark:text-white leading-relaxed">
                 One dedicated placement firm, no impersonal algorithms in between. Infidell is{' '}
-                <strong className="font-semibold bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                <strong className="font-semibold bg-gradient-to-r from-[#087FCB] via-[#00BFCB] to-[#38BDF8] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
                   career advocacy
                 </strong>
                 . We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
@@ -422,9 +422,9 @@ export function AboutSection() {
 
             {/* Left Column (5 cols): Sticky Heading & Narrative */}
             <div className="lg:col-span-5 flex flex-col justify-center space-y-5">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight">
                 Strategic Practice Areas &{' '}
-                <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+                <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
                   Executive Solutions
                 </span>
               </h3>

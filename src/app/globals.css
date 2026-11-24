@@ -406,7 +406,9 @@ html.light .cyan-text-gradient {
   -webkit-text-fill-color: transparent !important;
 }
 
-html.light span.bg-clip-text {
+html.light span.bg-clip-text,
+html.light strong.bg-clip-text,
+html.light .bg-clip-text {
   background: linear-gradient(120deg, #102B50 0%, #087FCB 60%, #00BFCB 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;

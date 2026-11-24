@@ -207,12 +207,12 @@ export function FAQSection() {
         
         {/* Master Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white leading-none mb-2 sm:mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-none mb-2 sm:mb-3">
             FAQ
           </h2>
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-white leading-snug mb-2 sm:mb-2.5">
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-tight text-[#102B50] dark:text-white leading-snug mb-2 sm:mb-2.5">
             Frequently Asked{' '}
-            <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+            <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
               Questions.
             </span>
           </h3>

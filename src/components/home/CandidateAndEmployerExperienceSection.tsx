@@ -378,9 +378,9 @@ export function CandidateAndEmployerExperienceSection() {
           
           {/* Centered Header (No Pill Badge) */}
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#102B50] dark:text-white tracking-tight leading-tight mb-4">
               Your Career Deserves More Than{' '}
-              <span className="font-medium bg-gradient-to-r from-white via-[#7DD3FC] to-[#38BDF8] bg-clip-text text-transparent">
+              <span className="font-medium bg-gradient-to-r from-[#102B50] via-[#087FCB] to-[#00BFCB] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
                 Another Application.
               </span>
             </h2>

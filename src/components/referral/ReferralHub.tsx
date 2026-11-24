@@ -104,7 +104,7 @@ export function ReferralHub() {
   const referralFaqs = [
     {
       q: 'Who is eligible to participate in the Refer & Earn program?',
-      a: 'Any registered professional, technology specialist, or corporate employee in the US or globally can participate. There are no registration fees or mandatory membership requirements.'
+      a: 'Any registered professional, technology specialist, or corporate employee in the US or globally can participate. There are no prerequisites or mandatory membership requirements.'
     },
     {
       q: 'When is the referral reward disbursed?',

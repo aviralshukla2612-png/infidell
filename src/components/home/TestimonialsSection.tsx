@@ -39,7 +39,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     image: '/images/testimonials/avatar-2.jpg',
     rating: 5,
     quote:
-      'No algorithmic black holes or candidate fees. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud infrastructure mandates, coordinating interview rounds with surgical precision from day one.'
+      'No algorithmic black holes or impersonal portals. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud infrastructure mandates, coordinating interview rounds with surgical precision from day one.'
   },
   {
     id: 'elena-rostova',

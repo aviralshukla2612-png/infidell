@@ -24,7 +24,7 @@ interface StepCard {
 const JOB_SEEKER_STEPS: StepCard[] = [
   {
     step: 'Step 1',
-    title: 'Free Consultation',
+    title: 'Initial Consultation',
     description:
       'A quick consultation to understand your background, skills, career goals, and visa status so we can design the right job search strategy for you.',
     bg: '#FFFFFF',

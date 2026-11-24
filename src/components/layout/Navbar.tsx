@@ -134,8 +134,8 @@ export function Navbar() {
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-4 ${scrolled
-        ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-3.5 sm:py-4 ${scrolled
+        ? 'bg-white/95 dark:bg-[#050708]/90 backdrop-blur-md border-b border-slate-200 dark:border-[#203536] shadow-[0_4px_20px_rgba(16,43,80,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
         : 'bg-transparent border-b border-transparent'
         }`}
     >
@@ -153,7 +153,7 @@ export function Navbar() {
           <nav
             ref={navRef}
             onMouseLeave={resetToActive}
-            className="relative hidden md:flex items-center gap-6 lg:gap-8 py-2"
+            className="relative hidden md:flex items-center gap-5 lg:gap-8 py-2"
           >
             {SECTIONS.map((sec) => (
               <a
@@ -165,8 +165,8 @@ export function Navbar() {
                 onClick={(e) => scrollTo(e, sec.id)}
                 onMouseEnter={(e) => updateIndicatorToEl(e.currentTarget)}
                 className={`relative text-xs lg:text-sm font-medium transition-colors py-1 cursor-pointer select-none ${activeSection === sec.id
-                  ? 'text-white font-semibold'
-                  : 'text-[#AEB8C2] hover:text-white'
+                  ? 'text-[#102B50] dark:text-white font-semibold'
+                  : 'text-slate-600 dark:text-[#AEB8C2] hover:text-[#102B50] dark:hover:text-white'
                   }`}
               >
                 <span>{sec.label}</span>
@@ -175,7 +175,7 @@ export function Navbar() {
 
             {/* Emperor Nexus Signature Sliding Glowing Indicator with GPU transform */}
             <span
-              className="absolute bottom-0 left-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#00E5F0] via-[#55A9FF] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] pointer-events-none will-change-transform m-0"
+              className="absolute bottom-0 left-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#087FCB] via-[#00E5F0] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] pointer-events-none will-change-transform m-0"
               style={{
                 transform: `translateX(${indicator.left}px)`,
                 width: `${indicator.width}px`,
@@ -200,13 +200,10 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={(e) => scrollTo(e, 'contact')}
-              className="navbar-cta-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs lg:text-sm font-semibold !text-white bg-transparent border border-[#00E5F0]/60 hover:border-[#00E5F0] transition-all duration-300 shadow-[0_0_15px_rgba(0,229,240,0.3)] hover:shadow-[0_0_25px_rgba(0,229,240,0.55)] group cursor-pointer"
-              style={{
-                color: '#FFFFFF'
-              }}
+              className="navbar-cta-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs lg:text-sm font-semibold text-white bg-[#087FCB] dark:bg-transparent border border-[#087FCB] dark:border-[#00E5F0]/60 hover:bg-[#0284C7] dark:hover:border-[#00E5F0] transition-all duration-300 shadow-sm dark:shadow-[0_0_15px_rgba(0,229,240,0.3)] hover:shadow-md group cursor-pointer"
             >
-              <span style={{ color: '#FFFFFF' }}>Let&apos;s Talk</span>
-              <ArrowRight className="w-3.5 h-3.5 !text-white group-hover:translate-x-1 transition-transform" style={{ color: '#FFFFFF' }} />
+              <span>Let&apos;s Talk</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
 
@@ -216,10 +213,10 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 rounded-full flex items-center justify-center text-[#AEB8C2] hover:text-white bg-white/5 border border-white/10 hover:border-[#00E5F0]/60 transition-all focus:outline-none cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-slate-600 dark:text-[#AEB8C2] hover:text-[#102B50] dark:hover:text-white bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-[#087FCB] dark:hover:border-[#00E5F0]/60 transition-all focus:outline-none cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-[#00E5F0]" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#087FCB] dark:text-[#00E5F0]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -227,30 +224,30 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[#202A30] bg-[#000000]/95 backdrop-blur-2xl transition-all duration-300">
+        <div className="md:hidden border-b border-slate-200 dark:border-[#202A30] bg-white/95 dark:bg-[#000000]/95 backdrop-blur-2xl transition-all duration-300 max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="px-4 pt-3 pb-6 space-y-2">
             {SECTIONS.map((sec) => (
               <a
                 key={sec.id}
                 href={`#${sec.id}`}
                 onClick={(e) => scrollTo(e, sec.id)}
-                className={`block px-3 py-2 text-sm font-medium rounded-lg cursor-pointer ${activeSection === sec.id
-                  ? 'text-white bg-white/10 font-semibold'
-                  : 'text-[#AEB8C2] hover:bg-white/5 hover:text-white'
+                className={`block px-3.5 py-2.5 text-sm font-medium rounded-xl cursor-pointer transition-colors ${activeSection === sec.id
+                  ? 'text-[#087FCB] dark:text-white bg-blue-50 dark:bg-white/10 font-semibold'
+                  : 'text-slate-700 dark:text-[#AEB8C2] hover:bg-slate-100 dark:hover:bg-white/5 hover:text-[#102B50] dark:hover:text-white'
                   }`}
               >
                 {sec.label}
               </a>
             ))}
 
-            <div className="pt-3 border-t border-[#202A30]">
+            <div className="pt-3 border-t border-slate-200 dark:border-[#202A30]">
               <a
                 href="#contact"
                 onClick={(e) => scrollTo(e, 'contact')}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full text-xs font-bold text-white bg-[#087FCB] dark:bg-[#00E5F0] dark:text-black cursor-pointer shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-[#087FCB] to-[#00D5DF] cursor-pointer shadow-md"
               >
                 <span>Let&apos;s Talk</span>
-                <ArrowRight className="w-3.5 h-3.5 text-white dark:text-black" />
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
               </a>
             </div>
           </div>

@@ -341,7 +341,7 @@ export function AboutSection() {
           <div className="luna-header-fade mb-10 sm:mb-12">
             <h2
               ref={headlineRef}
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-light tracking-tight text-white leading-none mb-4 sm:mb-5"
+              className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-light tracking-tight text-white leading-none mb-4 sm:mb-5"
             >
               About Us
             </h2>
@@ -438,7 +438,7 @@ export function AboutSection() {
             <div className="lg:col-span-7 w-full">
 
               {/* Carousel Slider */}
-              <div className="carousel__slider relative w-full h-[460px] sm:h-[490px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl">
+              <div className="carousel__slider relative w-full h-[410px] xs:h-[440px] sm:h-[480px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl">
                 {COLORFUL_CARDS.map((card, idx) => (
                   <div
                     key={card.id}
@@ -492,7 +492,7 @@ export function AboutSection() {
 
                     {/* Bottom Content: Title, Tagline, Description & Meta */}
                     <div className="relative z-10 mt-auto pt-4">
-                      <h2 className="text-2xl sm:text-3xl md:text-[2rem] font-bold text-white mb-1.5 leading-snug tracking-tight">
+                      <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-[2rem] font-bold text-white mb-1.5 leading-snug tracking-tight">
                         {card.title}
                       </h2>
                       <p

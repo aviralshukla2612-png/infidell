@@ -147,10 +147,10 @@ function HeroHeadlineTypewriter() {
 
   return (
     <>
-      <span className="block whitespace-nowrap min-h-[1.12em]">
+      <span className="block sm:whitespace-nowrap min-h-[1.12em] break-words">
         {renderLine1()}
       </span>
-      <span className="block whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em]">
+      <span className="block sm:whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em] break-words">
         {renderLine2()}
       </span>
     </>
@@ -195,30 +195,38 @@ export function HeroSection() {
         '-=0.5'
       );
 
-      // 4. Kinetic Image Wave Motion: Smooth horizontal wave movement from left to right
-      gsap.fromTo(
-        '.hero-floating-artwork',
-        { x: -32, y: 8 },
-        {
-          x: 32,
-          y: -8,
-          duration: 7,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true
-        }
-      );
+      // 4. Ethereal kinetic floating for 3D infinity artwork
+      gsap.to('.hero-floating-artwork', {
+        y: -10,
+        duration: 4.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
 
-      // 5. Luminous traveling wave stream moving from left to right across the particle wave
+      // 5. Kinetic wave flow: Smooth left-to-right traveling wave across the bottom particle wave
       gsap.fromTo(
         '.hero-wave-stream',
         { xPercent: -120 },
         {
           xPercent: 240,
           duration: 5.5,
-          ease: 'sine.inOut',
+          ease: 'power1.inOut',
           repeat: -1,
           repeatDelay: 0.6
+        }
+      );
+
+      gsap.fromTo(
+        '.hero-wave-pulse',
+        { xPercent: -100, opacity: 0.25 },
+        {
+          xPercent: 180,
+          opacity: 0.65,
+          duration: 4.6,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true
         }
       );
     },
@@ -229,7 +237,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-white dark:bg-[#000000] overflow-hidden pt-24 sm:pt-28 pb-12 sm:pb-16"
+      className="relative min-h-screen lg:min-h-[100dvh] flex flex-col justify-center bg-white dark:bg-[#000000] overflow-hidden pt-20 sm:pt-24 lg:pt-24 xl:pt-28 pb-10 sm:pb-12 lg:pb-12 xl:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -238,21 +246,23 @@ export function HeroSection() {
       >
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
-          <div className="hero-floating-artwork absolute -top-[4%] -left-[6%] w-[112%] h-[108%] will-change-transform">
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform pointer-events-none">
             <Image
               src="/images/bg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual"
               fill
-              sizes="(max-width: 768px) 100vw, 1000px"
-              className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
+              priority
+              sizes="100vw"
+              className="object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen"
             />
           </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/75 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent via-30% to-[#000000]/60 pointer-events-none" />
           {/* Luminous left-to-right traveling wave flow across the particle wave */}
-          <div className="absolute inset-x-0 bottom-0 h-[48%] overflow-hidden pointer-events-none mix-blend-screen opacity-65">
-            <div className="hero-wave-stream absolute inset-y-0 w-[55%] bg-gradient-to-r from-transparent via-[#00D5DF]/35 via-50% via-[#38BDF8]/40 to-transparent blur-[28px] will-change-transform" />
+          <div className="absolute inset-x-0 bottom-0 h-44 sm:h-56 overflow-hidden pointer-events-none mix-blend-screen opacity-70">
+            <div className="hero-wave-stream absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#00D5DF]/35 via-50% via-[#38BDF8]/40 to-transparent blur-2xl will-change-transform" />
+            <div className="hero-wave-pulse absolute -bottom-6 inset-x-0 h-28 bg-gradient-to-r from-transparent via-[#00E5F0]/25 via-50% to-transparent blur-xl will-change-transform" />
           </div>
           {/* Multi-layered specular ambient depth glows */}
           <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
@@ -261,23 +271,24 @@ export function HeroSection() {
 
         {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
         <div className="light-only absolute inset-0">
-          <div className="hero-floating-artwork absolute -top-[4%] -left-[6%] w-[112%] h-[108%] will-change-transform">
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform pointer-events-none">
             <Image
               src="/lightbg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
               fill
               priority
               fetchPriority="high"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-              className="object-cover object-right-bottom"
+              sizes="100vw"
+              className="object-cover object-center sm:object-right-bottom"
             />
           </div>
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 via-30% to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent via-25% to-white/40 pointer-events-none" />
           {/* Luminous subtle traveling wave shimmer from left to right */}
-          <div className="absolute inset-x-0 bottom-0 h-[42%] overflow-hidden pointer-events-none opacity-40">
-            <div className="hero-wave-stream absolute inset-y-0 w-[55%] bg-gradient-to-r from-transparent via-[#087FCB]/20 via-50% via-[#00BFCB]/25 to-transparent blur-[25px] will-change-transform" />
+          <div className="absolute inset-x-0 bottom-0 h-40 sm:h-52 overflow-hidden pointer-events-none opacity-45">
+            <div className="hero-wave-stream absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#087FCB]/20 via-50% via-[#00BFCB]/25 to-transparent blur-2xl will-change-transform" />
+            <div className="hero-wave-pulse absolute -bottom-4 inset-x-0 h-24 bg-gradient-to-r from-transparent via-[#087FCB]/15 via-50% to-transparent blur-xl will-change-transform" />
           </div>
           {/* Subtle azure specular bloom */}
           <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
@@ -289,10 +300,10 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-8 xl:col-span-8 space-y-6 sm:space-y-8">
-            {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
+            {/* Headline with Live Typewriter Effect — Fully Responsive Across All Devices */}
             <h1 
               ref={headlineRef}
-              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.12]"
+              className="text-[1.12rem] min-[360px]:text-[1.25rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.14] break-words"
             >
               <HeroHeadlineTypewriter />
             </h1>

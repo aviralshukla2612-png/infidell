@@ -57,11 +57,11 @@ export function Logo({
       {/* Company Name Typography */}
       {showText && (
         <div className="flex flex-col leading-tight select-none">
-          <span className={`font-extrabold tracking-[0.14em] text-white ${titleSizes[size]} uppercase group-hover:text-[#00D5DF] transition-colors`}>
+          <span className={`font-extrabold tracking-[0.14em] text-[#102B50] dark:text-white ${titleSizes[size]} uppercase group-hover:text-[#00D5DF] transition-colors`}>
             INFIDELL
           </span>
           {showTagline && (
-            <span className={`font-semibold tracking-[0.22em] text-[#A5B2B3] group-hover:text-white transition-colors uppercase ${subSizes[size]} mt-0.5`}>
+            <span className={`font-semibold tracking-[0.22em] text-[#64748B] dark:text-[#A5B2B3] group-hover:text-[#102B50] dark:group-hover:text-white transition-colors uppercase ${subSizes[size]} mt-0.5`}>
               TECHNOLOGY
             </span>
           )}

@@ -112,7 +112,7 @@ export function OurApproachSection() {
           {principles.map((principle) => (
             <div 
               key={principle.num}
-              className="approach-card group relative rounded-3xl p-7 sm:p-9 bg-white dark:bg-[#070D10] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
+              className="approach-card group relative rounded-3xl p-5 xs:p-6 sm:p-8 md:p-9 bg-white dark:bg-[#070D10] border transition-all duration-500 flex flex-col justify-between overflow-hidden shadow-2xl hover:-translate-y-1.5"
               style={{
                 borderColor: principle.accent,
                 borderWidth: '1.5px',

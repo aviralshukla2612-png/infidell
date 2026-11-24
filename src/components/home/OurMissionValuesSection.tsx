@@ -70,8 +70,8 @@ export function OurMissionValuesSection() {
           </div>
 
           {/* Right Column: Refined Dark Circle with Character Inside & Snugly Contained Badges */}
-          <div className="lg:col-span-6 flex items-center justify-center relative">
-            <div className="relative w-[300px] h-[300px] xs:w-[340px] xs:h-[340px] sm:w-[420px] sm:h-[420px] md:w-[460px] md:h-[460px] lg:w-[480px] lg:h-[480px] flex items-center justify-center">
+          <div className="lg:col-span-6 flex items-center justify-center relative overflow-visible">
+            <div className="relative w-[270px] h-[270px] min-[360px]:w-[300px] min-[360px]:h-[300px] xs:w-[340px] xs:h-[340px] sm:w-[420px] sm:h-[420px] md:w-[460px] md:h-[460px] lg:w-[480px] lg:h-[480px] flex items-center justify-center">
 
               {/* The Circle Container (100% contained, overflow: hidden so character does not bleed outside) */}
               <div className="mission-circle-container relative w-full h-full rounded-full bg-gradient-to-b from-[#102426] via-[#0C1517] to-[#050708] shadow-[0_0_60px_rgba(23,190,187,0.18)] border border-[#203536] overflow-hidden flex items-end justify-center">
@@ -96,14 +96,14 @@ export function OurMissionValuesSection() {
               {VALUES_BADGES.map((badge) => (
                 <div
                   key={badge.id}
-                  className={`mission-badge absolute ${badge.position} z-20 inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-full border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] text-[10px] xs:text-xs sm:text-sm font-semibold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 hover:bg-white/20 cursor-default select-none`}
+                  className={`mission-badge absolute ${badge.position} z-20 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1 sm:py-2.5 rounded-full border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.6)] text-[9px] min-[360px]:text-[10px] xs:text-xs sm:text-sm font-semibold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-105 hover:bg-white/20 cursor-default select-none`}
                   style={{
                     backgroundColor: 'rgba(12, 21, 23, 0.75)',
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)'
                   }}
                 >
-                  <span className="flex items-center justify-center">
+                  <span className="flex items-center justify-center shrink-0">
                     {badge.icon}
                   </span>
                   <span className="whitespace-nowrap">{badge.title}</span>

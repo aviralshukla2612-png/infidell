@@ -239,7 +239,7 @@ export function FAQSection() {
                   type="button"
                   id={`faq-trigger-${faq.id}`}
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full py-5 px-6 sm:px-8 text-left flex items-center justify-between gap-4 focus:outline-none transition-colors cursor-pointer"
+                  className="w-full py-4 sm:py-5 px-4 xs:px-5 sm:px-7 md:px-8 text-left flex items-center justify-between gap-3 sm:gap-4 focus:outline-none transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${faq.id}`}
                 >

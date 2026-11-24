@@ -243,7 +243,7 @@ export function ContactSection() {
           ======================================================== */}
           <div className="lg:col-span-7">
             <div
-              className="contact-form-panel rounded-3xl p-7 sm:p-10 bg-white dark:bg-[#070D10]/90 border border-slate-200 dark:border-[#203536] shadow-[0_20px_50px_rgba(16,43,80,0.08)] dark:shadow-2xl backdrop-blur-2xl relative overflow-hidden"
+              className="contact-form-panel rounded-3xl p-5 xs:p-6 sm:p-8 md:p-10 bg-white dark:bg-[#070D10]/90 border border-slate-200 dark:border-[#203536] shadow-[0_20px_50px_rgba(16,43,80,0.08)] dark:shadow-2xl backdrop-blur-2xl relative overflow-hidden"
             >
 
               {/* Ambient Radial Accent */}
@@ -251,8 +251,8 @@ export function ContactSection() {
 
               {!submitted ? (
                 <>
-                  <div className="mb-8">
-                    <h3 className="contact-title text-2xl sm:text-3xl font-extrabold text-[#102B50] dark:text-white tracking-tight mb-2">
+                  <div className="mb-6 sm:mb-8">
+                    <h3 className="contact-title text-xl xs:text-2xl sm:text-3xl font-extrabold text-[#102B50] dark:text-white tracking-tight mb-2">
                       Let&apos;s Build Together
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-500 dark:text-neutral-300 leading-relaxed">
@@ -267,7 +267,7 @@ export function ContactSection() {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                     {/* Row 1: Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
@@ -319,7 +319,7 @@ export function ContactSection() {
                           aria-label="Country Dial Code"
                           value={formData.countryCode}
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                          className="w-28 px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
+                          className="w-24 sm:w-28 px-2 sm:px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-xs sm:text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
                         >
                           <option value="+1">🇺🇸 +1</option>
                           <option value="+44">🇬🇧 +44</option>
@@ -336,7 +336,7 @@ export function ContactSection() {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                           placeholder="(555) 123-4567"
-                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
+                          className="flex-1 min-w-0 px-3 sm:px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
                       </div>
                     </div>

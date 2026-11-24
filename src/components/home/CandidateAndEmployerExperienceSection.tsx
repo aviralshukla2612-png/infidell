@@ -390,7 +390,7 @@ export function CandidateAndEmployerExperienceSection() {
           </div>
 
           {/* Central Rope Timeline Container */}
-          <div className="timeline-wrapper relative w-full max-w-5xl mx-auto py-2">
+          <div className="timeline-wrapper relative w-full max-w-5xl mx-auto py-2 overflow-hidden md:overflow-visible">
             
             {/* The Organic Braided S-Curve Rope (Desktop - tilts left and right organically) */}
             <svg 

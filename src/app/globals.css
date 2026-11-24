@@ -485,8 +485,8 @@ html.light .carousel__item .text-white,
 html.light .carousel__item h3,
 html.light .carousel__item h4,
 html.light .process-card .text-white,
-html.light .process-card h3,
-html.light .process-card h4 {
+html.light .process-step-pill,
+html.light .process-step-pill * {
   color: #FFFFFF !important;
 }
 
@@ -527,6 +527,23 @@ html.light .process-audience-toggle button.text-white\/70 {
 
 html.light .process-audience-toggle button.text-white\/70:hover {
   color: #102B50 !important;
+}
+
+/* Process Section Step Pills - High contrast white text on black background in both Light and Dark mode */
+.process-step-pill,
+#process .process-step-pill,
+html.light .process-step-pill,
+html.light #process .process-step-pill {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.process-step-pill *,
+.process-step-text,
+html.light .process-step-pill *,
+html.light .process-step-text,
+html.light #process .process-step-text {
+  color: #FFFFFF !important;
 }
 
 /* Mission & Values in Light Mode */

@@ -644,8 +644,10 @@ export function SimpleTransparentProcessSection() {
                 {/* Card Content */}
                 <div className="relative z-20">
                   {/* Step Pill */}
-                  <div className="inline-block px-3.5 py-1 rounded-full bg-black text-white text-xs font-bold mb-4 shadow-sm">
-                    {card.step}
+                  <div className="process-step-pill inline-block px-3.5 py-1 rounded-full bg-black text-white text-xs font-bold mb-4 shadow-sm select-none">
+                    <span className="process-step-text text-white font-bold tracking-wide" style={{ color: '#FFFFFF' }}>
+                      {card.step}
+                    </span>
                   </div>
 
                   {/* Icon Container with subtle background tile */}

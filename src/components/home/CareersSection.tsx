@@ -209,20 +209,9 @@ export function CareersSection() {
       if (!track || !viewport || !stage || cards.length === 0) return;
 
       const isMobile = window.innerWidth <= 768;
-
-      if (isMobile) {
-        track.style.height = 'auto';
-        stage.style.transform = 'none';
-        cards.forEach((c) => {
-          c.classList.add('active');
-          c.style.opacity = '1';
-          c.style.transform = 'none';
-        });
-        return;
-      }
-
-      // Calculate total horizontal scroll distance
-      const cardWidth = (cards[0].offsetWidth || 460) + 32; // card width + 32px gap
+      const gap = isMobile ? 18 : 32;
+      const cardEl = cards[0];
+      const cardWidth = (cardEl ? cardEl.offsetWidth : (isMobile ? window.innerWidth * 0.82 : 460)) + gap;
       const totalCards = CAREER_ROLES.length;
       const totalDistance = cardWidth * (totalCards - 1);
 
@@ -236,10 +225,10 @@ export function CareersSection() {
         scrollTrigger: {
           trigger: track,
           start: 'top top',
-          end: () => `+=${totalDistance * 1.5}`,
+          end: () => `+=${totalDistance * (isMobile ? 1.0 : 1.4)}`,
           pin: viewport,
           pinSpacing: true,
-          scrub: 1,
+          scrub: 0.8,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
@@ -277,19 +266,6 @@ export function CareersSection() {
   const scrollToCard = (targetIndex: number) => {
     if (targetIndex < 0 || targetIndex >= CAREER_ROLES.length) return;
 
-    if (window.innerWidth <= 768) {
-      const stage = cardStageRef.current;
-      if (stage) {
-        const cardEl = stage.firstElementChild as HTMLElement;
-        const cardWidth = (cardEl?.offsetWidth || 300) + 16;
-        stage.scrollTo({
-          left: targetIndex * cardWidth,
-          behavior: 'smooth'
-        });
-      }
-      return;
-    }
-
     const st = scrollTriggerRef.current;
     if (st) {
       const targetProgress = targetIndex / (CAREER_ROLES.length - 1);
@@ -298,29 +274,6 @@ export function CareersSection() {
         top: scrollPos,
         behavior: 'smooth'
       });
-    }
-  };
-
-  const scrollMobile = (direction: 'left' | 'right') => {
-    const stage = cardStageRef.current;
-    if (!stage) return;
-    const cardEl = stage.firstElementChild as HTMLElement;
-    const cardWidth = (cardEl?.offsetWidth || 300) + 16;
-    stage.scrollBy({
-      left: direction === 'left' ? -cardWidth : cardWidth,
-      behavior: 'smooth'
-    });
-  };
-
-  const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    if (typeof window !== 'undefined' && window.innerWidth > 768) return;
-    const stage = e.currentTarget;
-    const cardEl = stage.firstElementChild as HTMLElement;
-    const cardWidth = (cardEl?.offsetWidth || 300) + 16;
-    const index = Math.round(stage.scrollLeft / cardWidth);
-    const clamped = Math.max(0, Math.min(index, CAREER_ROLES.length - 1));
-    if (clamped !== activeIndex) {
-      setActiveIndex(clamped);
     }
   };
 
@@ -342,114 +295,110 @@ export function CareersSection() {
       id="careers"
       className="roles-section relative overflow-hidden bg-[#F8FAFC] dark:bg-[#050708] border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none transition-colors duration-300"
     >
-      {/* Section Header (Clean without HOT CAREER OPPORTUNITIES badge) */}
-      <div className="pt-20 sm:pt-28 pb-6 sm:pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-        {/* Section Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-4">
-          Most Demanded{' '}
-          <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">
-            Career Roles.
-          </span>
-        </h2>
-
-        {/* Subtitle */}
-        <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
-          Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover professional career guidance and personalized support.
-        </p>
-      </div>
-
       {/* ========================================================
           ZARVION-STYLE PINNED HORIZONTAL CARD SCROLL STAGE (10 CARDS)
       ======================================================== */}
       <div className="pin-track" ref={pinTrackRef}>
-        <div className="pin-viewport" ref={pinViewportRef}>
-          <div
-            className="card-stage"
-            ref={cardStageRef}
-            onScroll={handleMobileScroll}
-          >
-            {CAREER_ROLES.map((role, idx) => {
-              return (
-                <article
-                  key={role.id}
-                  ref={(el) => {
-                    cardsRef.current[idx] = el;
-                  }}
-                  data-index={idx}
-                  className="demanded-role-card"
-                  onClick={() => scrollToCard(idx)}
-                >
-                  <div
-                    className="card-image"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveJob(role);
+        <div className="pin-viewport flex flex-col justify-between" ref={pinViewportRef}>
+          {/* Section Header */}
+          <div className="pt-20 sm:pt-24 pb-2 sm:pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center shrink-0">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-2 sm:mb-4">
+              Most Demanded{' '}
+              <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">
+                Career Roles.
+              </span>
+            </h2>
+            <p className="text-xs sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
+              Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover professional career guidance and personalized support.
+            </p>
+          </div>
+
+          {/* Cards Stage Container */}
+          <div className="relative w-full overflow-hidden flex-1 flex items-center min-h-0">
+            <div className="card-stage" ref={cardStageRef}>
+              {CAREER_ROLES.map((role, idx) => {
+                return (
+                  <article
+                    key={role.id}
+                    ref={(el) => {
+                      cardsRef.current[idx] = el;
                     }}
+                    data-index={idx}
+                    className="demanded-role-card"
+                    onClick={() => scrollToCard(idx)}
                   >
-                    {/* Background Workplace Image */}
-                    <Image
-                      src={role.img}
-                      alt={role.title.replace('\n', ' ')}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 500px"
-                      className="object-cover"
-                    />
+                    <div
+                      className="card-image"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveJob(role);
+                      }}
+                    >
+                      {/* Background Workplace Image */}
+                      <Image
+                        src={role.img}
+                        alt={role.title.replace('\n', ' ')}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 500px"
+                        className="object-cover"
+                      />
 
-                    {/* Gradient Dim Overlay */}
-                    <div className="image-overlay" />
+                      {/* Gradient Dim Overlay */}
+                      <div className="image-overlay" />
 
-                    {/* Ambient Glow */}
-                    <div className="image-glow" />
+                      {/* Ambient Glow */}
+                      <div className="image-glow" />
 
-                    {/* Big Bold Role Title */}
-                    <h3 className="image-title whitespace-pre-line">
-                      {role.title}
-                    </h3>
+                      {/* Big Bold Role Title */}
+                      <h3 className="image-title whitespace-pre-line">
+                        {role.title}
+                      </h3>
 
-                    {/* Glassmorphic Pill Button (Zarvion Signature) */}
-                    <div className="explore-career-wrapper">
-                      <span className="explore-career-btn">
-                        <span>Explore Career</span>
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                      </span>
+                      {/* Glassmorphic Pill Button (Zarvion Signature) */}
+                      <div className="explore-career-wrapper">
+                        <span className="explore-career-btn">
+                          <span>Explore Career</span>
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              );
-            })}
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Status Counter & Navigation Controls */}
+          <div className="pb-4 sm:pb-8 pt-2 flex items-center justify-center gap-4 relative z-10 shrink-0 select-none">
+            <button
+              type="button"
+              onClick={() => scrollToCard(activeIndex - 1)}
+              disabled={activeIndex === 0}
+              aria-label="Previous career role"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-mono font-semibold text-[#64748B] dark:text-neutral-400">
+              <span className="text-[#087FCB] dark:text-[#00D5DF] font-bold text-sm sm:text-base">
+                {String(activeIndex + 1).padStart(2, '0')}
+              </span>
+              <span>/</span>
+              <span>{String(CAREER_ROLES.length).padStart(2, '0')}</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => scrollToCard(activeIndex + 1)}
+              disabled={activeIndex === CAREER_ROLES.length - 1}
+              aria-label="Next career role"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Swipe Navigation Controls */}
-      <div className="flex md:hidden items-center justify-between px-6 pt-3 pb-8 max-w-xs mx-auto select-none">
-        <button
-          type="button"
-          onClick={() => scrollMobile('left')}
-          disabled={activeIndex === 0}
-          aria-label="Previous career role"
-          className="w-10 h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-
-        <div className="flex items-center gap-1.5 text-xs font-mono font-semibold text-[#64748B] dark:text-neutral-400">
-          <span className="text-[#087FCB] dark:text-[#00D5DF] font-bold text-sm">
-            {String(activeIndex + 1).padStart(2, '0')}
-          </span>
-          <span>/</span>
-          <span>{String(CAREER_ROLES.length).padStart(2, '0')}</span>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => scrollMobile('right')}
-          disabled={activeIndex === CAREER_ROLES.length - 1}
-          aria-label="Next career role"
-          className="w-10 h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
       </div>
 
       {/* Bottom Assistance Banner */}

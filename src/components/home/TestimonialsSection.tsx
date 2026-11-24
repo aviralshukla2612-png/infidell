@@ -110,6 +110,7 @@ export function TestimonialsSection() {
             alt="Testimonials Atmosphere Background"
             fill
             sizes="100vw"
+            loading="lazy"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
@@ -122,6 +123,7 @@ export function TestimonialsSection() {
             alt="Testimonials Atmosphere Background - Light Theme"
             fill
             sizes="100vw"
+            loading="lazy"
             className="object-cover object-center opacity-100"
           />
           {/* Subtle edge blend with neighbor sections */}

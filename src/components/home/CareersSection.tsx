@@ -206,57 +206,73 @@ export function CareersSection() {
 
       if (!track || !viewport || !stage || cards.length === 0) return;
 
-      const isMobile = window.innerWidth <= 768;
-      const gap = isMobile ? 18 : 32;
-      const cardEl = cards[0];
-      const cardWidth = (cardEl ? cardEl.offsetWidth : (isMobile ? window.innerWidth * 0.82 : 460)) + gap;
-      const totalCards = CAREER_ROLES.length;
-      const totalDistance = cardWidth * (totalCards - 1);
+      let tl: gsap.core.Timeline | null = null;
 
-      // Set initial active state on card 0
-      cards.forEach((card, idx) => {
-        card.classList.toggle('active', idx === 0);
-      });
+      const initTimeline = () => {
+        const isMobile = window.innerWidth <= 768;
+        const gap = isMobile ? 18 : 32;
+        const cardEl = cards[0];
+        const cardWidth = (cardEl ? cardEl.offsetWidth : (isMobile ? window.innerWidth * 0.82 : 460)) + gap;
+        const totalCards = CAREER_ROLES.length;
+        const totalDistance = cardWidth * (totalCards - 1);
 
-      // Pinned GSAP Timeline with Scrub & Snap
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: track,
-          start: 'top top',
-          end: () => `+=${totalDistance * (isMobile ? 1.0 : 1.4)}`,
-          pin: viewport,
-          pinSpacing: true,
-          scrub: 0.8,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const rawProgress = self.progress;
-            const floatIndex = rawProgress * (totalCards - 1);
-            const nearestIndex = Math.min(Math.round(floatIndex), totalCards - 1);
+        // Set initial active state on card 0
+        cards.forEach((card, idx) => {
+          card.classList.toggle('active', idx === 0);
+        });
 
-            if (nearestIndex !== currentIndexRef.current) {
-              currentIndexRef.current = nearestIndex;
-              setActiveIndex(nearestIndex);
+        // Pinned GSAP Timeline with Scrub & Snap
+        tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: track,
+            start: 'top top',
+            end: () => `+=${totalDistance * (isMobile ? 1.0 : 1.4)}`,
+            pin: viewport,
+            pinSpacing: true,
+            scrub: 0.8,
+            anticipatePin: 1,
+            fastScrollEnd: true,
+            preventOverlaps: true,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const rawProgress = self.progress;
+              const floatIndex = rawProgress * (totalCards - 1);
+              const nearestIndex = Math.min(Math.round(floatIndex), totalCards - 1);
 
-              cards.forEach((card, idx) => {
-                const isActive = idx === nearestIndex;
-                card.classList.toggle('active', isActive);
-              });
+              if (nearestIndex !== currentIndexRef.current) {
+                currentIndexRef.current = nearestIndex;
+                setActiveIndex(nearestIndex);
+
+                cards.forEach((card, idx) => {
+                  const isActive = idx === nearestIndex;
+                  card.classList.toggle('active', isActive);
+                });
+              }
             }
           }
-        }
-      });
+        });
 
-      scrollTriggerRef.current = tl.scrollTrigger as ScrollTrigger;
+        scrollTriggerRef.current = tl.scrollTrigger as ScrollTrigger;
 
-      tl.to(stage, {
-        x: -totalDistance,
-        ease: 'none'
-      });
-
-      return () => {
-        tl.kill();
+        tl.to(stage, {
+          x: -totalDistance,
+          ease: 'none'
+        });
       };
+
+      if ('requestIdleCallback' in window) {
+        const id = (window as any).requestIdleCallback(initTimeline, { timeout: 1200 });
+        return () => {
+          (window as any).cancelIdleCallback(id);
+          tl?.kill();
+        };
+      } else {
+        const id = setTimeout(initTimeline, 150);
+        return () => {
+          clearTimeout(id);
+          tl?.kill();
+        };
+      }
     },
     { scope: sectionRef }
   );

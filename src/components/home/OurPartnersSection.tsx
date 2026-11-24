@@ -41,11 +41,11 @@ export function OurPartnersSection() {
 
       {/* Infinite Marquee Container with fade edge masks */}
       <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-        <div className="flex items-center gap-12 sm:gap-16 whitespace-nowrap animate-marquee py-2">
+        <div className="flex items-center gap-12 sm:gap-16 whitespace-nowrap animate-marquee py-2 transform-gpu">
           {marqueeList.map((partner, idx) => (
             <div
               key={idx}
-              className="inline-flex items-center justify-center flex-shrink-0 cursor-default opacity-85 hover:opacity-100 transition-all duration-300 transform hover:scale-110 px-3"
+              className="inline-flex items-center justify-center flex-shrink-0 cursor-default opacity-85 hover:opacity-100 transition-[transform,opacity] duration-300 transform-gpu hover:scale-110 px-3"
               title={partner.name}
             >
               <img
@@ -53,7 +53,7 @@ export function OurPartnersSection() {
                 alt={partner.name}
                 width={160}
                 height={40}
-                className="partner-logo-img h-8 sm:h-10 w-auto max-w-[140px] sm:max-w-[170px] object-contain select-none transition-all duration-300 filter invert hue-rotate-180 brightness-110 contrast-105"
+                className="partner-logo-img h-8 sm:h-10 w-auto max-w-[140px] sm:max-w-[170px] object-contain select-none transition-opacity duration-300 filter invert hue-rotate-180 brightness-110 contrast-105"
                 loading="lazy"
               />
             </div>
@@ -65,10 +65,10 @@ export function OurPartnersSection() {
       <style jsx>{`
         @keyframes marquee {
           0% {
-            transform: translateX(0%);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
         .animate-marquee {
@@ -77,6 +77,7 @@ export function OurPartnersSection() {
           will-change: transform;
           transform: translate3d(0, 0, 0);
           backface-visibility: hidden;
+          perspective: 1000px;
           animation: marquee 28s linear infinite;
         }
         .animate-marquee:hover {

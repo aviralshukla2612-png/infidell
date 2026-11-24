@@ -16,7 +16,7 @@ const nextConfig = {
   experimental: {
     cpus: 1,
     workerThreads: false,
-    optimizePackageImports: ['lucide-react']
+    optimizePackageImports: ['lucide-react', 'gsap', '@gsap/react']
   }
 };
 

@@ -19,7 +19,20 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // Optimize ScrollTrigger global configuration to eliminate mobile layout thrashing
+    ScrollTrigger.config({
+      limitCallbacks: true,
+      ignoreMobileResize: true,
+      autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+    });
+
     const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Mobile viewports preserve 100% native 120Hz GPU touch scrolling with zero main-thread RAF overhead
+      return () => {
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+      };
+    }
 
     const lenis = new Lenis({
       duration: 1.1,

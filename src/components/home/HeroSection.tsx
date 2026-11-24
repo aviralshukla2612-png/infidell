@@ -169,21 +169,19 @@ export function HeroSection() {
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Headline container fade-in
+      // 1. Headline & Description smooth entrance
       if (headlineRef.current) {
-        tl.fromTo(
+        tl.from(
           headlineRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.6, delay: 0.1 }
+          { y: 15, duration: 0.5 }
         );
       }
 
       // 2. Description fade-in
-      tl.fromTo(
+      tl.from(
         '.hero-desc',
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.8 },
-        '-=0.4'
+        { y: 15, duration: 0.6 },
+        '-=0.3'
       );
 
       // 3. CTAs
@@ -226,8 +224,8 @@ export function HeroSection() {
               <img
                 src="/images/darkbgphone.png"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Dark Mobile"
-                fetchPriority="high"
-                loading="eager"
+                fetchPriority="low"
+                loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center opacity-95"
               />
@@ -240,7 +238,7 @@ export function HeroSection() {
               <img
                 src="/images/bg.png"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen scale-105 sm:scale-100"
               />
@@ -314,7 +312,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 sm:pt-3 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn hero-cta-primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_4px_25px_rgba(23,190,187,0.35)] hover:shadow-[0_8px_35px_rgba(0,213,223,0.55)] transform hover:-translate-y-0.5 cursor-pointer text-center overflow-hidden group"
+                className="hero-cta-btn hero-cta-primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-[transform,background-color,box-shadow] duration-300 shadow-[0_4px_25px_rgba(23,190,187,0.35)] hover:shadow-[0_8px_35px_rgba(0,213,223,0.55)] transform hover:-translate-y-0.5 cursor-pointer text-center overflow-hidden group transform-gpu"
               >
                 <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
                 <span className="relative z-10">{t('ctaPrimary')}</span>
@@ -323,7 +321,7 @@ export function HeroSection() {
 
               <a
                 href="#employer"
-                className="hero-cta-btn hero-cta-secondary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-md cursor-pointer text-center group transform hover:-translate-y-0.5"
+                className="hero-cta-btn hero-cta-secondary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-[transform,background-color,box-shadow,border-color] duration-300 shadow-sm hover:shadow-md backdrop-blur-md cursor-pointer text-center group transform hover:-translate-y-0.5 transform-gpu"
               >
                 <Building2 className="w-4 h-4 text-[#087FCB] dark:text-[#17BEBB] group-hover:scale-110 transition-transform" />
                 <span>{t('ctaSecondary')}</span>

@@ -147,10 +147,10 @@ function HeroHeadlineTypewriter() {
 
   return (
     <>
-      <span className="block whitespace-nowrap min-h-[1.12em]">
+      <span className="block whitespace-normal sm:whitespace-nowrap min-h-[1.12em]">
         {renderLine1()}
       </span>
-      <span className="block whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em]">
+      <span className="block whitespace-normal sm:whitespace-nowrap mt-1 sm:mt-2 text-[#102B50] dark:text-white min-h-[1.12em]">
         {renderLine2()}
       </span>
     </>
@@ -211,7 +211,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-white dark:bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-12 sm:pb-16"
+      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-start sm:justify-center bg-white dark:bg-[#000000] overflow-hidden pt-16 sm:pt-28 pb-6 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -284,28 +284,28 @@ export function HeroSection() {
       </div>
 
       {/* Main Hero Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-4 pb-6 sm:py-0 sm:my-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-1 sm:pt-0 pb-2 sm:pb-0 sm:my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-8 xl:col-span-8 space-y-6 sm:space-y-8">
-            {/* Headline with Live Typewriter Effect — Guaranteed Exactly 2 Lines */}
+          <div className="lg:col-span-8 xl:col-span-8 space-y-3 sm:space-y-8">
+            {/* Headline with Live Typewriter Effect */}
             <h1 
               ref={headlineRef}
-              className="text-[1.2rem] min-[390px]:text-[1.38rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.12]"
+              className="text-[1.25rem] min-[375px]:text-[1.4rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.14]"
             >
               <HeroHeadlineTypewriter />
             </h1>
 
             {/* Description */}
-            <p className="hero-desc text-sm sm:text-base md:text-lg text-[#475569] dark:text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
+            <p className="hero-desc text-xs min-[380px]:text-sm sm:text-base md:text-lg text-[#475569] dark:text-[#A5B2B3] max-w-xl leading-relaxed font-normal">
               {t('description')}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 pt-1 sm:pt-2 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn hero-cta-primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_4px_25px_rgba(23,190,187,0.35)] hover:shadow-[0_8px_35px_rgba(0,213,223,0.55)] transform hover:-translate-y-0.5 cursor-pointer text-center overflow-hidden group"
+                className="hero-cta-btn hero-cta-primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_4px_25px_rgba(23,190,187,0.35)] hover:shadow-[0_8px_35px_rgba(0,213,223,0.55)] transform hover:-translate-y-0.5 cursor-pointer text-center overflow-hidden group"
               >
                 <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
                 <span className="relative z-10">{t('ctaPrimary')}</span>
@@ -314,7 +314,7 @@ export function HeroSection() {
 
               <a
                 href="#employer"
-                className="hero-cta-btn hero-cta-secondary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-md cursor-pointer text-center group transform hover:-translate-y-0.5"
+                className="hero-cta-btn hero-cta-secondary relative w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-2.5 sm:py-4 rounded-full text-xs sm:text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-md cursor-pointer text-center group transform hover:-translate-y-0.5"
               >
                 <Building2 className="w-4 h-4 text-[#087FCB] dark:text-[#17BEBB] group-hover:scale-110 transition-transform" />
                 <span>{t('ctaSecondary')}</span>

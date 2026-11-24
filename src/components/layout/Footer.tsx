@@ -102,10 +102,10 @@ export function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-white/[0.08]" />
 
       <div className="max-w-[1600px] w-full mx-auto flex flex-col justify-between flex-1">
-        
+
         {/* Top Section: CTA, Contact & Social Links */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 sm:gap-12 pt-2 pb-6 sm:pb-10">
-          
+
           {/* Left Column: Logo, Heading & Call-To-Action Pill Buttons */}
           <div className="max-w-3xl space-y-6 sm:space-y-8">
             {/* Logo with Company Name in Footer */}

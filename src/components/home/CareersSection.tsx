@@ -9,9 +9,7 @@ import {
   ArrowRight,
   X,
   ShieldCheck,
-  Sparkles,
-  ChevronLeft,
-  ChevronRight
+  Sparkles
 } from 'lucide-react';
 
 export interface CareerRole {
@@ -295,108 +293,77 @@ export function CareersSection() {
       id="careers"
       className="roles-section relative overflow-hidden bg-[#F8FAFC] dark:bg-[#050708] border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none transition-colors duration-300"
     >
+      {/* Section Header (Clean without HOT CAREER OPPORTUNITIES badge) */}
+      <div className="pt-20 sm:pt-28 pb-6 sm:pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+        {/* Section Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-4">
+          Most Demanded{' '}
+          <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">
+            Career Roles.
+          </span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
+          Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover professional career guidance and personalized support.
+        </p>
+      </div>
+
       {/* ========================================================
           ZARVION-STYLE PINNED HORIZONTAL CARD SCROLL STAGE (10 CARDS)
       ======================================================== */}
       <div className="pin-track" ref={pinTrackRef}>
-        <div className="pin-viewport flex flex-col justify-between" ref={pinViewportRef}>
-          {/* Section Header */}
-          <div className="pt-20 sm:pt-24 pb-2 sm:pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center shrink-0">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-2 sm:mb-4">
-              Most Demanded{' '}
-              <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">
-                Career Roles.
-              </span>
-            </h2>
-            <p className="text-xs sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
-              Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover professional career guidance and personalized support.
-            </p>
-          </div>
-
-          {/* Cards Stage Container */}
-          <div className="relative w-full overflow-hidden flex-1 flex items-center min-h-0">
-            <div className="card-stage" ref={cardStageRef}>
-              {CAREER_ROLES.map((role, idx) => {
-                return (
-                  <article
-                    key={role.id}
-                    ref={(el) => {
-                      cardsRef.current[idx] = el;
+        <div className="pin-viewport" ref={pinViewportRef}>
+          <div className="card-stage" ref={cardStageRef}>
+            {CAREER_ROLES.map((role, idx) => {
+              return (
+                <article
+                  key={role.id}
+                  ref={(el) => {
+                    cardsRef.current[idx] = el;
+                  }}
+                  data-index={idx}
+                  className="demanded-role-card"
+                  onClick={() => scrollToCard(idx)}
+                >
+                  <div
+                    className="card-image"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveJob(role);
                     }}
-                    data-index={idx}
-                    className="demanded-role-card"
-                    onClick={() => scrollToCard(idx)}
                   >
-                    <div
-                      className="card-image"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveJob(role);
-                      }}
-                    >
-                      {/* Background Workplace Image */}
-                      <Image
-                        src={role.img}
-                        alt={role.title.replace('\n', ' ')}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 500px"
-                        className="object-cover"
-                      />
+                    {/* Background Workplace Image */}
+                    <Image
+                      src={role.img}
+                      alt={role.title.replace('\n', ' ')}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className="object-cover"
+                    />
 
-                      {/* Gradient Dim Overlay */}
-                      <div className="image-overlay" />
+                    {/* Gradient Dim Overlay */}
+                    <div className="image-overlay" />
 
-                      {/* Ambient Glow */}
-                      <div className="image-glow" />
+                    {/* Ambient Glow */}
+                    <div className="image-glow" />
 
-                      {/* Big Bold Role Title */}
-                      <h3 className="image-title whitespace-pre-line">
-                        {role.title}
-                      </h3>
+                    {/* Big Bold Role Title */}
+                    <h3 className="image-title whitespace-pre-line">
+                      {role.title}
+                    </h3>
 
-                      {/* Glassmorphic Pill Button (Zarvion Signature) */}
-                      <div className="explore-career-wrapper">
-                        <span className="explore-career-btn">
-                          <span>Explore Career</span>
-                          <ArrowRight className="w-4 h-4 ml-1" />
-                        </span>
-                      </div>
+                    {/* Glassmorphic Pill Button (Zarvion Signature) */}
+                    <div className="explore-career-wrapper">
+                      <span className="explore-career-btn">
+                        <span>Explore Career</span>
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </span>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Status Counter & Navigation Controls */}
-          <div className="pb-4 sm:pb-8 pt-2 flex items-center justify-center gap-4 relative z-10 shrink-0 select-none">
-            <button
-              type="button"
-              onClick={() => scrollToCard(activeIndex - 1)}
-              disabled={activeIndex === 0}
-              aria-label="Previous career role"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
-            >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-
-            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-mono font-semibold text-[#64748B] dark:text-neutral-400">
-              <span className="text-[#087FCB] dark:text-[#00D5DF] font-bold text-sm sm:text-base">
-                {String(activeIndex + 1).padStart(2, '0')}
-              </span>
-              <span>/</span>
-              <span>{String(CAREER_ROLES.length).padStart(2, '0')}</span>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => scrollToCard(activeIndex + 1)}
-              disabled={activeIndex === CAREER_ROLES.length - 1}
-              aria-label="Next career role"
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
-            >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

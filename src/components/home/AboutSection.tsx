@@ -565,9 +565,9 @@ export function AboutSection() {
             <div className="luna-stat-item flex flex-col items-center text-center">
               <div
                 className="luna-stat-number text-5xl sm:text-6xl md:text-7xl font-light text-white tracking-tight leading-none mb-3 tabular-nums"
-                data-target="4800"
+                data-target="800"
                 data-suffix="+"
-                data-comma="true"
+                data-comma="false"
               >
                 0+
               </div>

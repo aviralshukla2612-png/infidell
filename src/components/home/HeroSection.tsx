@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
@@ -10,6 +11,11 @@ import {
   ArrowRight, 
   Building2 
 } from 'lucide-react';
+
+const Hero3DCanvas = dynamic(
+  () => import('./Hero3DCanvas').then((mod) => mod.Hero3DCanvas),
+  { ssr: false }
+);
 
 const LINE1_PREFIX = "Every Career Has a ";
 const LINE1_HIGHLIGHT = "Next";
@@ -257,6 +263,9 @@ export function HeroSection() {
           <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
         </div>
       </div>
+
+      {/* Premium 3D Animation Layer: Luminous Particle Wave & Orbital Light Trails */}
+      <Hero3DCanvas />
 
       {/* Main Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">

@@ -106,7 +106,7 @@ export function TestimonialsSection() {
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
           <Image
-            src="/testimonialbg.png"
+            src="/testimonialbg.webp"
             alt="Testimonials Atmosphere Background"
             fill
             sizes="100vw"
@@ -116,10 +116,10 @@ export function TestimonialsSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050708] via-transparent to-[#050708] opacity-65 pointer-events-none" />
         </div>
 
-        {/* Light Mode Background Visual: Official User Provided Background (/testimonialbg-light.png) */}
+        {/* Light Mode Background Visual: Official User Provided Background (/testimonialbg-light.webp) */}
         <div className="light-only absolute inset-0">
           <Image
-            src="/testimonialbg-light.png"
+            src="/testimonialbg-light.webp"
             alt="Testimonials Atmosphere Background - Light Theme"
             fill
             sizes="100vw"

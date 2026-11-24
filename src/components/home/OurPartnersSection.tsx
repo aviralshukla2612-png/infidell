@@ -9,16 +9,16 @@ interface PartnerLogo {
 
 export function OurPartnersSection() {
   const partners: PartnerLogo[] = [
-    { name: 'HMG Benefits', src: '/images/partners/Logo-18.svg' },
-    { name: 'Catalist', src: '/images/partners/Logo-14.svg' },
-    { name: 'AdsGency AI', src: '/images/partners/Logo-02.svg' },
-    { name: 'TrustLab', src: '/images/partners/Logo-07.svg' },
-    { name: 'True North Goodwill', src: '/images/partners/Logo-12.svg' },
-    { name: 'RxVantage', src: '/images/partners/Logo-03.svg' },
+    { name: 'HMG Benefits', src: '/images/partners/Logo-18.webp' },
+    { name: 'Catalist', src: '/images/partners/Logo-14.webp' },
+    { name: 'AdsGency AI', src: '/images/partners/Logo-02.webp' },
+    { name: 'TrustLab', src: '/images/partners/Logo-07.webp' },
+    { name: 'True North Goodwill', src: '/images/partners/Logo-12.webp' },
+    { name: 'RxVantage', src: '/images/partners/Logo-03.webp' },
     { name: 'Bascom-Turner Instruments', src: '/images/partners/Logo-16.svg' },
-    { name: 'WANRack', src: '/images/partners/Logo-17.svg' },
-    { name: 'AtomBeam', src: '/images/partners/Logo-10.svg' },
-    { name: 'Bridgeforce Data Solutions', src: '/images/partners/Logo-11.svg' }
+    { name: 'WANRack', src: '/images/partners/Logo-17.webp' },
+    { name: 'AtomBeam', src: '/images/partners/Logo-10.webp' },
+    { name: 'Bridgeforce Data Solutions', src: '/images/partners/Logo-11.webp' }
   ];
 
   // Double the list for a seamless, continuous infinite marquee scroll

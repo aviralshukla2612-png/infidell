@@ -81,7 +81,7 @@ export function OurMissionValuesSection() {
                 {/* Professional Executive 3D Character (Contained inside the circle with headroom & padding) */}
                 <div className="relative w-[84%] h-[84%] translate-y-2 z-0">
                   <Image
-                    src="/images/mission-values-character-transparent.png"
+                    src="/images/mission-values-character-transparent.webp"
                     alt="Infidell Talent Advisory Specialist"
                     fill
                     className="object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)]"

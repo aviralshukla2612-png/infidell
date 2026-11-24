@@ -383,7 +383,7 @@ export function AboutSection() {
                 {/* Dark Mode Office Visual */}
                 <div className="dark-only relative w-full h-full">
                   <Image
-                    src="/about-bg.png"
+                    src="/about-bg.webp"
                     alt="Infidell Technology Headquarters"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
@@ -393,7 +393,7 @@ export function AboutSection() {
                 {/* Light Mode Office Visual */}
                 <div className="light-only relative w-full h-full">
                   <Image
-                    src="/about-bg-light.png"
+                    src="/about-bg-light.webp"
                     alt="Infidell Technology Headquarters - Light Theme"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"

@@ -173,20 +173,10 @@ export function HeroSection() {
 
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Headline & Description smooth entrance
-      if (headlineRef.current) {
-        tl.fromTo(
-          headlineRef.current,
-          { opacity: 0.85 },
-          { opacity: 1, duration: 0.4 }
-        );
-      }
-
-      // 2. Description fade-in
+      // 1. Description smooth entrance
       tl.from(
         '.hero-desc',
-        { opacity: 0, y: 12, duration: 0.5 },
-        '-=0.2'
+        { opacity: 0, y: 12, duration: 0.4 }
       );
 
       // 3. CTAs
@@ -225,30 +215,28 @@ export function HeroSection() {
         <div className="dark-only absolute inset-0">
           {/* Mobile Dark Visual: Official User Provided Background */}
           <div className="hero-floating-artwork block sm:hidden absolute inset-0 w-full h-full will-change-transform">
-            <picture>
-              <source srcSet="/images/darkbgphone.webp" type="image/webp" />
-              <img
-                src="/images/darkbgphone.webp"
-                alt="Infidell Technology Metallic Infinity Ribbon Visual - Dark Mobile"
-                fetchPriority="low"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-bottom opacity-95"
-              />
-            </picture>
+            <img
+              src="/images/darkbgphone.webp"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual - Dark Mobile"
+              width={430}
+              height={932}
+              fetchPriority="low"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-bottom opacity-95"
+            />
           </div>
           {/* Desktop/Tablet Dark Visual: Original Full Artwork */}
           <div className="hero-floating-artwork hidden sm:block absolute inset-0 w-full h-full will-change-transform">
-            <picture>
-              <source srcSet="/images/bg.webp" type="image/webp" />
-              <img
-                src="/images/bg.webp"
-                alt="Infidell Technology Metallic Infinity Ribbon Visual"
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen scale-105 sm:scale-100"
-              />
-            </picture>
+            <img
+              src="/images/bg.webp"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual"
+              width={1672}
+              height={941}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen scale-105 sm:scale-100"
+            />
           </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability on desktop */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent hidden sm:block" />
@@ -262,35 +250,29 @@ export function HeroSection() {
         <div className="light-only absolute inset-0">
           {/* Mobile Light Visual: Official User Provided Background */}
           <div className="hero-floating-artwork block sm:hidden absolute inset-0 w-full h-full will-change-transform">
-            <picture>
-              <source srcSet="/images/lightbgphone.webp" type="image/webp" />
-              <img
-                src="/images/lightbgphone.webp"
-                alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Mobile"
-                width={430}
-                height={932}
-                fetchPriority="high"
-                loading="eager"
-                decoding="sync"
-                className="absolute inset-0 w-full h-full object-cover object-bottom"
-              />
-            </picture>
+            <img
+              src="/images/lightbgphone.webp"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Mobile"
+              width={430}
+              height={932}
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
+              className="absolute inset-0 w-full h-full object-cover object-bottom"
+            />
           </div>
           {/* Desktop/Tablet Light Visual: Original Full Artwork */}
           <div className="hero-floating-artwork hidden sm:block absolute inset-0 w-full h-full will-change-transform">
-            <picture>
-              <source srcSet="/lightbg.webp" type="image/webp" />
-              <img
-                src="/lightbg.webp"
-                alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
-                width={1672}
-                height={941}
-                fetchPriority="high"
-                loading="eager"
-                decoding="sync"
-                className="absolute inset-0 w-full h-full object-cover sm:object-right"
-              />
-            </picture>
+            <img
+              src="/lightbg.webp"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
+              width={1672}
+              height={941}
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
+              className="absolute inset-0 w-full h-full object-cover sm:object-right"
+            />
           </div>
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly on desktop */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-35% to-transparent pointer-events-none hidden sm:block" />

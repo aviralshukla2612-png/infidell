@@ -15,16 +15,32 @@ import {
   FileText,
   Sparkles
 } from 'lucide-react';
+import { containsMaliciousPayload, validatePhoneNumber } from '@/lib/security';
 
 const candidateSchema = z.object({
-  fullName: z.string().min(2, 'Full name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Please enter a valid 10-digit mobile number'),
-  education: z.string().min(2, 'Highest education qualification is required'),
-  experience: z.string().min(1, 'Please select your total work experience'),
-  skills: z.string().min(2, 'Please list at least one primary skill (e.g. React, Java, Accounting)'),
-  preferredIndustry: z.string().min(2, 'Preferred industry vertical is required'),
-  preferredLocation: z.string().min(2, 'Preferred work location is required'),
+  fullName: z
+    .string()
+    .min(2, 'Full name must be at least 2 characters')
+    .max(70, 'Full name cannot exceed 70 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid characters in name'),
+  email: z
+    .string()
+    .email('Please enter a valid email address')
+    .max(100, 'Email cannot exceed 100 characters'),
+  phone: z
+    .string()
+    .min(7, 'Phone number must have at least 7 digits')
+    .max(25, 'Phone number cannot exceed 25 characters')
+    .refine((val) => validatePhoneNumber(val).valid, 'Invalid phone number format'),
+  education: z.string().min(2, 'Highest education qualification is required').max(100),
+  experience: z.string().min(1, 'Please select your total work experience').max(50),
+  skills: z
+    .string()
+    .min(2, 'Please list at least one primary skill (e.g. React, Java, Accounting)')
+    .max(300)
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid script patterns in skills'),
+  preferredIndustry: z.string().min(2, 'Preferred industry vertical is required').max(80),
+  preferredLocation: z.string().min(2, 'Preferred work location is required').max(100),
   termsAccepted: z.boolean().refine((v) => v === true, 'You must agree to the terms and privacy policy')
 });
 
@@ -201,6 +217,7 @@ export function CandidateRegistrationForm({
             id="cand-phone"
             {...register('phone')}
             type="tel"
+            maxLength={20}
             placeholder="+1 (555) 019-2834"
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors"
           />

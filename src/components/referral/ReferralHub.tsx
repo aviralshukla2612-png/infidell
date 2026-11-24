@@ -17,15 +17,36 @@ import {
   HelpCircle,
   ChevronDown
 } from 'lucide-react';
+import { containsMaliciousPayload, validatePhoneNumber } from '@/lib/security';
 
 const referralSchema = z.object({
-  referrerName: z.string().min(2, 'Your name is required'),
-  referrerPhone: z.string().min(10, 'Your phone must be at least 10 digits'),
+  referrerName: z
+    .string()
+    .min(2, 'Your name is required')
+    .max(70, 'Name cannot exceed 70 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid characters in name'),
+  referrerPhone: z
+    .string()
+    .min(7, 'Your phone must have at least 7 digits')
+    .max(25, 'Phone cannot exceed 25 characters')
+    .refine((val) => validatePhoneNumber(val).valid, 'Invalid phone number format'),
   referralType: z.enum(['candidate', 'employer']),
-  refereeName: z.string().min(2, 'Referee name is required'),
-  refereePhone: z.string().min(10, 'Referee phone must be at least 10 digits'),
-  refereeEmail: z.string().email('Please enter a valid referee email address'),
-  notes: z.string().optional()
+  refereeName: z
+    .string()
+    .min(2, 'Referee name is required')
+    .max(70, 'Referee name cannot exceed 70 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid characters in referee name'),
+  refereePhone: z
+    .string()
+    .min(7, 'Referee phone must have at least 7 digits')
+    .max(25, 'Referee phone cannot exceed 25 characters')
+    .refine((val) => validatePhoneNumber(val).valid, 'Invalid referee phone number format'),
+  refereeEmail: z.string().email('Please enter a valid referee email address').max(100),
+  notes: z
+    .string()
+    .max(500, 'Notes cannot exceed 500 characters')
+    .optional()
+    .refine((val) => !val || !containsMaliciousPayload(val), 'Executable scripts or markup are prohibited')
 });
 
 type ReferralFormValues = z.infer<typeof referralSchema>;

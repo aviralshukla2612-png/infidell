@@ -6,17 +6,37 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { Building2, CheckCircle2, AlertCircle, Send, Sparkles } from 'lucide-react';
+import { containsMaliciousPayload, validatePhoneNumber } from '@/lib/security';
 
 const employerSchema = z.object({
-  companyName: z.string().min(2, 'Company name is required'),
-  contactPerson: z.string().min(2, 'Contact person name is required'),
-  workEmail: z.string().email('Please enter a valid official email'),
-  phone: z.string().min(10, 'Contact number must be at least 10 digits'),
-  industry: z.string().min(2, 'Please select or enter an industry sector'),
-  hiringRole: z.string().min(2, 'Target hiring role is required'),
-  openPositions: z.coerce.number().min(1, 'Minimum 1 position required'),
-  jobLocation: z.string().min(2, 'Location is required'),
-  jobDescription: z.string().min(10, 'Job description must be at least 10 characters')
+  companyName: z
+    .string()
+    .min(2, 'Company name is required')
+    .max(100, 'Company name cannot exceed 100 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid company name'),
+  contactPerson: z
+    .string()
+    .min(2, 'Contact person name is required')
+    .max(70, 'Contact person name cannot exceed 70 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid contact person name'),
+  workEmail: z
+    .string()
+    .email('Please enter a valid official email')
+    .max(100, 'Email cannot exceed 100 characters'),
+  phone: z
+    .string()
+    .min(7, 'Contact number must have at least 7 digits')
+    .max(25, 'Contact number cannot exceed 25 characters')
+    .refine((val) => validatePhoneNumber(val).valid, 'Invalid phone number format'),
+  industry: z.string().min(2, 'Please select or enter an industry sector').max(80),
+  hiringRole: z.string().min(2, 'Target hiring role is required').max(120),
+  openPositions: z.coerce.number().min(1, 'Minimum 1 position required').max(10000),
+  jobLocation: z.string().min(2, 'Location is required').max(100),
+  jobDescription: z
+    .string()
+    .min(10, 'Job description must be at least 10 characters')
+    .max(2000, 'Job description cannot exceed 2,000 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Executable scripts or markup are prohibited')
 });
 
 type EmployerFormValues = z.infer<typeof employerSchema>;
@@ -164,6 +184,7 @@ export function EmployerRegistrationForm() {
             id="emp-phone"
             {...register('phone')}
             type="tel"
+            maxLength={20}
             placeholder="+1 (555) 019-2834"
             className="w-full px-4 py-3 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00C7B1] transition-colors"
           />

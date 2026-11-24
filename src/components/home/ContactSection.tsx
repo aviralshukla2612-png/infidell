@@ -12,8 +12,15 @@ import {
   Sparkles,
   ArrowUpRight,
   Clock,
-  ShieldCheck
+  ShieldCheck,
+  Lock
 } from 'lucide-react';
+import {
+  containsMaliciousPayload,
+  sanitizePhoneInput,
+  validatePhoneNumber,
+  sanitizeText
+} from '@/lib/security';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -32,20 +39,64 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
     setError(null);
 
+    const trimmedName = formData.name.trim();
+    const trimmedPhone = formData.phone.trim();
+    const trimmedMessage = formData.message.trim();
+
+    // 1. Name validation
+    if (!trimmedName || trimmedName.length < 2) {
+      setError('Please provide your full name (at least 2 characters).');
+      return;
+    }
+    if (trimmedName.length > 70) {
+      setError('Name cannot exceed 70 characters.');
+      return;
+    }
+
+    // 2. Anti-injection and anti-script validation
+    if (
+      containsMaliciousPayload(trimmedName) ||
+      containsMaliciousPayload(trimmedMessage) ||
+      containsMaliciousPayload(formData.email)
+    ) {
+      setError('Security Alert: HTML tags, scripts, and executable code are strictly prohibited.');
+      return;
+    }
+
+    // 3. Phone validation
+    const phoneValidation = validatePhoneNumber(trimmedPhone);
+    if (!phoneValidation.valid) {
+      setError(phoneValidation.error || 'Please enter a valid phone number (between 7 and 15 digits).');
+      return;
+    }
+
+    // 4. Message length validation
+    if (trimmedMessage.length < 5) {
+      setError('Please enter a message with at least 5 characters.');
+      return;
+    }
+    if (trimmedMessage.length > 1000) {
+      setError('Message exceeds the maximum limit of 1,000 characters.');
+      return;
+    }
+
+    setSubmitting(true);
+
     try {
+      const sanitizedPayload = {
+        fullName: sanitizeText(trimmedName, 70),
+        email: formData.email.trim().toLowerCase(),
+        phone: `${formData.countryCode} ${sanitizePhoneInput(trimmedPhone)}`,
+        inquiryType: formData.inquiryType.toLowerCase().includes('candidate') ? 'candidate' : 'employer',
+        message: sanitizeText(trimmedMessage, 1000)
+      };
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.name,
-          email: formData.email,
-          phone: `${formData.countryCode} ${formData.phone}`,
-          inquiryType: formData.inquiryType.toLowerCase().includes('candidate') ? 'candidate' : 'employer',
-          message: formData.message || `Inquiry from ${formData.name} regarding ${formData.inquiryType}`
-        })
+        body: JSON.stringify(sanitizedPayload)
       });
 
       const data = await res.json();
@@ -59,23 +110,11 @@ export function ContactSection() {
           origin: { y: 0.6 }
         });
       } else {
-        // Fallback successful generation
-        setTicketId(`INF-${Math.floor(100000 + Math.random() * 900000)}`);
-        setSubmitted(true);
-        confetti({
-          particleCount: 90,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
+        const errorMsg = data.errors?.[0]?.message || data.message || 'Submission failed. Please check your inputs.';
+        setError(errorMsg);
       }
     } catch {
-      setTicketId(`INF-${Math.floor(100000 + Math.random() * 900000)}`);
-      setSubmitted(true);
-      confetti({
-        particleCount: 90,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
+      setError('A network error occurred while submitting. Please check your connection and try again.');
     } finally {
       setSubmitting(false);
     }
@@ -169,7 +208,7 @@ export function ContactSection() {
                     contact@infidelltech.com
                   </a>
                   <span className="contact-subtext text-xs text-slate-500 dark:text-neutral-400 block mt-0.5">
-                    Direct Response SLA: &lt; 24 Hours
+                    Executive talent &amp; client inquiries
                   </span>
                 </div>
               </div>
@@ -217,7 +256,7 @@ export function ContactSection() {
                       Let&apos;s Build Together
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-500 dark:text-neutral-300 leading-relaxed">
-                      Fill out the details below and an executive talent specialist will reach out to you within 24 hours.
+                      Fill out the details below and an executive talent specialist will reach out to you promptly.
                     </p>
                   </div>
 
@@ -239,8 +278,9 @@ export function ContactSection() {
                           id="contact-fullName"
                           type="text"
                           required
+                          maxLength={70}
                           value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value.slice(0, 70) })}
                           placeholder="John Doe"
                           className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
@@ -254,8 +294,9 @@ export function ContactSection() {
                           id="contact-email"
                           type="email"
                           required
+                          maxLength={100}
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value.slice(0, 100) })}
                           placeholder="john@example.com"
                           className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
@@ -264,9 +305,14 @@ export function ContactSection() {
 
                     {/* Row 2: Phone with Country Code */}
                     <div>
-                      <label htmlFor="contact-phone" className="text-xs font-semibold text-[#1E293B] dark:text-neutral-300 block mb-1.5">
-                        Phone Number *
-                      </label>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label htmlFor="contact-phone" className="text-xs font-semibold text-[#1E293B] dark:text-neutral-300">
+                          Phone Number *
+                        </label>
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-neutral-500">
+                          7–15 digits
+                        </span>
+                      </div>
                       <div className="flex gap-2">
                         <select
                           id="contact-countryCode"
@@ -286,8 +332,9 @@ export function ContactSection() {
                           id="contact-phone"
                           type="tel"
                           required
+                          maxLength={16}
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(e) => setFormData({ ...formData, phone: sanitizePhoneInput(e.target.value) })}
                           placeholder="(555) 123-4567"
                           className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
@@ -314,18 +361,28 @@ export function ContactSection() {
 
                     {/* Row 4: Your Message */}
                     <div>
-                      <label htmlFor="contact-message" className="text-xs font-semibold text-[#1E293B] dark:text-neutral-300 block mb-1.5">
-                        Your Message
-                      </label>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label htmlFor="contact-message" className="text-xs font-semibold text-[#1E293B] dark:text-neutral-300">
+                          Your Message *
+                        </label>
+                        <span className="text-[11px] font-mono text-slate-400 dark:text-neutral-500">
+                          {formData.message.length}/1000
+                        </span>
+                      </div>
                       <textarea
                         id="contact-message"
                         rows={4}
                         required
+                        maxLength={1000}
                         value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value.slice(0, 1000) })}
                         placeholder="Tell us about how we can help you..."
                         className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm resize-y"
                       />
+                      <div className="flex items-center gap-1.5 mt-1.5 text-[11px] text-slate-400 dark:text-neutral-500">
+                        <Lock className="w-3 h-3 text-[#087FCB] dark:text-[#00D5DF] shrink-0" />
+                        <span>Protected transmission. Script tags and executable code patterns are automatically blocked.</span>
+                      </div>
                     </div>
 
                     {/* Full-width CTA Button (Zarvion Signature) */}
@@ -366,7 +423,7 @@ export function ContactSection() {
                   </h3>
 
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-neutral-300 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-[#102B50] dark:text-white">{formData.name}</strong>. Your message regarding <strong className="text-[#087FCB] dark:text-[#00D5DF]">{formData.inquiryType}</strong> has been logged. An executive advisor will connect with you within 24 hours.
+                    Thank you, <strong className="text-[#102B50] dark:text-white">{formData.name}</strong>. Your message regarding <strong className="text-[#087FCB] dark:text-[#00D5DF]">{formData.inquiryType}</strong> has been logged. An executive advisor will connect with you promptly.
                   </p>
 
                   <div className="inline-block px-4 py-2 rounded-xl bg-[#EFF6FF] dark:bg-[#0C1517] border border-[#B7DDF5] dark:border-[#00D5DF]/40 text-xs font-mono text-[#087FCB] dark:text-[#00D5DF]">

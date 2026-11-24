@@ -6,13 +6,29 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { containsMaliciousPayload, validatePhoneNumber } from '@/lib/security';
 
 const contactSchema = z.object({
-  fullName: z.string().min(2, 'Name is required'),
-  email: z.string().email('Please enter a valid email address'),
-  phone: z.string().min(10, 'Contact phone number must be at least 10 digits'),
+  fullName: z
+    .string()
+    .min(2, 'Name is required')
+    .max(70, 'Name cannot exceed 70 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Invalid characters in name'),
+  email: z
+    .string()
+    .email('Please enter a valid email address')
+    .max(100, 'Email cannot exceed 100 characters'),
+  phone: z
+    .string()
+    .min(7, 'Phone number must have at least 7 digits')
+    .max(25, 'Phone number cannot exceed 25 characters')
+    .refine((val) => validatePhoneNumber(val).valid, 'Invalid phone number format'),
   inquiryType: z.enum(['candidate', 'employer', 'referral', 'general']),
-  message: z.string().min(10, 'Message must be at least 10 characters')
+  message: z
+    .string()
+    .min(5, 'Message must be at least 5 characters')
+    .max(1000, 'Message cannot exceed 1,000 characters')
+    .refine((val) => !containsMaliciousPayload(val), 'Executable scripts or markup are prohibited')
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;

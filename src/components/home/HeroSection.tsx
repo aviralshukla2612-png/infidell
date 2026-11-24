@@ -195,38 +195,42 @@ export function HeroSection() {
         '-=0.5'
       );
 
-      // 4. Ethereal kinetic floating for 3D infinity artwork
-      gsap.to('.hero-floating-artwork', {
-        y: -10,
-        duration: 4.5,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true
-      });
+      // 4. Kinetic Wave Flow in Dark Mode: Continuous seamless movement from Left to Right
+      // (The big infinity sculpture remains 100% static and grounded)
+      gsap.fromTo(
+        '.hero-flowing-wave-track',
+        { xPercent: -50 },
+        {
+          xPercent: 0,
+          duration: 20,
+          ease: 'none',
+          repeat: -1
+        }
+      );
 
-      // 5. Kinetic wave flow: Smooth left-to-right traveling wave across the bottom particle wave
+      // 5. Kinetic traveling wave shimmer: Sweeps left to right across the wave crests
       gsap.fromTo(
         '.hero-wave-stream',
         { xPercent: -120 },
         {
           xPercent: 240,
-          duration: 5.5,
+          duration: 4.8,
           ease: 'power1.inOut',
           repeat: -1,
-          repeatDelay: 0.6
+          repeatDelay: 0.4
         }
       );
 
+      // 6. Light Mode subtle traveling wave shimmer
       gsap.fromTo(
-        '.hero-wave-pulse',
-        { xPercent: -100, opacity: 0.25 },
+        '.hero-wave-stream-light',
+        { xPercent: -120 },
         {
-          xPercent: 180,
-          opacity: 0.65,
-          duration: 4.6,
-          ease: 'sine.inOut',
+          xPercent: 240,
+          duration: 5.2,
+          ease: 'power1.inOut',
           repeat: -1,
-          yoyo: true
+          repeatDelay: 0.6
         }
       );
     },
@@ -244,34 +248,57 @@ export function HeroSection() {
         ref={bgVisualRef}
         className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
       >
-        {/* Dark Mode Background Visual */}
+        {/* Dark Mode Background Visual: Official Metallic Infinity Visual (Completely Static & Rock-Solid) */}
         <div className="dark-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform pointer-events-none">
+          <div className="absolute inset-0 w-full h-full pointer-events-none select-none">
             <Image
-              src="/images/bg.png"
+              src="/images/bg-infinity-static.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual"
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen"
+              className="object-cover object-center sm:object-right opacity-90 sm:opacity-95"
             />
           </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/75 via-40% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent via-30% to-[#000000]/60 pointer-events-none" />
-          {/* Luminous left-to-right traveling wave flow across the particle wave */}
-          <div className="absolute inset-x-0 bottom-0 h-44 sm:h-56 overflow-hidden pointer-events-none mix-blend-screen opacity-70">
-            <div className="hero-wave-stream absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#00D5DF]/35 via-50% via-[#38BDF8]/40 to-transparent blur-2xl will-change-transform" />
-            <div className="hero-wave-pulse absolute -bottom-6 inset-x-0 h-28 bg-gradient-to-r from-transparent via-[#00E5F0]/25 via-50% to-transparent blur-xl will-change-transform" />
+
+          {/* Continuous Flowing Particle Wave Layer (Moves seamlessly from Left to Right) */}
+          <div className="absolute inset-x-0 bottom-0 h-44 sm:h-64 overflow-hidden pointer-events-none select-none z-10">
+            <div className="hero-flowing-wave-track flex w-[200%] h-full will-change-transform">
+              <div className="relative w-1/2 h-full flex-shrink-0">
+                <Image
+                  src="/images/hero-wave-seamless.png"
+                  alt="Flowing Luminous Particle Wave"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-bottom mix-blend-screen opacity-95"
+                />
+              </div>
+              <div className="relative w-1/2 h-full flex-shrink-0">
+                <Image
+                  src="/images/hero-wave-seamless.png"
+                  alt="Flowing Luminous Particle Wave"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-bottom mix-blend-screen opacity-95"
+                />
+              </div>
+            </div>
+
+            {/* Radiant traveling wave beam sweeping over the wave from left to right */}
+            <div className="hero-wave-stream absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#00D5DF]/35 via-50% via-[#38BDF8]/40 to-transparent blur-2xl will-change-transform mix-blend-screen pointer-events-none" />
           </div>
+
           {/* Multi-layered specular ambient depth glows */}
           <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
           <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px]" />
         </div>
 
-        {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
+        {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png - Completely Static) */}
         <div className="light-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform pointer-events-none">
+          <div className="absolute inset-0 w-full h-full pointer-events-none select-none">
             <Image
               src="/lightbg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
@@ -287,8 +314,7 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent via-25% to-white/40 pointer-events-none" />
           {/* Luminous subtle traveling wave shimmer from left to right */}
           <div className="absolute inset-x-0 bottom-0 h-40 sm:h-52 overflow-hidden pointer-events-none opacity-45">
-            <div className="hero-wave-stream absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#087FCB]/20 via-50% via-[#00BFCB]/25 to-transparent blur-2xl will-change-transform" />
-            <div className="hero-wave-pulse absolute -bottom-4 inset-x-0 h-24 bg-gradient-to-r from-transparent via-[#087FCB]/15 via-50% to-transparent blur-xl will-change-transform" />
+            <div className="hero-wave-stream-light absolute inset-y-0 w-3/4 bg-gradient-to-r from-transparent via-[#087FCB]/20 via-50% via-[#00BFCB]/25 to-transparent blur-2xl will-change-transform" />
           </div>
           {/* Subtle azure specular bloom */}
           <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />

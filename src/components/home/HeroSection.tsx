@@ -223,7 +223,7 @@ export function HeroSection() {
           <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
             <Image
               src="/images/bg.png"
-              alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual"
               fill
               sizes="(max-width: 768px) 100vw, 1000px"
               className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
@@ -242,7 +242,7 @@ export function HeroSection() {
           <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
             <Image
               src="/lightbg.png"
-              alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
+              alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
               fill
               priority
               fetchPriority="high"

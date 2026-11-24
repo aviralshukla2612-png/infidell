@@ -63,7 +63,7 @@ export function Preloader() {
       style={{
         boxShadow: '0 25px 60px rgba(0, 0, 0, 0.3)'
       }}
-      aria-label="Loading Infidell Technology LLP"
+      aria-label="Loading Infidell Technology"
       role="status"
     >
       {/* Ambient background glow */}
@@ -104,7 +104,7 @@ export function Preloader() {
         <div className="mt-4 sm:mt-5 flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#087FCB] dark:bg-[#00D5DF] animate-ping" />
           <span className="text-[10px] sm:text-xs font-mono font-bold tracking-[0.3em] uppercase text-slate-500 dark:text-neutral-400">
-            Technology LLP
+            Technology
           </span>
         </div>
 

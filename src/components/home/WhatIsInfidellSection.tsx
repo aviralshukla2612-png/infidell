@@ -171,7 +171,7 @@ export function WhatIsInfidellSection() {
 
           <div className="lg:col-span-7 space-y-4 pt-2">
             <p className="whatis-reveal text-base sm:text-lg text-[#AEB8C2] leading-relaxed font-normal">
-              <strong className="text-white font-semibold">Infidell Technology LLP</strong> is a talent solutions company USA and international job seekers and employers trust, built on a simple idea: talented people shouldn’t struggle to find the right opportunities, and companies shouldn’t struggle to find the right talent.
+              <strong className="text-white font-semibold">Infidell Technology</strong> is a talent solutions company USA and international job seekers and employers trust, built on a simple idea: talented people shouldn’t struggle to find the right opportunities, and companies shouldn’t struggle to find the right talent.
             </p>
             <p className="whatis-reveal text-sm sm:text-base text-[#AEB8C2]/90 leading-relaxed font-normal">
               Somewhere between endless job applications and overwhelming stacks of resumes, hiring gets messy and that’s exactly where we step in. We work closely with professionals to understand their skills, ambitions, and career goals, while helping businesses hire smarter, faster, and more reliably. From job placement, recruitment and staffing to talent acquisition and workforce solutions, our mission is simple: <span className="text-white font-medium">connect the right people with the right opportunities without the usual hiring chaos.</span>

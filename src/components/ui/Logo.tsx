@@ -62,7 +62,7 @@ export function Logo({
           </span>
           {showTagline && (
             <span className={`font-semibold tracking-[0.22em] text-[#A5B2B3] group-hover:text-white transition-colors uppercase ${subSizes[size]} mt-0.5`}>
-              TECHNOLOGY LLP
+              TECHNOLOGY
             </span>
           )}
         </div>

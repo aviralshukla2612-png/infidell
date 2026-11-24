@@ -6,8 +6,8 @@ import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSecti
 
 export async function generateMetadata() {
   return {
-    title: 'About Us | INFIDELL TECHNOLOGY LLP',
-    description: 'Learn about INFIDELL TECHNOLOGY LLP — our human-first recruitment philosophy, ethical placement standard, and our leadership creed.'
+    title: 'About Us | INFIDELL TECHNOLOGY',
+    description: 'Learn about INFIDELL TECHNOLOGY — our human-first recruitment philosophy, ethical placement standard, and our leadership creed.'
   };
 }
 

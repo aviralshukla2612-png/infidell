@@ -23,9 +23,9 @@ export async function generateMetadata({
   const { locale } = await params;
 
   const titles: Record<string, string> = {
-    en: 'INFIDELL TECHNOLOGY LLP | Recruitment & Career Placement Services',
-    hi: 'इन्फिडेल टेक्नोलॉजी एलएलपी | भर्ती एवं करियर प्लेसमेंट सेवाएं',
-    gu: 'ઇન્ફિડેલ ટેકનોલોજી એલએલપી | ભરતી અને કારકિર્દી પ્લેસમેન્ટ સેવાઓ'
+    en: 'INFIDELL TECHNOLOGY | Recruitment & Career Placement Services',
+    hi: 'इन्फिडेल टेक्नोलॉजी | भर्ती एवं करियर प्लेसमेंट सेवाएं',
+    gu: 'ઇન્ફિડેલ ટેકનોલોજી | ભરતી અને કારકિર્દી પ્લેસમેન્ટ સેવાઓ'
   };
 
   const descriptions: Record<string, string> = {
@@ -40,7 +40,7 @@ export async function generateMetadata({
     keywords: [
       'Recruitment agency India',
       'Job placement Ahmedabad',
-      'Infidell Technology LLP',
+      'Infidell Technology',
       'Career placement services',
       'Tech recruitment',
       'Career advisory registration'
@@ -50,13 +50,13 @@ export async function generateMetadata({
       title: titles[locale] || titles.en,
       description: descriptions[locale] || descriptions.en,
       url: `https://infidelltech.com/${locale}`,
-      siteName: 'INFIDELL TECHNOLOGY LLP',
+      siteName: 'INFIDELL TECHNOLOGY',
       images: [
         {
           url: '/images/bg.png',
           width: 1672,
           height: 941,
-          alt: 'INFIDELL TECHNOLOGY LLP'
+          alt: 'INFIDELL TECHNOLOGY'
         }
       ],
       locale: locale,

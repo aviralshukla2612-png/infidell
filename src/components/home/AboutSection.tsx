@@ -369,7 +369,7 @@ export function AboutSection() {
 
               {/* Supporting Editorial Paragraphs */}
               <p className="luna-header-fade text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
-                INFIDELL TECHNOLOGY LLP is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal job boards and keyword spam to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
+                INFIDELL TECHNOLOGY is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal job boards and keyword spam to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
               </p>
 
               <p className="luna-header-fade text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
@@ -384,7 +384,7 @@ export function AboutSection() {
                 <div className="dark-only relative w-full h-full">
                   <Image
                     src="/about-bg.png"
-                    alt="Infidell Technology LLP Headquarters"
+                    alt="Infidell Technology Headquarters"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -394,7 +394,7 @@ export function AboutSection() {
                 <div className="light-only relative w-full h-full">
                   <Image
                     src="/about-bg-light.png"
-                    alt="Infidell Technology LLP Headquarters - Light Theme"
+                    alt="Infidell Technology Headquarters - Light Theme"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 50vw"

@@ -98,7 +98,7 @@ export function ContactSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* ========================================================
               LEFT COLUMN: CONTACT INFO & BRAND VALUE
           ======================================================== */}
@@ -186,7 +186,7 @@ export function ContactSection() {
                     Corporate Office
                   </div>
                   <div className="contact-value text-xs sm:text-sm font-medium text-[#102B50] dark:text-white leading-relaxed">
-                    Infidell Technology LLP, Corporate Office, Technology Park, SG Highway, Ahmedabad, Gujarat, India – 380015
+                    Infidell Technology, Corporate Office, Technology Park, SG Highway, Ahmedabad, Gujarat, India – 380015
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export function ContactSection() {
             <div
               className="contact-form-panel rounded-3xl p-7 sm:p-10 bg-white dark:bg-[#070D10]/90 border border-slate-200 dark:border-[#203536] shadow-[0_20px_50px_rgba(16,43,80,0.08)] dark:shadow-2xl backdrop-blur-2xl relative overflow-hidden"
             >
-              
+
               {/* Ambient Radial Accent */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-[#087FCB]/5 dark:bg-[#087FCB]/10 rounded-full blur-[100px] pointer-events-none" />
 

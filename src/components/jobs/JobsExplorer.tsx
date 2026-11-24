@@ -247,7 +247,7 @@ export function JobsExplorer({ initialJobs }: JobsExplorerProps) {
                 {selectedJob.title}
               </h2>
               <p className="text-xs text-[#00E5F0] mt-1 font-medium">
-                Placement Opportunity via Infidell Technology LLP
+                Placement Opportunity via Infidell Technology
               </p>
             </div>
 

@@ -26,8 +26,8 @@ const LINE2_CUTOFF = TOTAL_CHARS - LINE2_SUFFIX.length; // 48
 // Signature Futuristic Typewriter Headline Animation with Pulsing Cursor
 function HeroHeadlineTypewriter() {
   const [mounted, setMounted] = useState(false);
-  const [charCount, setCharCount] = useState(0);
-  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('typing');
+  const [charCount, setCharCount] = useState(TOTAL_CHARS);
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting' | 'retyping'>('pausing');
 
   useEffect(() => {
     setMounted(true);
@@ -38,7 +38,11 @@ function HeroHeadlineTypewriter() {
 
     let timer: NodeJS.Timeout;
 
-    if (phase === 'typing') {
+    if (phase === 'pausing') {
+      timer = setTimeout(() => {
+        setPhase('deleting');
+      }, 4000);
+    } else if (phase === 'typing') {
       if (charCount < TOTAL_CHARS) {
         const delay = charCount === TOTAL_LINE1 ? 160 : 36;
         timer = setTimeout(() => {
@@ -171,25 +175,26 @@ export function HeroSection() {
 
       // 1. Headline & Description smooth entrance
       if (headlineRef.current) {
-        tl.from(
+        tl.fromTo(
           headlineRef.current,
-          { y: 15, duration: 0.5 }
+          { opacity: 0.85 },
+          { opacity: 1, duration: 0.4 }
         );
       }
 
       // 2. Description fade-in
       tl.from(
         '.hero-desc',
-        { y: 15, duration: 0.6 },
-        '-=0.3'
+        { opacity: 0, y: 12, duration: 0.5 },
+        '-=0.2'
       );
 
       // 3. CTAs
       tl.fromTo(
         '.hero-cta-btn',
-        { opacity: 0, y: 20, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12 },
-        '-=0.5'
+        { opacity: 0, y: 16, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 },
+        '-=0.3'
       );
 
       // 4. Ethereal kinetic floating for 3D infinity artwork
@@ -198,7 +203,8 @@ export function HeroSection() {
         duration: 4.5,
         ease: 'sine.inOut',
         repeat: -1,
-        yoyo: true
+        yoyo: true,
+        delay: 0.5
       });
     },
     { scope: containerRef }

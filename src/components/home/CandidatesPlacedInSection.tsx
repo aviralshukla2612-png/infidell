@@ -23,7 +23,7 @@ export function CandidatesPlacedInSection() {
       svg: (
         <div className="flex items-center gap-2">
           <svg className="w-6 h-6 text-[#0081FB] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16.945 2.164a7.92 7.92 0 0 0-4.945 1.745 7.92 7.92 0 0 0-4.945-1.745C3.125 2.164 0 5.424 0 9.473c0 4.79 4.385 8.927 10.36 12.364a3.18 3.18 0 0 0 3.28 0c5.975-3.437 10.36-7.574 10.36-12.364 0-4.049-3.125-7.309-7.055-7.309zm-4.945 16.59C6.88 15.65 3.2 12.42 3.2 9.473c0-2.31 1.75-4.11 3.855-4.11 1.48 0 2.91.86 3.655 2.11h2.58c.745-1.25 2.175-2.11 3.655-2.11 2.105 0 3.855 1.8 3.855 4.11 0 2.947-3.68 6.177-8.8 9.281z"/>
+            <path d="M16.945 2.164a7.92 7.92 0 0 0-4.945 1.745 7.92 7.92 0 0 0-4.945-1.745C3.125 2.164 0 5.424 0 9.473c0 4.79 4.385 8.927 10.36 12.364a3.18 3.18 0 0 0 3.28 0c5.975-3.437 10.36-7.574 10.36-12.364 0-4.049-3.125-7.309-7.055-7.309zm-4.945 16.59C6.88 15.65 3.2 12.42 3.2 9.473c0-2.31 1.75-4.11 3.855-4.11 1.48 0 2.91.86 3.655 2.11h2.58c.745-1.25 2.175-2.11 3.655-2.11 2.105 0 3.855 1.8 3.855 4.11 0 2.947-3.68 6.177-8.8 9.281z" />
           </svg>
           <span className="text-lg font-extrabold text-[#102B50] dark:text-white tracking-tight">Meta</span>
         </div>
@@ -146,8 +146,12 @@ export function CandidatesPlacedInSection() {
         </h2>
       </div>
 
-      {/* Marquee Container with fade edge masks */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      {/* Marquee Container with fade edge overlays (100% GPU composited) */}
+      <div className="relative w-full overflow-hidden">
+        {/* Left Edge Fade */}
+        <div className="absolute left-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-r from-[#F8FAFC] dark:from-[#000000] to-transparent z-10 pointer-events-none" />
+        {/* Right Edge Fade */}
+        <div className="absolute right-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-l from-[#F8FAFC] dark:from-[#000000] to-transparent z-10 pointer-events-none" />
         <div className="flex items-center gap-14 sm:gap-20 whitespace-nowrap animate-marquee py-2 transform-gpu">
           {marqueeList.map((logo, idx) => (
             <div

@@ -39,8 +39,12 @@ export function OurPartnersSection() {
         </h3>
       </div>
 
-      {/* Infinite Marquee Container with fade edge masks */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      {/* Infinite Marquee Container with fade edge overlays (100% GPU composited) */}
+      <div className="relative w-full overflow-hidden">
+        {/* Left Edge Fade */}
+        <div className="absolute left-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-r from-[#F8FAFC] dark:from-[#000000] to-transparent z-10 pointer-events-none" />
+        {/* Right Edge Fade */}
+        <div className="absolute right-0 inset-y-0 w-16 sm:w-28 bg-gradient-to-l from-[#F8FAFC] dark:from-[#000000] to-transparent z-10 pointer-events-none" />
         <div className="flex items-center gap-12 sm:gap-16 whitespace-nowrap animate-marquee py-2 transform-gpu">
           {marqueeList.map((partner, idx) => (
             <div

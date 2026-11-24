@@ -1,16 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  Briefcase, 
-  Cpu, 
-  Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
-  X, 
-  ShieldCheck, 
-  Users, 
-  TrendingUp 
+import {
+  Cpu,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  X,
+  ShieldCheck,
+  TrendingUp
 } from 'lucide-react';
 
 interface ServiceItem {
@@ -123,7 +121,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section 
+    <section
       id="services"
       className="py-24 sm:py-32 bg-[#F8FAFC] dark:bg-[#050708] relative overflow-hidden border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none scroll-mt-20 transition-colors duration-300"
     >
@@ -131,7 +129,7 @@ export function ServicesSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#087FCB]/5 via-[#00D5DF]/10 to-[#38BDF8]/5 dark:from-[#00E5F0]/10 dark:via-[#087FCB]/10 dark:to-transparent rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-[#087FCB] dark:text-[#00E5F0] bg-[#087FCB]/10 dark:bg-[#00E5F0]/10 border border-[#087FCB]/20 dark:border-[#00E5F0]/30 mb-4">
@@ -209,11 +207,11 @@ export function ServicesSection() {
 
       {/* Interactive Service Detail Modal */}
       {activeModal && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-in fade-in duration-200"
           onClick={handleModalClose}
         >
-          <div 
+          <div
             className="relative w-full max-w-2xl bg-white dark:bg-[#070D10] border border-[#DCE5EF] dark:border-[#203536] rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 text-slate-900 dark:text-white max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >

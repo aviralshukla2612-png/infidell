@@ -204,7 +204,7 @@ export function HeroSection() {
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
-        delay: 0.5
+        delay: 2.5
       });
     },
     { scope: containerRef }
@@ -267,9 +267,11 @@ export function HeroSection() {
               <img
                 src="/images/lightbgphone.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Mobile"
+                width={430}
+                height={932}
                 fetchPriority="high"
                 loading="eager"
-                decoding="async"
+                decoding="sync"
                 className="absolute inset-0 w-full h-full object-cover object-bottom"
               />
             </picture>
@@ -281,9 +283,11 @@ export function HeroSection() {
               <img
                 src="/lightbg.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
+                width={1672}
+                height={941}
                 fetchPriority="high"
                 loading="eager"
-                decoding="async"
+                decoding="sync"
                 className="absolute inset-0 w-full h-full object-cover sm:object-right"
               />
             </picture>

@@ -32,31 +32,42 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       return;
     }
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      syncTouch: false,
-      touchMultiplier: 1.2,
-      wheelMultiplier: 1.0
-    });
-    lenisRef.current = lenis;
-    (window as any).lenis = lenis;
+    let lenis: Lenis | null = null;
+    let tickerCb: ((time: number) => void) | null = null;
 
-    // Sync Lenis scroll with GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+    // Defer desktop smooth scroll initialization by 150ms so first paint and LCP complete without main-thread interruption
+    const timer = setTimeout(() => {
+      lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        syncTouch: false,
+        touchMultiplier: 1.2,
+        wheelMultiplier: 1.0
+      });
+      lenisRef.current = lenis;
+      (window as any).lenis = lenis;
 
-    const tickerCb = (time: number) => {
-      lenis.raf(time * 1000);
-    };
+      // Sync Lenis scroll with GSAP ScrollTrigger
+      lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(500, 33);
+      tickerCb = (time: number) => {
+        lenis?.raf(time * 1000);
+      };
+
+      gsap.ticker.add(tickerCb);
+      gsap.ticker.lagSmoothing(500, 33);
+    }, 150);
 
     return () => {
-      gsap.ticker.remove(tickerCb);
-      (window as any).lenis = null;
-      lenis.destroy();
+      clearTimeout(timer);
+      if (tickerCb) {
+        gsap.ticker.remove(tickerCb);
+      }
+      if (lenis) {
+        (window as any).lenis = null;
+        lenis.destroy();
+      }
     };
   }, []);
 

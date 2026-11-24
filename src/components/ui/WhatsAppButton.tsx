@@ -33,7 +33,7 @@ export function WhatsAppButton({
       >
         {/* Subtle Radar Pulse Ring */}
         <span 
-          className="absolute -inset-1 rounded-full bg-[#25D366]/35 animate-ping pointer-events-none" 
+          className="absolute -inset-1 rounded-full bg-[#25D366]/35 animate-ping pointer-events-none will-change-transform" 
           aria-hidden="true" 
         />
 

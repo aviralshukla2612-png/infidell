@@ -3,12 +3,24 @@ import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { CandidatesPlacedInSection } from '@/components/home/CandidatesPlacedInSection';
-import { AboutSection } from '@/components/home/AboutSection';
-import { OurApproachSection } from '@/components/home/OurApproachSection';
-import { SimpleTransparentProcessSection } from '@/components/home/SimpleTransparentProcessSection';
-import { CareersSection } from '@/components/home/CareersSection';
 
 // Dynamically split below-the-fold sections with SSR enabled for maximum Performance & SEO
+const AboutSection = dynamic(
+  () => import('@/components/home/AboutSection').then((mod) => mod.AboutSection),
+  { ssr: true }
+);
+const OurApproachSection = dynamic(
+  () => import('@/components/home/OurApproachSection').then((mod) => mod.OurApproachSection),
+  { ssr: true }
+);
+const SimpleTransparentProcessSection = dynamic(
+  () => import('@/components/home/SimpleTransparentProcessSection').then((mod) => mod.SimpleTransparentProcessSection),
+  { ssr: true }
+);
+const CareersSection = dynamic(
+  () => import('@/components/home/CareersSection').then((mod) => mod.CareersSection),
+  { ssr: true }
+);
 const OurPartnersSection = dynamic(
   () => import('@/components/home/OurPartnersSection').then((mod) => mod.OurPartnersSection),
   { ssr: true }

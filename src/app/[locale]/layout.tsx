@@ -117,6 +117,23 @@ export default async function LocaleLayout({
       <head>
         <link rel="icon" href="/infidell-infinity-icon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />
+        {/* Preload critical LCP Hero background visuals for instantaneous First Paint */}
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/images/lightbgphone.webp"
+          media="(max-width: 639px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/webp"
+          href="/lightbg.webp"
+          media="(min-width: 640px)"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

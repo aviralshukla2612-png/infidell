@@ -110,7 +110,7 @@ export function Preloader() {
 
         {/* Minimalist Progress Track */}
         <div className="mt-8 w-44 sm:w-56 h-[3px] bg-slate-100 dark:bg-neutral-800 rounded-full overflow-hidden relative">
-          <div className="preloader-progress-bar absolute inset-y-0 left-0 bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#00D5DF] dark:to-[#38BDF8] rounded-full animate-[progressPulse_1.2s_ease-in-out_infinite]" />
+          <div className="preloader-progress-bar absolute inset-y-0 left-0 w-full will-change-transform origin-left bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#00D5DF] dark:to-[#38BDF8] rounded-full animate-[progressPulse_1.2s_ease-in-out_infinite]" />
         </div>
       </div>
     </div>

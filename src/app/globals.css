@@ -665,27 +665,24 @@ html.dark {
 }
 
 @keyframes letterWave {
-
   0%,
   100% {
     transform: translateY(0px) scale(1);
     opacity: 0.55;
-    color: inherit;
-    text-shadow: none;
   }
 
   50% {
     transform: translateY(-16px) scale(1.14);
     opacity: 1;
-    color: var(--wave-accent);
-    text-shadow: 0 4px 20px var(--wave-glow);
   }
 }
 
 .letter-wave-char {
   animation: letterWave 1.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   display: inline-block;
-  will-change: transform, color, opacity;
+  color: var(--wave-accent);
+  text-shadow: 0 4px 20px var(--wave-glow);
+  will-change: transform, opacity;
 }
 
 /* Light Mode Overrides for Testimonials & Contact */
@@ -905,18 +902,15 @@ html.dark #contact .contact-value {
 
 @keyframes progressPulse {
   0% {
-    left: -30%;
-    width: 30%;
+    transform: translateX(-100%) scaleX(0.3);
   }
 
   50% {
-    left: 25%;
-    width: 55%;
+    transform: translateX(50%) scaleX(0.7);
   }
 
   100% {
-    left: 100%;
-    width: 30%;
+    transform: translateX(350%) scaleX(0.3);
   }
 }
 

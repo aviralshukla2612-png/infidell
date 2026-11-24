@@ -174,6 +174,9 @@ export function CandidatesPlacedInSection() {
         .animate-marquee {
           display: flex;
           width: max-content;
+          will-change: transform;
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
           animation: marquee 28s linear infinite;
         }
         .animate-marquee:hover {

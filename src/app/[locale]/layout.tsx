@@ -102,7 +102,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/infidell-infinity-icon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />

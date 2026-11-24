@@ -46,50 +46,50 @@ export function Navbar() {
     }
   };
 
-  // Passive, throttled scroll listener for sticky navbar & IntersectionObserver for 0-reflow active section detection
+  // Passive, throttled scroll listener for sticky navbar & smooth active section tracking
   useEffect(() => {
     let ticking = false;
+
+    const updateScrollState = () => {
+      setScrolled(window.scrollY > 20);
+
+      const scrollPos = window.scrollY + 160;
+      let matched = 'home';
+
+      for (let i = SECTIONS.length - 1; i >= 0; i--) {
+        const sec = SECTIONS[i];
+        const el = document.getElementById(sec.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPos >= top) {
+            matched = sec.id;
+            break;
+          }
+        }
+      }
+
+      setActiveSection(matched);
+      ticking = false;
+    };
+
     const handleScroll = () => {
       if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20);
-          ticking = false;
-        });
+        requestAnimationFrame(updateScrollState);
         ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // High-performance IntersectionObserver replaces costly offsetTop forced reflow loops
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0px -55% 0px',
-        threshold: 0.1
-      }
-    );
-
-    SECTIONS.forEach((sec) => {
-      const el = document.getElementById(sec.id);
-      if (el) observer.observe(el);
-    });
+    updateScrollState();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
     };
   }, []);
 
   // Sync indicator when activeSection changes or window resizes
   useEffect(() => {
-    const t = setTimeout(resetToActive, 60);
+    const t = setTimeout(resetToActive, 50);
     const handleResize = () => resetToActive();
     window.addEventListener('resize', handleResize);
     return () => {
@@ -103,14 +103,30 @@ export function Navbar() {
     setMobileMenuOpen(false);
     setActiveSection(id);
 
+    const lenis = typeof window !== 'undefined' ? (window as any).lenis : null;
+
     if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (lenis) {
+        lenis.scrollTo(0, {
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } else {
       const el = document.getElementById(id);
       if (el) {
-        const yOffset = -90;
-        const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        if (lenis) {
+          lenis.scrollTo(el, {
+            offset: -85,
+            duration: 1.2,
+            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+          });
+        } else {
+          const y = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 85;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }
     }
   };
@@ -118,9 +134,9 @@ export function Navbar() {
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-        ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3.5'
-        : 'bg-transparent border-b border-transparent py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-4 ${scrolled
+        ? 'bg-[#050708]/90 backdrop-blur-md border-b border-[#203536] shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
+        : 'bg-transparent border-b border-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,21 +173,23 @@ export function Navbar() {
               </a>
             ))}
 
-            {/* Emperor Nexus Signature Sliding Glowing Indicator (with m-0 to prevent Tailwind margin inheritance) */}
+            {/* Emperor Nexus Signature Sliding Glowing Indicator with GPU transform */}
             <span
-              className="absolute bottom-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#00E5F0] via-[#55A9FF] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none m-0"
+              className="absolute bottom-0 left-0 h-[2.5px] rounded-full bg-gradient-to-r from-[#00E5F0] via-[#55A9FF] to-[#1E3EF0] shadow-[0_0_12px_rgba(0,229,240,0.95)] pointer-events-none will-change-transform m-0"
               style={{
-                left: `${indicator.left}px`,
+                transform: `translateX(${indicator.left}px)`,
                 width: `${indicator.width}px`,
-                opacity: indicator.opacity
+                opacity: indicator.opacity,
+                transition: 'transform 360ms cubic-bezier(0.16, 1, 0.3, 1), width 360ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease'
               }}
             />
             <span
-              className="absolute bottom-[-1px] h-[6px] rounded-full bg-[#00E5F0]/35 blur-[3px] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none m-0"
+              className="absolute bottom-[-1px] left-0 h-[6px] rounded-full bg-[#00E5F0]/35 blur-[3px] pointer-events-none will-change-transform m-0"
               style={{
-                left: `${indicator.left}px`,
+                transform: `translateX(${indicator.left}px)`,
                 width: `${indicator.width}px`,
-                opacity: indicator.opacity
+                opacity: indicator.opacity,
+                transition: 'transform 360ms cubic-bezier(0.16, 1, 0.3, 1), width 360ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease'
               }}
             />
           </nav>

@@ -20,7 +20,7 @@ const FAQS: FAQItem[] = [
     num: '01',
     question: 'How does Infidell support candidates throughout their career journey and executive placement?',
     answer:
-      'Infidell functions as a personal executive career advisory partner rather than a transactional resume clearinghouse. From day one, candidates are paired with experienced recruitment advisors who thoroughly analyze career trajectories, deconstruct past architectural achievements, and rebuild technical resumes to clear strict applicant tracking systems (ATS). We conduct in-depth mock technical rounds, guide negotiation strategies, benchmark market compensation across premier Indian technology hubs, and arrange high-trust introductions directly with CTOs, Engineering Directors, and VP-level hiring authorities.',
+      'Infidell functions as a personal executive career advisory partner rather than a transactional resume clearinghouse. From day one, candidates are paired with experienced recruitment advisors who thoroughly analyze career trajectories, deconstruct past architectural achievements, and rebuild technical resumes to clear strict applicant tracking systems (ATS). We conduct in-depth mock technical rounds, guide negotiation strategies, benchmark market compensation across premier US technology hubs (Silicon Valley, New York, Austin, Seattle, Boston), and arrange high-trust introductions directly with CTOs, Engineering Directors, and VP-level hiring authorities.',
     details: [
       {
         label: 'Strategic Profile Architecture',
@@ -28,7 +28,7 @@ const FAQS: FAQItem[] = [
       },
       {
         label: 'Direct Executive Access',
-        text: 'Bypassing generic HR portals to pitch your capabilities directly to senior technology and business leaders across Bengaluru, Pune, Hyderabad, NCR, and Mumbai.'
+        text: 'Bypassing generic HR portals to pitch your capabilities directly to senior technology and business leaders across Silicon Valley, New York City, Austin, Seattle, Boston, and nationwide remote networks.'
       }
     ]
   },
@@ -62,7 +62,7 @@ const FAQS: FAQItem[] = [
       },
       {
         label: 'Pre-Aligned Readiness',
-        text: 'Every submitted candidate has confirmed availability, verified notice period (immediate, 15, 30, or 60 days), and pre-negotiated CTC expectations.'
+        text: 'Every submitted candidate has confirmed availability, verified notice timeline (immediate, standard 2-week US transition, or custom executive start dates), and pre-negotiated compensation expectations.'
       }
     ]
   },
@@ -103,9 +103,9 @@ const FAQS: FAQItem[] = [
   {
     id: 6,
     num: '06',
-    question: 'What tech domains, industry sectors, and workplace arrangements does Infidell cover across India?',
+    question: 'What tech domains, industry sectors, and workplace arrangements does Infidell cover across North America and global markets?',
     answer:
-      'Infidell delivers talent advisory and recruitment across high-impact tech and corporate sectors, including Cloud Infrastructure & DevOps, Artificial Intelligence & Machine Learning, Full-Stack Enterprise Engineering, FinTech & Neo-Banking, HealthTech, Cyber Security, and Executive Management. We support on-campus corporate headquarters, flexible hybrid arrangements, and fully remote engineering teams across major Indian technology centers, including Bengaluru, Hyderabad, Pune, Delhi NCR (Gurugram/Noida), and Mumbai.',
+      'Infidell delivers talent advisory and recruitment across high-impact tech and corporate sectors, including Cloud Infrastructure & DevOps, Artificial Intelligence & Machine Learning, Full-Stack Enterprise Engineering, FinTech & Capital Markets, HealthTech, Cyber Security, and Executive Management. We support on-campus corporate headquarters, flexible hybrid arrangements, and fully distributed remote engineering teams across major US technology centers, including Silicon Valley, New York City, Austin, Seattle, Boston, Chicago, and nationwide remote.',
     details: [
       {
         label: 'Comprehensive Tech Coverage',
@@ -137,17 +137,17 @@ const FAQS: FAQItem[] = [
   {
     id: 8,
     num: '08',
-    question: 'What candidate support is provided for notice period buyouts and compensation negotiations?',
+    question: 'What candidate support is provided for executive compensation negotiations, equity structures, and career transitions?',
     answer:
-      'Extended notice periods (often 60 to 90 days in the Indian technology sector) present major hurdles for candidates and hiring managers alike. Infidell actively consults with both parties to structure strategic notice period buyouts, early release negotiations, and staggered onboarding schedules. Additionally, our compensation analysts provide candidates with objective market compensation benchmarks to ensure fair, competitive remuneration packets including base pay, variable incentives, performance bonuses, and equity/ESOP structures.',
+      'Navigating executive career transitions, competitive equity packages (RSUs, ISOs, double-trigger vesting), signing bonuses, and non-compete agreements in the US tech market requires specialized advisory. Infidell provides strategic counsel to ensure your total compensation package reflects your true market value. Our advisors work closely with candidates to model offer trade-offs, evaluate startup equity risk profiles, and align compensation with Fortune 500 and VC-backed benchmark standards.',
     details: [
       {
-        label: 'Notice Period Structuring',
-        text: 'Facilitating enterprise notice period buyouts and early transition roadmaps to ensure seamless handovers.'
+        label: 'Equity & Compensation Structuring',
+        text: 'Comprehensive evaluation of base salary, performance equity (RSUs/options), executive signing bonuses, and 401(k) match structures.'
       },
       {
-        label: 'Equitable Salary Benchmarking',
-        text: 'Data-driven negotiation guidance to achieve competitive, market-aligned compensation packages.'
+        label: 'Executive Transition Roadmaps',
+        text: 'Data-driven negotiation guidance, managing counter-offers, non-compete compliance, and seamless executive onboarding.'
       }
     ]
   },
@@ -177,7 +177,7 @@ const FAQS: FAQItem[] = [
     details: [
       {
         label: 'Pre-Onboarding Continuity',
-        text: 'Proactive candidate engagement to prevent counter-offer attrition during lengthy notice periods.'
+        text: 'Proactive candidate engagement to prevent counter-offer attrition and ensure clear transition alignment.'
       },
       {
         label: 'Structured Milestone Check-Ins',

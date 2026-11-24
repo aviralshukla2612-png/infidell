@@ -23,27 +23,31 @@ export async function generateMetadata({
   const { locale } = await params;
 
   const titles: Record<string, string> = {
-    en: 'INFIDELL TECHNOLOGY | Recruitment & Career Placement Services',
-    hi: 'इन्फिडेल टेक्नोलॉजी | भर्ती एवं करियर प्लेसमेंट सेवाएं',
-    gu: 'ઇન્ફિડેલ ટેકનોલોજી | ભરતી અને કારકિર્દી પ્લેસમેન્ટ સેવાઓ'
+    en: 'INFIDELL TECHNOLOGY | Executive Tech Recruitment & Talent Solutions USA',
+    hi: 'इन्फिडेल टेक्नोलॉजी | यूएस एवं अंतर्राष्ट्रीय कार्यकारी भर्ती समाधान',
+    gu: 'ઇન્ફિડેલ ટેકનોલોજી | યુએસ અને વૈશ્વિક એક્ઝિક્યુટિવ ભરતી સેવાઓ'
   };
 
   const descriptions: Record<string, string> = {
-    en: 'Connecting qualified candidates with verified employer partners across IT, Engineering, Finance, and Corporate sectors throughout India. Personalized career guidance and strategic talent acquisition.',
-    hi: 'भारत भर में आईटी, इंजीनियरिंग, वित्त और कॉर्पोरेट क्षेत्रों में योग्य उम्मीदवारों को सत्यापित कंपनियों से जोड़ना। समर्पित करियर मार्गदर्शन एवं परामर्श।',
-    gu: 'સમગ્ર ભારતમાં આઈટી, એન્જિનિયરિંગ, ફાઇનાન્સ અને કોર્પોરેટ ક્ષેત્રોમાં યોગ્ય ઉમેદવારોને ચકાસાયેલી કંપનીઓ સાથે જોડવું.'
+    en: 'Premier executive search, technical recruitment, and workforce solutions connecting top engineering, AI, and leadership talent with leading US enterprises and global innovation hubs.',
+    hi: 'शीर्ष अमेरिकी उद्यमों और वैश्विक नवाचार केंद्रों के साथ इंजीनियरिंग, एआई और नेतृत्व प्रतिभा को जोड़ने वाली प्रमुख तकनीकी भर्ती फर्म।',
+    gu: 'અગ્રણી યુએસ કંપનીઓ અને વૈશ્વિક ટેક હબ સાથે પ્રતિભાશાળી પ્રોફેશનલ્સને જોડતી અગ્રણી ટેકનોલોજી ભરતી ફર્મ.'
   };
 
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
     keywords: [
-      'Recruitment agency India',
-      'Job placement Ahmedabad',
-      'Infidell Technology',
-      'Career placement services',
-      'Tech recruitment',
-      'Career advisory registration'
+      'Tech recruitment agency USA',
+      'Executive search firm United States',
+      'Software engineer recruitment US',
+      'AI and Machine Learning talent acquisition',
+      'IT staffing solutions North America',
+      'Enterprise technical recruitment',
+      'Silicon Valley executive recruiting',
+      'New York tech recruiting agency',
+      'Global workforce solutions',
+      'Direct hire recruitment USA'
     ],
     metadataBase: new URL('https://infidelltech.com'),
     openGraph: {
@@ -102,6 +106,36 @@ export default async function LocaleLayout({
       <head>
         <link rel="icon" href="/infidell-infinity-icon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/infidell-infinity-icon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EmploymentAgency',
+              name: 'INFIDELL TECHNOLOGY',
+              url: 'https://infidelltech.com',
+              logo: 'https://infidelltech.com/infidell-infinity-icon.png',
+              description: 'Premier executive tech recruitment, engineering talent placement, and enterprise staffing solutions across the United States and global markets.',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '100 Montgomery St, Suite 1800',
+                addressLocality: 'San Francisco',
+                addressRegion: 'CA',
+                postalCode: '94104',
+                addressCountry: 'US'
+              },
+              telephone: '+1-800-518-4902',
+              areaServed: ['US', 'CA', 'GB', 'Global'],
+              serviceType: [
+                'Executive Search',
+                'Technical Staffing',
+                'AI & Engineering Recruitment',
+                'Direct Hire Placements',
+                'Workforce Solutions'
+              ]
+            })
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('infidell-theme');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');}else{document.documentElement.classList.add('light');document.documentElement.classList.remove('dark');}}catch(e){}})();`

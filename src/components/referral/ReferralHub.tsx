@@ -46,7 +46,7 @@ export function ReferralHub() {
   // FAQ open toggle
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const estimatedReward = candidatesCount * 5000 + employersCount * 15000;
+  const estimatedReward = candidatesCount * 1000 + employersCount * 3000;
 
   const {
     register,
@@ -104,7 +104,7 @@ export function ReferralHub() {
   const referralFaqs = [
     {
       q: 'Who is eligible to participate in the Refer & Earn program?',
-      a: 'Any registered professional, student, alumni, or corporate employee in India can participate. There are no registration fees or mandatory membership requirements.'
+      a: 'Any registered professional, technology specialist, or corporate employee in the US or globally can participate. There are no registration fees or mandatory membership requirements.'
     },
     {
       q: 'When is the referral reward disbursed?',
@@ -139,7 +139,7 @@ export function ReferralHub() {
             {/* Candidate Slider */}
             <div>
               <div className="flex items-center justify-between text-xs font-semibold text-white mb-2">
-                <span>{t('calculatorCandidate')} (Up to ₹5,000 each)</span>
+                <span>{t('calculatorCandidate')} (Up to $1,000 each)</span>
                 <span className="text-[#00E5F0] font-bold text-sm">{candidatesCount}</span>
               </div>
               <input
@@ -155,7 +155,7 @@ export function ReferralHub() {
             {/* Employer Slider */}
             <div>
               <div className="flex items-center justify-between text-xs font-semibold text-white mb-2">
-                <span>{t('calculatorEmployer')} (Up to ₹15,000 each)</span>
+                <span>{t('calculatorEmployer')} (Up to $3,000 each)</span>
                 <span className="text-[#00C7B1] font-bold text-sm">{employersCount}</span>
               </div>
               <input
@@ -174,7 +174,7 @@ export function ReferralHub() {
             <div>
               <span className="text-xs text-[#AEB8C2] block">{t('potentialEarnings')}</span>
               <span className="text-2xl sm:text-3xl font-extrabold text-[#00E5F0]">
-                ₹{estimatedReward.toLocaleString('en-IN')}
+                ${estimatedReward.toLocaleString('en-US')}
               </span>
             </div>
             <span className="text-[10px] text-[#AEB8C2] max-w-[140px] text-right">
@@ -188,7 +188,7 @@ export function ReferralHub() {
           <div className="glass-panel rounded-2xl p-6 border border-[#202A30] space-y-2">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-bold text-white">Tier 1: Candidate Placement Referral</h4>
-              <span className="text-xs font-bold text-[#00E5F0]">Up to ₹5,000</span>
+              <span className="text-xs font-bold text-[#00E5F0]">Up to $1,000</span>
             </div>
             <p className="text-xs text-[#AEB8C2] leading-relaxed">
               Awarded when a candidate referred by you is shortlisted, passes interviews, joins our corporate partner, and completes the 30-day verification milestone.
@@ -198,7 +198,7 @@ export function ReferralHub() {
           <div className="glass-panel rounded-2xl p-6 border border-[#202A30] space-y-2">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-bold text-white">Tier 2: Corporate Hiring Mandate Referral</h4>
-              <span className="text-xs font-bold text-[#00C7B1]">Up to ₹15,000</span>
+              <span className="text-xs font-bold text-[#00C7B1]">Up to $3,000</span>
             </div>
             <p className="text-xs text-[#AEB8C2] leading-relaxed">
               Awarded when you introduce a hiring company or HR decision-maker who signs an official recruitment engagement contract with Infidell and completes the first placement.

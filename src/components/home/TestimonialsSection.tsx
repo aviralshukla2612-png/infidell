@@ -18,64 +18,64 @@ interface TestimonialItem {
 
 const TESTIMONIALS: TestimonialItem[] = [
   {
-    id: 'ananya-sharma',
-    name: 'Ananya Sharma',
+    id: 'sarah-jenkins',
+    name: 'Sarah Jenkins',
     role: 'LEAD FULL STACK ARCHITECT',
-    outcome: 'Tier-1 Fintech Platform · Bengaluru',
-    companyBadge: 'Bengaluru Tech Hub',
+    outcome: 'FinTech Capital · New York, NY',
+    companyBadge: 'New York Tech Hub',
     accent: '#A33B26', // Terracotta
-    image: '/images/testimonials/indian-avatar-1.jpg',
+    image: '/images/testimonials/avatar-1.jpg',
     rating: 5,
     quote:
-      'Finding an executive recruitment partner in India that truly understands notice period dynamics and compensation transparency is rare. Infidell facilitated direct conversations with engineering leadership in Bengaluru, leading to an offer aligned with my leadership trajectory.'
+      'Finding an executive recruitment partner that truly understands modern distributed architecture and US compensation transparency is rare. Infidell facilitated direct conversations with engineering leadership in New York, leading to an offer perfectly aligned with my leadership trajectory.'
   },
   {
-    id: 'rohan-patel',
-    name: 'Rohan Patel',
+    id: 'david-miller',
+    name: 'David Miller',
     role: 'SR. CLOUD & DEVOPS ARCHITECT',
-    outcome: 'Enterprise Cloud Platform · Pune / Hybrid',
+    outcome: 'Enterprise Cloud Platform · Austin, TX / Hybrid',
     companyBadge: 'Cloud Infrastructure',
     accent: '#0284C7', // Sky Blue
-    image: '/images/testimonials/indian-avatar-2.jpg',
+    image: '/images/testimonials/avatar-2.jpg',
     rating: 5,
     quote:
-      'No algorithmic black holes or candidate fees. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud architecture mandates, coordinating interview rounds with surgical precision from day one.'
+      'No algorithmic black holes or candidate fees. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud infrastructure mandates, coordinating interview rounds with surgical precision from day one.'
   },
   {
-    id: 'priya-sundaram',
-    name: 'Priya Sundaram',
+    id: 'elena-rostova',
+    name: 'Elena Rostova',
     role: 'DIRECTOR OF PRODUCT MANAGEMENT',
-    outcome: 'Global SaaS Enterprise · Hyderabad',
+    outcome: 'Silicon Valley SaaS Enterprise · San Francisco, CA',
     companyBadge: 'SaaS Leadership',
     accent: '#059669', // Emerald
-    image: '/images/testimonials/indian-avatar-3.jpg',
+    image: '/images/testimonials/avatar-3.jpg',
     rating: 5,
     quote:
-      'Infidell treats career transition like an executive advisory service rather than a resume broadcast. They mapped out three strategic conversations with verified enterprise leaders in Hyderabad, completely aligned with my product roadmap vision.'
+      'Infidell treats career transition like an executive advisory service rather than a resume broadcast. They mapped out three strategic conversations with verified enterprise leaders in the Bay Area, completely aligned with my product roadmap vision.'
   },
   {
-    id: 'vikram-malhotra',
-    name: 'Vikram Malhotra',
+    id: 'marcus-vance',
+    name: 'Marcus Vance',
     role: 'VP OF SOFTWARE ENGINEERING',
-    outcome: 'High-Growth Tech Unicorn · Gurugram',
+    outcome: 'High-Growth Tech Unicorn · Seattle, WA',
     companyBadge: 'Executive Search',
     accent: '#D97706', // Amber
-    image: '/images/testimonials/indian-avatar-4.jpg',
+    image: '/images/testimonials/avatar-4.jpg',
     rating: 5,
     quote:
-      'From compensation benchmarking and ESOP negotiation to confidential interview scheduling with the CTO in Gurugram, Infidell provided world-class representation throughout my career move. Exceptional professionalism.'
+      'From compensation benchmarking and RSU/equity structure analysis to confidential interview scheduling with executive leadership in Seattle, Infidell provided world-class representation throughout my career move. Exceptional professionalism.'
   },
   {
-    id: 'sneha-kulkarni',
-    name: 'Sneha Kulkarni',
-    role: 'PRINCIPAL DATA SCIENTIST',
-    outcome: 'Enterprise AI Lab · Mumbai / Remote',
+    id: 'rachel-chen',
+    name: 'Dr. Rachel Chen',
+    role: 'PRINCIPAL AI & LLM SCIENTIST',
+    outcome: 'Kendall Square AI Lab · Boston, MA / Remote',
     companyBadge: 'AI & Machine Learning',
     accent: '#7C3AED', // Violet
-    image: '/images/testimonials/indian-avatar-5.jpg',
+    image: '/images/testimonials/avatar-5.jpg',
     rating: 5,
     quote:
-      'The personalized attention from Infidell was remarkable. They understood my specialized background in generative AI and LLM pipelines, matching me directly with enterprise AI labs in Mumbai that offered both remote flexibility and tier-1 compensation.'
+      'The personalized attention from Infidell was remarkable. They understood my specialized background in generative AI and LLM inference pipelines, matching me directly with enterprise AI labs in Boston that offered both remote flexibility and tier-1 compensation.'
   }
 ];
 

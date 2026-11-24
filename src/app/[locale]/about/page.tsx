@@ -6,8 +6,8 @@ import { OurMissionValuesSection } from '@/components/home/OurMissionValuesSecti
 
 export async function generateMetadata() {
   return {
-    title: 'About Us | INFIDELL TECHNOLOGY',
-    description: 'Learn about INFIDELL TECHNOLOGY — our human-first recruitment philosophy, ethical placement standard, and our leadership creed.'
+    title: 'Executive Tech Recruitment & Talent Solutions USA | INFIDELL TECHNOLOGY',
+    description: 'Learn about INFIDELL TECHNOLOGY — premier US executive search firm, ethical engineering placement standards, and leadership advisory across North America and global technology markets.'
   };
 }
 

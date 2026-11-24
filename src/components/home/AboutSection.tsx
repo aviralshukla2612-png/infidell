@@ -364,12 +364,12 @@ export function AboutSection() {
                 <strong className="font-semibold bg-gradient-to-r from-[#087FCB] via-[#00BFCB] to-[#38BDF8] dark:from-white dark:via-[#7DD3FC] dark:to-[#38BDF8] bg-clip-text text-transparent">
                   career advocacy
                 </strong>
-                . We connect ambitious talent with verified corporate hiring partners across India through personal guidance, rigorous skill evaluation, and enduring professional relationships.
+                . We connect ambitious talent with verified corporate hiring partners across the United States and global tech markets through personal guidance, rigorous skill evaluation, and enduring professional relationships.
               </p>
 
               {/* Supporting Editorial Paragraphs */}
               <p className="luna-header-fade text-sm sm:text-base text-neutral-300 font-normal leading-relaxed">
-                INFIDELL TECHNOLOGY is an independent career placement and executive talent consultancy bridging the gap between skilled professionals and verified enterprises across India. We strip away the noise of impersonal job boards and keyword spam to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
+                INFIDELL TECHNOLOGY is an independent executive career advisory and technical recruitment firm bridging the gap between skilled engineering talent and verified enterprises across the United States, North America, and global innovation centers. We strip away the noise of impersonal job boards and keyword spam to deliver high-touch recruitment grounded in deep domain knowledge, verified career alignment, and statutory compliance.
               </p>
 
               <p className="luna-header-fade text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">

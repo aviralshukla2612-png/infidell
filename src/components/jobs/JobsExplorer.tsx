@@ -9,7 +9,7 @@ import {
   MapPin, 
   Briefcase, 
   Building2, 
-  IndianRupee, 
+  DollarSign, 
   Filter, 
   ArrowRight, 
   X, 
@@ -185,7 +185,7 @@ export function JobsExplorer({ initialJobs }: JobsExplorerProps) {
                     <span className="truncate">{job.experienceYears}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-white font-medium">
-                    <IndianRupee className="w-3.5 h-3.5 text-[#00BFD0] flex-shrink-0" />
+                    <DollarSign className="w-3.5 h-3.5 text-[#00BFD0] flex-shrink-0" />
                     <span className="truncate">{job.salaryRange}</span>
                   </div>
                 </div>

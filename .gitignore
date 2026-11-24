@@ -36,4 +36,8 @@ next-env.d.ts
 netbounce_page.html
 !next.config.mjs
 !postcss.config.mjs
+scratch/
+lh-*.report.*
+public/lightbg-fullcover.png
+public/lightbg-original.png
 

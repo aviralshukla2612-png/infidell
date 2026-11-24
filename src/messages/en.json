@@ -47,11 +47,11 @@
     "pillPartnership": "End-to-End Support",
     "floatingBadgeRole": "Senior Full-Stack Engineer",
     "floatingBadgeCompany": "Fintech Enterprise",
-    "floatingBadgePackage": "₹18-24 LPA",
+    "floatingBadgePackage": "$140k - $210k / yr",
     "floatingBadgeStatus": "Interview Scheduled",
     "floatingStat1": "4,800+ Placed Candidates",
     "floatingStat2": "350+ Verified Hiring Partners",
-    "subtext": "Official recruitment & career guidance partner for ambitious candidates across India."
+    "subtext": "Official recruitment & career guidance partner for ambitious candidates across the United States and global markets."
   },
   "Stats": {
     "badge": "VERIFIED TRACK RECORD",
@@ -244,9 +244,9 @@
     "step3": "Receive Verified Reward",
     "step3Desc": "Upon candidate completion of the mandatory onboarding verification period, your referral bonus is credited directly to your bank account.",
     "candidateTier": "Candidate Placement Referral",
-    "candidateReward": "Up to ₹5,000 per verified placement",
+    "candidateReward": "Up to $1,000 per verified placement",
     "employerTier": "Corporate Hiring Mandate Referral",
-    "employerReward": "Up to ₹15,000 per closed hiring mandate",
+    "employerReward": "Up to $3,000 per closed hiring mandate",
     "termsNotice": "Rewards are subject to verified candidate joining, minimum probation milestone completion, and full compliance with Infidell Referral Policy terms."
   },
   "Testimonials": {
@@ -254,21 +254,21 @@
     "title": "What Candidates & Hiring Managers Say",
     "subtitle": "Direct feedback from professionals and corporate partners who work with us.",
     "t1Text": "Infidell is a game-changer. They don't indulge in spamming job postings. They understand the exact match required and coordinate interviews with utmost professionalism.",
-    "t1Author": "Vikramaditya Roy",
-    "t1Title": "Head of Engineering, SaaS Enterprise",
-    "t2Text": "As a fresher entering the IT sector, I was overwhelmed. The Infidell counselor reviewed my resume, guided my Git portfolio, and secured 3 interviews in two weeks.",
-    "t2Author": "Sneha Joshi",
-    "t2Title": "Frontend Developer, Placed in Pune",
-    "t3Text": "Their recruitment speed and candidate screening quality have made Infidell our preferred talent acquisition partner for the entire western region.",
-    "t3Author": "Mitesh Solanki",
-    "t3Title": "VP - Human Resources, Logistics Firm"
+    "t1Author": "Marcus Vance",
+    "t1Title": "VP of Engineering, Cloud Enterprise",
+    "t2Text": "Navigating modern tech recruiting can be daunting. The Infidell advisor revamped my technical resume, sharpened my system design pitch, and secured 3 executive interviews in two weeks.",
+    "t2Author": "Sarah Jenkins",
+    "t2Title": "Lead Full Stack Architect, New York",
+    "t3Text": "Their recruitment speed and candidate screening quality have made Infidell our preferred talent acquisition partner for critical technical and engineering mandates.",
+    "t3Author": "David Miller",
+    "t3Title": "Head of Talent Acquisition, SaaS Platform"
   },
   "FAQ": {
     "badge": "CLARITY & TRANSPARENCY",
     "title": "Frequently Asked Questions",
     "subtitle": "Get clear answers about our recruitment process, candidate services, and employer partnerships.",
     "q1": "How does Infidell support candidates throughout their career journey?",
-    "a1": "Infidell provides high-touch advisory: ATS resume optimization, targeted interview prep, salary negotiation guidance, and direct introductions to verified enterprises across India.",
+    "a1": "Infidell provides high-touch advisory: ATS resume optimization, targeted interview prep, salary negotiation guidance, and direct introductions to verified enterprises across the United States and global tech hubs.",
     "q2": "Does registering with Infidell guarantee immediate job placement?",
     "a2": "No recruitment agency can ethically guarantee job placement. Placement depends on client hiring mandates, market conditions, and candidate performance during client interviews. However, we maximize your visibility by actively presenting your profile to matching employers.",
     "q3": "How does the profile matching process work?",
@@ -279,8 +279,8 @@
     "a5": "Registered individuals can refer candidates or corporate hiring clients via our Refer & Earn page. When a referred candidate completes the client's probation verification period, referral rewards are distributed according to program terms.",
     "q6": "What documents do I need to register?",
     "a6": "You will need an updated PDF/Word resume, basic educational details, skill inventory, and verified phone and email for verification.",
-    "q7": "Can candidates from outside Gujarat apply?",
-    "a7": "Yes, Infidell assists candidates nationwide across India for on-site, hybrid, and remote positions."
+    "q7": "Does Infidell support remote and cross-state opportunities?",
+    "a7": "Yes, Infidell represents candidates nationwide across the United States and internationally for on-site, hybrid, and distributed remote positions."
   },
   "FinalCTA": {
     "badge": "TAKE THE NEXT STEP",
@@ -290,18 +290,18 @@
     "ctaContact": "Contact Our Team"
   },
   "Footer": {
-    "about": "INFIDELL TECHNOLOGY is a trusted recruitment and job placement partner. We bridge career aspirants with verified employers through transparent, professional placement assistance.",
+    "about": "INFIDELL TECHNOLOGY is a premier executive recruitment and talent placement firm. We bridge career aspirants with verified employers through transparent, high-touch placement advisory.",
     "quickLinks": "Quick Links",
     "candidateLinks": "For Job Seekers",
     "employerLinks": "For Employers",
     "legalLinks": "Legal & Compliance",
     "contactInfo": "Contact Information",
-    "address": "Infidell Technology, Corporate Office, Technology Park, Ahmedabad, Gujarat, India - 380015",
+    "address": "Infidell Technology, US Headquarters: 100 Montgomery St, Suite 1800, San Francisco, CA 94104, USA",
     "email": "careers@infidelltech.com",
-    "phone": "+91 79 4890 2345 / +91 98250 12345",
+    "phone": "+1 (800) 518-4902 / +1 (415) 890-2345",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "disclaimer": "INFIDELL TECHNOLOGY is an executive recruitment and placement advisory. We do not solicit illegal payments or promise fabricated government/private appointments.",
+    "disclaimer": "INFIDELL TECHNOLOGY is an executive recruitment and placement advisory firm adhering to US federal, state, and international equal opportunity employment standards.",
     "copyright": "© 2026 INFIDELL TECHNOLOGY. All rights reserved."
   },
   "Jobs": {

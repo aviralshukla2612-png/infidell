@@ -164,7 +164,7 @@ export function EmployerRegistrationForm() {
             id="emp-phone"
             {...register('phone')}
             type="tel"
-            placeholder="+91 98250 XXXXX"
+            placeholder="+1 (555) 019-2834"
             className="w-full px-4 py-3 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00C7B1] transition-colors"
           />
           {errors.phone && (
@@ -239,7 +239,7 @@ export function EmployerRegistrationForm() {
             id="emp-jobLocation"
             {...register('jobLocation')}
             type="text"
-            placeholder="e.g. Ahmedabad / Remote / Pune"
+            placeholder="e.g. New York / Remote / Austin"
             className="w-full px-4 py-3 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00C7B1] transition-colors"
           />
           {errors.jobLocation && (

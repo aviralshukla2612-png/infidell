@@ -19,7 +19,7 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    countryCode: '+91',
+    countryCode: '+1',
     phone: '',
     inquiryType: 'Candidate Placement Advisory',
     message: ''
@@ -140,13 +140,13 @@ export function ContactSection() {
                     Phone
                   </div>
                   <a
-                    href="tel:+917949001234"
+                    href="tel:+18005184902"
                     className="contact-value text-sm sm:text-base font-bold text-[#102B50] dark:text-white hover:text-[#087FCB] dark:hover:text-[#00D5DF] transition-colors"
                   >
-                    +91 (079) 4900 1234
+                    +1 (800) 518-4902
                   </a>
                   <span className="contact-subtext text-xs text-slate-500 dark:text-neutral-400 block mt-0.5">
-                    Mon – Sat, 9:30 AM – 7:00 PM IST
+                    Mon – Fri, 9:00 AM – 6:00 PM EST
                   </span>
                 </div>
               </div>
@@ -186,7 +186,7 @@ export function ContactSection() {
                     Corporate Office
                   </div>
                   <div className="contact-value text-xs sm:text-sm font-medium text-[#102B50] dark:text-white leading-relaxed">
-                    Infidell Technology, Corporate Office, Technology Park, SG Highway, Ahmedabad, Gujarat, India – 380015
+                    Infidell Technology, US Headquarters: 100 Montgomery St, Suite 1800, San Francisco, CA 94104, USA
                   </div>
                 </div>
               </div>
@@ -275,12 +275,12 @@ export function ContactSection() {
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                           className="w-28 px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
                         >
-                          <option value="+91">🇮🇳 +91</option>
                           <option value="+1">🇺🇸 +1</option>
                           <option value="+44">🇬🇧 +44</option>
-                          <option value="+971">🇦🇪 +971</option>
-                          <option value="+65">🇸🇬 +65</option>
                           <option value="+61">🇦🇺 +61</option>
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+65">🇸🇬 +65</option>
+                          <option value="+971">🇦🇪 +971</option>
                         </select>
                         <input
                           id="contact-phone"
@@ -381,7 +381,7 @@ export function ContactSection() {
                         setFormData({
                           name: '',
                           email: '',
-                          countryCode: '+91',
+                          countryCode: '+1',
                           phone: '',
                           inquiryType: 'Candidate Placement Advisory',
                           message: ''

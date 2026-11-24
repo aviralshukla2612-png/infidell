@@ -231,11 +231,10 @@ export function WhatIsInfidellSection() {
                 {/* CURTAIN REVEAL LAYER: SLIDES DOWN BRINGING ALL INFORMATION   */}
                 {/* ============================================================ */}
                 <div
-                  className={`absolute inset-0 z-20 ${pillar.curtainBg} border-b-2 ${pillar.curtainBorder} p-8 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl ${
-                    isCardActive 
-                      ? 'translate-y-0 opacity-100 pointer-events-auto' 
+                  className={`absolute inset-0 z-20 ${pillar.curtainBg} border-b-2 ${pillar.curtainBorder} p-8 flex flex-col justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl ${isCardActive
+                      ? 'translate-y-0 opacity-100 pointer-events-auto'
                       : '-translate-y-[105%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto'
-                  }`}
+                    }`}
                   style={{
                     boxShadow: `0 20px 40px rgba(0,0,0,0.9), 0 0 30px ${pillar.glowColor}`
                   }}

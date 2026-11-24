@@ -169,7 +169,7 @@ export function CandidateRegistrationForm({
             id="cand-fullName"
             {...register('fullName')}
             type="text"
-            placeholder="e.g. Priyank Sharma"
+            placeholder="e.g. Alex Morgan"
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors"
           />
           {errors.fullName && (
@@ -185,7 +185,7 @@ export function CandidateRegistrationForm({
             id="cand-email"
             {...register('email')}
             type="email"
-            placeholder="priyank@example.com"
+            placeholder="alex@example.com"
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors"
           />
           {errors.email && (
@@ -201,7 +201,7 @@ export function CandidateRegistrationForm({
             id="cand-phone"
             {...register('phone')}
             type="tel"
-            placeholder="10-digit mobile number"
+            placeholder="+1 (555) 019-2834"
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors"
           />
           {errors.phone && (
@@ -307,7 +307,7 @@ export function CandidateRegistrationForm({
             id="cand-preferredLocation"
             {...register('preferredLocation')}
             type="text"
-            placeholder="e.g. Ahmedabad, Pune, Bengaluru, or Remote"
+            placeholder="e.g. San Francisco, New York, Austin, or Remote"
             className="w-full px-4 py-2.5 rounded-xl bg-[#080B0E] border border-[#202A30] text-sm text-white focus:outline-none focus:border-[#00E5F0] transition-colors"
           />
           {errors.preferredLocation && (

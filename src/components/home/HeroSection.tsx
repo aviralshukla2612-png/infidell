@@ -259,7 +259,7 @@ export function HeroSection() {
             <picture>
               <source srcSet="/images/lightbgphone.webp" type="image/webp" />
               <img
-                src="/images/lightbgphone.png"
+                src="/images/lightbgphone.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Mobile"
                 fetchPriority="high"
                 loading="eager"
@@ -273,7 +273,7 @@ export function HeroSection() {
             <picture>
               <source srcSet="/lightbg.webp" type="image/webp" />
               <img
-                src="/lightbg.png"
+                src="/lightbg.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
                 fetchPriority="high"
                 loading="eager"

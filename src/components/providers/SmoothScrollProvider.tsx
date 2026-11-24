@@ -29,9 +29,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     const isMobile = window.innerWidth < 768;
     if (isMobile) {
       // Mobile viewports preserve 100% native 120Hz GPU touch scrolling with zero main-thread RAF overhead
-      return () => {
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-      };
+      return;
     }
 
     const lenis = new Lenis({
@@ -59,7 +57,6 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       gsap.ticker.remove(tickerCb);
       (window as any).lenis = null;
       lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 

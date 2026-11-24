@@ -171,87 +171,79 @@ export function AboutSection() {
       );
 
       // 2. Sideways Horizontal Pinned Carousel Animation (with Centered Hold Plateaus)
-      const initCarousel = () => {
-        const container = stageRef.current;
-        if (container) {
-          const slides = gsap.utils.toArray<HTMLElement>('.carousel__item', container);
+      const container = stageRef.current;
+      if (container) {
+        const slides = gsap.utils.toArray<HTMLElement>('.carousel__item', container);
 
-          if (slides.length > 0) {
-            const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+        if (slides.length > 0) {
+          const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
 
-            ScrollTrigger.create({
-              animation: tl,
-              id: 'practice-horizontal-st',
-              trigger: container,
-              start: 'top top',
-              end: () => `+=${container.clientHeight * (slides.length - 1)}`,
-              pin: true,
-              scrub: 1,
-              snap: {
-                snapTo: 'labels',
-                duration: { min: 0.25, max: 0.6 },
-                ease: 'power1.out'
-              },
-              anticipatePin: 1
-            });
+          ScrollTrigger.create({
+            animation: tl,
+            id: 'practice-horizontal-st',
+            trigger: container,
+            start: 'top top',
+            end: () => `+=${container.clientHeight * (slides.length - 1)}`,
+            pin: true,
+            scrub: 1,
+            snap: {
+              snapTo: 'labels',
+              duration: { min: 0.25, max: 0.6 },
+              ease: 'power1.out'
+            },
+            anticipatePin: 1
+          });
 
-            // Reset all slides: horizontal sideways translation only (xPercent, yPercent is strictly 0)
-            gsap.set(slides, {
-              xPercent: 115,
-              yPercent: 0,
-              scale: 0.9,
+          // Reset all slides: horizontal sideways translation only (xPercent, yPercent is strictly 0)
+          gsap.set(slides, {
+            xPercent: 115,
+            yPercent: 0,
+            scale: 0.9,
+            opacity: 0,
+            zIndex: 1
+          });
+
+          // First slide begins active, centered and visible
+          gsap.set(slides[0], {
+            xPercent: 0,
+            yPercent: 0,
+            opacity: 1,
+            scale: 1,
+            zIndex: 20
+          });
+
+          // Label for slide 1 during initial centered rest
+          tl.add('our-work-1', 0);
+          // Initial pause so Slide 1 rests centered before scrolling away
+          tl.to({}, { duration: 0.5 });
+
+          // Sequential horizontal sideways transitions with hold plateaus
+          for (let i = 1; i < slides.length; i++) {
+            // Sideways Slide: Previous slide exits left (-115%), Current slide enters from right (115% -> 0%)
+            tl.to(slides[i - 1], {
+              xPercent: -115,
               opacity: 0,
-              zIndex: 1
-            });
-
-            // First slide begins active, centered and visible
-            gsap.set(slides[0], {
-              xPercent: 0,
-              yPercent: 0,
-              opacity: 1,
-              scale: 1,
-              zIndex: 20
-            });
-
-            // Label for slide 1 during initial centered rest
-            tl.add('our-work-1', 0);
-            // Initial pause so Slide 1 rests centered before scrolling away
-            tl.to({}, { duration: 0.5 });
-
-            // Sequential horizontal sideways transitions with hold plateaus
-            for (let i = 1; i < slides.length; i++) {
-              // Sideways Slide: Previous slide exits left (-115%), Current slide enters from right (115% -> 0%)
-              tl.to(slides[i - 1], {
-                xPercent: -115,
-                opacity: 0,
-                scale: 0.9,
-                zIndex: 10,
-                duration: 1.0
-              })
-                .to(
-                  slides[i],
-                  {
-                    xPercent: 0,
-                    opacity: 1,
-                    scale: 1,
-                    zIndex: 20,
-                    duration: 1.0
-                  },
-                  '<'
-                )
-                // Centered Hold Plateau: Holds cleanly in center for reading
-                .to({}, { duration: 0.5 })
-                // Add label exactly at the centered hold point for accurate snapping
-                .add(`our-work-${i + 1}`);
-            }
+              scale: 0.9,
+              zIndex: 10,
+              duration: 1.0
+            })
+              .to(
+                slides[i],
+                {
+                  xPercent: 0,
+                  opacity: 1,
+                  scale: 1,
+                  zIndex: 20,
+                  duration: 1.0
+                },
+                '<'
+              )
+              // Centered Hold Plateau: Holds cleanly in center for reading
+              .to({}, { duration: 0.5 })
+              // Add label exactly at the centered hold point for accurate snapping
+              .add(`our-work-${i + 1}`);
           }
         }
-      };
-
-      if ('requestIdleCallback' in window) {
-        (window as any).requestIdleCallback(initCarousel, { timeout: 1000 });
-      } else {
-        setTimeout(initCarousel, 120);
       }
 
       // 3. Founder's Note entrance

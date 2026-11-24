@@ -257,11 +257,11 @@ export function HeroSection() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center sm:object-right opacity-90 sm:opacity-95"
+              className="object-cover object-[78%_center] sm:object-right opacity-90 sm:opacity-95"
             />
           </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/75 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/85 sm:via-[#000000]/75 via-50% sm:via-40% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent via-30% to-[#000000]/60 pointer-events-none" />
 
           {/* Continuous Flowing Particle Wave Layer (Moves seamlessly from Left to Right) */}
@@ -306,11 +306,11 @@ export function HeroSection() {
               priority
               fetchPriority="high"
               sizes="100vw"
-              className="object-cover object-center sm:object-right-bottom"
+              className="object-cover object-[92%_center] sm:object-right-bottom"
             />
           </div>
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-40% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 sm:via-white/80 via-50% sm:via-40% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent via-25% to-white/40 pointer-events-none" />
           {/* Luminous subtle traveling wave shimmer from left to right */}
           <div className="absolute inset-x-0 bottom-0 h-40 sm:h-52 overflow-hidden pointer-events-none opacity-45">

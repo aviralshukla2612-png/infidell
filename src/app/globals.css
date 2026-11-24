@@ -268,6 +268,16 @@ html.light #footer {
   border-top: 1px solid #1E3A5F !important;
 }
 
+#footer .logo-title,
+footer .logo-title {
+  color: #FFFFFF !important;
+}
+
+#footer .logo-sub,
+footer .logo-sub {
+  color: #CBD5E1 !important;
+}
+
 /* Card & Surface Overrides in Light Mode */
 html.light .career-card,
 html.light .journey-card,
@@ -1098,51 +1108,76 @@ html.light .demanded-role-card.active {
 
 @media (max-width: 768px) {
   .pin-track {
-    height: auto !important;
+    position: relative;
+    width: 100%;
   }
 
   .pin-viewport {
-    height: auto;
-    padding: 20px 0 40px;
+    height: 72vh;
+    min-height: 460px;
+    padding: 20px 0 30px;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .card-stage {
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-    height: auto;
-    padding: 0 20px;
-    transform: none !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: max-content;
+    height: 100%;
+    padding: 0 calc(50vw - 42vw);
+    transform: none;
   }
 
   .demanded-role-card {
-    width: 100%;
-    max-width: 440px;
-    height: 300px;
-    min-height: 260px;
-    margin: 0 auto;
+    width: 84vw;
+    max-width: 360px;
+    min-width: 280px;
+    height: 380px;
+    min-height: 320px;
+    margin: 0;
+    opacity: 0.35;
+    transform: scale(0.88);
+  }
+
+  .demanded-role-card.active {
     opacity: 1 !important;
-    transform: none !important;
+    transform: scale(1.02) !important;
   }
 
   .demanded-role-card .card-image img {
-    filter: blur(0px) brightness(0.85);
+    filter: blur(3px) brightness(0.75);
+  }
+
+  .demanded-role-card.active .card-image img {
+    filter: blur(0px) brightness(0.9);
   }
 
   .image-title {
+    opacity: 0;
+    transform: translateY(16px);
+    font-size: 24px;
+    padding: 0 20px calc(20px + 46px);
+  }
+
+  .demanded-role-card.active .image-title {
     opacity: 1;
-    transform: none;
-    font-size: 28px;
-    padding: 0 24px 70px;
+    transform: translateY(0);
   }
 
   .explore-career-wrapper {
-    opacity: 1;
-    transform: none;
     bottom: 20px;
     right: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .demanded-role-card.active .explore-career-wrapper {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

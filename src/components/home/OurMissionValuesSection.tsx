@@ -14,7 +14,7 @@ const VALUES_BADGES = [
   {
     id: 'ethical',
     title: 'Responsible Recruitment',
-    position: 'top-[36%] right-[4%] sm:right-[6%]',
+    position: 'top-[10%] right-[3%] sm:right-[5%]',
     icon: <ShieldCheck className="w-4 h-4 text-[#00D5DF]" strokeWidth={1.75} />
   },
   {

@@ -110,7 +110,7 @@ export function Footer() {
           <div className="max-w-3xl space-y-6 sm:space-y-8">
             {/* Logo with Company Name in Footer */}
             <div className="group relative inline-flex items-center cursor-pointer">
-              <Logo size="lg" showText={true} showTagline={true} />
+              <Logo size="lg" showText={true} showTagline={true} forceWhiteText={true} />
             </div>
 
             {/* Giant Heading matching Emperor Nexus */}

@@ -207,20 +207,10 @@ export function CareersSection() {
       if (!track || !viewport || !stage || cards.length === 0) return;
 
       const isMobile = window.innerWidth <= 768;
-
-      if (isMobile) {
-        track.style.height = 'auto';
-        stage.style.transform = 'none';
-        cards.forEach((c) => {
-          c.classList.add('active');
-          c.style.opacity = '1';
-          c.style.transform = 'none';
-        });
-        return;
-      }
+      const gap = isMobile ? 16 : 32;
 
       // Calculate total horizontal scroll distance
-      const cardWidth = (cards[0].offsetWidth || 460) + 32; // card width + 32px gap
+      const cardWidth = (cards[0].offsetWidth || (isMobile ? window.innerWidth * 0.84 : 460)) + gap;
       const totalCards = CAREER_ROLES.length;
       const totalDistance = cardWidth * (totalCards - 1);
 

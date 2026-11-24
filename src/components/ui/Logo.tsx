@@ -9,13 +9,15 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   showText?: boolean;
   showTagline?: boolean;
+  forceWhiteText?: boolean;
 }
 
 export function Logo({
   className = '',
   size = 'md',
   showText = true,
-  showTagline = true
+  showTagline = true,
+  forceWhiteText = false
 }: LogoProps) {
   const iconDimensions = {
     sm: { size: 32, className: 'w-7 h-7 sm:w-8 sm:h-8' },
@@ -57,11 +59,11 @@ export function Logo({
       {/* Company Name Typography */}
       {showText && (
         <div className="flex flex-col leading-tight select-none">
-          <span className={`font-extrabold tracking-[0.14em] text-[#102B50] dark:text-white ${titleSizes[size]} uppercase group-hover:text-[#00D5DF] transition-colors`}>
+          <span className={`logo-title font-extrabold tracking-[0.14em] ${forceWhiteText ? 'text-white' : 'text-[#102B50] dark:text-white'} ${titleSizes[size]} uppercase group-hover:text-[#00D5DF] transition-colors`}>
             INFIDELL
           </span>
           {showTagline && (
-            <span className={`font-semibold tracking-[0.22em] text-[#64748B] dark:text-[#A5B2B3] group-hover:text-[#102B50] dark:group-hover:text-white transition-colors uppercase ${subSizes[size]} mt-0.5`}>
+            <span className={`logo-sub font-semibold tracking-[0.22em] ${forceWhiteText ? 'text-[#CBD5E1]' : 'text-[#64748B] dark:text-[#A5B2B3]'} group-hover:text-[#00D5DF] transition-colors uppercase ${subSizes[size]} mt-0.5`}>
               TECHNOLOGY
             </span>
           )}

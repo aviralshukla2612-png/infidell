@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import {
   Phone,
@@ -13,7 +13,8 @@ import {
   ArrowUpRight,
   Clock,
   ShieldCheck,
-  Lock
+  Lock,
+  ChevronDown
 } from 'lucide-react';
 import {
   containsMaliciousPayload,
@@ -22,7 +23,103 @@ import {
   sanitizeText
 } from '@/lib/security';
 
+interface CountryDialOption {
+  code: string;
+  name: string;
+  flagSvg: React.ReactNode;
+}
+
+const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
+  {
+    code: '+1',
+    name: 'United States',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#bd3d44" d="M0 0h640v480H0z"/>
+        <path stroke="#fff" strokeWidth="37" d="M0 55.4h640M0 129.2h640M0 203h640M0 277h640M0 350.8h640M0 424.6h640"/>
+        <path fill="#192f5d" d="M0 0h284.8v258.5H0z"/>
+      </svg>
+    )
+  },
+  {
+    code: '+44',
+    name: 'United Kingdom',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#012169" d="M0 0h640v480H0z"/>
+        <path fill="#FFF" d="m75 0 245 180L565 0h75v60L440 240l200 150v90h-75L320 300 75 480H0v-60l200-150L0 60V0h75z"/>
+        <path fill="#C8102E" d="m424 282 216 162v36l-264-198h48zm-208-84L0 36V0l264 198h-48zM0 444l192-144h48L24 480H0v-36zm640-408L448 180h-48L616 0h24v36z"/>
+        <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+        <path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/>
+      </svg>
+    )
+  },
+  {
+    code: '+61',
+    name: 'Australia',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#00008b" d="M0 0h640v480H0z"/>
+        <path fill="#fff" d="m0 0 320 240m0-240L0 240" stroke="#fff" strokeWidth="40"/>
+        <path fill="#cc0000" d="m0 0 320 240m0-240L0 240" stroke="#cc0000" strokeWidth="20"/>
+        <path stroke="#fff" strokeWidth="60" d="M160 0v240M0 120h320"/>
+        <path stroke="#cc0000" strokeWidth="36" d="M160 0v240M0 120h320"/>
+      </svg>
+    )
+  },
+  {
+    code: '+49',
+    name: 'Germany',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#ffce00" d="M0 320h640v160H0z"/>
+        <path d="M0 0h640v160H0z"/>
+        <path fill="#d00" d="M0 160h640v160H0z"/>
+      </svg>
+    )
+  },
+  {
+    code: '+65',
+    name: 'Singapore',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#ed2939" d="M0 0h640v240H0z"/>
+        <path fill="#fff" d="M0 240h640v240H0z"/>
+        <circle cx="120" cy="120" r="70" fill="#fff"/>
+        <circle cx="140" cy="120" r="70" fill="#ed2939"/>
+      </svg>
+    )
+  },
+  {
+    code: '+971',
+    name: 'United Arab Emirates',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#00732f" d="M0 0h640v160H0z"/>
+        <path fill="#fff" d="M0 160h640v160H0z"/>
+        <path d="M0 320h640v160H0z"/>
+        <path fill="red" d="M0 0h160v480H0z"/>
+      </svg>
+    )
+  },
+  {
+    code: '+91',
+    name: 'India',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#f93" d="M0 0h640v160H0z"/>
+        <path fill="#fff" d="M0 160h640v160H0z"/>
+        <path fill="#128807" d="M0 320h640v160H0z"/>
+        <circle cx="320" cy="240" r="45" fill="none" stroke="#008" strokeWidth="6"/>
+      </svg>
+    )
+  }
+];
+
 export function ContactSection() {
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
+  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +128,19 @@ export function ContactSection() {
     inquiryType: 'Candidate Placement Advisory',
     message: ''
   });
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setCountryDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selectedCountry = COUNTRY_DIAL_OPTIONS.find((c) => c.code === formData.countryCode) || COUNTRY_DIAL_OPTIONS[0];
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -314,20 +424,48 @@ export function ContactSection() {
                         </span>
                       </div>
                       <div className="flex gap-2">
-                        <select
-                          id="contact-countryCode"
-                          aria-label="Country Dial Code"
-                          value={formData.countryCode}
-                          onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                          className="w-24 sm:w-28 px-2 sm:px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-xs sm:text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
-                        >
-                          <option value="+1">🇺🇸 +1</option>
-                          <option value="+44">🇬🇧 +44</option>
-                          <option value="+61">🇦🇺 +61</option>
-                          <option value="+49">🇩🇪 +49</option>
-                          <option value="+65">🇸🇬 +65</option>
-                          <option value="+971">🇦🇪 +971</option>
-                        </select>
+                        {/* Custom Nation Flag & Dial Code Dropdown */}
+                        <div ref={countryDropdownRef} className="relative">
+                          <button
+                            type="button"
+                            onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+                            aria-label="Select Country Code"
+                            className="h-[46px] sm:h-[48px] px-2.5 sm:px-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-xs sm:text-sm font-medium text-[#0F172A] dark:text-white flex items-center gap-1.5 focus:outline-none focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
+                          >
+                            {selectedCountry.flagSvg}
+                            <span className="font-semibold text-xs sm:text-sm">{selectedCountry.code}</span>
+                            <ChevronDown className={`w-3.5 h-3.5 text-slate-400 dark:text-neutral-400 transition-transform ${countryDropdownOpen ? 'rotate-180' : ''}`} />
+                          </button>
+
+                          {countryDropdownOpen && (
+                            <div className="absolute top-full left-0 mt-1.5 w-52 py-1.5 rounded-xl bg-white dark:bg-[#0C1517] border border-slate-200 dark:border-[#203536] shadow-xl z-30 max-h-60 overflow-y-auto">
+                              {COUNTRY_DIAL_OPTIONS.map((item) => (
+                                <button
+                                  key={item.code}
+                                  type="button"
+                                  onClick={() => {
+                                    setFormData({ ...formData, countryCode: item.code });
+                                    setCountryDropdownOpen(false);
+                                  }}
+                                  className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs sm:text-sm transition-colors cursor-pointer ${
+                                    formData.countryCode === item.code
+                                      ? 'bg-blue-50 dark:bg-white/10 text-[#087FCB] dark:text-[#00D5DF] font-semibold'
+                                      : 'text-slate-700 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-white/5'
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-2.5">
+                                    {item.flagSvg}
+                                    <span className="truncate">{item.name}</span>
+                                  </div>
+                                  <span className="font-mono text-xs text-slate-500 dark:text-neutral-400 shrink-0 ml-2">
+                                    {item.code}
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
                         <input
                           id="contact-phone"
                           type="tel"
@@ -379,10 +517,6 @@ export function ContactSection() {
                         placeholder="Tell us about how we can help you..."
                         className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm resize-y"
                       />
-                      <div className="flex items-center gap-1.5 mt-1.5 text-[11px] text-slate-400 dark:text-neutral-500">
-                        <Lock className="w-3 h-3 text-[#087FCB] dark:text-[#00D5DF] shrink-0" />
-                        <span>Protected transmission. Script tags and executable code patterns are automatically blocked.</span>
-                      </div>
                     </div>
 
                     {/* Full-width CTA Button (Zarvion Signature) */}

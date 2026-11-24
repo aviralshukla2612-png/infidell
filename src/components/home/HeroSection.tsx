@@ -211,7 +211,7 @@ export function HeroSection() {
     <section 
       id="home"
       ref={containerRef}
-      className="relative min-h-screen sm:min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-start sm:justify-center bg-white dark:bg-[#000000] overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-16"
+      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-center bg-white dark:bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-12 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div 
@@ -220,18 +220,18 @@ export function HeroSection() {
       >
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-x-0 bottom-0 h-[48%] sm:h-full sm:inset-0 w-full will-change-transform">
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
             <Image
               src="/images/bg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual"
               fill
               sizes="(max-width: 768px) 100vw, 1000px"
-              className="object-contain sm:object-cover object-bottom sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
+              className="object-contain sm:object-cover object-center sm:object-right opacity-85 sm:opacity-95 mix-blend-screen scale-105 sm:scale-100"
             />
           </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-[#000000]/85 via-45% to-transparent sm:bg-gradient-to-r sm:from-[#000000] sm:via-[#000000]/70 sm:to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
           {/* Multi-layered specular ambient depth glows */}
           <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
           <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px]" />
@@ -239,7 +239,7 @@ export function HeroSection() {
 
         {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
         <div className="light-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-x-0 bottom-0 h-[48%] sm:h-full sm:inset-0 w-full will-change-transform">
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
             <Image
               src="/lightbg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
@@ -247,19 +247,19 @@ export function HeroSection() {
               priority
               fetchPriority="high"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-              className="object-cover object-right sm:object-right-bottom"
+              className="object-cover object-[78%_center] sm:object-right-bottom"
             />
           </div>
-          {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/95 via-45% to-transparent sm:bg-gradient-to-r sm:from-white sm:via-white/70 sm:via-30% sm:to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
+          {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page as 1 cohesive unit */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-35% to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent pointer-events-none" />
           {/* Subtle azure specular bloom */}
           <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
         </div>
       </div>
 
       {/* Main Hero Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full sm:my-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-8 xl:col-span-8 space-y-6 sm:space-y-8">

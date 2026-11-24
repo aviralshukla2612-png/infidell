@@ -18,170 +18,170 @@ const FAQS: FAQItem[] = [
   {
     id: 1,
     num: '01',
-    question: 'How does Infidell support candidates throughout their career journey and executive placement?',
+    question: 'How does Infidell support candidates throughout the hiring process?',
     answer:
-      'Infidell functions as a personal executive career advisory partner rather than a transactional resume clearinghouse. From day one, candidates are paired with experienced recruitment advisors who thoroughly analyze career trajectories, deconstruct past architectural achievements, and rebuild technical resumes to clear strict applicant tracking systems (ATS). We conduct in-depth mock technical rounds, guide negotiation strategies, benchmark market compensation across premier US technology hubs (Silicon Valley, New York, Austin, Seattle, Boston), and arrange high-trust introductions directly with CTOs, Engineering Directors, and VP-level hiring authorities.',
+      'We provide personalized career guidance, technical resume optimization, interview briefings, and direct introductions to hiring decision-makers across US and global technology companies.',
     details: [
       {
-        label: 'Strategic Profile Architecture',
-        text: 'Rebuilding technical resumes and code portfolios to pass algorithmic filters and resonate with hiring managers.'
+        label: 'Profile Alignment',
+        text: 'Tailoring resumes and portfolios to resonate with technical hiring managers.'
       },
       {
-        label: 'Direct Executive Access',
-        text: 'Bypassing generic HR portals to pitch your capabilities directly to senior technology and business leaders across Silicon Valley, New York City, Austin, Seattle, Boston, and nationwide remote networks.'
+        label: 'Direct Introductions',
+        text: 'Connecting directly with engineering and leadership decision-makers.'
       }
     ]
   },
   {
     id: 2,
     num: '02',
-    question: 'Are there any registration, assessment, interview, or placement charges for candidates?',
+    question: 'What is the onboarding process for candidates joining Infidell’s network?',
     answer:
-      'Absolutely not. Infidell operates under uncompromising ethical recruitment principles: 100% of our candidate advisory, resume evaluation, technical screening, and placement services are completely free of charge to job seekers. We will never ask for registration fees, interview security deposits, training costs, or commission cuts from your hard-earned salary. Our operations and advisory engagements are fully retained and funded by our vetted corporate employer partners who value our precision talent acquisition standards.',
+      'Candidates submit their professional background and resume online. Our advisory team reviews credentials, discusses career goals, and connects qualified profiles with relevant corporate openings.',
     details: [
       {
-        label: 'Zero Candidate Fees',
-        text: 'No upfront costs, hidden deductions, or recurring fees at any stage of the advisory lifecycle.'
+        label: 'Profile Submission',
+        text: 'Online submission of technical experience, credentials, and resume.'
       },
       {
-        label: 'Protected Compensation',
-        text: '100% of your offered CTC, joining bonuses, and equity grants remain strictly yours without agency salary deductions.'
+        label: 'Advisor Alignment',
+        text: 'Structured evaluation of skills and alignment with active client mandates.'
       }
     ]
   },
   {
     id: 3,
     num: '03',
-    question: 'How does Infidell deliver vetted candidate shortlists for corporate employers?',
+    question: 'How does Infidell curate candidate shortlists for corporate employers?',
     answer:
-      'For active engineering, technical architecture, and leadership requisitions, Infidell curates and delivers multi-tier pre-screened candidate dossiers tailored to each organizational culture. Because we maintain an active, relationship-driven pipeline of passive senior talent and pre-screened specialists, our clients receive interview-ready profiles complete with deep technical evaluation scorecards, confirmed availability, location preferences, and pre-aligned compensation expectations.',
+      'We deliver pre-screened candidate dossiers tailored to each organization’s technical stack, team culture, and delivery goals, providing interview-ready talent with confirmed availability.',
     details: [
       {
-        label: 'Rigorous Candidate Curation',
-        text: 'Immediate candidate curation for critical hiring demands without sacrificing technical screening rigor.'
+        label: 'Targeted Discovery',
+        text: 'Sourcing across active and passive engineering and leadership networks.'
       },
       {
-        label: 'Pre-Aligned Readiness',
-        text: 'Every submitted candidate has confirmed availability, verified notice timeline (immediate, standard 2-week US transition, or custom executive start dates), and pre-negotiated compensation expectations.'
+        label: 'Verified Readiness',
+        text: 'Profiles confirmed for technical proficiency, cultural fit, and compensation expectations.'
       }
     ]
   },
   {
     id: 4,
     num: '04',
-    question: 'What is Infidell’s technical screening and profile credential verification methodology?',
+    question: 'How are candidate credentials and technical competencies verified?',
     answer:
-      'We do not rely on keyword matching or automated scrapers. Every candidate submitted to an enterprise client undergoes a comprehensive multi-stage vetting process conducted by senior technical specialists. This includes architectural design discussions, hands-on coding and problem-solving evaluations, leadership competency appraisals, and strict past performance verifications. Before an offer is extended, we conduct rigorous background checks conforming to statutory ISO and enterprise governance compliance protocols.',
+      'Our technical specialists conduct structured competency reviews, system design evaluations, and professional reference checks before presenting candidates to hiring teams.',
     details: [
       {
-        label: 'Multi-Tier Technical Assessment',
-        text: 'Comprehensive evaluation of system design, code quality, scalability paradigms, and technical leadership.'
+        label: 'Technical Evaluation',
+        text: 'Thorough review of system design, coding proficiency, and technical problem-solving.'
       },
       {
-        label: 'Statutory Due Diligence',
-        text: 'Exhaustive verification of employment history, educational credentials, payroll records, and references.'
+        label: 'Background Verification',
+        text: 'Comprehensive verification of employment history, credentials, and references.'
       }
     ]
   },
   {
     id: 5,
     num: '05',
-    question: 'Does registering or interviewing through Infidell guarantee a job placement?',
+    question: 'What factors influence candidate placement outcomes?',
     answer:
-      'Ethical transparency and intellectual honesty are fundamental to our brand ethos. No professional recruitment agency can legitimately guarantee job placement, as hiring decisions ultimately rest with client interview panels and organizational requirements. What we do guarantee is uncompromising advocacy: your profile will be personally championed before decision-makers without automated algorithmic gatekeeping, and you will receive comprehensive debriefs, honest market feedback, and persistent representation across high-growth opportunities.',
+      'Placement outcomes depend on client hiring requirements, role specifications, and candidate performance during interviews. Infidell ensures direct human representation and clear communication at every stage.',
     details: [
       {
-        label: 'Uncompromising Advocacy',
-        text: 'Direct human representation to hiring authorities with full transparency regarding role requirements and hiring probabilities.'
+        label: 'Direct Representation',
+        text: 'Advocating candidate capabilities directly to hiring authorities without algorithmic filters.'
       },
       {
-        label: 'Constructive Feedback Loops',
-        text: 'Continuous interview debriefs and actionable feedback to continuously hone your interview performance and market readiness.'
+        label: 'Clear Communication',
+        text: 'Timely debriefs and actionable feedback following client interviews.'
       }
     ]
   },
   {
     id: 6,
     num: '06',
-    question: 'What tech domains, industry sectors, and workplace arrangements does Infidell cover across North America and global markets?',
+    question: 'Which industry sectors and workplace models does Infidell support?',
     answer:
-      'Infidell delivers talent advisory and recruitment across high-impact tech and corporate sectors, including Cloud Infrastructure & DevOps, Artificial Intelligence & Machine Learning, Full-Stack Enterprise Engineering, FinTech & Capital Markets, HealthTech, Cyber Security, and Executive Management. We support on-campus corporate headquarters, flexible hybrid arrangements, and fully distributed remote engineering teams across major US technology centers, including Silicon Valley, New York City, Austin, Seattle, Boston, Chicago, and nationwide remote.',
+      'We specialize in technical and corporate recruitment across Cloud & DevOps, AI/ML, Full-Stack Engineering, FinTech, HealthTech, and Cybersecurity, supporting onsite, hybrid, and remote roles.',
     details: [
       {
-        label: 'Comprehensive Tech Coverage',
-        text: 'Deep domain talent pools spanning Cloud, AI/ML, Microservices, Data Engineering, and Product Leadership.'
+        label: 'Specialized Sectors',
+        text: 'Deep talent networks across software engineering, data, and technical management.'
       },
       {
-        label: 'Flexible Workplace Models',
-        text: 'Expert matching for onsite headquarters, distributed remote workforces, and hybrid operational schedules.'
+        label: 'Workplace Models',
+        text: 'Placement for corporate headquarters, hybrid schedules, and distributed teams.'
       }
     ]
   },
   {
     id: 7,
     num: '07',
-    question: 'How does Infidell handle confidential executive searches and leadership mandates?',
+    question: 'How does Infidell handle confidential executive searches?',
     answer:
-      'When organizations require critical executive leadership—such as Chief Technology Officers, Vice Presidents of Engineering, Heads of Product, or Chief Information Security Officers—discretion is paramount. Our Executive Search practice operates under strict non-disclosure agreements (NDAs) to protect sensitive organizational changes and proprietary business strategies. We conduct discreet passive candidate headhunting, high-touch executive cultural alignment interviews, and thorough leadership reference evaluations.',
+      'Executive search mandates operate under strict non-disclosure agreements, employing discreet outreach and rigorous leadership evaluations for Director, VP, and C-suite roles.',
     details: [
       {
-        label: 'Strict NDA Governance',
-        text: 'Complete organizational and candidate confidentiality maintained throughout the executive search lifecycle.'
+        label: 'Strict Confidentiality',
+        text: 'Complete discretion and NDA compliance throughout the executive search.'
       },
       {
-        label: 'Bespoke Executive Assessment',
-        text: 'Evaluating strategic vision, team mentorship capacity, governance experience, and board-level communication skills.'
+        label: 'Leadership Assessment',
+        text: 'Evaluating strategic vision, organizational leadership, and executive presence.'
       }
     ]
   },
   {
     id: 8,
     num: '08',
-    question: 'What candidate support is provided for executive compensation negotiations, equity structures, and career transitions?',
+    question: 'What guidance is provided for compensation and offer evaluation?',
     answer:
-      'Navigating executive career transitions, competitive equity packages (RSUs, ISOs, double-trigger vesting), signing bonuses, and non-compete agreements in the US tech market requires specialized advisory. Infidell provides strategic counsel to ensure your total compensation package reflects your true market value. Our advisors work closely with candidates to model offer trade-offs, evaluate startup equity risk profiles, and align compensation with Fortune 500 and VC-backed benchmark standards.',
+      'We provide objective market compensation benchmarking and offer structure analysis to help candidates and employers reach equitable, competitive agreements.',
     details: [
       {
-        label: 'Equity & Compensation Structuring',
-        text: 'Comprehensive evaluation of base salary, performance equity (RSUs/options), executive signing bonuses, and 401(k) match structures.'
+        label: 'Market Benchmarking',
+        text: 'Data-driven analysis of base compensation, equity packages, and benefits.'
       },
       {
-        label: 'Executive Transition Roadmaps',
-        text: 'Data-driven negotiation guidance, managing counter-offers, non-compete compliance, and seamless executive onboarding.'
+        label: 'Offer Transition',
+        text: 'Professional guidance on offer evaluation and transition logistics.'
       }
     ]
   },
   {
     id: 9,
     num: '09',
-    question: 'What ongoing support and hiring safeguards do you provide to corporate employers?',
+    question: 'How does Infidell support corporate partners during onboarding?',
     answer:
-      'To support lasting team stability and protect hiring momentum, Infidell works closely with enterprise partners throughout the initial onboarding period. If a placement requires realignment or an unexpected departure occurs during early tenure, our dedicated search team prioritizes re-engaging our talent network to source qualified replacement candidates and maintain team delivery schedules.',
+      'We coordinate closely with candidates and hiring managers through onboarding to facilitate smooth team integration and support lasting organizational retention.',
     details: [
       {
-        label: 'Proactive Onboarding Support',
-        text: 'Structured check-ins with candidates and hiring managers to promote long-term retention and cultural alignment.'
+        label: 'Onboarding Alignment',
+        text: 'Structured communication to foster early engagement and cultural fit.'
       },
       {
-        label: 'Dedicated Search Continuity',
-        text: 'Prioritized talent re-sourcing support to maintain organizational momentum for critical projects.'
+        label: 'Talent Continuity',
+        text: 'Responsive partnership to address evolving hiring mandates.'
       }
     ]
   },
   {
     id: 10,
     num: '10',
-    question: 'How does Infidell support placed candidates and hiring teams after offer acceptance?',
+    question: 'What follow-up occurs after an offer is accepted?',
     answer:
-      'At Infidell, the placement process does not terminate upon offer letter signing. We stay actively engaged through the critical pre-onboarding resignation phase, countering counter-offers and mitigating candidate drop-off risks. Following joining day, our team conducts structured 30-day, 60-day, and 90-day post-placement touchpoints with both the candidate and the hiring manager to ensure seamless cultural integration, team harmony, and sustained mutual career satisfaction.',
+      'Our team assists with transition logistics, resignation planning, and periodic check-ins following the start date to ensure mutual satisfaction and sustained success.',
     details: [
       {
-        label: 'Pre-Onboarding Continuity',
-        text: 'Proactive candidate engagement to prevent counter-offer attrition and ensure clear transition alignment.'
+        label: 'Transition Guidance',
+        text: 'Support during resignation, notice periods, and onboarding preparation.'
       },
       {
-        label: 'Structured Milestone Check-Ins',
-        text: 'Ongoing 30/60/90-day post-joining alignment reviews to ensure long-term retention and professional growth.'
+        label: 'Ongoing Touchpoints',
+        text: 'Periodic reviews to confirm alignment and long-term satisfaction.'
       }
     ]
   }

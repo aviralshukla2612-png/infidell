@@ -266,21 +266,21 @@
   "FAQ": {
     "badge": "CLARITY & TRANSPARENCY",
     "title": "Frequently Asked Questions",
-    "subtitle": "Get clear answers about our recruitment process, candidate services, and employer partnerships.",
+    "subtitle": "Clear answers about our recruitment process, candidate advisory, and employer partnerships.",
     "q1": "How does Infidell support candidates throughout their career journey?",
-    "a1": "Infidell provides high-touch advisory: ATS resume optimization, targeted interview prep, salary negotiation guidance, and direct introductions to verified enterprises across the United States and global tech hubs.",
-    "q2": "Does registering with Infidell guarantee immediate job placement?",
-    "a2": "No recruitment agency can ethically guarantee job placement. Placement depends on client hiring mandates, market conditions, and candidate performance during client interviews. However, we maximize your visibility by actively presenting your profile to matching employers.",
+    "a1": "Infidell provides personalized advisory: technical resume optimization, interview briefings, compensation benchmarking, and direct introductions to verified enterprises across the United States and global tech markets.",
+    "q2": "What expectations should candidates have regarding placement outcomes?",
+    "a2": "Placement outcomes depend on employer requirements, market conditions, and candidate performance. Infidell actively presents qualified profiles to matching corporate partners and provides guidance at every stage.",
     "q3": "How does the profile matching process work?",
-    "a3": "Once you register and upload your resume, our recruitment specialists review your academic qualifications, technical abilities, years of experience, and location preferences against our active corporate requisitions.",
-    "q4": "How can employers submit their hiring requirements?",
-    "a4": "Employers can register via our 'For Employers' portal, submit job descriptions and qualification criteria. A dedicated account manager will connect within 24 hours to initiate candidate shortlisting.",
+    "a3": "Our recruitment specialists review your academic qualifications, technical abilities, experience, and role preferences against active corporate requisitions.",
+    "q4": "How can employers submit hiring requirements?",
+    "a4": "Employers can submit hiring specifications through our portal. An account advisor will connect promptly to review criteria and initiate candidate discovery.",
     "q5": "How does the Refer & Earn program work?",
-    "a5": "Registered individuals can refer candidates or corporate hiring clients via our Refer & Earn page. When a referred candidate completes the client's probation verification period, referral rewards are distributed according to program terms.",
-    "q6": "What documents do I need to register?",
-    "a6": "You will need an updated PDF/Word resume, basic educational details, skill inventory, and verified phone and email for verification.",
-    "q7": "Does Infidell support remote and cross-state opportunities?",
-    "a7": "Yes, Infidell represents candidates nationwide across the United States and internationally for on-site, hybrid, and distributed remote positions."
+    "a5": "Registered individuals can refer candidates or hiring partners. When a referred candidate successfully joins and completes onboarding milestones, referral rewards are distributed per program terms.",
+    "q6": "What documents are required to register?",
+    "a6": "You will need an updated resume, educational and professional background details, and verified contact information.",
+    "q7": "Does Infidell support remote and multi-location opportunities?",
+    "a7": "Yes, Infidell represents talent across the United States and international markets for onsite, hybrid, and distributed remote positions."
   },
   "FinalCTA": {
     "badge": "TAKE THE NEXT STEP",
@@ -399,6 +399,6 @@
     "jobLocation": "Job Location (City / Remote / Hybrid)",
     "jobDescription": "Job Description & Key Requirements",
     "btnSubmit": "Submit Hiring Requirement",
-    "success": "Requirement submitted successfully! An Infidell talent consultant will reach out within 24 hours."
+    "success": "Requirement submitted successfully! An Infidell talent consultant will reach out promptly."
   }
 }

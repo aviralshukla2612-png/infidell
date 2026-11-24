@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
@@ -11,11 +10,6 @@ import {
   ArrowRight, 
   Building2 
 } from 'lucide-react';
-
-const Hero3DCanvas = dynamic(
-  () => import('./Hero3DCanvas').then((mod) => mod.Hero3DCanvas),
-  { ssr: false }
-);
 
 const LINE1_PREFIX = "Every Career Has a ";
 const LINE1_HIGHLIGHT = "Next";
@@ -201,14 +195,32 @@ export function HeroSection() {
         '-=0.5'
       );
 
-      // 4. Ethereal kinetic floating for 3D infinity artwork
-      gsap.to('.hero-floating-artwork', {
-        y: -8,
-        duration: 4.5,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true
-      });
+      // 4. Kinetic Image Wave Motion: Smooth horizontal wave movement from left to right
+      gsap.fromTo(
+        '.hero-floating-artwork',
+        { x: -32, y: 8 },
+        {
+          x: 32,
+          y: -8,
+          duration: 7,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true
+        }
+      );
+
+      // 5. Luminous traveling wave stream moving from left to right across the particle wave
+      gsap.fromTo(
+        '.hero-wave-stream',
+        { xPercent: -120 },
+        {
+          xPercent: 240,
+          duration: 5.5,
+          ease: 'sine.inOut',
+          repeat: -1,
+          repeatDelay: 0.6
+        }
+      );
     },
     { scope: containerRef }
   );
@@ -226,7 +238,7 @@ export function HeroSection() {
       >
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
+          <div className="hero-floating-artwork absolute -top-[4%] -left-[6%] w-[112%] h-[108%] will-change-transform">
             <Image
               src="/images/bg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual"
@@ -238,6 +250,10 @@ export function HeroSection() {
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
+          {/* Luminous left-to-right traveling wave flow across the particle wave */}
+          <div className="absolute inset-x-0 bottom-0 h-[48%] overflow-hidden pointer-events-none mix-blend-screen opacity-65">
+            <div className="hero-wave-stream absolute inset-y-0 w-[55%] bg-gradient-to-r from-transparent via-[#00D5DF]/35 via-50% via-[#38BDF8]/40 to-transparent blur-[28px] will-change-transform" />
+          </div>
           {/* Multi-layered specular ambient depth glows */}
           <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
           <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px]" />
@@ -245,7 +261,7 @@ export function HeroSection() {
 
         {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
         <div className="light-only absolute inset-0">
-          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
+          <div className="hero-floating-artwork absolute -top-[4%] -left-[6%] w-[112%] h-[108%] will-change-transform">
             <Image
               src="/lightbg.png"
               alt="Infidell Technology Metallic Infinity Ribbon Visual - Light Theme"
@@ -259,13 +275,14 @@ export function HeroSection() {
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 via-30% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
+          {/* Luminous subtle traveling wave shimmer from left to right */}
+          <div className="absolute inset-x-0 bottom-0 h-[42%] overflow-hidden pointer-events-none opacity-40">
+            <div className="hero-wave-stream absolute inset-y-0 w-[55%] bg-gradient-to-r from-transparent via-[#087FCB]/20 via-50% via-[#00BFCB]/25 to-transparent blur-[25px] will-change-transform" />
+          </div>
           {/* Subtle azure specular bloom */}
           <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
         </div>
       </div>
-
-      {/* Premium 3D Animation Layer: Luminous Particle Wave & Orbital Light Trails */}
-      <Hero3DCanvas />
 
       {/* Main Hero Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">

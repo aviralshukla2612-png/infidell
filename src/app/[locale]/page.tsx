@@ -9,6 +9,10 @@ const AboutSection = dynamic(
   () => import('@/components/home/AboutSection').then((mod) => mod.AboutSection),
   { ssr: true }
 );
+const ServicesSection = dynamic(
+  () => import('@/components/home/ServicesSection').then((mod) => mod.ServicesSection),
+  { ssr: true }
+);
 const OurApproachSection = dynamic(
   () => import('@/components/home/OurApproachSection').then((mod) => mod.OurApproachSection),
   { ssr: true }
@@ -63,6 +67,7 @@ export default async function HomePage({
       <HeroSection />
       <CandidatesPlacedInSection />
       <AboutSection />
+      <ServicesSection />
       <OurApproachSection />
       {/* 
         CRITICAL NON-NEGOTIABLE BOUNDARY:

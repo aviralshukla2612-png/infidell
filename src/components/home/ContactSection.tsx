@@ -242,7 +242,7 @@ export function ContactSection() {
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="John Doe"
-                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
                       </div>
 
@@ -257,7 +257,7 @@ export function ContactSection() {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="john@example.com"
-                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
                       </div>
                     </div>
@@ -273,7 +273,7 @@ export function ContactSection() {
                           aria-label="Country Dial Code"
                           value={formData.countryCode}
                           onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                          className="w-28 px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors cursor-pointer shrink-0"
+                          className="w-28 px-3 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer shrink-0"
                         >
                           <option value="+91">🇮🇳 +91</option>
                           <option value="+1">🇺🇸 +1</option>
@@ -289,7 +289,7 @@ export function ContactSection() {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="(555) 123-4567"
-                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm"
                         />
                       </div>
                     </div>
@@ -303,7 +303,7 @@ export function ContactSection() {
                         id="contact-inquiryType"
                         value={formData.inquiryType}
                         onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer"
                       >
                         <option value="Candidate Placement Advisory">Candidate Career Representation &amp; Advisory (100% Free)</option>
                         <option value="Corporate Recruitment & Staffing">Corporate Recruitment &amp; Technical Staffing (48h SLA)</option>
@@ -324,7 +324,7 @@ export function ContactSection() {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Tell us about how we can help you..."
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] transition-colors resize-y"
+                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white placeholder-slate-400 dark:placeholder-neutral-500 focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm resize-y"
                       />
                     </div>
 
@@ -333,8 +333,9 @@ export function ContactSection() {
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full py-4 px-6 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#087FCB] via-[#00BFCB] to-[#38BDF8] hover:shadow-[0_0_35px_rgba(8,127,203,0.4)] hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                        className="relative w-full py-4 px-6 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#087FCB] via-[#00BFCB] to-[#38BDF8] hover:shadow-[0_4px_35px_rgba(8,127,203,0.45)] hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 overflow-hidden group shadow-lg"
                       >
+                        <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
                         {submitting ? (
                           <span>Connecting Your Request...</span>
                         ) : (

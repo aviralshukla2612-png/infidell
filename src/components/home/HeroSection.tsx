@@ -194,6 +194,15 @@ export function HeroSection() {
         { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12 },
         '-=0.5'
       );
+
+      // 4. Ethereal kinetic floating for 3D infinity artwork
+      gsap.to('.hero-floating-artwork', {
+        y: -8,
+        duration: 4.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true
+      });
     },
     { scope: containerRef }
   );
@@ -211,34 +220,41 @@ export function HeroSection() {
       >
         {/* Dark Mode Background Visual */}
         <div className="dark-only absolute inset-0">
-          <Image
-            src="/images/bg.png"
-            alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
-            fill
-            sizes="(max-width: 768px) 100vw, 1000px"
-            className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
-          />
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
+            <Image
+              src="/images/bg.png"
+              alt="Infidell Technology LLP Metallic Infinity Ribbon Visual"
+              fill
+              sizes="(max-width: 768px) 100vw, 1000px"
+              className="object-contain sm:object-cover object-center sm:object-right opacity-80 sm:opacity-90 mix-blend-screen scale-105 sm:scale-100"
+            />
+          </div>
           {/* Ambient Dark Gradient Overlays for optimal typography readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/70 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-[#000000]/60" />
-          {/* Subtle cyan glow accent */}
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-[#00E5F0]/15 rounded-full blur-[130px]" />
+          {/* Multi-layered specular ambient depth glows */}
+          <div className="absolute top-1/4 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(0,229,240,0.18)_0%,rgba(8,127,203,0.1)_45%,transparent_70%)] rounded-full blur-[110px]" />
+          <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-[#00E5F0]/10 rounded-full blur-[130px]" />
         </div>
 
         {/* Light Mode Background Visual: Official User Provided Light Background (/lightbg.png) */}
         <div className="light-only absolute inset-0">
-          <Image
-            src="/lightbg.png"
-            alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
-            className="object-cover object-right-bottom"
-          />
+          <div className="hero-floating-artwork absolute inset-0 w-full h-full will-change-transform">
+            <Image
+              src="/lightbg.png"
+              alt="Infidell Technology LLP Metallic Infinity Ribbon Visual - Light Theme"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 1000px"
+              className="object-cover object-right-bottom"
+            />
+          </div>
           {/* Seamless Ambient Light Gradient Overlays: Blends image background perfectly into the page with 0 cutoff lines */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 via-30% to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
+          {/* Subtle azure specular bloom */}
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(8,127,203,0.1)_0%,transparent_65%)] rounded-full blur-[90px] pointer-events-none" />
         </div>
       </div>
 
@@ -261,20 +277,21 @@ export function HeroSection() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-2 w-full max-w-md sm:max-w-none">
               <a
                 href="#candidate"
-                className="hero-cta-btn hero-cta-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_0_25px_rgba(23,190,187,0.35)] hover:shadow-[0_0_35px_rgba(0,213,223,0.5)] transform hover:-translate-y-0.5 cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-primary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-bold text-black bg-[#17BEBB] hover:bg-[#00D5DF] transition-all duration-300 shadow-[0_4px_25px_rgba(23,190,187,0.35)] hover:shadow-[0_8px_35px_rgba(0,213,223,0.55)] transform hover:-translate-y-0.5 cursor-pointer text-center overflow-hidden group"
               >
-                <span>{t('ctaPrimary')}</span>
-                <ArrowRight className="w-4 h-4 text-black" />
+                <span className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+                <span className="relative z-10">{t('ctaPrimary')}</span>
+                <ArrowRight className="w-4 h-4 text-black relative z-10 group-hover:translate-x-0.5 transition-transform" />
               </a>
 
               <a
                 href="#employer"
-                className="hero-cta-btn hero-cta-secondary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm backdrop-blur-md cursor-pointer text-center"
+                className="hero-cta-btn hero-cta-secondary relative w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold text-[#102B50] dark:text-[#F5F8F8] bg-white dark:bg-[#0C1517]/90 hover:bg-slate-50 dark:hover:bg-[#102426] border border-slate-200 dark:border-[#203536] hover:border-[#17BEBB]/60 transition-all duration-300 shadow-sm hover:shadow-md backdrop-blur-md cursor-pointer text-center group transform hover:-translate-y-0.5"
               >
-                <Building2 className="w-4 h-4 text-[#087FCB] dark:text-[#17BEBB]" />
+                <Building2 className="w-4 h-4 text-[#087FCB] dark:text-[#17BEBB] group-hover:scale-110 transition-transform" />
                 <span>{t('ctaSecondary')}</span>
               </a>
             </div>

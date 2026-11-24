@@ -25,19 +25,22 @@ export function OurPartnersSection() {
   const marqueeList = [...partners, ...partners];
 
   return (
-    <section className="py-10 sm:py-12 bg-[#000000] border-y border-[#202A30] relative overflow-hidden">
+    <section className="py-12 sm:py-14 bg-[#000000] border-y border-[#202A30] relative overflow-hidden select-none">
       {/* Ambient background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00E5F0]/5 to-transparent pointer-events-none" />
+      {/* Top and Bottom Hairline Gradient Accents */}
+      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00E5F0]/30 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00E5F0]/20 to-transparent pointer-events-none" />
 
       {/* Section Title */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 text-center relative z-10">
         <h3 className="text-xs sm:text-sm font-semibold text-[#AEB8C2] uppercase tracking-[0.25em]">
           Our Partners
         </h3>
       </div>
 
       {/* Infinite Marquee Container with fade edge masks */}
-      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
         <div className="flex items-center gap-12 sm:gap-16 whitespace-nowrap animate-marquee py-2">
           {marqueeList.map((partner, idx) => (
             <div

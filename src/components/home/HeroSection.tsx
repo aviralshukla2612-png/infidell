@@ -6,9 +6,9 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { 
-  ArrowRight, 
-  Building2 
+import {
+  ArrowRight,
+  Building2
 } from 'lucide-react';
 
 const LINE1_PREFIX = "Every Career Has a ";
@@ -208,13 +208,13 @@ export function HeroSection() {
   );
 
   return (
-    <section 
+    <section
       id="home"
       ref={containerRef}
       className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-start sm:justify-center bg-white dark:bg-[#000000] overflow-hidden pt-16 sm:pt-28 pb-6 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
-      <div 
+      <div
         ref={bgVisualRef}
         className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
       >
@@ -289,7 +289,7 @@ export function HeroSection() {
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-8 xl:col-span-8 space-y-3 sm:space-y-8">
             {/* Headline with Live Typewriter Effect */}
-            <h1 
+            <h1
               ref={headlineRef}
               className="text-[1.25rem] min-[375px]:text-[1.4rem] xs:text-[1.62rem] sm:text-4xl md:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.85rem] 2xl:text-[4.5rem] font-extrabold tracking-tight text-[#102B50] dark:text-white leading-[1.14]"
             >

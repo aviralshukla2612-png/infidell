@@ -66,24 +66,18 @@ export function OurApproachSection() {
       if (typeof window === 'undefined') return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // Staggered luxury entrance for the 4 bento cards
-      gsap.fromTo(
-        '.approach-card',
-        { opacity: 0, y: 32, scale: 0.98 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.approach-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
+      // Progressive entrance for the 4 bento cards without hiding content
+      gsap.from('.approach-card', {
+        y: 28,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.approach-grid',
+          start: 'top 85%',
+          once: true
         }
-      );
+      });
     },
     { scope: sectionRef }
   );
@@ -91,11 +85,9 @@ export function OurApproachSection() {
   return (
     <section 
       ref={sectionRef} 
-      id="services"
+      id="approach"
       className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none scroll-mt-20"
     >
-      {/* Anchor for backward compatibility with #approach */}
-      <div id="approach" className="absolute top-0 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header - Clean & Elegant (No Pill Badge) */}

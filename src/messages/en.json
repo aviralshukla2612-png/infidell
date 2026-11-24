@@ -349,8 +349,8 @@
     "s3Desc": "End-to-end scheduling, interview format orientation, mock preparation, and candidate performance briefing.",
     "s4Title": "Executive Search & Leadership Hiring",
     "s4Desc": "Bespoke executive search for senior leadership, tech leads, VP, and Director-level corporate placements.",
-    "s5Title": "Volume & Campus Placement Drives",
-    "s5Desc": "Structured bulk hiring solutions for expanding technology startups, enterprise BPOs, and manufacturing plants.",
+    "s5Title": "Strategic Volume & Team Staffing",
+    "s5Desc": "Structured bulk hiring and specialized engineering team expansion for high-growth tech firms and enterprise organizations.",
     "s6Title": "Offer Validation & Onboarding Support",
     "s6Desc": "Impartial compensation benchmarking, offer letter review, and joining assistance through probation completion."
   },
@@ -367,7 +367,7 @@
     "typeGeneral": "General Information",
     "message": "Your Message / Query",
     "btnSend": "Send Message",
-    "officeHours": "Office Hours: Monday - Saturday: 9:30 AM to 6:30 PM IST",
+    "officeHours": "Office Hours: Monday - Friday: 9:00 AM to 6:00 PM EST / PST",
     "success": "Thank you! Your inquiry has been received. Our team will contact you shortly."
   },
   "CandidateForm": {

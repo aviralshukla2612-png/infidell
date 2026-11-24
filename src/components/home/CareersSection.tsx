@@ -316,7 +316,7 @@ export function CareersSection() {
 
         {/* Subtitle */}
         <p className="text-sm sm:text-base md:text-lg text-[#334155] dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
-          Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover direct representation with verified 48h placement SLAs.
+          Explore today&apos;s fastest-growing careers across technology and enterprise leadership. Discover professional career guidance and personalized support.
         </p>
       </div>
 
@@ -391,14 +391,14 @@ export function CareersSection() {
                 Seeking a Confidential Executive Search?
               </h3>
               <p className="text-xs sm:text-sm text-[#475569] dark:text-neutral-300 mt-0.5">
-                Over 60% of our Director, VP, and C-suite mandates operate under strict non-disclosure agreements.
+                Director, VP, and C-suite leadership mandates operate under strict non-disclosure agreements with complete discretion.
               </p>
             </div>
           </div>
 
           <a
             href="#contact"
-            className="w-full md:w-auto text-center shrink-0 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#087FCB] to-[#00BFCB] hover:shadow-[0_0_25px_rgba(8,127,203,0.4)] transition-all hover:scale-105"
+            className="btn-primary-blue w-full md:w-auto text-center shrink-0 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#087FCB] to-[#00BFCB] hover:shadow-[0_0_25px_rgba(8,127,203,0.4)] transition-all hover:scale-105"
           >
             Connect With an Executive Advisor →
           </a>

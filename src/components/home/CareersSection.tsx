@@ -9,7 +9,9 @@ import {
   ArrowRight,
   X,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 export interface CareerRole {
@@ -207,10 +209,20 @@ export function CareersSection() {
       if (!track || !viewport || !stage || cards.length === 0) return;
 
       const isMobile = window.innerWidth <= 768;
-      const gap = isMobile ? 16 : 32;
+
+      if (isMobile) {
+        track.style.height = 'auto';
+        stage.style.transform = 'none';
+        cards.forEach((c) => {
+          c.classList.add('active');
+          c.style.opacity = '1';
+          c.style.transform = 'none';
+        });
+        return;
+      }
 
       // Calculate total horizontal scroll distance
-      const cardWidth = (cards[0].offsetWidth || (isMobile ? window.innerWidth * 0.84 : 460)) + gap;
+      const cardWidth = (cards[0].offsetWidth || 460) + 32; // card width + 32px gap
       const totalCards = CAREER_ROLES.length;
       const totalDistance = cardWidth * (totalCards - 1);
 
@@ -265,6 +277,19 @@ export function CareersSection() {
   const scrollToCard = (targetIndex: number) => {
     if (targetIndex < 0 || targetIndex >= CAREER_ROLES.length) return;
 
+    if (window.innerWidth <= 768) {
+      const stage = cardStageRef.current;
+      if (stage) {
+        const cardEl = stage.firstElementChild as HTMLElement;
+        const cardWidth = (cardEl?.offsetWidth || 300) + 16;
+        stage.scrollTo({
+          left: targetIndex * cardWidth,
+          behavior: 'smooth'
+        });
+      }
+      return;
+    }
+
     const st = scrollTriggerRef.current;
     if (st) {
       const targetProgress = targetIndex / (CAREER_ROLES.length - 1);
@@ -273,6 +298,29 @@ export function CareersSection() {
         top: scrollPos,
         behavior: 'smooth'
       });
+    }
+  };
+
+  const scrollMobile = (direction: 'left' | 'right') => {
+    const stage = cardStageRef.current;
+    if (!stage) return;
+    const cardEl = stage.firstElementChild as HTMLElement;
+    const cardWidth = (cardEl?.offsetWidth || 300) + 16;
+    stage.scrollBy({
+      left: direction === 'left' ? -cardWidth : cardWidth,
+      behavior: 'smooth'
+    });
+  };
+
+  const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (typeof window !== 'undefined' && window.innerWidth > 768) return;
+    const stage = e.currentTarget;
+    const cardEl = stage.firstElementChild as HTMLElement;
+    const cardWidth = (cardEl?.offsetWidth || 300) + 16;
+    const index = Math.round(stage.scrollLeft / cardWidth);
+    const clamped = Math.max(0, Math.min(index, CAREER_ROLES.length - 1));
+    if (clamped !== activeIndex) {
+      setActiveIndex(clamped);
     }
   };
 
@@ -315,7 +363,11 @@ export function CareersSection() {
       ======================================================== */}
       <div className="pin-track" ref={pinTrackRef}>
         <div className="pin-viewport" ref={pinViewportRef}>
-          <div className="card-stage" ref={cardStageRef}>
+          <div
+            className="card-stage"
+            ref={cardStageRef}
+            onScroll={handleMobileScroll}
+          >
             {CAREER_ROLES.map((role, idx) => {
               return (
                 <article
@@ -367,6 +419,37 @@ export function CareersSection() {
             })}
           </div>
         </div>
+      </div>
+
+      {/* Mobile Swipe Navigation Controls */}
+      <div className="flex md:hidden items-center justify-between px-6 pt-3 pb-8 max-w-xs mx-auto select-none">
+        <button
+          type="button"
+          onClick={() => scrollMobile('left')}
+          disabled={activeIndex === 0}
+          aria-label="Previous career role"
+          className="w-10 h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <div className="flex items-center gap-1.5 text-xs font-mono font-semibold text-[#64748B] dark:text-neutral-400">
+          <span className="text-[#087FCB] dark:text-[#00D5DF] font-bold text-sm">
+            {String(activeIndex + 1).padStart(2, '0')}
+          </span>
+          <span>/</span>
+          <span>{String(CAREER_ROLES.length).padStart(2, '0')}</span>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => scrollMobile('right')}
+          disabled={activeIndex === CAREER_ROLES.length - 1}
+          aria-label="Next career role"
+          className="w-10 h-10 rounded-full border border-slate-300 dark:border-[#203536] bg-white dark:bg-[#0C1517] flex items-center justify-center text-[#102B50] dark:text-white disabled:opacity-30 disabled:cursor-not-allowed shadow-sm active:scale-95 transition-all cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
       </div>
 
       {/* Bottom Assistance Banner */}

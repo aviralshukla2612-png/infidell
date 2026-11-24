@@ -1110,74 +1110,64 @@ html.light .demanded-role-card.active {
   .pin-track {
     position: relative;
     width: 100%;
+    height: auto !important;
   }
 
   .pin-viewport {
-    height: 72vh;
-    min-height: 460px;
-    padding: 20px 0 30px;
+    height: auto !important;
+    min-height: unset !important;
+    padding: 0 !important;
     position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+    overflow: visible !important;
+    display: block !important;
   }
 
   .card-stage {
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-    width: max-content;
-    height: 100%;
-    padding: 0 calc(50vw - 42vw);
-    transform: none;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 16px !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px 20px 20px !important;
+    transform: none !important;
+    scrollbar-width: none;
+  }
+
+  .card-stage::-webkit-scrollbar {
+    display: none;
   }
 
   .demanded-role-card {
-    width: 84vw;
-    max-width: 360px;
-    min-width: 280px;
-    height: 380px;
-    min-height: 320px;
-    margin: 0;
-    opacity: 0.35;
-    transform: scale(0.88);
-  }
-
-  .demanded-role-card.active {
+    scroll-snap-align: center;
+    flex-shrink: 0 !important;
+    width: 82vw !important;
+    max-width: 340px !important;
+    height: 380px !important;
+    min-height: 320px !important;
+    margin: 0 !important;
     opacity: 1 !important;
-    transform: scale(1.02) !important;
+    transform: none !important;
   }
 
   .demanded-role-card .card-image img {
-    filter: blur(3px) brightness(0.75);
-  }
-
-  .demanded-role-card.active .card-image img {
-    filter: blur(0px) brightness(0.9);
+    filter: blur(0px) brightness(0.85) !important;
   }
 
   .image-title {
-    opacity: 0;
-    transform: translateY(16px);
-    font-size: 24px;
-    padding: 0 20px calc(20px + 46px);
-  }
-
-  .demanded-role-card.active .image-title {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: none !important;
+    font-size: 24px !important;
+    padding: 0 20px calc(20px + 46px) !important;
   }
 
   .explore-career-wrapper {
-    bottom: 20px;
-    right: 20px;
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  .demanded-role-card.active .explore-career-wrapper {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: none !important;
+    bottom: 20px !important;
+    right: 20px !important;
   }
 }
 

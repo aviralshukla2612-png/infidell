@@ -870,10 +870,10 @@ export function CandidateAndEmployerExperienceSection() {
             <div className="relative z-10 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D5DF]/15 border border-[#00D5DF]/40 text-xs font-bold text-[#00D5DF] tracking-wide uppercase mb-3 shadow-[0_0_15px_rgba(0,213,223,0.2)]">
                 <Clock className="w-3.5 h-3.5 text-[#00D5DF]" />
-                <span>Rapid Hiring Guarantee</span>
+                <span>Executive Talent Partnership</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-tight">
-                Need Pre-Screened Candidates Within 48 Hours?
+                Looking for Vetted, High-Impact Tech Talent?
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 font-normal leading-relaxed">
                 Partner with Infidell to receive verified talent shortlists aligned with your technical requirements, payroll models, and delivery timelines.

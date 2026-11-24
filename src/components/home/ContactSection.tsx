@@ -306,7 +306,7 @@ export function ContactSection() {
                         className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#0C1517] border border-slate-300 dark:border-[#203536] text-sm text-[#0F172A] dark:text-white focus:outline-none focus:bg-white dark:focus:bg-[#0C1517] focus:border-[#087FCB] dark:focus:border-[#00D5DF] focus:ring-2 focus:ring-[#087FCB]/20 dark:focus:ring-[#00D5DF]/25 transition-all shadow-sm cursor-pointer"
                       >
                         <option value="Candidate Placement Advisory">Candidate Career Representation &amp; Advisory (100% Free)</option>
-                        <option value="Corporate Recruitment & Staffing">Corporate Recruitment &amp; Technical Staffing (48h SLA)</option>
+                        <option value="Corporate Recruitment & Staffing">Corporate Recruitment &amp; Technical Staffing</option>
                         <option value="Executive Search & Leadership">Confidential Executive Search &amp; Leadership Headhunting</option>
                         <option value="Referral & Partnership">Refer &amp; Earn Program Inquiry</option>
                       </select>

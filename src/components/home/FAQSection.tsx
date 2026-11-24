@@ -52,13 +52,13 @@ const FAQS: FAQItem[] = [
   {
     id: 3,
     num: '03',
-    question: 'How quickly can corporate employers receive vetted candidate shortlists for active requisitions?',
+    question: 'How does Infidell deliver vetted candidate shortlists for corporate employers?',
     answer:
-      'For active engineering, technical architecture, and leadership requisitions, Infidell curates and delivers multi-tier pre-screened candidate dossiers within an agile 48 to 72-hour Service Level Agreement (SLA). Because we maintain an active, relationship-driven pipeline of passive senior talent and pre-screened specialists, our clients receive interview-ready profiles complete with deep technical evaluation scorecards, verified notice periods, confirmed location preferences, and pre-aligned compensation expectations.',
+      'For active engineering, technical architecture, and leadership requisitions, Infidell curates and delivers multi-tier pre-screened candidate dossiers tailored to each organizational culture. Because we maintain an active, relationship-driven pipeline of passive senior talent and pre-screened specialists, our clients receive interview-ready profiles complete with deep technical evaluation scorecards, confirmed availability, location preferences, and pre-aligned compensation expectations.',
     details: [
       {
-        label: 'Rapid 48–72h Turnaround SLA',
-        text: 'Immediate candidate delivery for urgent hiring demands without sacrificing screening rigor.'
+        label: 'Rigorous Candidate Curation',
+        text: 'Immediate candidate curation for critical hiring demands without sacrificing technical screening rigor.'
       },
       {
         label: 'Pre-Aligned Readiness',
@@ -154,17 +154,17 @@ const FAQS: FAQItem[] = [
   {
     id: 9,
     num: '09',
-    question: 'What replacement guarantees and hiring safeguards do you provide to corporate employers?',
+    question: 'What ongoing support and hiring safeguards do you provide to corporate employers?',
     answer:
-      'To safeguard enterprise hiring investments and ensure lasting team stability, Infidell provides a comprehensive placement warranty and replacement guarantee on all corporate recruitment mandates. If a placed candidate departs or fails to meet established performance milestones within the agreed guarantee period (typically 90 days), our team conducts an expedited replacement search at zero additional service cost, ensuring uninterrupted momentum for your critical project deliverables.',
+      'To support lasting team stability and protect hiring momentum, Infidell works closely with enterprise partners throughout the initial onboarding period. If a placement requires realignment or an unexpected departure occurs during early tenure, our dedicated search team prioritizes re-engaging our talent network to source qualified replacement candidates and maintain team delivery schedules.',
     details: [
       {
-        label: 'Comprehensive Warranty Period',
-        text: '90-day replacement assurance providing organizational security on critical corporate hires.'
+        label: 'Proactive Onboarding Support',
+        text: 'Structured check-ins with candidates and hiring managers to promote long-term retention and cultural alignment.'
       },
       {
-        label: 'Expedited Priority Sourcing',
-        text: 'Immediate dedicated team mobilization to backfill requisitions with zero additional agency fees.'
+        label: 'Dedicated Search Continuity',
+        text: 'Prioritized talent re-sourcing support to maintain organizational momentum for critical projects.'
       }
     ]
   },

@@ -66,7 +66,7 @@ const COLORFUL_CARDS: ColorfulCard[] = [
     accent: '#34D399',
     borderColor: '#10B981',
     glowColor: 'rgba(16, 185, 129, 0.5)',
-    footerTag: '48–72h SLA · Verified',
+    footerTag: 'Direct Introduction · Verified',
     href: '#employer',
     entrance: 'right'
   },
@@ -373,7 +373,7 @@ export function AboutSection() {
               </p>
 
               <p className="luna-header-fade text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
-                Job seekers work one-on-one with specialized domain advisors to optimize resumes for strict ATS filters, conduct mock interviews, and negotiate competitive compensation packages. Simultaneously, fast-scaling startups and corporate enterprises turn to Infidell to close critical requisitions within strict 48–72 hour SLAs backed by replacement guarantees.
+                Job seekers work one-on-one with specialized domain advisors to optimize resumes for strict ATS filters, conduct mock interviews, and negotiate competitive compensation packages. Simultaneously, fast-scaling startups and corporate enterprises turn to Infidell to close critical requisitions with verified, interview-ready candidate dossiers tailored to their technical stack.
               </p>
             </div>
 

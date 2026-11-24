@@ -208,7 +208,7 @@ export function HeroSection() {
     <section
       id="home"
       ref={containerRef}
-      className="relative min-h-[90vh] lg:h-screen lg:max-h-screen flex flex-col justify-start sm:justify-center bg-white dark:bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-8 sm:pb-16"
+      className="relative min-h-[100dvh] lg:h-screen lg:max-h-screen flex flex-col justify-start sm:justify-center bg-white dark:bg-[#000000] overflow-hidden pt-20 sm:pt-28 pb-8 sm:pb-16"
     >
       {/* Dynamic Background: Official Metallic Infinity Visual */}
       <div
@@ -222,12 +222,12 @@ export function HeroSection() {
             <picture>
               <source srcSet="/images/darkbgphone.webp" type="image/webp" />
               <img
-                src="/images/darkbgphone.png"
+                src="/images/darkbgphone.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual - Dark Mobile"
                 fetchPriority="low"
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center opacity-95"
+                className="absolute inset-0 w-full h-full object-cover object-bottom opacity-95"
               />
             </picture>
           </div>
@@ -236,7 +236,7 @@ export function HeroSection() {
             <picture>
               <source srcSet="/images/bg.webp" type="image/webp" />
               <img
-                src="/images/bg.png"
+                src="/images/bg.webp"
                 alt="Infidell Technology Metallic Infinity Ribbon Visual"
                 loading="lazy"
                 decoding="async"
@@ -264,7 +264,7 @@ export function HeroSection() {
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover object-bottom"
               />
             </picture>
           </div>
@@ -278,7 +278,7 @@ export function HeroSection() {
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-[78%_center] sm:object-right-bottom"
+                className="absolute inset-0 w-full h-full object-cover sm:object-right"
               />
             </picture>
           </div>

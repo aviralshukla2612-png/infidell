@@ -208,8 +208,10 @@ export function CareersSection() {
 
       const isMobile = window.innerWidth <= 768;
       const gap = isMobile ? 18 : 32;
-      const cardEl = cards[0];
-      const cardWidth = (cardEl ? cardEl.offsetWidth : (isMobile ? window.innerWidth * 0.82 : 460)) + gap;
+      const baseCardWidth = isMobile
+        ? Math.min(window.innerWidth * 0.8, 360)
+        : Math.min(window.innerWidth * 0.38, 500);
+      const cardWidth = baseCardWidth + gap;
       const totalCards = CAREER_ROLES.length;
       const totalDistance = cardWidth * (totalCards - 1);
 

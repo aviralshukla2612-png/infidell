@@ -8,182 +8,64 @@ interface FAQItem {
   num: string;
   question: string;
   answer: string;
-  details?: {
-    label: string;
-    text: string;
-  }[];
 }
 
 const FAQS: FAQItem[] = [
   {
     id: 1,
     num: '01',
-    question: 'How does Infidell support candidates throughout the hiring process?',
+    question: 'Does Infidell charge candidates for placement services?',
     answer:
-      'We provide personalized career guidance, technical resume optimization, interview briefings, and direct introductions to hiring decision-makers across US and global technology companies.',
-    details: [
-      {
-        label: 'Profile Alignment',
-        text: 'Tailoring resumes and portfolios to resonate with technical hiring managers.'
-      },
-      {
-        label: 'Direct Introductions',
-        text: 'Connecting directly with engineering and leadership decision-makers.'
-      }
-    ]
+      'No. Our career guidance, resume review, and interview coaching are 100% free for candidates. All placement fees are covered by the hiring employer.'
   },
   {
     id: 2,
     num: '02',
-    question: 'What is the onboarding process for candidates joining Infidell’s network?',
+    question: 'How does Infidell match talent with hiring companies?',
     answer:
-      'Candidates submit their professional background and resume online. Our advisory team reviews credentials, discusses career goals, and connects qualified profiles with relevant corporate openings.',
-    details: [
-      {
-        label: 'Profile Submission',
-        text: 'Online submission of technical experience, credentials, and resume.'
-      },
-      {
-        label: 'Advisor Alignment',
-        text: 'Structured evaluation of skills and alignment with active client mandates.'
-      }
-    ]
+      'We match your verified technical skills, stack preferences, and compensation goals directly with engineering decision-makers, bypassing automated screening filters.'
   },
   {
     id: 3,
     num: '03',
-    question: 'How does Infidell curate candidate shortlists for corporate employers?',
+    question: 'How quickly can employers receive candidate shortlists?',
     answer:
-      'We deliver pre-screened candidate dossiers tailored to each organization’s technical stack, team culture, and delivery goals, providing interview-ready talent with confirmed availability.',
-    details: [
-      {
-        label: 'Targeted Discovery',
-        text: 'Sourcing across active and passive engineering and leadership networks.'
-      },
-      {
-        label: 'Verified Readiness',
-        text: 'Profiles confirmed for technical proficiency, cultural fit, and compensation expectations.'
-      }
-    ]
+      'Employers typically receive pre-vetted, interview-ready candidate dossiers within 48 to 72 hours of finalizing role specifications.'
   },
   {
     id: 4,
     num: '04',
-    question: 'How are candidate credentials and technical competencies verified?',
+    question: 'How are candidate technical skills and credentials verified?',
     answer:
-      'Our technical specialists conduct structured competency reviews, system design evaluations, and professional reference checks before presenting candidates to hiring teams.',
-    details: [
-      {
-        label: 'Technical Evaluation',
-        text: 'Thorough review of system design, coding proficiency, and technical problem-solving.'
-      },
-      {
-        label: 'Background Verification',
-        text: 'Comprehensive verification of employment history, credentials, and references.'
-      }
-    ]
+      'Our recruitment specialists conduct structured technical evaluations, system design assessments, and employment reference checks before introducing any candidate.'
   },
   {
     id: 5,
     num: '05',
-    question: 'What factors influence candidate placement outcomes?',
+    question: 'What roles and workplace models do you support?',
     answer:
-      'Placement outcomes depend on client hiring requirements, role specifications, and candidate performance during interviews. Infidell ensures direct human representation and clear communication at every stage.',
-    details: [
-      {
-        label: 'Direct Representation',
-        text: 'Advocating candidate capabilities directly to hiring authorities without algorithmic filters.'
-      },
-      {
-        label: 'Clear Communication',
-        text: 'Timely debriefs and actionable feedback following client interviews.'
-      }
-    ]
+      'We place senior engineers, AI/ML specialists, cloud architects, and tech executives across onsite, hybrid, and fully remote positions throughout the United States.'
   },
   {
     id: 6,
     num: '06',
-    question: 'Which industry sectors and workplace models does Infidell support?',
+    question: 'How does Infidell handle confidential executive searches?',
     answer:
-      'We specialize in technical and corporate recruitment across Cloud & DevOps, AI/ML, Full-Stack Engineering, FinTech, HealthTech, and Cybersecurity, supporting onsite, hybrid, and remote roles.',
-    details: [
-      {
-        label: 'Specialized Sectors',
-        text: 'Deep talent networks across software engineering, data, and technical management.'
-      },
-      {
-        label: 'Workplace Models',
-        text: 'Placement for corporate headquarters, hybrid schedules, and distributed teams.'
-      }
-    ]
+      'Executive searches operate under strict NDAs with discreet outreach and comprehensive leadership assessments for Director, VP, and C-Suite roles.'
   },
   {
     id: 7,
     num: '07',
-    question: 'How does Infidell handle confidential executive searches?',
+    question: 'Do you provide compensation and offer guidance?',
     answer:
-      'Executive search mandates operate under strict non-disclosure agreements, employing discreet outreach and rigorous leadership evaluations for Director, VP, and C-suite roles.',
-    details: [
-      {
-        label: 'Strict Confidentiality',
-        text: 'Complete discretion and NDA compliance throughout the executive search.'
-      },
-      {
-        label: 'Leadership Assessment',
-        text: 'Evaluating strategic vision, organizational leadership, and executive presence.'
-      }
-    ]
+      'Yes. We provide objective market benchmarking across base salaries, bonuses, and equity structures to help both sides reach competitive, equitable agreements.'
   },
   {
     id: 8,
     num: '08',
-    question: 'What guidance is provided for compensation and offer evaluation?',
+    question: 'What support is provided after an offer is accepted?',
     answer:
-      'We provide objective market compensation benchmarking and offer structure analysis to help candidates and employers reach equitable, competitive agreements.',
-    details: [
-      {
-        label: 'Market Benchmarking',
-        text: 'Data-driven analysis of base compensation, equity packages, and benefits.'
-      },
-      {
-        label: 'Offer Transition',
-        text: 'Professional guidance on offer evaluation and transition logistics.'
-      }
-    ]
-  },
-  {
-    id: 9,
-    num: '09',
-    question: 'How does Infidell support corporate partners during onboarding?',
-    answer:
-      'We coordinate closely with candidates and hiring managers through onboarding to facilitate smooth team integration and support lasting organizational retention.',
-    details: [
-      {
-        label: 'Onboarding Alignment',
-        text: 'Structured communication to foster early engagement and cultural fit.'
-      },
-      {
-        label: 'Talent Continuity',
-        text: 'Responsive partnership to address evolving hiring mandates.'
-      }
-    ]
-  },
-  {
-    id: 10,
-    num: '10',
-    question: 'What follow-up occurs after an offer is accepted?',
-    answer:
-      'Our team assists with transition logistics, resignation planning, and periodic check-ins following the start date to ensure mutual satisfaction and sustained success.',
-    details: [
-      {
-        label: 'Transition Guidance',
-        text: 'Support during resignation, notice periods, and onboarding preparation.'
-      },
-      {
-        label: 'Ongoing Touchpoints',
-        text: 'Periodic reviews to confirm alignment and long-term satisfaction.'
-      }
-    ]
+      'We support candidates and hiring managers with resignation planning, onboarding logistics, and ongoing check-ins throughout the first 90 days.'
   }
 ];
 
@@ -217,7 +99,7 @@ export function FAQSection() {
             </span>
           </h3>
           <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
-            Direct, transparent guidance on our ethical placement standards, candidate advocacy, and corporate hiring workflows.
+            Clear, concise answers about our placement services, hiring standards, and process.
           </p>
         </div>
 
@@ -275,22 +157,8 @@ export function FAQSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 sm:px-8 pb-6 pt-3 text-xs sm:text-sm md:text-base text-[#334155] dark:text-neutral-300 leading-relaxed border-t border-[#E8EEF5] dark:border-[#203536]/70">
-                      <p className="mb-3">{faq.answer}</p>
-
-                      {faq.details && (
-                        <div className="mt-4 pt-4 border-t border-[#E8EEF5] dark:border-[#203536]/50 space-y-2.5">
-                          {faq.details.map((detail, dIdx) => (
-                            <div key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#475569] dark:text-neutral-400">
-                              <span className="text-[#087FCB] dark:text-[#00D5DF] font-bold mt-0.5">•</span>
-                              <span>
-                                <strong className="text-[#102B50] dark:text-neutral-200 font-semibold">{detail.label}:</strong>{' '}
-                                {detail.text}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                    <div className="px-6 sm:px-8 pb-5 pt-3.5 text-xs sm:text-sm md:text-base text-[#334155] dark:text-neutral-300 leading-relaxed border-t border-[#E8EEF5] dark:border-[#203536]/70">
+                      <p>{faq.answer}</p>
                     </div>
                   </div>
                 </div>

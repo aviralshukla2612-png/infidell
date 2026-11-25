@@ -18,13 +18,13 @@ interface TestimonialItem {
 
 const TESTIMONIALS: TestimonialItem[] = [
   {
-    id: 'sarah-jenkins',
-    name: 'Sarah Jenkins',
+    id: 'ananya-sharma',
+    name: 'Ananya Sharma',
     role: 'LEAD FULL STACK ARCHITECT',
     outcome: 'FinTech Capital · New York, NY',
     companyBadge: 'New York Tech Hub',
     accent: '#A33B26', // Terracotta
-    image: '/images/testimonials/avatar-1.jpg',
+    image: '/images/testimonials/indian-avatar-1.webp',
     rating: 5,
     quote:
       'Finding an executive recruitment partner that truly understands modern distributed architecture and US compensation transparency is rare. Infidell facilitated direct conversations with engineering leadership in New York, leading to an offer perfectly aligned with my leadership trajectory.'
@@ -36,31 +36,31 @@ const TESTIMONIALS: TestimonialItem[] = [
     outcome: 'Enterprise Cloud Platform · Austin, TX / Hybrid',
     companyBadge: 'Cloud Infrastructure',
     accent: '#0284C7', // Sky Blue
-    image: '/images/testimonials/avatar-2.jpg',
+    image: '/images/testimonials/avatar-2.webp',
     rating: 5,
     quote:
       'No algorithmic black holes or impersonal portals. My Infidell advisor helped benchmark compensation for Kubernetes and multi-cloud infrastructure mandates, coordinating interview rounds with surgical precision from day one.'
   },
   {
-    id: 'elena-rostova',
-    name: 'Elena Rostova',
+    id: 'priya-sundaram',
+    name: 'Priya Sundaram',
     role: 'DIRECTOR OF PRODUCT MANAGEMENT',
     outcome: 'Silicon Valley SaaS Enterprise · San Francisco, CA',
     companyBadge: 'SaaS Leadership',
     accent: '#059669', // Emerald
-    image: '/images/testimonials/avatar-3.jpg',
+    image: '/images/testimonials/indian-avatar-3.webp',
     rating: 5,
     quote:
       'Infidell treats career transition like an executive advisory service rather than a resume broadcast. They mapped out three strategic conversations with verified enterprise leaders in the Bay Area, completely aligned with my product roadmap vision.'
   },
   {
-    id: 'marcus-vance',
-    name: 'Marcus Vance',
+    id: 'vikram-malhotra',
+    name: 'Vikram Malhotra',
     role: 'VP OF SOFTWARE ENGINEERING',
     outcome: 'High-Growth Tech Unicorn · Seattle, WA',
     companyBadge: 'Executive Search',
     accent: '#D97706', // Amber
-    image: '/images/testimonials/avatar-4.jpg',
+    image: '/images/testimonials/indian-avatar-4.webp',
     rating: 5,
     quote:
       'From compensation benchmarking and RSU/equity structure analysis to confidential interview scheduling with executive leadership in Seattle, Infidell provided world-class representation throughout my career move. Exceptional professionalism.'
@@ -72,7 +72,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     outcome: 'Kendall Square AI Lab · Boston, MA / Remote',
     companyBadge: 'AI & Machine Learning',
     accent: '#7C3AED', // Violet
-    image: '/images/testimonials/avatar-5.jpg',
+    image: '/images/testimonials/avatar-5.webp',
     rating: 5,
     quote:
       'The personalized attention from Infidell was remarkable. They understood my specialized background in generative AI and LLM inference pipelines, matching me directly with enterprise AI labs in Boston that offered both remote flexibility and tier-1 compensation.'

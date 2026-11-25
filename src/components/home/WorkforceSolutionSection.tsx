@@ -147,7 +147,7 @@ export function WorkforceSolutionSection() {
     <section
       ref={sectionRef}
       id="services"
-      className="py-20 lg:py-28 bg-[#FFFFFF] dark:bg-[#050708] border-t border-slate-200 dark:border-[#203536]/80 relative overflow-hidden scroll-mt-20 select-none"
+      className="py-20 lg:py-28 bg-[#FFFFFF] dark:bg-[#050708] border-t border-slate-200 dark:border-[#203536]/80 relative overflow-hidden scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}

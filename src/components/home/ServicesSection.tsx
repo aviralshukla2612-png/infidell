@@ -123,7 +123,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 sm:py-32 bg-[#F8FAFC] dark:bg-[#050708] relative overflow-hidden border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none scroll-mt-20 transition-colors duration-300"
+      className="py-24 sm:py-32 bg-[#F8FAFC] dark:bg-[#050708] relative overflow-hidden border-t border-[#DCE5EF] dark:border-[#203536]/80 scroll-mt-20 transition-colors duration-300"
     >
       {/* Background ambient radial depth glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#087FCB]/5 via-[#00D5DF]/10 to-[#38BDF8]/5 dark:from-[#00E5F0]/10 dark:via-[#087FCB]/10 dark:to-transparent rounded-full blur-[140px] pointer-events-none" />

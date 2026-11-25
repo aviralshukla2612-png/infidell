@@ -114,7 +114,7 @@ export function SuccessSinceEstablishmentSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#f3f0e9] py-20 md:py-28 overflow-hidden select-none">
+    <section ref={sectionRef} className="relative w-full bg-[#f3f0e9] py-20 md:py-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">

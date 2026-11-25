@@ -233,7 +233,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="scroll-mt-28 pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-28 md:pb-32 bg-[#F8FAFC] dark:bg-[#050708] text-[#102B50] dark:text-white relative overflow-hidden border-t border-slate-200 dark:border-[#203536]/80 select-none transition-colors duration-300"
+      className="scroll-mt-28 pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-28 md:pb-32 bg-[#F8FAFC] dark:bg-[#050708] text-[#102B50] dark:text-white relative overflow-hidden border-t border-slate-200 dark:border-[#203536]/80 transition-colors duration-300"
       style={{
         scrollMarginTop: '110px'
       }}

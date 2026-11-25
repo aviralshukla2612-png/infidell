@@ -116,7 +116,7 @@ export function InsightsSection() {
     <section 
       ref={sectionRef} 
       id="insights" 
-      className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden select-none border-t border-[#203536]/80"
+      className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden border-t border-[#203536]/80"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#17BEBB]/10 rounded-full blur-[150px] pointer-events-none" />

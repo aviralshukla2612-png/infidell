@@ -33,7 +33,7 @@ const VALUES_BADGES = [
 
 export function OurMissionValuesSection() {
   return (
-    <section id="mission" className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden select-none border-t border-[#203536]/80">
+    <section id="mission" className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden border-t border-[#203536]/80">
       {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#102426]/25 rounded-full blur-[160px] pointer-events-none" />
 

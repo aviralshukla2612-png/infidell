@@ -295,7 +295,7 @@ export function CareersSection() {
     <section
       ref={sectionRef}
       id="careers"
-      className="roles-section relative overflow-hidden bg-[#F8FAFC] dark:bg-[#050708] border-t border-[#DCE5EF] dark:border-[#203536]/80 select-none transition-colors duration-300"
+      className="roles-section relative overflow-hidden bg-[#F8FAFC] dark:bg-[#050708] border-t border-[#DCE5EF] dark:border-[#203536]/80 transition-colors duration-300"
     >
       {/* Section Header (Clean without HOT CAREER OPPORTUNITIES badge) */}
       <div className="pt-20 sm:pt-28 pb-6 sm:pb-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">

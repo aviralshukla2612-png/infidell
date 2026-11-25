@@ -86,7 +86,7 @@ export function OurApproachSection() {
     <section 
       ref={sectionRef} 
       id="approach"
-      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none scroll-mt-20"
+      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 scroll-mt-20"
     >
       {/* Anchor for backward compatibility with #approach */}
       <div id="approach" className="absolute top-0 pointer-events-none" />

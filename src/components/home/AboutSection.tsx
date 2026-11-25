@@ -329,7 +329,7 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative w-full bg-[#050708] text-white py-20 sm:py-28 overflow-hidden border-t border-[#203536]/80 select-none"
+      className="relative w-full bg-[#050708] text-white py-20 sm:py-28 overflow-hidden border-t border-[#203536]/80"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

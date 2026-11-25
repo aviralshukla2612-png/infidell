@@ -174,7 +174,7 @@ export function Footer() {
         </div>
 
         {/* Middle Section: GIGANTIC DISPLAY WORD "INFIDELL" across full screen with Emperor Hover */}
-        <div className="w-full my-auto py-6 sm:py-10 lg:py-12 overflow-hidden select-none">
+        <div className="w-full my-auto py-6 sm:py-10 lg:py-12 overflow-hidden">
           <div className="w-full flex justify-between items-center tracking-tighter leading-none font-black text-white overflow-hidden">
             {FOOTER_LETTERS.map((char, idx) => (
               <span

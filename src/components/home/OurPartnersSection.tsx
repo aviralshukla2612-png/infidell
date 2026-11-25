@@ -25,7 +25,7 @@ export function OurPartnersSection() {
   const marqueeList = [...partners, ...partners];
 
   return (
-    <section id="partners" className="py-12 sm:py-14 bg-[#F8FAFC] dark:bg-[#000000] border-y border-slate-200 dark:border-[#202A30] relative overflow-hidden select-none">
+    <section id="partners" className="py-12 sm:py-14 bg-[#F8FAFC] dark:bg-[#000000] border-y border-slate-200 dark:border-[#202A30] relative overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00E5F0]/5 to-transparent pointer-events-none" />
       {/* Top and Bottom Hairline Gradient Accents */}

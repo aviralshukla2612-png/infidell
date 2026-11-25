@@ -99,7 +99,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-center py-6 sm:py-8 lg:py-6 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-center py-6 sm:py-8 lg:py-6 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80"
     >
       {/* Dynamic Background Atmosphere */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">

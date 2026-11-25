@@ -363,7 +363,7 @@ export function CandidateAndEmployerExperienceSection() {
   return (
     <section 
       ref={sectionRef} 
-      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+      className="py-24 sm:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80"
     >
       {/* Dynamic Background Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00D5DF]/10 rounded-full blur-[180px] pointer-events-none" />

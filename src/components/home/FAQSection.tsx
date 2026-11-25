@@ -77,16 +77,16 @@ export function FAQSection() {
   };
 
   return (
-    <section 
-      id="faq" 
-      className="py-16 sm:py-24 md:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80 select-none"
+    <section
+      id="faq"
+      className="py-16 sm:py-24 md:py-32 bg-[#050708] relative overflow-hidden border-t border-[#203536]/80"
     >
       {/* Ambient background glows */}
       <div className="absolute top-1/4 right-1/4 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#00D5DF]/10 rounded-full blur-[140px] sm:blur-[180px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-[#38BDF8]/10 rounded-full blur-[130px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        
+
         {/* Master Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-[#102B50] dark:text-white leading-none mb-2 sm:mb-3">
@@ -110,11 +110,10 @@ export function FAQSection() {
             return (
               <div
                 key={faq.id}
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
                     ? 'bg-white dark:bg-[#0E1A1C] border-[#087FCB] dark:border-[#00D5DF]/70 shadow-[0_8px_30px_rgba(8,127,203,0.12)] dark:shadow-[0_0_30px_rgba(0,213,223,0.14)]'
                     : 'bg-white dark:bg-[#0C1517]/85 border-[#DCE5EF] dark:border-[#203536] hover:border-[#087FCB]/50 dark:hover:border-[#00D5DF]/40 hover:bg-[#F8FAFC] dark:hover:bg-[#0E1A1C]/50 shadow-sm'
-                }`}
+                  }`}
               >
                 {/* Question Trigger */}
                 <button
@@ -126,12 +125,11 @@ export function FAQSection() {
                   aria-controls={`faq-panel-${faq.id}`}
                 >
                   <div className="flex items-center gap-3.5 sm:gap-4 pr-2">
-                    <span 
-                      className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border shrink-0 transition-colors ${
-                        isOpen 
-                          ? 'bg-[#087FCB]/10 dark:bg-[#00D5DF]/15 text-[#0369A1] dark:text-[#00D5DF] border-[#087FCB]/30 dark:border-[#00D5DF]/40' 
+                    <span
+                      className={`text-xs font-mono font-bold px-2.5 py-1 rounded-md border shrink-0 transition-colors ${isOpen
+                          ? 'bg-[#087FCB]/10 dark:bg-[#00D5DF]/15 text-[#0369A1] dark:text-[#00D5DF] border-[#087FCB]/30 dark:border-[#00D5DF]/40'
                           : 'bg-slate-100 dark:bg-neutral-800 text-slate-800 dark:text-neutral-200 border-slate-300 dark:border-neutral-700'
-                      }`}
+                        }`}
                     >
                       {faq.num}
                     </span>
@@ -141,9 +139,8 @@ export function FAQSection() {
                   </div>
 
                   <ChevronDown
-                    className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180 text-[#087FCB] dark:text-[#00D5DF]' : 'text-slate-400 dark:text-neutral-400'
-                    }`}
+                    className={`w-5 h-5 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#087FCB] dark:text-[#00D5DF]' : 'text-slate-400 dark:text-neutral-400'
+                      }`}
                   />
                 </button>
 
@@ -152,9 +149,8 @@ export function FAQSection() {
                   id={`faq-panel-${faq.id}`}
                   role="region"
                   aria-labelledby={`faq-trigger-${faq.id}`}
-                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                  }`}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                    }`}
                 >
                   <div className="overflow-hidden">
                     <div className="px-6 sm:px-8 pb-5 pt-3.5 text-xs sm:text-sm md:text-base text-[#334155] dark:text-neutral-300 leading-relaxed border-t border-[#E8EEF5] dark:border-[#203536]/70">

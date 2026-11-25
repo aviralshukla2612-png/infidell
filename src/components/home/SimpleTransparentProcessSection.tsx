@@ -490,7 +490,7 @@ export function SimpleTransparentProcessSection() {
       {/* Pinned Fullscreen Viewport Container */}
       <div
         ref={pinContainerRef}
-        className="relative w-full min-h-screen lg:h-screen flex flex-col justify-center items-center py-12 lg:py-0 px-4 sm:px-6 lg:px-8 select-none overflow-hidden"
+        className="relative w-full min-h-screen lg:h-screen flex flex-col justify-center items-center py-12 lg:py-0 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* 3D Scatter Headline (Centered in Viewport, Exact Nexus 3D Explosion) */}
         <div

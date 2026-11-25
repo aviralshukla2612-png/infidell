@@ -379,22 +379,11 @@ export function AboutSection() {
 
             {/* Right Column (6 cols): Pure Image Showcase (Uncropped Natural 3:2 Proportions) */}
             <div className="lg:col-span-6 flex items-center justify-center">
-              <div className="luna-header-fade relative w-full aspect-[3/2] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#203536] hover:border-[#00D5DF]/60 transition-all duration-500 shadow-2xl shadow-black/80 bg-[#060D10] group">
-                {/* Dark Mode Office Visual */}
-                <div className="dark-only relative w-full h-full">
+              <div className="luna-header-fade relative w-full aspect-[3/2] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#DCE5EF] dark:border-[#203536] hover:border-[#087FCB] dark:hover:border-[#00D5DF]/60 transition-all duration-500 shadow-2xl shadow-slate-200/50 dark:shadow-black/80 bg-slate-100 dark:bg-[#060D10] group">
+                <div className="relative w-full h-full">
                   <Image
-                    src="/about-bg.webp"
+                    src="/aboutbg.webp"
                     alt="Infidell Technology Headquarters"
-                    fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                {/* Light Mode Office Visual */}
-                <div className="light-only relative w-full h-full">
-                  <Image
-                    src="/about-bg-light.webp"
-                    alt="Infidell Technology Headquarters - Light Theme"
                     fill
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 1024px) 100vw, 50vw"

@@ -43,10 +43,10 @@ const SUPPORTING_ARTICLES: InsightArticle[] = [
     readTime: '4 min read'
   },
   {
-    id: 'true-cost-unverified-placement',
+    id: 'evaluating-unverified-placement',
     date: 'October 2026',
     author: 'Governance & Ethics',
-    title: 'The True Cost of Unverified Placement Guarantees in Tech Staffing',
+    title: 'Evaluating Unverified Placement Guarantees in Tech Staffing',
     excerpt:
       'Why reputable enterprises are turning away from aggressive volume brokers in favor of ethical search firms with transparent engagement models.',
     category: 'Recruitment Ethics',

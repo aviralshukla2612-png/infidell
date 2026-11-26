@@ -101,7 +101,7 @@ export function ServicesSection() {
         'Confidential candidate representation to verified employers',
         'System design & mock interview preparation sessions',
         'Real-time status tracking throughout interview loops',
-        '100% free placement advisory for candidates'
+        'Dedicated executive career advisory for candidates'
       ],
       ctaLabel: 'Explore Career Opportunities',
       ctaHref: '#careers'

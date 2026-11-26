@@ -35,9 +35,9 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'United States',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#bd3d44" d="M0 0h640v480H0z"/>
-        <path stroke="#fff" strokeWidth="37" d="M0 55.4h640M0 129.2h640M0 203h640M0 277h640M0 350.8h640M0 424.6h640"/>
-        <path fill="#192f5d" d="M0 0h284.8v258.5H0z"/>
+        <path fill="#bd3d44" d="M0 0h640v480H0z" />
+        <path stroke="#fff" strokeWidth="37" d="M0 55.4h640M0 129.2h640M0 203h640M0 277h640M0 350.8h640M0 424.6h640" />
+        <path fill="#192f5d" d="M0 0h284.8v258.5H0z" />
       </svg>
     )
   },
@@ -46,11 +46,11 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'United Kingdom',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#012169" d="M0 0h640v480H0z"/>
-        <path fill="#FFF" d="m75 0 245 180L565 0h75v60L440 240l200 150v90h-75L320 300 75 480H0v-60l200-150L0 60V0h75z"/>
-        <path fill="#C8102E" d="m424 282 216 162v36l-264-198h48zm-208-84L0 36V0l264 198h-48zM0 444l192-144h48L24 480H0v-36zm640-408L448 180h-48L616 0h24v36z"/>
-        <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/>
-        <path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/>
+        <path fill="#012169" d="M0 0h640v480H0z" />
+        <path fill="#FFF" d="m75 0 245 180L565 0h75v60L440 240l200 150v90h-75L320 300 75 480H0v-60l200-150L0 60V0h75z" />
+        <path fill="#C8102E" d="m424 282 216 162v36l-264-198h48zm-208-84L0 36V0l264 198h-48zM0 444l192-144h48L24 480H0v-36zm640-408L448 180h-48L616 0h24v36z" />
+        <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z" />
+        <path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z" />
       </svg>
     )
   },
@@ -59,11 +59,11 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'Australia',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#00008b" d="M0 0h640v480H0z"/>
-        <path fill="#fff" d="m0 0 320 240m0-240L0 240" stroke="#fff" strokeWidth="40"/>
-        <path fill="#cc0000" d="m0 0 320 240m0-240L0 240" stroke="#cc0000" strokeWidth="20"/>
-        <path stroke="#fff" strokeWidth="60" d="M160 0v240M0 120h320"/>
-        <path stroke="#cc0000" strokeWidth="36" d="M160 0v240M0 120h320"/>
+        <path fill="#00008b" d="M0 0h640v480H0z" />
+        <path fill="#fff" d="m0 0 320 240m0-240L0 240" stroke="#fff" strokeWidth="40" />
+        <path fill="#cc0000" d="m0 0 320 240m0-240L0 240" stroke="#cc0000" strokeWidth="20" />
+        <path stroke="#fff" strokeWidth="60" d="M160 0v240M0 120h320" />
+        <path stroke="#cc0000" strokeWidth="36" d="M160 0v240M0 120h320" />
       </svg>
     )
   },
@@ -72,9 +72,9 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'Germany',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#ffce00" d="M0 320h640v160H0z"/>
-        <path d="M0 0h640v160H0z"/>
-        <path fill="#d00" d="M0 160h640v160H0z"/>
+        <path fill="#ffce00" d="M0 320h640v160H0z" />
+        <path d="M0 0h640v160H0z" />
+        <path fill="#d00" d="M0 160h640v160H0z" />
       </svg>
     )
   },
@@ -83,10 +83,10 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'Singapore',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#ed2939" d="M0 0h640v240H0z"/>
-        <path fill="#fff" d="M0 240h640v240H0z"/>
-        <circle cx="120" cy="120" r="70" fill="#fff"/>
-        <circle cx="140" cy="120" r="70" fill="#ed2939"/>
+        <path fill="#ed2939" d="M0 0h640v240H0z" />
+        <path fill="#fff" d="M0 240h640v240H0z" />
+        <circle cx="120" cy="120" r="70" fill="#fff" />
+        <circle cx="140" cy="120" r="70" fill="#ed2939" />
       </svg>
     )
   },
@@ -95,10 +95,10 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'United Arab Emirates',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#00732f" d="M0 0h640v160H0z"/>
-        <path fill="#fff" d="M0 160h640v160H0z"/>
-        <path d="M0 320h640v160H0z"/>
-        <path fill="red" d="M0 0h160v480H0z"/>
+        <path fill="#00732f" d="M0 0h640v160H0z" />
+        <path fill="#fff" d="M0 160h640v160H0z" />
+        <path d="M0 320h640v160H0z" />
+        <path fill="red" d="M0 0h160v480H0z" />
       </svg>
     )
   },
@@ -107,10 +107,10 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     name: 'India',
     flagSvg: (
       <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#f93" d="M0 0h640v160H0z"/>
-        <path fill="#fff" d="M0 160h640v160H0z"/>
-        <path fill="#128807" d="M0 320h640v160H0z"/>
-        <circle cx="320" cy="240" r="45" fill="none" stroke="#008" strokeWidth="6"/>
+        <path fill="#f93" d="M0 0h640v160H0z" />
+        <path fill="#fff" d="M0 160h640v160H0z" />
+        <path fill="#128807" d="M0 320h640v160H0z" />
+        <circle cx="320" cy="240" r="45" fill="none" stroke="#008" strokeWidth="6" />
       </svg>
     )
   }
@@ -447,11 +447,10 @@ export function ContactSection() {
                                     setFormData({ ...formData, countryCode: item.code });
                                     setCountryDropdownOpen(false);
                                   }}
-                                  className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs sm:text-sm transition-colors cursor-pointer ${
-                                    formData.countryCode === item.code
+                                  className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs sm:text-sm transition-colors cursor-pointer ${formData.countryCode === item.code
                                       ? 'bg-blue-50 dark:bg-white/10 text-[#087FCB] dark:text-[#00D5DF] font-semibold'
                                       : 'text-slate-700 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-white/5'
-                                  }`}
+                                    }`}
                                 >
                                   <div className="flex items-center gap-2.5">
                                     {item.flagSvg}

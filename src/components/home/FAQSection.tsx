@@ -14,9 +14,9 @@ const FAQS: FAQItem[] = [
   {
     id: 1,
     num: '01',
-    question: 'Does Infidell charge candidates for placement services?',
+    question: 'Why choose Infidell Technology?',
     answer:
-      'No. Our career guidance, resume review, and interview coaching are 100% free for candidates. All placement fees are covered by the hiring employer.'
+      'We provide specialized technical expertise, pre-vetted talent shortlists within 48–72 hours, and direct introductions to verified hiring decision-makers with zero automated filters.'
   },
   {
     id: 2,

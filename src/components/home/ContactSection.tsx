@@ -41,6 +41,18 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
     )
   },
   {
+    code: '+91',
+    name: 'India',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#f93" d="M0 0h640v160H0z" />
+        <path fill="#fff" d="M0 160h640v160H0z" />
+        <path fill="#128807" d="M0 320h640v160H0z" />
+        <circle cx="320" cy="240" r="45" fill="none" stroke="#008" strokeWidth="6" />
+      </svg>
+    )
+  },
+  {
     code: '+44',
     name: 'United Kingdom',
     flagSvg: (
@@ -50,6 +62,17 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
         <path fill="#C8102E" d="m424 282 216 162v36l-264-198h48zm-208-84L0 36V0l264 198h-48zM0 444l192-144h48L24 480H0v-36zm640-408L448 180h-48L616 0h24v36z" />
         <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z" />
         <path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z" />
+      </svg>
+    )
+  },
+  {
+    code: '+1',
+    name: 'Canada',
+    flagSvg: (
+      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
+        <path fill="#f00" d="M0 0h160v480H0zm480 0h160v480H480z" />
+        <path fill="#fff" d="M160 0h320v480H160z" />
+        <path fill="#f00" d="m320 120 12 36 38-16-16 38 36 12-36 12 16 38-38-16-12 36-12-36-38 16 16-38-36-12 36-12-16-38 38 16z" />
       </svg>
     )
   },
@@ -100,24 +123,13 @@ const COUNTRY_DIAL_OPTIONS: CountryDialOption[] = [
         <path fill="red" d="M0 0h160v480H0z" />
       </svg>
     )
-  },
-  {
-    code: '+91',
-    name: 'India',
-    flagSvg: (
-      <svg className="w-5 h-3.5 rounded-[2px] shrink-0 shadow-xs" viewBox="0 0 640 480">
-        <path fill="#f93" d="M0 0h640v160H0z" />
-        <path fill="#fff" d="M0 160h640v160H0z" />
-        <path fill="#128807" d="M0 320h640v160H0z" />
-        <circle cx="320" cy="240" r="45" fill="none" stroke="#008" strokeWidth="6" />
-      </svg>
-    )
   }
 ];
 
 export function ContactSection() {
   const countryDropdownRef = useRef<HTMLDivElement>(null);
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+  const [selectedCountryName, setSelectedCountryName] = useState('United States');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -139,7 +151,7 @@ export function ContactSection() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const selectedCountry = COUNTRY_DIAL_OPTIONS.find((c) => c.code === formData.countryCode) || COUNTRY_DIAL_OPTIONS[0];
+  const selectedCountry = COUNTRY_DIAL_OPTIONS.find((c) => c.name === selectedCountryName) || COUNTRY_DIAL_OPTIONS[0];
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -433,21 +445,25 @@ export function ContactSection() {
                           </button>
 
                           {countryDropdownOpen && (
-                            <div className="absolute top-full left-0 mt-1.5 w-52 py-1.5 rounded-xl bg-white dark:bg-[#0C1517] border border-slate-200 dark:border-[#203536] shadow-xl z-30 max-h-60 overflow-y-auto">
+                            <div
+                              onWheel={(e) => e.stopPropagation()}
+                              className="country-dropdown-list absolute top-full left-0 mt-1.5 w-60 sm:w-64 py-1.5 rounded-xl bg-white dark:bg-[#0C1517] border border-slate-200 dark:border-[#203536] shadow-xl z-30 max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain"
+                            >
                               {COUNTRY_DIAL_OPTIONS.map((item) => (
                                 <button
-                                  key={item.code}
+                                  key={`${item.name}-${item.code}`}
                                   type="button"
                                   onClick={() => {
+                                    setSelectedCountryName(item.name);
                                     setFormData({ ...formData, countryCode: item.code });
                                     setCountryDropdownOpen(false);
                                   }}
-                                  className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs sm:text-sm transition-colors cursor-pointer ${formData.countryCode === item.code
-                                      ? 'bg-blue-50 dark:bg-white/10 text-[#087FCB] dark:text-[#00D5DF] font-semibold'
-                                      : 'text-slate-700 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-white/5'
+                                  className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs sm:text-sm transition-colors cursor-pointer ${selectedCountry.name === item.name
+                                    ? 'bg-blue-50 dark:bg-white/10 text-[#087FCB] dark:text-[#00D5DF] font-semibold'
+                                    : 'text-slate-700 dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-white/5'
                                     }`}
                                 >
-                                  <div className="flex items-center gap-2.5">
+                                  <div className="flex items-center gap-2.5 min-w-0">
                                     {item.flagSvg}
                                     <span className="truncate">{item.name}</span>
                                   </div>

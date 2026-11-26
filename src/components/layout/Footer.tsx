@@ -123,17 +123,17 @@ export function Footer() {
             <div className="flex flex-wrap items-center gap-4 pt-1">
               <a
                 href="mailto:contact@infidelltech.com?subject=Inquiry%20-%20Infidell%20Technology"
-                className="group inline-flex items-center gap-4 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-white/30 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white hover:border-[#00E5F0] hover:bg-white hover:text-black transition-all duration-300"
+                className="footer-cta-pill group inline-flex items-center gap-4 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-white/30 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white hover:border-[#00E5F0] hover:bg-white hover:text-black transition-all duration-300"
               >
-                <span>Get in Touch</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="footer-cta-label">Get in Touch</span>
+                <span className="footer-cta-arrow transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="mailto:contact@infidelltech.com?subject=Resume%20Submission"
-                className="group inline-flex items-center gap-4 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-white/30 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white hover:border-[#00E5F0] hover:bg-white hover:text-black transition-all duration-300"
+                className="footer-cta-pill group inline-flex items-center gap-4 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full border border-white/30 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white hover:border-[#00E5F0] hover:bg-white hover:text-black transition-all duration-300"
               >
-                <span>Drop us an email</span>
-                <span className="font-mono text-base">@</span>
+                <span className="footer-cta-label">Drop us an email</span>
+                <span className="footer-cta-arrow font-mono text-base">@</span>
               </a>
             </div>
           </div>

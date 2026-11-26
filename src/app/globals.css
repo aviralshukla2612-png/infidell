@@ -1175,3 +1175,40 @@ html.light .demanded-role-card.active {
   }
 }
 
+/* Footer CTA pill hover states - ensure text is crisp black on white hover in all modes */
+#footer .footer-cta-pill:hover,
+#footer .footer-cta-pill:hover *,
+#footer .footer-cta-pill:focus,
+#footer .footer-cta-pill:focus *,
+html.light #footer .footer-cta-pill:hover,
+html.light #footer .footer-cta-pill:hover *,
+html.light #footer .footer-cta-pill:focus,
+html.light #footer .footer-cta-pill:focus * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Country dial dropdown smooth scrollbar */
+.country-dropdown-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+}
+
+.country-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.country-dropdown-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.country-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+.country-dropdown-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.7);
+}
+
+

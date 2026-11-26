@@ -83,7 +83,7 @@ export const CAREER_ROLES: CareerRole[] = [
     location: 'San Francisco, CA / Hybrid',
     type: 'Full-Time',
     experienceYears: '10–15 Years',
-    salaryRange: '$260k – $380k / yr + Equity',
+    salaryRange: '$260k – $380k / yr',
     demand: 'High',
     img: '/images/careers/career-director-engineering.jpg',
     description: 'Spearhead cross-functional engineering organizations across distributed microservices, platform reliability, and executive strategic technology roadmaps.',
@@ -173,7 +173,7 @@ export const CAREER_ROLES: CareerRole[] = [
     location: 'Boston, MA / Hybrid',
     type: 'Full-Time',
     experienceYears: '6–12 Years',
-    salaryRange: '$190k – $310k / yr + OTE',
+    salaryRange: '$190k – $310k / yr',
     demand: 'High',
     img: '/images/careers/career-b2b-sales.jpg',
     description: 'Drive multi-million enterprise SaaS contracts, spearhead CXO consultative sales cycles, and expand market presence across global enterprise accounts.',
@@ -461,12 +461,12 @@ export function CareersSection() {
                 {/* Horizontal Divider */}
                 <div className="border-t border-[#203536]/80 pt-5">
                   {/* 3-Column Stats Summary (SALARY, DEMAND, EXPERIENCE) */}
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div>
+                  <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6">
+                    <div className="min-w-0">
                       <div className="text-[10px] font-mono text-neutral-400 font-bold uppercase tracking-wider mb-1">
                         SALARY
                       </div>
-                      <div className="text-xs sm:text-sm md:text-base font-bold text-white">
+                      <div className="text-xs sm:text-sm md:text-base font-bold text-white whitespace-nowrap">
                         {activeJob.salaryRange}
                       </div>
                     </div>

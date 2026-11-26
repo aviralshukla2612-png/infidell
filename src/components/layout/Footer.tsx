@@ -151,13 +151,13 @@ export function Footer() {
               <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-[#00E5F0] transition-colors" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visit Infidell on Twitter / X"
+              aria-label="Visit Infidell on X"
               className="text-2xl sm:text-3xl font-medium text-white/80 hover:text-white transition-all duration-200 hover:translate-x-1 flex items-center gap-2 group"
             >
-              <span>Twitter / X</span>
+              <span>X</span>
               <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-[#00E5F0] transition-colors" />
             </a>
             <a

@@ -113,16 +113,16 @@ export function InsightsSection() {
   );
 
   return (
-    <section 
-      ref={sectionRef} 
-      id="insights" 
+    <section
+      ref={sectionRef}
+      id="insights"
       className="relative w-full bg-[#050708] text-white py-24 sm:py-32 overflow-hidden border-t border-[#203536]/80"
     >
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#17BEBB]/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16 sm:mb-20">
           <div className="max-w-xl">
@@ -143,7 +143,7 @@ export function InsightsSection() {
 
         {/* Asymmetric Editorial Layout: 1 Large Featured + 3 Supporting Rows */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          
+
           {/* Featured Article (Left 7 Cols) */}
           <article className="lg:col-span-7 insight-featured-card rounded-3xl bg-[#0C1517] border border-[#203536] p-6 sm:p-8 flex flex-col justify-between hover:border-[#17BEBB]/60 transition-all duration-300 group relative overflow-hidden">
             <div>
@@ -157,7 +157,7 @@ export function InsightsSection() {
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1517] via-transparent to-transparent pointer-events-none" />
-                
+
                 {/* Category & Read Time Tags */}
                 <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
                   <span className="px-3.5 py-1.5 rounded-full bg-[#0C1517]/85 border border-[#203536] backdrop-blur-md text-xs font-bold text-[#00D5DF]">

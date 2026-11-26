@@ -12,7 +12,6 @@ import {
   Sparkles,
   ArrowUpRight,
   Clock,
-  ShieldCheck,
   Lock,
   ChevronDown
 } from 'lucide-react';
@@ -341,11 +340,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Trust Assurance */}
-            <div className="pt-2 flex items-center gap-3 text-xs text-slate-500 dark:text-neutral-400">
-              <ShieldCheck className="w-4 h-4 text-[#087FCB] dark:text-[#00D5DF]" />
-              <span>100% Confidential · Ethical Placement Standards</span>
-            </div>
+
           </div>
 
           {/* ========================================================
@@ -537,11 +532,7 @@ export function ContactSection() {
                       </button>
                     </div>
 
-                    <div className="text-center">
-                      <span className="text-[11px] text-slate-500 dark:text-neutral-400 font-mono">
-                        Protected by enterprise NDA · Strict data privacy compliance
-                      </span>
-                    </div>
+
                   </form>
                 </>
               ) : (

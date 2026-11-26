@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import {
   Cpu,
-  Sparkles,
   ArrowRight,
   CheckCircle2,
   X,
@@ -132,11 +131,6 @@ export function ServicesSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-[#087FCB] dark:text-[#00E5F0] bg-[#087FCB]/10 dark:bg-[#00E5F0]/10 border border-[#087FCB]/20 dark:border-[#00E5F0]/30 mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Our Core Capabilities</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-[#102B50] dark:text-white leading-tight mb-4">
             Specialized Talent &{' '}
             <span className="font-medium bg-gradient-to-r from-[#087FCB] to-[#00BFCB] dark:from-[#7DD3FC] dark:to-[#00D5DF] bg-clip-text text-transparent">

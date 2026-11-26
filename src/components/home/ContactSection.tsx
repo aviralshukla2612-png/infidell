@@ -447,7 +447,7 @@ export function ContactSection() {
                           {countryDropdownOpen && (
                             <div
                               onWheel={(e) => e.stopPropagation()}
-                              className="country-dropdown-list absolute top-full left-0 mt-1.5 w-60 sm:w-64 py-1.5 rounded-xl bg-white dark:bg-[#0C1517] border border-slate-200 dark:border-[#203536] shadow-xl z-30 max-h-72 overflow-y-auto overflow-x-hidden overscroll-contain"
+                              className="country-dropdown-list absolute top-full left-0 mt-1.5 w-60 sm:w-64 py-1 rounded-xl bg-white dark:bg-[#0C1517] border border-slate-200 dark:border-[#203536] shadow-xl z-30 max-h-[380px] overflow-y-auto overflow-x-hidden overscroll-contain [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                             >
                               {COUNTRY_DIAL_OPTIONS.map((item) => (
                                 <button

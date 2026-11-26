@@ -1189,26 +1189,16 @@ html.light #footer .footer-cta-pill:focus * {
 }
 
 /* Country dial dropdown smooth scrollbar */
+/* Country dial dropdown: hidden scrollbar while maintaining smooth scrolling */
 .country-dropdown-list {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 .country-dropdown-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.country-dropdown-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.country-dropdown-list::-webkit-scrollbar-thumb {
-  background-color: rgba(148, 163, 184, 0.4);
-  border-radius: 9999px;
-}
-
-.country-dropdown-list::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(148, 163, 184, 0.7);
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Modal close button contrast guarantee for light mode */

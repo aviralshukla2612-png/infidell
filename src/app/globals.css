@@ -1211,4 +1211,25 @@ html.light #footer .footer-cta-pill:focus * {
   background-color: rgba(148, 163, 184, 0.7);
 }
 
+/* Modal close button contrast guarantee for light mode */
+html.light button[aria-label*="Close"],
+html.light button[aria-label*="close"] {
+  color: #102B50 !important;
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+}
+
+html.light button[aria-label*="Close"] svg,
+html.light button[aria-label*="close"] svg {
+  color: #102B50 !important;
+  stroke: #102B50 !important;
+}
+
+html.light button[aria-label*="Close"]:hover,
+html.light button[aria-label*="close"]:hover {
+  background-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+
 

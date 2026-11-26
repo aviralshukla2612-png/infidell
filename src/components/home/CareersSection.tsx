@@ -409,7 +409,7 @@ export function CareersSection() {
               type="button"
               onClick={closeModal}
               aria-label="Close modal"
-              className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-colors cursor-pointer"
+              className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 border border-slate-300 dark:border-white/20 flex items-center justify-center text-slate-800 dark:text-white transition-colors cursor-pointer shadow-md"
             >
               <X className="w-5 h-5" />
             </button>
